@@ -1,0 +1,178 @@
+@use '../abstracts/index' as *;
+
+/* Swiper
+-------------------------------------------------------------- */
+
+.swiper-slide {
+    transform: translate3d(0, 0, 0);
+    will-change: opacity, transform;
+    height: auto;
+}
+
+.swiper-container-visible {
+    &.swiper-container {
+        overflow: visible;
+    }
+}
+
+.swiper-testimonior {
+    .swiper-slide {
+        height: initial
+    }
+}
+
+.pagination-style.swiper-pagination.pagination-absolute {
+    position: absolute;
+    bottom: 24px !important;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination-style {
+    &.swiper-pagination {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0 !important;
+
+        &.pagination-white {
+            .swiper-pagination-bullet {
+                &.swiper-pagination-bullet-active {
+                    border-color: white;
+                }
+    
+                &::before { 
+                    border: 1px solid white;
+                }
+    
+                &.swiper-pagination-bullet-active {
+                    &::before {
+                        background: white;
+                    }
+                }
+            }
+        }
+
+        &.pagination-dark {
+            .swiper-pagination-bullet {
+                &.swiper-pagination-bullet-active {
+                    border-color: $color-primary;
+                }
+    
+                &::before { 
+                    border: 1px solid $color-primary;
+                }
+    
+                &.swiper-pagination-bullet-active {
+                    &::before {
+                        background: $color-primary;
+                    }
+                }
+            }
+        }
+
+
+        .swiper-pagination-bullet {
+            background: transparent;
+            position: relative; 
+            width: 20px;
+            height: 20px;
+            border: 1px solid transparent;
+            opacity: 1; 
+
+            &::before {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                position: absolute;
+                content: ""; 
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: transparent;
+            } 
+        }
+
+        &.pagination-style-absolute {
+            position: absolute;
+            bottom: 20px !important; 
+        }
+    }
+    
+}  
+
+.swiper-card-5,
+.swiper-card-6,
+.showshawdow,
+.swiper-outbrand-3 {
+    padding: 30px;
+    margin: -30px;
+} 
+
+.swiper-brand-wrapper {
+    margin-right: -255px;
+} 
+
+.swiper-card,
+.swiper-card-7,
+.swiper-outbrand,
+.swiper-card-3,
+.swiper-testimonior,
+.swiper-outbrand-4 {
+    .swiper{
+        padding: 24px;
+        margin: -24px;
+    }
+}
+
+.swiper-testimonior-2,
+.swiper-testimonior {
+    .swiper-slide {
+        height: auto !important;
+    }
+}
+
+.swiper-brand-wrapper,
+.swiper-card-wrapper {
+    // margin-right: -100% !important;
+    width: calc(100vw - (100vw - 1488px) / 2 - 7px);
+}
+
+.tp-showcase-slider-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    &::after {
+        content: "";
+        position: absolute;
+        background-color: rgba(10, 10, 10, 0.3);
+        inset: 0;
+    }
+}
+
+.sw-single {
+    .swiper-slide {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+ 
+}
+
+.swiper-card-2 {
+    padding: 30px !important;
+    margin: -30px !important;
+}
+
+// Override pointer-events: none for thumbnail slides to allow clicking
+.swiper-container-fade .swiper-listing-details-thumbs-style-2 .swiper-slide,
+.swiper-container-fade .swiper-listing-details-thumbs .swiper-slide,
+.swiper-container-fade.swiper-listing-details-main-style-2 .swiper-listing-details-thumbs-style-2 .swiper-slide,
+.swiper-container-fade.swiper-listing-details-main-style-2 .swiper-listing-details-thumbs .swiper-slide {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+

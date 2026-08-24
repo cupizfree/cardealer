@@ -1,0 +1,733 @@
+@use './abstracts/index' as *;
+
+/* Reset
+-------------------------------------------------------------- */
+
+// Manrope/Albert Sans are loaded via next/font/google in src/app/layout.tsx, not this CDN @import
+// (see that file's comment — the @import was silently dropped by the browser because it wasn't the
+// first rule in the bundled stylesheet, so it never actually loaded either font in the first place).
+
+html {
+    margin-right: 0 !important;
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: $font-main-1;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: $text-primary;
+    font-style: normal;
+    font-optical-sizing: auto;
+    -webkit-tap-highlight-color: transparent;
+} 
+
+// ::selection {
+//     background: transparent;
+//     color: inherit;
+//   }
+  
+//   /* Firefox */
+//   ::-moz-selection {
+//     background: transparent;
+//     color: inherit;
+//   }
+
+.font-main-2 {
+    font-family: $font-main-2 !important;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+    display: none;
+}
+
+.smooth {
+    scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 67px;
+    position: relative;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+} 
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px; 
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #fff; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    // background: color(Neutral, N200); 
+    background: transparent;
+    border-radius: 8px;
+    
+}
+
+.fixed {
+    position: fixed;
+    overflow: hidden;
+}
+
+.hiden {
+    overflow: hidden;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #98BC2A;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #98BC2A;
+} 
+
+img {
+    max-width: 100%;
+    height: auto;
+    transform: scale(1);
+}
+
+.h4,
+.h5,
+.h6,
+.h7,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+h1,
+.h1 {
+    font-size: 68px;
+    line-height: 76px;
+}
+
+.text-56 {
+    font-size: 56px;
+    line-height: 1.2;
+}
+
+h2,
+.h2 {
+    font-size: 40px;
+    line-height: 48px;
+}
+
+h3,
+.h3 {
+    font-size: 32px;
+    line-height: 1.25;
+}
+
+h4,
+.h4 {
+    font-size: 24px;
+    line-height: 1.333;
+}
+
+h5,
+.h5 {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+h6,
+.h6 {
+    font-size: 20px;
+    line-height: 1.6;
+}
+ 
+h7,
+.h7 {
+    font-size: 18px;
+    line-height: 1.44;
+}
+
+.text-body-style-2 {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: $color-secondary;
+}
+ 
+.line-height-28 {
+    line-height: 28px;
+}
+    
+p {
+    margin-bottom: 0;
+}
+
+.padding-0 {
+    padding: 0 !important;
+}
+
+.radius-8 {
+    border-radius: 8px;
+}
+
+.radius-16 {
+    border-radius: 16px;
+}
+
+.radius-24 {
+    border-radius: 24px;
+}
+
+.radius-28 {
+    border-radius: 28px;
+}
+
+.radius-40 {
+    border-radius: 40px;
+}
+
+.left-auto {
+    margin-left: auto;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.justify-end {
+    justify-content: end;
+}
+
+.width-full {
+    width: 100%;
+} 
+
+.container {
+    max-width: 1440px;
+    padding: 0 15px;
+} 
+ 
+.white {
+    color: $white;
+}
+
+.white-dark {
+    color: $white !important;
+}
+ 
+.color-primary {
+    color: $color-hover;
+}
+    
+#wrapper {
+    overflow: hidden !important;
+    position: relative;
+    width: 100%;
+    height: 100%;
+} 
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+ul,
+li {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+svg path {
+    @include transition(all, 0.3s, ease);
+}
+
+.link,
+a {
+    text-decoration: none;
+    color: unset;
+    @include transition(all, 0.3s, ease);
+    cursor: pointer;
+
+    &:hover {
+        color: $color-hover; 
+    }
+}
+
+a {
+    display: inline-block;
+}
+
+.search-modal__overlay,
+.mobile-menu-overlay,
+.bg-modal,
+.filter-sidebar__overlay,
+.close-hover {
+    &:hover {
+        cursor: url("/assets/icons/close-modal.svg") 16 16, auto;
+    }
+}
+
+.transition3s {
+    @include transition(all, 0.3s, ease);
+}
+
+.center {
+    text-align: center;
+}
+ 
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+ 
+.relative {
+    position: relative;
+}
+
+.container-fluid {
+    max-width: 1920px;
+    margin: auto;
+    width: 100%;    
+}
+
+.container-fluid,
+.container { 
+
+    &.px-0 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.justify-between {
+    justify-content: space-between;
+} 
+
+button {
+    @include transition(all, 0.3s, ease);
+    cursor: pointer;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    @include transition(all, 0.3s, ease);
+    background: $white;
+    color: $text-primary;
+    width: 100%;
+    background-image: url("/assets/icons/chevron-down-black.svg");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    position: relative;
+    outline: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: 0 0 0 1px $border-light; 
+
+    &:active,
+    &:focus {
+        box-shadow: 0 0 0 2px $color-hover-opacity; 
+    } 
+
+    &.select-blur {
+        background: transparent; 
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); 
+        color: $white
+    }
+
+    &.select-large {
+        padding: 12px 16px;
+        border-radius: 12px;
+    }
+
+    &.language-select {
+        background: transparent;
+        padding: 0 12px 0 0;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+
+        &.language-select--white {
+            background-image: url("/assets/icons/chevron-down-white.svg");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-position-y: calc(50% - 2px); 
+        }
+
+        &.language-select--black {
+            background-image: url("/assets/icons/chevron-down-black.svg");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-position-y: calc(50% - 2px); 
+        }
+    }
+}
+
+// form //
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    @include transition(all, 0.3s, ease);
+    position: relative;
+    outline: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    width: 100%;
+    background: transparent;
+    box-shadow: 0 0 0 1px $border-light; 
+    outline: none; 
+
+    &::placeholder {
+        color: $color-muted;
+        font-size: 16px;
+        line-height: 26px; 
+        font-weight: 400; 
+    }
+
+    &.active,
+    &:active,
+    &:focus {
+        box-shadow: 0 0 0 2px $color-hover-opacity; 
+    }  
+
+    &.input-large {
+        height: 50px;
+        border-radius: 12px;
+    }
+
+    &.time-picker {
+        background-image: url("/assets/icons/clock.svg");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+    }
+
+    &.date-picker {
+        background-image: url("/assets/icons/calendar.svg");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+    } 
+
+    &.input-normal {
+        height: 48px;
+        border-radius: 8px;
+    }
+
+    &.inp-blur {
+        color: $white;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); 
+        &::placeholder {
+            color: $white;
+        }
+    }
+}
+
+.textarea-primary {
+    min-height: 140px;
+    text-align: left;
+    padding: 16px;
+}
+/* Ẩn mật khẩu */
+.password-input.is-hidden {
+    background-image: url("/assets/icons/eye-slash.svg");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 20px 20px;
+}
+
+/* Hiện mật khẩu */
+.password-input.is-visible {
+    background-image: url("/assets/icons/eye.svg");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 20px 20px;
+}
+
+.input-payment-wrapper {
+    display: flex;
+    align-items: center;
+    .payment {
+        position: absolute;
+        height: 16px;
+        right: 16px;
+    }
+
+    input {
+        padding-right: 160px !important;
+    }
+}
+
+.input-clear-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    .input-clear {
+        padding-right: 40px !important;
+    }
+
+    .input-clear-btn {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+        display: none;
+        border: none;
+        cursor: pointer; 
+
+        &.show {
+            display: flex;
+        }
+    }
+}
+
+.input-social-wrapper {
+    .input-clear {
+        padding-left: 52px !important;
+    }
+}
+
+.prefix-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+button {
+    outline: none;
+    border: none;
+    background: transparent;
+} 
+
+
+
+/* Scroll Top
+-------------------------------------------------------------- */
+#scroll-top {
+    position: fixed;
+    display: block;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    z-index: 8;
+    right: 14px;
+    bottom: 23px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: $color-hover;
+    border: 1px solid $white;
+}
+
+#scroll-top.show {
+    right: 15px;
+    opacity: 1;
+    visibility: visible;
+}
+
+#scroll-top:before,
+#scroll-top:after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+}
+
+#scroll-top:before {
+    z-index: -1;
+}
+
+
+#scroll-top:after {
+    content: "\f077";
+    font-family: "Font Awesome 5 Pro";
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+#scroll-top:hover {
+    transform: translateY(-7%);
+}
+
+
+/* PreLoad
+-------------------------------------------------------------- */
+.preload {
+    overflow: hidden;
+}
+
+.preload-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    display: block;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .preload--icon {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+ 
+
+@keyframes lod {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  
+.bg-mode {
+    background-color: $white;
+}
+   
+/* @Keyframe */
+@keyframes rotating {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.themes-bg {
+    background-color: $white;
+}
+ 
+
+
+.form-group input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.form-group label {
+    position: relative;
+    cursor: pointer;
+}
+
+.form-group label:before {
+    content:'';
+    -webkit-appearance: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-right: 12px;
+    width: 15px;
+    height: 15px;
+    top: 2px;
+    left: 2px;
+    background-image: url("/assets/icons/checkbox.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.form-group input:checked + label:before { 
+    background-image: url("/assets/icons/checked.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+} 
+
+.overflow-visible{
+    overflow: visible;
+}

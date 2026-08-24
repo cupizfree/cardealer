@@ -1,0 +1,64 @@
+@use '../abstracts/index' as *;
+
+/* Accordion
+-------------------------------------------------------------- */
+.flat-accordion { 
+    &.style-2 {
+        .flat-toggle {
+            padding: 13px 20px;
+            .toggle-title {
+                height: 26px;
+            }
+
+            &.active {
+                padding: 20px;
+            }
+            
+
+        }
+    }
+    .flat-toggle {
+        padding: 20px 28px;
+        border: 1px solid $border-light; 
+        border-radius: 16px;
+        .toggle-title {
+            padding-right: 40px;
+            position: relative;
+            text-transform: capitalize;
+            &:hover {
+                cursor: pointer;
+            }
+            &.active {
+                .icon { 
+                    transform: rotate(0);
+                }
+            }
+            .icon {
+                display: flex;
+                position: absolute;
+                right: 0;
+                top: 2px;
+                @include transition(all, 0.3s, ease);
+                transform: rotate(180deg);
+            } 
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 6px; 
+        }
+    }  
+}
+
+
+/* Collapse
+-------------------------------------------------------------- */
+.collapse-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .icon {
+        font-size: 24px;
+        font-weight: 600;
+        @include transition(all, 0.3s, ease);
+    }
+}

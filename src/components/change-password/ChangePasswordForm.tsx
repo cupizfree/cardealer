@@ -1,0 +1,47 @@
+"use client";
+
+import PasswordInput from "@/components/common/PasswordInput";
+
+// Migrated from ../aurexo/change-password.html lines 577-608. All 3 password fields share the identical
+// literal value "themesflat@2026" (confirmed via source read, not a transcription shortcut), and the
+// email field's own value has a literal trailing "|" character ("themesflat@gmail.com|") — both real,
+// disclosed source content quirks, preserved verbatim. Confirmed no page-specific script beyond the
+// shared dashboard-sidebar toggle (already handled by `(dashboard)/layout.tsx`) — "Change Password" is
+// UI_ONLY (no real validation anywhere, e.g. checking New/Retype match). Each password field's real
+// show/hide eye-icon toggle is `PasswordInput` — see that component's own comment for why this was a
+// genuine, previously-unwired site-wide gap found while migrating this page.
+export default function ChangePasswordForm() {
+  return (
+    <form action="#" onSubmit={(event) => event.preventDefault()}>
+      <div className="dashboard-box bg-white style-5">
+        <div className="change-password-wrapper flex flex-col gap-23">
+          <label htmlFor="Email">
+            <span className="mb-8 flex font-weight-600">Your Email:*</span>
+            <input className="input-large active" type="text" defaultValue="themesflat@gmail.com|" id="Email" name="Email" placeholder="Your Email*" required />
+          </label>
+
+          <label htmlFor="OldPassword">
+            <span className="mb-8 flex font-weight-600">Old Password:*</span>
+            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="OldPassword" name="OldPassword" placeholder="Password" required />
+          </label>
+
+          <label htmlFor="NewPassword">
+            <span className="mb-8 flex font-weight-600">New password:*</span>
+            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="NewPassword" name="NewPassword" placeholder="Password" required />
+          </label>
+
+          <label htmlFor="RetypeNewPassword">
+            <span className="mb-8 flex font-weight-600">Retype new password:*</span>
+            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="RetypeNewPassword" name="RetypeNewPassword" placeholder="Password" required />
+          </label>
+
+          <div className="flex">
+            <button type="submit" className="btn btn-primary btn-large-3 font-weight-600">
+              Change Password
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  );
+}

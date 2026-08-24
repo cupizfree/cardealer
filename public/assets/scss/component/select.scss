@@ -1,0 +1,61 @@
+@use '../abstracts/index' as *;
+@use 'sass:color';
+
+/* Select
+-------------------------------------------------------------- */
+.custom-select {
+    position: relative;
+    width: 100%;           
+  }
+  
+.select-selected {
+    @include transition(all, 0.3s, ease);
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px $border-light;
+    cursor: pointer;
+    background: #fff;
+
+    &:focus-within,
+    &:active,
+    &:focus {
+        box-shadow: 0 0 0 2px $color-hover-opacity;
+    }
+
+    &.select--white {
+        background-image: url("/assets/icons/chevron-down-white.svg");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-position-y: calc(50% - 2px); 
+    }
+
+    &.select--black {
+        background-image: url("/assets/icons/chevron-down-black.svg");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-position-y: calc(50% - 2px); 
+    } 
+}
+
+.select-items {
+    position: absolute;
+    width: calc(100% + 4px);
+    background: #fff;
+    display: none;
+    z-index: 10;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px 0px rgba(54, 96, 104, 0.1);
+    margin-top: 4px;
+    transform: translateX(-2px);
+    @include transition(all, 0.3s, ease);
+}
+
+.select-items div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.select-items div:hover {
+    background: #f0f0f0;
+}
+  

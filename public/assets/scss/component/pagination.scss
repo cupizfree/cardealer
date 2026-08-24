@@ -1,0 +1,32 @@
+@use '../abstracts/index' as *;
+
+/* Pagination
+-------------------------------------------------------------- */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        border: 1px solid $border-light;
+        font-weight: 600;
+        &.active,
+        &:hover {
+            background-color: $color-primary;
+            color: $white;
+            border-color: $color-primary;
+            svg {
+                path {
+                    fill: $white;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,378 @@
+
+> aurexo-nextjs@0.1.0 dev
+> next dev -p 3010
+
+   ▲ Next.js 15.5.23
+   - Local:        http://localhost:3010
+   - Network:      http://192.168.1.53:3010
+
+ ✓ Starting...
+ ✓ Ready in 2.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 2.1s (844 modules)
+ GET / 200 in 3564ms
+ GET / 200 in 860ms
+ GET / 200 in 1199ms
+ ○ Compiling /listing-grid4-columns ...
+ ✓ Compiled /listing-grid4-columns in 1174ms (867 modules)
+ GET /listing-grid4-columns 200 in 2798ms
+ ✓ Compiled in 1185ms (853 modules)
+ ✓ Compiled in 537ms (853 modules)
+ ✓ Compiled in 621ms (853 modules)
+ ✓ Compiled in 482ms (853 modules)
+ ✓ Compiled in 414ms (853 modules)
+ ✓ Compiled in 481ms (853 modules)
+ ✓ Compiled in 418ms (853 modules)
+ ✓ Compiled in 1721ms (853 modules)
+ ○ Compiling /home-06 ...
+ ✓ Compiled /home-06 in 1088ms (878 modules)
+ GET /home-06 200 in 2130ms
+ GET /home-06 200 in 705ms
+ ○ Compiling /home-03 ...
+ ✓ Compiled /home-03 in 575ms (897 modules)
+ GET /home-03 200 in 1842ms
+ ○ Compiling /home-09 ...
+ ✓ Compiled /home-09 in 600ms (909 modules)
+ GET /home-09 200 in 1567ms
+ ○ Compiling /home-10 ...
+ ✓ Compiled /home-10 in 572ms (925 modules)
+ GET /home-10 200 in 1501ms
+ ✓ Compiled in 332ms (513 modules)
+ ✓ Compiled in 290ms (359 modules)
+ ✓ Compiled in 183ms (359 modules)
+ ✓ Compiled in 335ms (359 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\21.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\21.pack.gz'
+ GET / 200 in 1067ms
+ ○ Compiling /home-02 ...
+ ✓ Compiled /home-02 in 712ms (898 modules)
+ GET /home-02 200 in 1900ms
+ ✓ Compiled /home-03 in 312ms (551 modules)
+ GET /home-03 200 in 1546ms
+ ✓ Compiled /home-06 in 299ms (562 modules)
+ GET /home-06 200 in 1358ms
+ ✓ Compiled /home-09 in 407ms (569 modules)
+ GET /home-09 200 in 1670ms
+ ○ Compiling /home-10 ...
+ ✓ Compiled /home-10 in 514ms (577 modules)
+ GET /home-10 200 in 1621ms
+ GET /home-03 200 in 916ms
+ GET /home-06 200 in 924ms
+ GET / 200 in 763ms
+ GET /home-02 200 in 913ms
+ GET /home-03 200 in 906ms
+ GET /home-06 200 in 876ms
+ GET /home-09 200 in 911ms
+ GET /home-10 200 in 757ms
+ ✓ Compiled in 1505ms (876 modules)
+ ✓ Compiled in 469ms (876 modules)
+ ✓ Compiled in 490ms (878 modules)
+ ✓ Compiled in 525ms (878 modules)
+ ✓ Compiled in 163ms (364 modules)
+ ✓ Compiled in 192ms (364 modules)
+ ✓ Compiled in 207ms (364 modules)
+ ✓ Compiled in 196ms (364 modules)
+ ✓ Compiled in 217ms (364 modules)
+ ✓ Compiled in 216ms (364 modules)
+ ✓ Compiled in 180ms (364 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\0.pack.gz'
+ GET / 200 in 1151ms
+ GET / 200 in 974ms
+ GET / 200 in 1243ms
+ ○ Compiling /home-09 ...
+ ✓ Compiled /home-09 in 730ms (532 modules)
+ GET /home-09 200 in 2071ms
+ ✓ Compiled /home-10 in 309ms (545 modules)
+ GET /home-10 200 in 1471ms
+ ○ Compiling /home-04 ...
+ ✓ Compiled /home-04 in 561ms (928 modules)
+ GET /home-04 200 in 1768ms
+ ✓ Compiled /home-02 in 405ms (571 modules)
+ GET /home-02 200 in 1729ms
+ ✓ Compiled /home-03 in 322ms (581 modules)
+ GET /home-03 200 in 1611ms
+ ✓ Compiled /home-05 in 504ms (965 modules)
+ GET /home-05 200 in 1525ms
+ ✓ Compiled /home-06 in 479ms (600 modules)
+ GET /home-06 200 in 2242ms
+ GET / 200 in 1115ms
+ GET /home-09 200 in 1111ms
+ GET /home-10 200 in 1028ms
+ GET /home-04 200 in 878ms
+ GET /home-02 200 in 1069ms
+ GET /home-03 200 in 1008ms
+ GET /home-05 200 in 944ms
+ GET /home-06 200 in 959ms
+ GET /home-04 200 in 767ms
+ GET /home-09 200 in 1170ms
+ ○ Compiling /about-us ...
+ ✓ Compiled /about-us in 1668ms (971 modules)
+ GET /home-09 200 in 1149ms
+ ○ Compiling /contact-us ...
+ ✓ Compiled /contact-us in 788ms (982 modules)
+ GET /contact-us 200 in 1362ms
+ GET /home-09 200 in 1081ms
+ GET /home-09 200 in 1023ms
+ GET /contact-us 200 in 115ms
+ ✓ Compiled in 3.2s (957 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: EPERM: operation not permitted, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\3.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\3.pack.gz'
+ ○ Compiling / ...
+ ✓ Compiled / in 628ms (587 modules)
+ GET / 200 in 2162ms
+ ✓ Compiled in 3.1s (957 modules)
+ ✓ Compiled in 1064ms (957 modules)
+ ✓ Compiled in 830ms (957 modules)
+ ✓ Compiled in 858ms (957 modules)
+ ✓ Compiled in 1448ms (957 modules)
+ ✓ Compiled in 823ms (957 modules)
+ ✓ Compiled in 1004ms (957 modules)
+ ✓ Compiled in 1299ms (957 modules)
+ ✓ Compiled in 839ms (957 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\3.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\3.pack.gz'
+ ○ Compiling /home-07 ...
+ ✓ Compiled /home-07 in 1343ms (972 modules)
+ GET /home-07 200 in 2562ms
+ GET /home-07 200 in 718ms
+ GET /home-07 200 in 1303ms
+ ○ Compiling / ...
+ ✓ Compiled / in 952ms (590 modules)
+ GET / 200 in 2490ms
+ GET /home-02 200 in 1223ms
+ GET /home-03 200 in 1083ms
+ ○ Compiling /home-09 ...
+ ✓ Compiled /home-09 in 688ms (594 modules)
+ GET /home-09 200 in 2081ms
+ GET /home-02 200 in 989ms
+ GET /home-07 200 in 1020ms
+ ✓ Compiled in 1297ms (578 modules)
+ ✓ Compiled in 659ms (578 modules)
+ ✓ Compiled in 629ms (578 modules)
+ ✓ Compiled in 2.5s (961 modules)
+ ✓ Compiled in 1119ms (961 modules)
+ ✓ Compiled in 511ms (961 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\0.pack.gz'
+ ✓ Compiled in 729ms (578 modules)
+ ✓ Compiled in 526ms (578 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\server-development\0.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\server-development\0.pack.gz'
+ GET /home-07 200 in 1447ms
+ ○ Compiling / ...
+ ✓ Compiled / in 585ms (590 modules)
+ GET / 200 in 1985ms
+ GET /home-07 200 in 944ms
+ ✓ Compiled in 2.6s (961 modules)
+ ✓ Compiled in 765ms (961 modules)
+ ✓ Compiled in 699ms (961 modules)
+ ○ Compiling /home-08 ...
+ ✓ Compiled /home-08 in 867ms (975 modules)
+ GET /home-08 200 in 3136ms
+ GET /home-02 200 in 1872ms
+ ✓ Compiled in 1255ms (578 modules)
+ ✓ Compiled in 2.8s (964 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\2.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\2.pack.gz'
+ ✓ Compiled in 2.5s (964 modules)
+ ✓ Compiled in 1245ms (964 modules)
+ ✓ Compiled in 1380ms (964 modules)
+ ✓ Compiled in 1379ms (964 modules)
+ ✓ Compiled in 680ms (578 modules)
+ ✓ Compiled in 554ms (578 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\0.pack.gz'
+ ○ Compiling /home-09 ...
+ ✓ Compiled /home-09 in 1387ms (973 modules)
+ GET /home-09 200 in 3227ms
+ ○ Compiling /home-10 ...
+ ✓ Compiled /home-10 in 819ms (981 modules)
+ GET /home-10 200 in 2610ms
+ GET /home-09 200 in 1603ms
+ GET /home-09 200 in 1256ms
+ GET /home-10 200 in 1402ms
+ ○ Compiling / ...
+ ✓ Compiled / in 816ms (604 modules)
+ GET / 200 in 3173ms
+ ○ Compiling /home-04 ...
+ ✓ Compiled /home-04 in 653ms (613 modules)
+ GET /home-04 200 in 2448ms
+ GET /home-02 200 in 1923ms
+ GET /home-03 200 in 1809ms
+ GET /home-09 200 in 1360ms
+ GET / 200 in 159ms
+ GET /home-09 200 in 1083ms
+ ✓ Compiled in 2.9s (578 modules)
+ ✓ Compiled in 1301ms (578 modules)
+ ○ Compiling /home-09 ...
+ ✓ Compiled /home-09 in 935ms (586 modules)
+ GET /home-09 200 in 3005ms
+ GET /home-09 200 in 1138ms
+ GET /home-06 200 in 1112ms
+ GET /home-09 200 in 1063ms
+ GET /home-09 200 in 1271ms
+ GET /home-09 200 in 1200ms
+ GET /home-09 200 in 1497ms
+ GET /home-06 200 in 1897ms
+ GET /home-09 200 in 1303ms
+ GET /home-09 200 in 1306ms
+ GET /home-06 200 in 1278ms
+ GET /home-09 200 in 1239ms
+ GET /home-09 200 in 1412ms
+ GET /home-06 200 in 1647ms
+ GET /home-09 200 in 1525ms
+ GET /home-09 200 in 1104ms
+ GET /home-09 200 in 1046ms
+ ✓ Compiled in 596ms (578 modules)
+ ○ Compiling /home-10 ...
+ ✓ Compiled /home-10 in 1342ms (980 modules)
+ GET /home-10 200 in 2720ms
+ GET /home-10 200 in 1078ms
+ GET /home-10 200 in 1001ms
+ GET /home-10 200 in 1271ms
+ ✓ Compiled /home-09 in 517ms (596 modules)
+ GET /home-10 200 in 2030ms
+ GET /home-09 200 in 2774ms
+ ○ Compiling / ...
+ ✓ Compiled / in 774ms (595 modules)
+ GET /home-10 200 in 1387ms
+ GET / 200 in 78ms
+ GET /home-10 200 in 1023ms
+ GET / 200 in 76ms
+ GET /home-10 200 in 900ms
+ GET /home-09 200 in 1548ms
+ GET / 200 in 82ms
+ ✓ Compiled in 2.4s (962 modules)
+ ✓ Compiled in 816ms (962 modules)
+ ✓ Compiled in 1854ms (962 modules)
+ ✓ Compiled in 713ms (962 modules)
+ ✓ Compiled in 801ms (962 modules)
+ ✓ Compiled in 772ms (962 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: EPERM: operation not permitted, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\server-development\11.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\server-development\11.pack.gz'
+ ✓ Compiled in 1658ms (962 modules)
+ ✓ Compiled in 1361ms (574 modules)
+ ✓ Compiled in 700ms (574 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\5.pack.gz_' -> 'D:\project-themesflat\convert-listing\aurexo-nextjs\.next\cache\webpack\client-development\5.pack.gz'
+ ○ Compiling / ...
+ ✓ Compiled / in 931ms (589 modules)
+ GET / 200 in 2976ms
+ ○ Compiling /home-04 ...
+ ✓ Compiled /home-04 in 1144ms (598 modules)
+ GET /home-04 200 in 3080ms
+ ○ Compiling /home-09 ...
+ ✓ Compiled /home-09 in 669ms (604 modules)
+ GET /home-09 200 in 2251ms
+ GET /home-10 200 in 1323ms
+ GET /home-10 200 in 876ms
+ GET /home-04 200 in 940ms
+ GET /home-09 200 in 1011ms
+ GET / 200 in 1787ms
+ GET /home-10 200 in 619ms
+ GET /home-10 200 in 963ms
+ GET / 200 in 1142ms
+ GET /home-04 200 in 1178ms
+ GET /home-09 200 in 1005ms
+ ✓ Compiled in 2.3s (966 modules)
+ ✓ Compiled in 1158ms (966 modules)
+ ✓ Compiled in 1759ms (966 modules)
+ ✓ Compiled in 831ms (966 modules)
+ ✓ Compiled in 2.9s (966 modules)
+ ✓ Compiled in 2.2s (966 modules)
+ ✓ Compiled in 943ms (966 modules)
+ ✓ Compiled in 1071ms (966 modules)
+ ✓ Compiled in 1751ms (966 modules)
+ GET / 200 in 1271ms
+ ○ Compiling /shop ...
+ ✓ Compiled /shop in 1265ms (984 modules)
+ GET /shop 200 in 2773ms
+ GET /shop 200 in 997ms
+ GET / 200 in 2190ms
+ GET / 200 in 1316ms
+ GET / 200 in 1211ms
+ GET / 200 in 1593ms
+ ○ Compiling /about-us ...
+ ✓ Compiled /about-us in 1744ms (590 modules)
+ GET /about-us 200 in 4232ms
+ GET /about-us 200 in 1182ms
+ ✓ Compiled /shop in 501ms (587 modules)
+ GET /shop 200 in 2516ms
+ GET / 200 in 1245ms
+ GET /about-us 200 in 834ms
+ GET /shop 200 in 1083ms
+ GET /shop 200 in 673ms
+ ⨯ Error: Could not find the module "D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1567670169'
+}
+ ⨯ Error: Could not find the module "D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '3181064502'
+}
+ ⨯ Error: Could not find the module "D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '3181064502'
+}
+ ⨯ Error: Could not find the module "D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '3181064502'
+}
+ ⨯ Error: Could not find the module "D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1567670169'
+}
+ ⨯ Error: Could not find the module "D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1567670169'
+}
+ ⨯ [TypeError: Cannot read properties of undefined (reading 'call')] {
+  digest: '3972572180'
+}
+ ⨯ Error: Could not find the module "D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1567670169'
+}
+[TypeError: Cannot read properties of undefined (reading 'call')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading 'call')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading 'call')] {
+  page: '/'
+}
+ ○ Compiling /_error ...
+ GET / 500 in 5110ms
+ ✓ Compiled /_error in 5.2s (1316 modules)
+ ⨯ Error: Cannot find module './9328.js'
+Require stack:
+- D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\webpack-runtime.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\pages\_document.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\require.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\load-components.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\utils.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\swc\options.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\swc\index.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\config.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\next.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\app\page.js:2:28752)
+    at Object.<anonymous> (D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\app\page.js:2:28848) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 418ms
+ ⨯ Error: Cannot find module './9328.js'
+Require stack:
+- D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\webpack-runtime.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\pages\_document.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\require.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\load-components.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\utils.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\swc\options.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\swc\index.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\config.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\next.js
+- D:\project-themesflat\convert-listing\aurexo-nextjs\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\app\page.js:2:28752)
+    at Object.<anonymous> (D:\project-themesflat\convert-listing\aurexo-nextjs\.next\server\app\page.js:2:28848) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 328ms
+[?25h

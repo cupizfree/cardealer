@@ -1,0 +1,125 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Pagination from "@/components/common/Pagination";
+
+// Migrated from ../aurexo/blog-standard.html lines 475-628. The featured `.post-style-2` card sits
+// above the paginated grid and isn't itself part of the paginated set (matches source's own DOM order
+// — it's a sibling before the grid, not the grid's first item). Every card in source literally links to
+// the same static `blog-details-1.html` file (confirmed via source grep) — routed here to each post's
+// own real slug in `allBlogPosts` where the title matches (id 1 "Compact SUV..." appears twice with 2
+// different images; the rest are new ids 5-8, added while migrating this exact page — see that file's
+// own comment). Two titles repeat within this page's own grid with a DIFFERENT image/category each time
+// ("Sports Cars..." here vs. its own featured-card instance; "Compact SUV..." twice) — a real, disclosed
+// source inconsistency, preserved as literal separate card objects rather than deduplicated.
+const FEATURED = {
+  slug: "sports-cars-vs-luxury-cars",
+  image: "/assets/images/blog/post-18.jpg",
+  title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
+  category: "LUXURY",
+  date: "Aug. 11, 2025",
+};
+
+const GRID_POSTS = [
+  {
+    slug: "hybrid-vs-electric-cars",
+    image: "/assets/images/blog/post-44.jpg",
+    category: "EXPERT REVIEW",
+    date: "Aug. 21, 2025",
+    title: "Hybrid vs. Electric Cars: Which One Should You Choose?",
+    excerpt:
+      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+  },
+  {
+    slug: "compact-suv-vs-full-size-suv",
+    image: "/assets/images/blog/post-20.jpg",
+    category: "PERFORMANCE",
+    date: "Aug. 21, 2025",
+    title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
+    excerpt:
+      "Discover the differences between compact and full-size SUVs, including space, fuel efficiency, and features...",
+  },
+  {
+    slug: "sports-cars-vs-luxury-cars",
+    image: "/assets/images/blog/post-21.jpg",
+    category: "EXPERT REVIEW",
+    date: "Aug. 21, 2025",
+    title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
+    excerpt:
+      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+  },
+  {
+    slug: "diesel-vs-gasoline-engines",
+    image: "/assets/images/blog/post-22.jpg",
+    category: "PERFORMANCE",
+    date: "Aug. 21, 2025",
+    title: "Diesel vs. Gasoline Engines: Pros and Cons Explained",
+    excerpt:
+      "Discover the differences between compact and full-size SUVs, including space, fuel efficiency, and features...",
+  },
+  {
+    slug: "manual-vs-automatic-transmission",
+    image: "/assets/images/blog/post-23.jpg",
+    category: "EXPERT REVIEW",
+    date: "Aug. 21, 2025",
+    title: "Manual vs. Automatic Transmission: Which is Better for You?",
+    excerpt:
+      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+  },
+  {
+    slug: "compact-suv-vs-full-size-suv",
+    image: "/assets/images/blog/post-24.jpg",
+    category: "PERFORMANCE",
+    date: "Aug. 21, 2025",
+    title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
+    excerpt:
+      "Discover the differences between compact and full-size SUVs, including space, fuel efficiency, and features...",
+  },
+];
+
+const POSTS_PER_PAGE = 2;
+
+export default function BlogStandardList() {
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(GRID_POSTS.length / POSTS_PER_PAGE);
+  const pagePosts = GRID_POSTS.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
+
+  return (
+    <div className="innerpage__content md-mb-30">
+      <Link href={`/blog-details-1/${FEATURED.slug}`} className="post-style-2 overflow-hidden mb-40">
+        <Image className="post--img flex" src={FEATURED.image} alt="news" width={1170} height={480} />
+        <div className="content">
+          <p className="h3 text-white mb-8 capitalize">{FEATURED.title}</p>
+          <div className="flex gap-12 justify-start mb-2">
+            <span className="text-white text-xs">by Admin</span>
+            <span className="text-white text-xs">{FEATURED.date}</span>
+            <span className="text-xs text-highlight uppercase text-underline">{FEATURED.category}</span>
+          </div>
+        </div>
+      </Link>
+
+      <div className="grid grid-cols-2 md-grid-cols-1 gap-y-40 gap-x-30 mb-40">
+        {pagePosts.map((post, index) => (
+          <Link href={`/blog-details-1/${post.slug}`} className="post-style-6 overflow-hidden" key={`${post.slug}-${index}`}>
+            <div className="image">
+              <Image className="post--img flex" src={post.image} alt="news" width={570} height={380} />
+            </div>
+            <div className="content">
+              <div className="flex gap-12 justify-start mb-12">
+                <span className="text-sm">by Admin</span>
+                <span className="text-sm">{post.date}</span>
+                <span className="text-sm text-highlight uppercase text-underline">{post.category}</span>
+              </div>
+              <p className="h4 title mb-12">{post.title}</p>
+              <p className="clamp clamp-2 text-secondary">{post.excerpt}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+    </div>
+  );
+}

@@ -1,0 +1,1182 @@
+@use '../abstracts/index' as *;
+
+/* Themes
+-------------------------------------------------------------- */
+
+.switcher-container {
+    .setting {
+        margin-top: -2px;
+        animation: 1s linear 0s infinite normal none running rotating;
+
+        &.setting_light {
+            display: block;
+        }
+    
+        &.setting_dark {
+            display: none;
+        }
+    }
+
+    h2 .sw-click {
+        background-color: $color-primary; 
+    }
+}
+
+.search-cars__features-title {
+    color: $color-primary;
+    .icon {
+        color: $color-primary;
+    }
+}
+
+.switcher__title,
+.sw-odd h3 {
+    color: $white;
+}
+
+.sw-odd .sw-click {
+    background-color: $color-primary;
+    color: $white; 
+
+    &.is_active {
+        background-color: $white;
+        color: $color-primary;
+    }
+}
+
+.sw-odd .sw-click {
+    background-color: $color-primary;
+    color: $white; 
+}
+
+body.is_dark {
+    background-color: $color-primary;
+}
+
+.is_dark { 
+
+    .filter-color-dropdown__option span,
+    select option {
+        color: $color-primary;
+    }
+
+    .password-input.is-hidden {
+        background-image: url(/assets/icons/eye-slash-dark.svg);
+        background-repeat: no-repeat;
+    }
+
+    .password-input.is-visible {
+        background-image: url(/assets/icons/eye-dark.svg);
+        background-repeat: no-repeat;
+    }
+
+    .filter-checkbox span,
+    .term-page .term-page--nav li a,
+    .filter-radio-style-2 input[type=radio]:checked + .label-focus span,
+    .shopping-cart-page .cart-wrapper .cart-item__total .total-price,
+    .shopping-cart-page .cart-wrapper .cart-item__price .price,
+    .rating-box__score,
+    .flat-tabs-style .menu-tab-style4 li.active span, .flat-tabs .menu-tab-style4 li.active span,
+    .filter-select-dropdown__text span,
+    .btn-filter,
+    #SearchModal .search-modal__title,
+    * { 
+        color: $white;
+    } 
+
+    .modal .bg-modal {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .page-title--form,
+    .page-title {
+        .filter-select-dropdown__text span {
+            color: $color-primary;
+        }
+
+        .search-cars__label {
+            color: #4B4B4B;
+        }
+
+        .select-selected.select--black, 
+        .filter-select-dropdown {
+            background-image: url(/assets/icons/chevron-down-primary.svg);
+        }
+    }
+
+    .dashboard-box {
+        .filter-checkbox span {
+            color: $color-primary;
+        }
+    }
+
+    .search-cars__advanced .form-group input:checked + label:before {
+        background-image: url(/assets/icons/checked.svg);
+    }
+    
+    .progress-bar .progress-bar__bg {
+        background-color: #9FA1A4;
+    }
+    
+    .progress-bar .percent::before,
+    .progress-bar .percent {
+        background-color: $white;
+    }
+
+    .dashboard-container .dashboard-content--inner {
+        background-color: $color-primary;
+    }
+
+    .pagination__link.active, .pagination__link:hover {
+        background-color: $white;
+        color: $color-primary;
+        border-color: $white;
+    }
+
+    .listing-tabs .item-menu:hover svg rect, .listing-tabs .item-menu:hover svg circle, .listing-tabs .item-menu.active svg rect, .listing-tabs .item-menu.active svg circle {
+        fill: $white;
+        stroke: $white;
+    }
+
+    .filter-sidebar__content,
+    .filter-sidebar__header.bg-white {
+        background-color: $color-primary;
+    }
+
+    .select-item.active, 
+    .select-item:hover {
+        background-color: $white;
+        color: $color-primary;
+        border-color: $white;
+    }
+
+    .btn-filter {
+        svg {
+            path {
+                fill: $white;
+            }
+        }
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    .filter-radio input[type=radio]:checked + .label-focus::before, .filter-radio input[type=radio]:checked + span::before,
+    .filter-radio-style-2 input[type=radio]:checked + .label-focus::before {
+        background-image: url(/assets/icons/radio2-checked.svg);
+    }
+
+    .dashboard-container .message-date-separator span,
+    .dashboard-container .message-item__time,
+    .dashboard-container .message-chat__email,
+    .filter-radio-style-2 .label-focus span,
+    .filter-checkbox.style-4 span em,
+    .filter-checkbox.style-4 span,
+    .rating-box__count,
+    .filter-radio .label-focus, .filter-radio span,
+    .search-cars__label,
+    .filter-label,
+    .testimonior-box .testimonior-box--user .desc {
+        color: #9FA1A4;
+    }
+
+    .product-details-page .product-details-content .bth-heart {
+        background-color: $white;
+        color: $color-primary;
+        svg path {
+            stroke: $color-primary;
+        }
+    }
+
+    .product-details-content {
+        .list-item {
+            svg path {
+                fill: $white;
+            }
+        }
+      
+    }
+
+    .time {
+        path {
+            stroke: $white;
+        }
+    }
+
+    .btn.btn-primary-3 {
+        &::before,
+        &::after {
+            background-color: $white;
+        }
+
+        &:hover {
+            color: $color-primary;
+            background-color: $white;
+            svg path {
+                stroke: $color-primary;
+            }
+        }
+    }
+
+    .rating-input__star {
+        opacity: 0.5;
+        &.active {
+            opacity: 1;
+        }
+    }
+    
+
+    .select-selected.select--black,
+    .filter-select-dropdown {
+        background-image: url(/assets/icons/chevron-down-white.svg);
+    }
+
+    .listing-topmap {
+        .search-cars__label,
+        .filter-select-dropdown__text span {
+            color: $color-primary;
+        }
+
+        .filter-select-dropdown {
+            background-image: url(/assets/icons/chevron-down-black.svg);
+        }
+    }
+
+    .pagination-style.swiper-pagination.pagination-dark .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        border-color: $white;
+    }
+
+    .btn.btn-line-1 {
+        color: $white;
+        border-color: $white;
+        svg path {
+            stroke: $white;
+        }
+
+        &:hover {
+            color: $color-primary;
+            svg path {
+                stroke: $color-primary;
+            }
+        }
+    }
+
+    .car-box {
+        svg {
+            path {
+                stroke: $white;
+            }
+        }
+    } 
+
+    .header.header-style-3 .header-top-bar .header-top-bar--socical {
+        li a {
+            svg path {
+                stroke: $white;
+            }
+
+            &:hover {
+                svg path {
+                    stroke: $color-primary;
+                }
+            }
+        }
+    }
+
+    .header.header-style-3 .header-top-bar .header-top-bar--socical {
+        border-color: $white;
+    }
+
+    &.home-3 {
+        .header-top-bar {
+            background-color: $color-hover;
+        }
+
+        .core-dropdown.language-select .core-dropdown__button .icon-chevron {
+            path {
+                stroke: $white;
+            }
+        }
+    }
+
+    .btn.btn-line {
+        border-color: $white;
+
+        &.btn.bg-sign-in {
+            &:hover {
+                background-color: $white;
+                color: $color-primary;
+                svg path {
+                    stroke: $color-primary;
+                }
+            }
+        }
+    } 
+
+    .dashboard-container .cart-item .action {
+        &:hover {
+            background-color: $white;
+            color: $color-primary;
+            svg path {
+                fill: $color-primary;
+            }
+        }
+    }
+
+    .dashboard-container .dashboard-content.style-3 .filter-select-dropdown.style2 {
+        background-color: transparent;
+    }
+
+    .dashboard-container .cart-item .action:hover {
+        background-color: #fff;
+        box-shadow: inset 0 0 0 2px #fff;
+    }
+
+    .search-form-listing button svg {
+        path {
+            fill: $white;
+        }
+    }
+
+    .btn.btn-line {
+        color: $white;
+        svg path {
+            stroke: $white;
+        }
+        &:hover {
+            color: $color-primary;
+            background-color: $white;
+            svg path {
+                stroke: $color-primary;
+            }
+        }   
+    }
+    .btn{
+        &::after {
+            background-color: $white;
+        }
+
+        &:hover {
+            color: $color-primary;
+            background-color: $white;
+        }
+    }
+
+    .flat-tabs-style .menu-tab-style5 li:not(.item):hover, .flat-tabs-style .menu-tab-style5 li:not(.item).active, .flat-tabs .menu-tab-style5 li:not(.item):hover, .flat-tabs .menu-tab-style5 li:not(.item).active {
+        background-color: $white;
+        color: $color-primary;
+    }
+
+    .widget-categories li a {
+        .label, 
+        span {
+            color: $white;
+        }
+
+        &.active,
+        &:hover {
+            .label, 
+            span {
+                color: $color-hover;
+                
+            }
+        }
+
+        .label::after {
+            background-color: $color-hover;
+        }
+    }
+ 
+    .dashboard-container .message-contact__time,
+    .widget-tags li a {
+        color: #9FA1A4;
+    }
+
+    .scroll-element .menu-tab-style5 .item:hover a, .scroll-element .menu-tab-style5 .item.active a {
+        background-color: $white;
+        color: $color-primary;
+    }
+
+    .pagination-style.swiper-pagination.pagination-dark .swiper-pagination-bullet.swiper-pagination-bullet-active::before,
+    .pagination-style.swiper-pagination.pagination-dark .swiper-pagination-bullet::before {
+        background-color: $white;
+    }
+
+    .out-brand-2 {
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .header-button .btn.btn-white {
+        color: $color-primary;
+        &:hover {
+            color: $white;
+        } 
+    }
+
+
+    .widget-tags li a:hover, .widget-tags li a.active {
+        border-color: $white;
+        background-color: $white;
+        color: $color-primary;
+    } 
+
+    .hover-fill-white {
+        svg path {
+            fill: $white;
+        }
+        &:hover {
+            background-color: $white;
+            svg {
+                path { 
+                    fill: $color-primary;
+                }
+            }
+        }
+    } 
+
+    .hover-stroke-white {
+        svg path {
+            stroke: $white;
+        }
+        &:hover {
+            background-color: $white;
+            svg path {
+                stroke: $color-primary;
+            }
+        }
+    }
+
+    .flat-tabs-style .menu-tab-style6 li,
+    .flat-tabs .menu-tab-style6 li {
+        span {
+            color: $color-muted;
+        }
+
+        &.active,
+        &:hover {
+            span {
+                color: $color-hover;
+            }
+        }
+    }
+
+    .bloc-details-container .bloc-details-tag-style-2 li a {
+        svg path {
+            fill: $white;
+        }
+    }
+ 
+    .bloc-details-container {
+        background-color: $color-primary;
+    }
+
+    .dashboard-container .message-sidebar,
+    .dashboard-container .message-chat {
+        background-color: transparent;
+    }
+
+    .dashboard-container .search-form-contact {
+        svg path {
+            fill: $white;
+        }
+    }
+
+    .dashboard-container .message-contact {
+        .message-contact__badge {
+            @include transition(all, 0.3s, ease);
+            background-color: $white;
+            color: $color-primary;
+        }
+        &:hover,
+        &.active {
+            .message-contact__preview,
+            .message-contact__name {
+                color: $color-primary;
+            }
+
+            .message-contact__badge {
+                background-color: $color-primary;
+                color: $white;
+            }
+        }
+    }
+
+    .dashboard-container .message-contact__name,
+    .dashboard-container .message-chat__name {
+        color: $white;
+    }
+
+    .btn-icon-circle,
+    .dashboard-container .message-container,
+    .dashboard-container .dashboard-box,
+    .dashboard-container .dashboard-cart,
+    .services-center-form.bg-white,
+    .service-box,
+    .out-brand-3,
+    .contact-page-info,
+    .rating-box,
+    .out-brand-4,
+    .out-brand-2,
+    .why-choose-us.style2,
+    .card-box-style-7.style2,
+    .card-box-style-5,
+    .card-box-style-4,
+    .card-box-style-3.bg-white,
+    .post {
+        background-color: rgba(255, 255, 255, 0.1);
+    } 
+
+    .service-box {
+        .icon path {
+            fill: $white;
+        }
+    }
+
+    .widget-tags li a {
+        border-color: $white;
+        color: $white;
+    }
+
+    .blog-detail-tags li a {
+        &:hover {
+            background-color: $white;
+            color: $color-primary;
+        }
+    }
+
+    .sale-agent-box .card-bottom .contact li a {
+        svg path {
+            fill: $white;
+        }
+        &:hover {
+            background-color: $white;
+            border-color: $white;
+
+            svg path {
+                fill: $color-primary;
+            }
+        }
+    }
+    .blog-detail-social li a {
+        svg path {
+            stroke: $white;
+        }
+        &:hover {
+            background-color: $white;
+            border-color: $white;
+
+            svg path {
+                stroke: $color-primary;
+            }
+        }
+    }
+
+    .filter-select-dropdown.style2,
+    .product {
+        background-color: transparent;
+    }
+
+    .btn-icon-circle,
+    .dashboard-container .message-container,
+    .dashboard-container .dashboard-box,
+    .dashboard-container .dashboard-cart,
+    .services-center-form,
+    .out-brand-3,
+    .inner-page .header,
+    .contact-page-info,
+    .rating-box,
+    .out-brand-4,
+    .card-box-style-9.card-box .content,
+    .card-box-style-8.card-box .content,
+    .why-choose-us.style2,
+    .header.header-style-2 .header-contact .icon,
+    .header.header-style-2 .header-search input {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-page-form.bg-white,
+    #wrapper.bg-white,
+    .card-box-style-7.style3,
+    .card-box-style-6.card-box .content {
+        background-color: transparent;
+    } 
+    .card-box-style-8 {
+        &:hover {
+            .compare-details {
+                background-color: $white;
+                color: $color-primary;
+                svg {
+                    path {
+                        stroke: $color-primary;
+                    }
+                }
+            }
+        }
+        .compare-details {
+            border-color: $white;
+            color: $white; 
+        }
+    }
+
+    .car-box-style-2 .card--img {
+        path {
+            fill: $white;
+        }
+    } 
+
+    .header.header-style-2 .header-contact li .text {
+        color: $white;
+    }
+    .header-search-btn {
+        svg path {
+            stroke: $white;
+        }
+    }
+    .header.header-style-2 .header-contact .icon {
+        svg path {
+            stroke: $white;
+        }
+    }
+
+    .modal-login form .social-login a {
+        border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .out-brand {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-login .resutl {
+        span {
+            color: $color-primary;
+        }
+    }
+
+    .dashboard-container .upload-section .upload-content .upload-action .upload-btn {
+        background-color: $white;
+        color: $color-primary;
+    }
+
+    .flat-tabs-style .menu-tab-style4 li span, .flat-tabs .menu-tab-style4 li span,
+    .text-secondary,
+    .filter-checkbox.style-5 span {
+        color: #9FA1A4;
+    }   
+
+    section.bg-white,
+    .modal .modal-container,
+    .search-modal__content,
+    #main-nav .sub-menu li.menu-item-inner .sub-menu-item-inner,
+    #main-nav .sub-menu {
+        background-color: $color-primary
+    }
+
+    #main-nav .sub-menu li a {
+        color: $white;
+        &:hover {
+            color: $color-hover;
+        }
+    }
+
+    .modal-right.quick-view .add-to-cart-btn .bth-heart,
+    .service-box,
+    .flat-accordion .flat-toggle,
+    .card-box-style-1 .compare-details,
+    .search-cars__select-wrapper .filter-checkbox:not(:last-child),
+    .btn.btn-line-style-2 { 
+        border-color: rgba(255, 255, 255, 0.1);
+    } 
+
+    .btn.btn-line-style-2 {
+        background-color: rgba(255, 255, 255, 0.1);
+        
+        color: #fff;
+
+        svg path {
+            fill: #fff;
+        }
+
+        &:hover {
+            background-color: #fff;
+            color: $color-primary;
+            &::after {
+                background-color: $white;
+            }
+
+            svg path {
+                fill: $color-primary;
+            }
+        }
+    }
+
+    .card-box-style-1 .compare-details::after {
+        background-color: $white;
+    }
+    .card-box-style-1 .compare-details {
+        color: $white;
+    }
+
+    h2 .sw-click {
+        background-color: $white;
+    }
+
+    .compare-details::after {
+        background-color: $white;
+    }
+
+    .card-box-style-1.active .compare-details, 
+    .card-box-style-1:hover .compare-details {
+        background-color: $white;
+        color: $color-primary;
+        svg {
+            path {
+                stroke: $color-primary;
+            }
+        }
+    } 
+   
+    .search-cars__features-grid .form-group label,
+    .card-box .content .tag li span {
+        color: #9FA1A4;
+    }
+
+    .btn.btn-line-hover {
+        color: $white;
+
+        &::after {
+            background-color: $white;
+        }
+
+        &:hover {
+            border-color: $white;
+            background-color: $white;
+            color: $color-primary;
+            svg path {
+                fill: $color-primary;
+            }
+        }
+    }
+
+    .svg-themes path {
+        fill: $white;
+    }
+
+    .checkout-container .select-selected {
+        background: transparent;
+    }
+
+    .dashboard-box,
+    .calculate-form,
+    .listing-details--sidebar-box,
+    .caculator-box,
+    .send-inquiry,
+    .financing-calculator {
+        #CalculatorInterestRate,
+        select {
+            background: transparent;
+            background-image: url(/assets/icons/chevron-down-white.svg);
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+    }
+    .caculator-box {
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.1019607843);
+    } 
+
+    .btn.btn-primary {
+        background-color: $white;
+        color: $color-primary;
+        &:hover {
+            color: $white; 
+        }
+        svg path {
+            stroke: $color-primary;
+        }
+    }
+
+    .flat-tabs-style .menu-tab-style2 li.active .text, 
+    .flat-tabs .menu-tab-style2 li.active .text {
+        color: $white;
+    }
+
+    .background-light,
+    .header.bg-white {
+        background-color: $color-primary;
+    }
+
+    #main-nav .menu > .menu-item a svg path {
+        stroke: $white;
+    } 
+
+    #main-nav .menu > li > a {
+        color: $white;
+    }
+
+    .header-button .btn {
+        &.bg-sign-in {
+            color: $white;
+            svg path {
+                stroke: $white;
+            }
+        }
+
+        &.btn-primary {
+            background-color: $white;
+            color: $color-primary;
+            svg path {
+                stroke: $color-primary;
+            }
+        }
+    }
+
+    .modal-right .ship,
+    .modal-right.quick-view .add-to-cart-btn .bth-heart,
+    .flat-accordion .flat-toggle,
+    .divider {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .flat-accordion .flat-toggle .toggle-title .icon {
+        svg path {
+            stroke: $white;
+        }
+    }
+
+    .flat-tabs-style .menu-tab-style7.large li, 
+    .flat-tabs .menu-tab-style7.large li {
+        color: $color-primary;
+
+        &:hover,
+        &.active {
+            background-color: $color-primary;
+            color: $white;
+        }
+    }
+
+    .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box.active-step ~ .sell-your-car-box .number,
+    .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box.active-step ~ .sell-your-car-box::before, .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box.active-step ~ .sell-your-car-box::after,
+    .sell-your-car-box-wrapper .sell-your-car-box::before, .sell-your-car-box-wrapper .sell-your-car-box::after  {
+        background-color: $color-muted;
+        color: $white;
+    }
+
+    .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box.active-step::before,
+    .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box:not(.active-step)::before, .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box:not(.active-step)::after {
+        background-color: $white;
+    }
+
+    .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box:not(.active-step) .number,
+    .sell-your-car-box-wrapper:has(.active-step) .sell-your-car-box.active-step .number {
+        background-color: $white;
+        color: $color-primary;
+    }
+
+    .caculator-box.outline,
+    .cta-section.background-be,
+    .border-light {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .cta-section.background-be,
+    .card-box .content {
+        background: rgba(255, 255, 255, 0.1019607843);
+    }
+
+    .card-box-style-9 .compare-details,
+    .compare-details {
+
+        &::after {
+            background-color: $white;
+        }
+        border-color: $white;
+        color: $white;
+        svg {
+            path {
+                stroke: $white;
+            }
+        }
+    }
+
+    .card-box-style-9:hover .compare-details {
+        background-color: $white;
+        color: $color-primary;
+        svg {
+            path {
+                stroke: $color-primary;
+            }
+        }
+    }
+
+    .header-actions {
+        svg path {
+            stroke: $white;
+        }
+    }
+
+    #main-nav .menu > li.menu-item--static .sub-menu.sub-menu--full.sub-menu--main .menu-item,
+    .switcher__title,
+    .sw-odd h3 {
+        color: $color-primary;
+
+        &.current-item {
+            color: $color-hover;
+        }
+    }
+   
+    .switcher-container {
+        h2 {
+            background-color: $white;
+        }
+    } 
+
+    .sw-odd span,
+    .switcher-container h2 {
+        color: $color-primary;
+    }
+
+    .sw-odd,
+    .switcher__item {
+        background-color: $white;
+    }
+
+    .sw-odd .sw-click {
+        background-color: $white;
+        color: $color-primary; 
+
+        &.is_active {
+            background-color: $color-primary;
+            color: $white;
+        }
+    }
+
+    #main-nav .menu > li.menu-item--static .sub-menu.sub-menu--full.sub-menu--main .menu-item:hover {
+        color: $color-hover;
+    }
+
+    .core-dropdown.user-admin .core-dropdown__button {
+        &.user-admin {
+            svg path {
+                stroke: $white;
+            }
+        }
+    }
+    
+
+    .form-group input:checked + label:before,
+    .filter-checkbox input[type=checkbox]:checked + span::before,
+    .filter-checkbox.style-2 input[type=checkbox]:checked + span::before {
+        background-image: url(/assets/icons/checked-white.svg);
+    }
+
+    .filter-select-dropdown__menu {
+        .filter-checkbox input[type=checkbox]:checked + span::before {
+            background-image: url(/assets/icons/checked.svg);
+        }
+    }
+
+}
+
+.is_light {
+    .sw-odd {
+        .light_mode {
+            display: block;
+        }
+
+        .dark_mode {
+            display: none;
+        }
+    }
+
+    .switcher-container h2 .setting {
+        &.setting_light {
+            display: block;
+        }
+
+        &.setting_dark {
+            display: none;
+        }
+    }
+}
+
+.is_dark {
+    .sw-odd {
+        .light_mode {
+            display: none;
+        }
+
+        .dark_mode {
+            display: block;
+        }
+    }
+
+    .switcher-container h2 .setting {
+        &.setting_light {
+            display: none;
+        }
+
+        &.setting_dark {
+            display: block;
+        }
+    }
+}
+
+.sw-odd {
+    background-color: $color-primary;
+    padding: 0 28px 28px 28px;
+    @include transition(all, 0.3s, ease);
+    border-radius: 0 0 0 12px;
+
+    span {
+        font-size: 20px;
+        line-height: 32px;
+        color: $white;
+        font-weight: 700;
+        padding-left: 3px;
+    }
+
+    h3 {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.sw-even {
+    background-color: $color-primary;
+    padding: 20px 0 20px 40px;
+    @include transition(all, 0.3s, ease);
+}
+
+.sw-even a {
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 40px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 26px 10px 27px;
+    margin-right: 10px;
+    letter-spacing: 1.8px;
+}
+
+.sw-even a:hover {
+    background-color: #14a077;
+    border: 1px solid #14a077;
+    color: #fff !important;
+}
+
+.sw-light {
+    background-color: #fff;
+    color: #000 !important;
+}
+
+.sw-odd a {
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+    display: inline-block;
+    line-height: 30px;
+    width: 100%;
+    position: relative;
+    padding-left: 47px;
+}
+
+.sw-odd .ws-colors a:before {
+    background: none;
+}
+
+.sw-odd .ws-colors {
+    @include flex(center, flex-start);
+
+    a {
+        padding: 0;
+        width: 136px;
+        height: 48px;
+        border-radius: 4px;
+        margin-right: 12px;
+        @include flex(center, center);
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 700; 
+    }
+}
+
+.sw-odd {
+    .dark_mode {
+        display: none;
+    }
+}
+
+
+
+
+/* Switcher
+-------------------------------------------------------------- */
+.switcher-container {
+    position: fixed;
+    right: -290px;
+    top: 150px;
+    width: 290px;
+    z-index: 99999999;
+    @include transition(right, 0.3s, ease);
+
+    // Source toggles this panel via a jQuery `.animate({right: ...})` tween; ported as a plain CSS
+    // transition + `.active` state class instead (see `ThemeSwitcher.tsx`), matching the project's
+    // "convert legacy JS idiomatically" rule rather than porting an imperative animation loop.
+    &.active {
+        right: 0;
+    }
+}
+
+.switcher-container h2 {
+    border-radius: 12px 0 0 0;
+    @include transition(all, 0.3s, ease);
+    color: #fff;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 40px;
+    padding: 20px 28px 16px;
+    background-color: $color-primary;
+}
+
+.switcher-container h3 { 
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.switcher-container h2 a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: -50px;
+    top: 50px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    outline: 0;
+    color: #fff;
+    border-radius: 4px 0px 0px 4px;
+
+}
+
+.switcher__item {
+    background-color: $color-primary;
+    padding: 0 28px 28px 28px;
+    @include transition(all, 0.3s, ease);
+}
+
+/* @Keyframe */
+@keyframes rotating {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

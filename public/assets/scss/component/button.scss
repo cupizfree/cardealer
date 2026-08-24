@@ -1,0 +1,439 @@
+@use '../abstracts/index' as *;
+
+/* Button
+-------------------------------------------------------------- */
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.btn {
+    @include flex(center, center);
+    @include transition(all, 0.3s, ease);
+    @include radius(12px);
+    min-width: max-content;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;  
+    z-index: 1;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -2px;
+        right: 0;
+        width: 0;
+        height: 100%;
+        transition: 0.3s;
+        z-index: -2;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 102%;
+        left: -2px;
+        top: 0;
+        transition: 0.3s;
+        background-color: $color-primary;
+        -webkit-transform: translateX(-103%);
+        transform: translateX(-103%);
+        z-index: -2;
+    }
+
+    &.gap-5 {
+        gap: 5px;
+    }
+
+    &.effect-line-white {
+        &::after {
+            background-color: $white;
+        }
+
+        &:hover {
+            color: $color-primary;
+            background-color: $white; 
+            border-color: $white;
+
+            &::after {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+    }
+    &.effect-line-primary {
+        &::after {
+            background-color: $color-primary;
+        }
+
+        &:hover {
+            background-color: $color-primary; 
+            border-color: $color-primary;
+            color: $white;  
+
+            &::after {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+    }
+    &.btn-line {
+        border: 2px solid $color-primary;
+        color: $black;
+        
+        &:hover {
+            color: $white;
+            background-color: $color-primary;
+            svg {
+                path {
+                    stroke: $white;
+                }
+            }
+
+            &::after {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+
+        &::before { 
+            background: $color-primary; 
+        } 
+    }
+
+    &.btn-white {
+        background-color: $white;
+        &::before {
+            background-color: $color-hover;
+        }
+        &:hover {
+            background-color: $color-hover;
+            color: $white;
+
+            svg path {
+                stroke: $white;
+            }
+
+           
+
+            &::before {
+                width: 100%;
+                transform: skew(0deg);
+                left: 0;
+            }
+        }
+    }
+
+    &.btn-line-1 {
+        border: 2px solid $color-primary;
+        color: $black;
+        
+        &:hover {
+            background-color: $color-primary;
+            color: $white;
+            svg {
+                path {
+                    stroke: $white;
+                }
+            }
+
+            &::after {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+    }
+
+    &.btn-line-primary {
+        border: 2px solid $color-hover;
+        color: $white;
+        border-radius: 12px;
+        
+        &:hover {
+            border-color: transparent;
+            background-color: $white;
+            color: $color-primary;
+            svg {
+                path {
+                    fill: $color-primary;
+                }
+            }
+        }
+    }
+
+    &.btn-line-white {
+        border: 2px solid $white;
+        color: $white;
+
+        &::after {
+            background-color: $white;
+        }
+        
+        &:hover {
+            background-color: $white;
+            color: $color-primary;
+            svg {
+                path {
+                    stroke: $color-primary;
+                }
+            }
+
+            &::after {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+    }
+
+    &.btn-line-style-2 {
+        border: 2px solid $border-light;
+        color: $black;  
+    }
+
+    &.btn-line-blur {
+        -webkit-backdrop-filter: blur(16px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        @include transition(all, 0.3s, ease); 
+        color: $white;
+        
+    }
+
+    &.btn-line-hover {
+        border: 2px solid $color-hover;
+        color: $black;
+        &:hover {
+            background-color: $color-primary;
+            border-color: $color-primary;
+            color: $white;
+        }
+    }
+ 
+    &.btn-primary { 
+        background-color: $color-primary;
+        color: $white;  
+
+        &::before { 
+            background: $color-hover; 
+        }
+
+        &:hover { 
+            &::before {
+                width: 100%;
+                left: 0;
+            }
+
+            background: $color-hover; 
+        }
+    }
+
+    &.btn-primary-3 {
+        background-color: $color-hover;
+        color: $white;
+
+        &::before { 
+            background: $color-primary; 
+        }
+
+        &:hover { 
+            &::before {
+                width: 100%;
+                left: 0;
+            }
+
+            background: $color-primary; 
+        } 
+    }
+
+    &.btn-primary-4 {
+        background-color: #4518CC;
+        color: $white;
+
+        &:hover {
+            background-color: $color-primary;
+        }
+    }
+
+    &.btn-blur {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        @include transition(all, 0.3s, ease); 
+        color: $white;
+
+        &::after {
+            background-color: $white;
+        }
+        &:hover {
+            background-color: $white;
+            color: $color-primary;
+            &::after {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+    }
+
+    &.btn-small {
+        height: 38px;
+        @include padding(8px, 16px);
+    }
+
+    &.btn-small-2 {
+        height: 40px;
+        border-radius: 8px;
+        @include padding(8px, 16px);
+    }
+
+    &.btn-medium {
+        height: 48px;
+        @include padding(12px, 24px);
+
+        &.padding-button-medium {
+            @include padding(12px, 14px);
+        } 
+    }
+
+    &.btn-large {
+        height: 52px;
+        @include padding(8px, 28px);
+
+        &.px-24 {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+    }
+
+    &.btn-large-2 {
+        height: 58px;
+        @include padding(8px, 32px);
+    }
+
+    &.btn-large-3 {
+        height: 52px;
+        @include padding(8px, 40px);
+    }
+
+    &.btn-large-4 {
+        height: 50px;
+        @include padding(8px, 32px);
+    }
+
+    &.btn-primary-2 {
+        background-color: $color-hover;
+        color: $white;
+
+        &:hover {
+            background-color: $white;
+            color: $text-primary;
+        }
+    }
+} 
+
+.btn-filter {
+    cursor: pointer;
+    @include flex(center, center);
+    border: 1px solid $color-hover;
+    color: $text-primary;
+    @include padding(8px, 16px);
+    height: 44px;
+    @include radius(8px);
+    min-width: max-content;
+    gap: 6px;
+    @include transition(all, 0.3s, ease);
+    &:hover {
+        background-color: $color-hover;
+        color: $text-primary;
+    }
+}
+
+.h-50 {
+    height: 50px;
+}
+
+.btn-clear-items {
+    height: 28px;
+    padding: 0 12px;
+    @include radius(40px);
+    display: inline-block;
+    gap: 4px;
+    font-size: 12px;
+    line-height: 28px;
+    color: $white;
+    @include transition(all, 0.3s, ease);
+    background-color: $color-primary;
+    text-transform: uppercase;
+    margin: 4px 0;
+    &:hover {
+        background-color: $color-hover;
+    }
+
+    img {
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+}
+
+.btn-icon-circle {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    @include flex(center, center);
+    background-color: $border-light;
+    border: 1px solid $border-light;
+    &:hover {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: $white;
+    }
+}
+
+.hover-stroke-white:hover {
+    svg path {
+        stroke: $white;
+    } 
+}
+ 
+.hover-stroke-hover:hover {
+    svg path {
+        stroke: $color-hover;
+    } 
+}
+
+.hover-fill-hover:hover {
+    svg path {
+        fill: $color-hover;
+    }
+}
+
+.hover-fill-primary { 
+    &:hover {
+        color: $color-primary;
+        background-color: $white; 
+        svg {
+            path { 
+                fill: $color-primary;
+            }
+        }
+    }
+}
+
+
+.hover-fill-white {
+    &:hover {
+        color: $color-primary;
+        background-color: $color-primary;
+        svg {
+            path { 
+                fill: $white;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+@use '../abstracts/index' as *;
+
+
+/* Breadcrumb
+-------------------------------------------------------------- */
+.breadcrumb {
+    @include flex(flex-start, flex-start);
+    gap: 4px;
+    line-height: 22px;
+
+    padding: 16px 0 18px;
+
+    a, span {
+        font-size: 14px;
+        line-height: 22px;
+    } 
+    span {
+        color: $color-muted;
+    }
+
+    .breadcrumb-icon {
+        padding-top: 1px;
+    }
+
+    &.breadcrumb-style-2 {
+        padding: 0;
+    }
+}

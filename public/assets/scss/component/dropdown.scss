@@ -1,0 +1,190 @@
+@use '../abstracts/index' as *;
+
+/* Dropdown
+-------------------------------------------------------------- */
+
+.core-dropdown {
+    position: relative;
+    min-width: 180px;
+
+    &.style-2 {
+        min-width: 140px;
+    }
+
+    &.language-select {
+        min-width: auto;
+        .core-dropdown__button {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            font-size: 14px;
+            padding: 0;
+
+            .icon-chevron {
+                 margin-bottom: 4px;
+            }
+        }
+
+        .core-dropdown__menu {
+            min-width: max-content;
+            font-size: 14px;
+            left: 0;
+            right: auto;
+        }
+
+        .core-dropdown__list {
+            li:not(:last-child) {
+               margin-bottom: 4px;
+            }
+        }
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 16px;
+        background: $white;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 0 0 1px $border-light;
+        cursor: pointer;
+        width: 100%;
+        @include transition(all, 0.3s, ease);
+
+        &:hover {
+            box-shadow: 0 0 0 2px $color-hover-opacity;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px $color-hover-opacity;
+        }
+    }
+
+    &__selected {
+        color: $color-primary;
+        flex: 1;
+        text-align: left;
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    &__menu {
+        position: absolute;
+        top: calc(100% + 2px);
+        right: 0;
+        background: $white;
+        border-radius: 12px;
+        box-shadow: 0px 10px 25px 0px #365F681A;
+        min-width: 100%;
+        z-index: 8;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        @include transition(all, 0.3s, ease);
+        overflow: hidden;
+    }
+
+    &.active &__menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__list {
+        list-style: none;
+        padding: 8px 16px;
+        margin: 0;
+    }
+
+    &__item {
+        margin: 0;
+        
+        &:not(:last-child) {
+            .core-dropdown__option {
+                border-bottom: 1px solid $border-light; 
+            }
+        } 
+    }
+
+    &__option {
+        display: block;
+        padding: 10px 16px;
+        color: $text-primary;
+        text-decoration: none;
+        @include transition(all, 0.2s, ease);
+        font-size: 14px;
+        line-height: 22px;
+        cursor: pointer;
+        padding: 6px 0; 
+        
+        &:hover,
+        &.active {
+            background-color: $background-light;
+        }
+    }
+
+
+    &.user-admin {
+        .core-dropdown__button {
+            box-shadow: none;
+            display: flex;
+            gap: 8px;
+            font-weight: 600;
+            background-color: transparent;
+            .avatar {
+                width: 52px;
+                height: 52px;
+                border-radius: 50%;
+            }
+        }
+
+        .core-dropdown__menu {
+            top: calc(100% + 13px);
+            min-width: 240px;
+            left: 0;
+            right: auto;
+        }
+
+        .user-admin-links {
+            padding: 16px;
+            li a {
+                color: $color-primary;
+                height: 52px;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                padding: 10px 12px; 
+                gap: 12px;
+                border-radius: 12px;
+
+                &.active,
+                &:hover {
+                        background-color: $color-hover;
+                        color: $white;
+                        svg {
+                            path {
+                                fill: $white;
+                            }
+                        }
+                }
+            }
+        }
+    }
+
+
+}
+
+
+.core-dropdown.language-select .core-dropdown__list li {
+    color: $color-primary;
+    @include transition(all, 0.3s, ease);
+    &:hover {
+        color: $color-hover;
+    }
+}

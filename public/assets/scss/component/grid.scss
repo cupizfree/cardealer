@@ -1,0 +1,174 @@
+@use 'sass:math';
+
+/* Grid
+-------------------------------------------------------------- */
+// Grid System - Bootstrap-like
+// Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1199px,
+  xxl: 1400px
+) !default;
+
+// Container max-widths
+$container-max-widths: 1440px;
+
+// Grid columns
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+
+// Container
+.container,
+.container-fluid {
+  width: 100%;
+  padding-right: math.div($grid-gutter-width, 2);
+  padding-left: math.div($grid-gutter-width, 2);
+  margin-right: auto;
+  margin-left: auto;
+}
+ 
+// Row
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -(math.div($grid-gutter-width, 2));
+  margin-left: -(math.div($grid-gutter-width, 2));
+}
+
+// Col base
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: math.div($grid-gutter-width, 2);
+  padding-left: math.div($grid-gutter-width, 2);
+}
+
+// Col auto
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+// Col 1-12
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    flex: 0 0 math.percentage(math.div($i, $grid-columns));
+    max-width: math.percentage(math.div($i, $grid-columns));
+  }
+}
+
+// Responsive breakpoints
+@each $breakpoint-name, $breakpoint-value in $grid-breakpoints {
+  @if $breakpoint-value > 0 {
+    @media (min-width: $breakpoint-value) {
+      // Col auto
+      .col-#{$breakpoint-name} {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+      }
+
+      .col-#{$breakpoint-name}-auto {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+      }
+
+      // Col 1-12
+      @for $i from 1 through $grid-columns {
+        .col-#{$breakpoint-name}-#{$i} {
+          flex: 0 0 math.percentage(math.div($i, $grid-columns));
+          max-width: math.percentage(math.div($i, $grid-columns));
+          width: math.percentage(math.div($i, $grid-columns));
+        }
+      }
+    }
+  }
+}
+
+// Offset
+@for $i from 0 through ($grid-columns - 1) {
+  .offset-#{$i} {
+    margin-left: if($i == 0, 0, math.percentage(math.div($i, $grid-columns)));
+  }
+}
+
+@each $breakpoint-name, $breakpoint-value in $grid-breakpoints {
+  @if $breakpoint-value > 0 {
+    @media (min-width: $breakpoint-value) {
+      @for $i from 0 through ($grid-columns - 1) {
+        .offset-#{$breakpoint-name}-#{$i} {
+          margin-left: if($i == 0, 0, math.percentage(math.div($i, $grid-columns)));
+        }
+      }
+    }
+  }
+}
+
+// Order
+@for $i from 0 through $grid-columns {
+  .order-#{$i} {
+    order: $i;
+  }
+}
+
+@each $breakpoint-name, $breakpoint-value in $grid-breakpoints {
+  @if $breakpoint-value > 0 {
+    @media (min-width: $breakpoint-value) {
+      @for $i from 0 through $grid-columns {
+        .order-#{$breakpoint-name}-#{$i} {
+          order: $i;
+        }
+      }
+    }
+  }
+}
+
+// Utilities
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.gap-22 {
+  gap: 22px;
+}
+
+.gap-23 {
+  gap: 23px;
+}
+
+.gap-24 {
+  gap: 24px;
+}
+
+.gap-26 {
+  gap: 26px;
+}
+
+.gap-28 {
+  gap: 28px;
+}
+
+.gap-40 {
+  gap: 40px;
+}
+
+.gap-48 {
+  gap: 48px;
+}

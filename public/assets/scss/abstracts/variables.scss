@@ -1,0 +1,26 @@
+/* Variables
+-------------------------------------------------------------- */
+
+$text-primary: #1C1C1C;
+$white: #fff;
+$black: #000000;
+$color-main: #98BC2A; 
+$color-primary: #1C1C1C;
+$border-light: #E7E7E7; 
+$background-light: #F7F7F7; 
+$background-blue: #D8E2EA; 
+$background-be: #F3F7EE; 
+$center: center;
+$color-hover: #98BC2A;
+$color-hover-opacity: #50611D;
+$color-secondary: #4B4B4B;
+$color-muted: #9FA1A4;
+$color-primary-2: #98BC2A;
+$color-green: #4518CC;
+
+$w100: 100%;
+// Self-hosted via next/font/google in src/app/layout.tsx (see the comment there for why) — these
+// reference the CSS custom properties next/font exposes rather than the literal font-family names.
+$font-main-1: var(--font-manrope), sans-serif;
+$font-main-2: var(--font-albert-sans), sans-serif;
+ 

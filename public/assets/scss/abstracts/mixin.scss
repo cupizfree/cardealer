@@ -1,0 +1,162 @@
+/* Mixin
+-------------------------------------------------------------- */
+
+@mixin flex($alignItem, $justifyContent) {
+    display: flex;
+    align-items: $alignItem;
+    justify-content: $justifyContent;
+}
+
+@mixin absolute () {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@mixin overlay () {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $w100;
+    height: $w100;
+}
+ 
+// Component translateY - Flexible translateY mixin
+// @include translateY(0);
+// @include translateY(-5px);
+// @include translateY(50%);
+@mixin translateY($value: 0) {
+    -webkit-transform: translateY($value);
+    -moz-transform: translateY($value);
+    -ms-transform: translateY($value);
+    -o-transform: translateY($value);
+    transform: translateY($value);
+}
+
+@mixin translateX($value: 0) {
+    -webkit-transform: translateX($value);
+    -moz-transform: translateX($value);
+    -ms-transform: translateX($value);
+    -o-transform: translateX($value);
+    transform: translateX($value);
+}
+
+// Component transition - Flexible transition mixin
+// @include transition(all, 0.4s);
+@mixin transition($property: all, $duration: 0.3s, $timing-function: ease) {
+    -webkit-transition: $property $duration $timing-function;
+    -moz-transition: $property $duration $timing-function;
+    -ms-transition: $property $duration $timing-function;
+    -o-transition: $property $duration $timing-function;
+    transition: $property $duration $timing-function;
+} 
+
+
+@mixin topcenter () {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin leftcenter () {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+@mixin topcenter () {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin size ($width , $height) {
+    width: $width;
+    height: $height;
+}
+
+// Component radius - Flexible border-radius mixin
+// @include radius(8px);
+// @include radius(8px 12px); // top-left & top-right, bottom-right & bottom-left
+// @include radius(8px 12px 16px 20px); // all corners
+@mixin radius($value) {
+    -webkit-border-radius: $value;
+    -moz-border-radius: $value;
+    border-radius: $value;
+}
+
+// Component padding - Flexible padding mixin
+// @include padding(20px); // all sides
+// @include padding(20px, 30px); // vertical, horizontal
+// @include padding(10px, 20px, 30px); // top, right, bottom (left = right)
+// @include padding(10px, 20px, 30px, 40px); // top, right, bottom, left
+@mixin padding($top, $right: null, $bottom: null, $left: null) {
+    @if $left != null {
+        // All 4 values provided: top, right, bottom, left
+        padding: $top $right $bottom $left;
+    } @else if $bottom != null {
+        // 3 values provided: top, right, bottom (left = right)
+        padding: $top $right $bottom $right;
+    } @else if $right != null {
+        // 2 values provided: vertical, horizontal
+        padding: $top $right;
+    } @else {
+        // 1 value provided: all sides
+        padding: $top;
+    }
+}
+
+// Component margin - Flexible margin mixin
+// @include margin(20px); // all sides
+// @include margin(20px, 30px); // vertical, horizontal
+// @include margin(10px, 20px, 30px); // top, right, bottom (left = right)
+// @include margin(10px, 20px, 30px, 40px); // top, right, bottom, left
+@mixin margin($top, $right: null, $bottom: null, $left: null) {
+    @if $left != null {
+        // All 4 values provided: top, right, bottom, left
+        margin: $top $right $bottom $left;
+    } @else if $bottom != null {
+        // 3 values provided: top, right, bottom (left = right)
+        margin: $top $right $bottom $right;
+    } @else if $right != null {
+        // 2 values provided: vertical, horizontal
+        margin: $top $right;
+    } @else {
+        // 1 value provided: all sides
+        margin: $top;
+    }
+}
+ 
+// Component font - Flexible font mixin
+// @include font(16px, 24px);
+// @include font(16px); // line-height will be auto calculated as 1.5x
+@mixin font($font-size, $line-height: null) {
+    font-size: $font-size;
+    @if $line-height {
+        line-height: $line-height;
+    } @else {
+        // Auto calculate line-height as 1.5x font-size if not provided
+        line-height: $font-size * 1.5;
+    }
+}
+
+// Component responsive - Flexible responsive mixin
+// Default: max-width
+// @include responsive(768px); // max-width: 768px
+// @include responsive($res_991); // max-width: $res_991
+// @include responsive(1024px, min-width); // min-width: 1024px
+@mixin responsive($breakpoint, $type: max-width) {
+    @media only screen and (#{$type}: $breakpoint) {
+        @content;
+    }
+}

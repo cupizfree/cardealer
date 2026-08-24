@@ -1,0 +1,99 @@
+@use '../abstracts/index' as *;
+
+/* Widget
+-------------------------------------------------------------- */
+
+.widget-links {
+    li {
+        &:not(:last-child) {
+            margin-bottom: 4px;
+        }
+        a {
+            color: $color-muted;
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 400;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 0;
+                height: 1px;
+                background-color: $white;
+                @include transition(all, 0.3s);
+            }
+            &:hover {
+                color: $white;
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.widget-socical {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    li {
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            @include transition(all, 0.3s);
+
+            svg {
+                path {
+                    @include transition(all, 0.3s);
+                }
+            }
+
+            &:hover {
+                background-color: $white;
+                border-color: $white;
+                svg {
+                    path {
+                        fill: $color-primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.title-section {
+    gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-style {
+    li {
+        position: relative;
+        padding-left: 28px;
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 4px;
+            background-color: $color-primary;
+            border-radius: 50%;
+            left: 11px;
+            top: 13px;
+        }
+    }
+}
