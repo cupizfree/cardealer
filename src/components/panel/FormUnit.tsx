@@ -31,6 +31,8 @@ export type NilaiUnit = {
   status: string;
   unggulan: boolean;
   dealer_id: string;
+  /** Daftar alamat gambar. Yang pertama dipakai sebagai gambar utama. */
+  galeri: string[];
 };
 
 const KOSONG: NilaiUnit = {
@@ -49,6 +51,7 @@ const KOSONG: NilaiUnit = {
   status: "tersedia",
   unggulan: false,
   dealer_id: "",
+  galeri: [],
 };
 
 const MEREK = [
@@ -58,6 +61,9 @@ const MEREK = [
 
 const GRID = "grid gap-x-4 sm:grid-cols-2";
 
+const TOMBOL_GALERI =
+  "rounded-md border border-garis px-2 py-1 text-[12px] leading-none text-redup transition hover:border-[#c3c9d4] hover:text-[#1c1c1c] disabled:opacity-30 disabled:hover:border-garis disabled:hover:text-redup";
+
 export default function FormUnit({
   awal,
   id,
@@ -66,11 +72,16 @@ export default function FormUnit({
   id?: number;
 }) {
   const router = useRouter();
-  const [n, setN] = useState<NilaiUnit>({ ...KOSONG, ...awal });
+  const [n, setN] = useState<NilaiUnit>({
+    ...KOSONG,
+    ...awal,
+    galeri: awal?.galeri ?? KOSONG.galeri,
+  });
   const [dealer, setDealer] = useState<Dealer[]>([]);
   const [galat, setGalat] = useState<string | null>(null);
   const [sibuk, setSibuk] = useState(false);
   const [hapusSibuk, setHapusSibuk] = useState(false);
+  const [urlBaru, setUrlBaru] = useState("");
 
   useEffect(() => {
     minta<Dealer[]>("/api/dealer").then((h) => {
@@ -80,6 +91,32 @@ export default function FormUnit({
 
   function set<K extends keyof NilaiUnit>(k: K, v: NilaiUnit[K]) {
     setN((l) => ({ ...l, [k]: v }));
+  }
+
+  // ── Galeri gambar ─────────────────────────────────────────────────────────
+  // Gambar disimpan sebagai daftar alamat di kolom `galeri` (JSON), bukan
+  // diunggah: tidak perlu penyimpanan berkas baru, dan berkas di dalam situs
+  // (/assets/images/…) sudah disajikan apa adanya.
+
+  function tambahGambar() {
+    const u = urlBaru.trim();
+    if (!u) return;
+    setN((l) => ({ ...l, galeri: [...l.galeri, u] }));
+    setUrlBaru("");
+  }
+
+  function buangGambar(i: number) {
+    setN((l) => ({ ...l, galeri: l.galeri.filter((_, j) => j !== i) }));
+  }
+
+  function geserGambar(i: number, arah: number) {
+    setN((l) => {
+      const g = [...l.galeri];
+      const j = i + arah;
+      if (j < 0 || j >= g.length) return l;
+      [g[i], g[j]] = [g[j], g[i]];
+      return { ...l, galeri: g };
+    });
   }
 
   async function simpan(e: React.FormEvent) {
@@ -103,6 +140,7 @@ export default function FormUnit({
       status: n.status,
       unggulan: n.unggulan,
       dealer_id: n.dealer_id ? Number(n.dealer_id) : null,
+      galeri: n.galeri,
     };
 
     const h = id
@@ -271,6 +309,88 @@ export default function FormUnit({
               placeholder="Purwokerto, Jawa Tengah"
             />
           </Medan>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <p className={judulBagian}>Gambar unit</p>
+        <p className="mb-3 text-[12.5px] leading-relaxed text-redup">
+          Gambar pertama dipakai sebagai gambar utama. Isi dengan alamat gambar — alamat penuh
+          (<span className="marf-pecah">https://…</span>) atau berkas di dalam situs
+          (<span className="marf-pecah">/assets/images/card/card-1.jpg</span>).
+        </p>
+
+        {n.galeri.length === 0 ? (
+          <p className="mb-3 rounded-lg border border-dashed border-garis px-3 py-4 text-center text-[12.5px] text-redup">
+            Belum ada gambar.
+          </p>
+        ) : (
+          <ul className="mb-3 flex flex-col gap-2">
+            {n.galeri.map((src, i) => (
+              <li
+                key={`${src}-${i}`}
+                className="flex items-center gap-3 rounded-lg border border-garis bg-[#fcfcfd] p-2"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt=""
+                  className="h-12 w-16 shrink-0 rounded border border-garis bg-white object-cover"
+                />
+                <span className="marf-pecah min-w-0 flex-1 text-[12px] text-redup">{src}</span>
+                {i === 0 && (
+                  <span className="whitespace-nowrap rounded-full bg-marf-muda px-2 py-[2px] text-[10px] font-bold uppercase tracking-wide text-marf-tua">
+                    utama
+                  </span>
+                )}
+                <button
+                  type="button"
+                  onClick={() => geserGambar(i, -1)}
+                  disabled={i === 0}
+                  aria-label="Naikkan gambar"
+                  className={TOMBOL_GALERI}
+                >
+                  ↑
+                </button>
+                <button
+                  type="button"
+                  onClick={() => geserGambar(i, 1)}
+                  disabled={i === n.galeri.length - 1}
+                  aria-label="Turunkan gambar"
+                  className={TOMBOL_GALERI}
+                >
+                  ↓
+                </button>
+                <button
+                  type="button"
+                  onClick={() => buangGambar(i)}
+                  aria-label="Hapus gambar"
+                  className="rounded-md border border-garis px-2 py-1 text-[12px] leading-none text-marf transition hover:border-marf hover:bg-marf-muda"
+                >
+                  Hapus
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="flex gap-2">
+          <input
+            className={INPUT}
+            value={urlBaru}
+            onChange={(e) => setUrlBaru(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                tambahGambar();
+              }
+            }}
+            placeholder="/assets/images/card/card-1.jpg"
+            aria-label="Alamat gambar baru"
+          />
+          <button type="button" className={TOMBOL} onClick={tambahGambar}>
+            Tambah
+          </button>
         </div>
       </div>
 

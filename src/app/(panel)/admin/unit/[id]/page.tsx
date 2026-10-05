@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import FormUnit from "@/components/panel/FormUnit";
+import { alamatGambar } from "@/lib/galeri";
 import { ambilUnit } from "@/lib/repo/unit";
 
 export const dynamic = "force-dynamic";
@@ -35,6 +36,7 @@ export default async function HalamanUbahUnit({
         status: u.status,
         unggulan: u.unggulan,
         dealer_id: u.dealer_id ? String(u.dealer_id) : "",
+        galeri: alamatGambar(u.galeri),
       }}
     />
   );

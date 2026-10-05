@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { minta, rupiah } from "@/lib/klien";
+import { alamatGambar } from "@/lib/galeri";
 import {
   BarisKosong,
   BarisMemuat,
@@ -31,6 +32,7 @@ type Unit = {
   status: string;
   unggulan: boolean;
   diubah_pada: string;
+  galeri: unknown[];
 };
 
 const STATUS = ["draf", "tersedia", "dipesan", "terjual"];
@@ -46,6 +48,32 @@ const WARNA_SELECT: Record<string, string> = {
 
 const KECIL =
   "rounded-lg border px-2.5 py-1.5 text-[11.5px] font-bold tracking-wide outline-none transition focus:ring-[3px] focus:ring-marf/15";
+
+/** Gambar utama unit. Menampilkan penanda "kosong" bila belum ada gambar,
+ *  supaya unit tanpa gambar langsung ketahuan dari daftar. */
+function GambarUtama({ galeri, judul }: { galeri: unknown[]; judul: string }) {
+  const [src] = alamatGambar(galeri);
+
+  if (!src) {
+    return (
+      <span
+        title="Belum ada gambar"
+        className="flex h-10 w-14 shrink-0 items-center justify-center rounded border border-dashed border-garis text-[9.5px] font-semibold uppercase tracking-wide text-redup"
+      >
+        kosong
+      </span>
+    );
+  }
+
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      src={src}
+      alt={judul}
+      className="h-10 w-14 shrink-0 rounded border border-garis bg-white object-cover"
+    />
+  );
+}
 
 export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
   const [baris, setBaris] = useState<Unit[]>([]);
@@ -211,15 +239,20 @@ export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
             {baris.map((u) => (
               <tr key={u.id} className="transition hover:bg-[#fcfcfd]">
                 <td className={TD}>
-                  <div className="flex items-center gap-2">
-                    <strong className="font-semibold">{u.judul}</strong>
-                    {u.unggulan && (
-                      <span className="whitespace-nowrap rounded-full bg-marf-muda px-2 py-[2px] text-[10px] font-bold uppercase tracking-wide text-marf-tua">
-                        unggulan
-                      </span>
-                    )}
+                  <div className="flex items-center gap-2.5">
+                    <GambarUtama galeri={u.galeri} judul={u.judul} />
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <strong className="font-semibold">{u.judul}</strong>
+                        {u.unggulan && (
+                          <span className="whitespace-nowrap rounded-full bg-marf-muda px-2 py-[2px] text-[10px] font-bold uppercase tracking-wide text-marf-tua">
+                            unggulan
+                          </span>
+                        )}
+                      </div>
+                      <div className="marf-pecah text-[11.5px] text-redup">{u.slug}</div>
+                    </div>
                   </div>
-                  <div className="marf-pecah text-[11.5px] text-redup">{u.slug}</div>
                 </td>
                 <td className={`${TD} tabular-nums`}>{u.tahun ?? "—"}</td>
                 <td className={`${TD} hidden md:table-cell`}>{u.kilometer ?? "—"}</td>
