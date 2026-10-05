@@ -1,81 +1,46 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Modal from "./Modal";
 import { useModal } from "./ModalProvider";
-import PasswordInput from "./PasswordInput";
 
-// RETROACTIVE FIX (found on request, "check style of modal-login"): source's real `modal-sm` lives on
-// `.modal-content` itself (`modal.scss`: `.modal-content.modal-sm { max-width: 480px }`, vs. the base
-// `.modal-content`'s own `max-width: 1450px`). This previously rendered as a same-named but structurally
-// different nested `<div className="modal-sm">` one level further in (inside `.modal-inner`), which
-// that compound selector never matches — so this modal was silently stuck at the full 1450px width
-// instead of the intended compact 480px login card. Fixed via `Modal.tsx`'s new `contentClassName` prop.
+// Modal ini dulu sisa templat: formulirnya tidak tersambung ke API mana pun dan
+// menampilkan "Nama Pengguna: demo / Kata Sandi: demo". Siapa pun yang menekan
+// tombol "Masuk" di situs publik akan mengisinya dan TIDAK PERNAH bisa masuk —
+// padahal pintu panel yang sebenarnya ada di `/masuk`.
+//
+// Dua belas tempat memanggil `openModal("LoginModal")` (Header, HeaderStyle2,
+// HeaderStyle4, DashboardHeader, LoginToReviewButton, FinancingHero). Semuanya
+// diperbaiki sekaligus di sini: begitu modal dibuka, pengunjung dialihkan ke
+// `/masuk`, jadi hanya ada SATU pintu masuk yang benar.
+//
+// PENTING: komponen ini ter-mount di layout akar pada SETIAP halaman, terbuka
+// atau tidak. Karena itu pengalihan WAJIB dijaga `activeModal === "LoginModal"`.
+// Tanpa penjaga itu, setiap halaman akan mengalihkan diri ke `/masuk`.
 export default function LoginModal() {
-  const { openModal } = useModal();
+  const router = useRouter();
+  const { activeModal, closeModal } = useModal();
+
+  useEffect(() => {
+    if (activeModal !== "LoginModal") return;
+    closeModal();
+    router.push("/masuk");
+  }, [activeModal, router, closeModal]);
 
   return (
     <Modal id="LoginModal" className="modal-login" contentClassName="modal-sm">
-      <h2 className="mb-20 text-center">Masuk</h2>
-      <form action="#">
-        <div className="resutl mb-20">
-          <p className="text-secondary mb-4">
-            Nama Pengguna: <span className="font-weight-600 capitalize">demo</span>
-          </p>
-          <p className="text-secondary">
-            Kata Sandi: <span className="font-weight-600 capitalize">demo</span>
-          </p>
-        </div>
-
-        <label htmlFor="email-login" className="mb-20 px-2">
-          <span className="mb-8 flex">Email*</span>
-          <input
-            className="input-large active"
-            defaultValue="themesflat@gmail.com"
-            type="email"
-            id="email-login"
-            name="email-login"
-            placeholder="Masukkan email Anda"
-            required
-          />
-        </label>
-
-        <label htmlFor="Password-login" className="mb-24 px-2">
-          <span className="flex mb-8">Password*</span>
-          {/* Real show/hide toggle — found missing here while migrating change-password.html, see
-              `PasswordInput.tsx`'s own comment. */}
-          <PasswordInput
-            className="input-large active"
-            id="Password-login"
-            name="Password-login"
-            placeholder="Kata Sandi"
-            required
-          />
-        </label>
-
-        <div className="flex justify-between gap-12 mb-20">
-          <label className="filter-checkbox style-5">
-            <input type="checkbox" name="features" value="touch-screen" defaultChecked />
-            <span className="text-sm">Ingat saya</span>
-          </label>
-          <span
-            className="text-sm font-bold text-underline cursor-pointer"
-            onClick={() => openModal("ForgotPasswordModal")}
-          >
-            Lupa Kata Sandi Anda?
-          </span>
-        </div>
-
-        <button type="submit" className="btn btn-primary btn-large w-full mb-12 font-weight-600">
-          Masuk
-        </button>
-
-        <p
-          className="text-sm text-secondary flex gap-8 justify-center cursor-pointer"
-          onClick={() => openModal("SignUpModal")}
-        >
-          Belum punya akun? <span className="text-sm font-weight-600 text-underline">Daftar</span>
-        </p>
-      </form>
+      <h2 className="mb-20 text-center">Mengalihkan…</h2>
+      <p className="text-secondary mb-20 text-center">
+        Mengantar Anda ke halaman masuk panel.
+      </p>
+      <button
+        type="button"
+        className="btn btn-primary btn-large w-full font-weight-600"
+        onClick={() => router.push("/masuk")}
+      >
+        Buka halaman masuk
+      </button>
     </Modal>
   );
 }
