@@ -60,7 +60,7 @@ export default function CheckboxDropdown({
         <div className={`filter-select-dropdown__menu${searchable ? " style2 bg-white radius-16" : ""}`}>
           {searchable && (
             <div className="filter-select-dropdown__search">
-              <input type="text" placeholder="Search" className="filter-select-dropdown__search-input" />
+              <input type="text" placeholder="Cari" className="filter-select-dropdown__search-input" />
               <Image src="/assets/icons/search-icon.svg" alt="search" className="filter-select-dropdown__search-icon" width={16} height={16} />
             </div>
           )}

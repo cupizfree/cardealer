@@ -87,16 +87,16 @@ export default function BlogPostBody({ post }: { post: BlogPostWithDetail }) {
 
       <div className="flex justify-between mb-24 blog-detail-recentpost">
         <div className="previous">
-          <p className="font-weight-600 text-highlight uppercase mb-4">PREVIOUS</p>
+          <p className="font-weight-600 text-highlight uppercase mb-4">SEBELUMNYA</p>
           <Link href="/blog-details-2" className="h5 font-weight-500 capitalize">
-            Truck vs. Minivan: Which is Better for Family Needs?
+            Pikap vs. Minibus: Mana yang Lebih Baik untuk Keluarga?
           </Link>
         </div>
 
         <div className="next">
-          <p className="font-weight-600 text-highlight uppercase mb-4 text-right">NEXT</p>
+          <p className="font-weight-600 text-highlight uppercase mb-4 text-right">BERIKUTNYA</p>
           <Link href="/blog-details-2" className="h5 font-weight-500 text-right capitalize">
-            Tires: All-Season vs. Summer vs. Winter – What You Need to Know
+            Ban: Segala Musim vs. Musim Panas vs. Musim Dingin – Yang Perlu Anda Tahu
           </Link>
         </div>
       </div>

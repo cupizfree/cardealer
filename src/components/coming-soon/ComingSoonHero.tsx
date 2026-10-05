@@ -24,11 +24,11 @@ export default function ComingSoonHero() {
       <div className="max-w-1600 w-full mx-auto coming-soon-container">
         <div className="grid grid-cols-2 lg-grid-cols-1">
           <div className="coming-soon-content">
-            <h1 className="text-white mb-40 md-mb-16">Coming Soon</h1>
-            <p className="h4 capitalize mb-20 text-white">Subscribe to enter the waitlist</p>
+            <h1 className="text-white mb-40 md-mb-16">Segera Hadir</h1>
+            <p className="h4 capitalize mb-20 text-white">Berlangganan untuk masuk daftar tunggu</p>
 
             <form className="coming-soon-form mb-12" action="#" onSubmit={(event) => event.preventDefault()}>
-              <input type="text" placeholder="Enter your email address" name="emailcoming-soon" id="emailcoming-soon" />
+              <input type="text" placeholder="Masukkan alamat email Anda" name="emailcoming-soon" id="emailcoming-soon" />
 
               <button type="submit">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ export default function ComingSoonHero() {
               </button>
             </form>
 
-            <p className="text-white mb-40">Subscribe to enter the waitlist</p>
+            <p className="text-white mb-40">Berlangganan untuk masuk daftar tunggu</p>
 
             <div className="clients md-flex-col gap-20 flex items-center">
               <div className="clients--images">
@@ -51,7 +51,7 @@ export default function ComingSoonHero() {
               </div>
 
               <p className="font-weight-500 text-white flex gap-8 h7 line-height-28">
-                <span className="font-bold text-white">4k+</span> clients already subscribed
+                <span className="font-bold text-white">4k+</span> pelanggan sudah berlangganan
               </p>
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function ComingSoonHero() {
               <span className="slogan" />
               <CountdownTimer seconds={1065550} />
               <ul className="desc">
-                <li>Days</li>
-                <li>Hours</li>
+                <li>Hari</li>
+                <li>Jam</li>
                 <li>Min</li>
                 <li>Sec</li>
               </ul>

@@ -5,14 +5,14 @@ import DashboardListingsTable, { type DashboardListing } from "@/components/dash
 import RecentReviews from "@/components/dashboard/RecentReviews";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Dasbor",
+  description: "Panel pengelolaan unit MARF Showroom Mobil Purwokerto.",
 };
 
 const LISTINGS: DashboardListing[] = [
-  { id: 1, slug: "audi-a6-avant-e-tron", image: "/assets/images/dashboard/card-1.jpg", title: "Audi A6 Avant E-Tron", brand: "Audi", year: "2021", transmission: "Automatic", fuel: "Benzin + Plin" },
-  { id: 2, slug: "kia-ev9-2024", image: "/assets/images/dashboard/card-2.png", title: "Kia EV9 2024", brand: "Audi", year: "2023", transmission: "Automatic", fuel: "Benzin + Plin" },
-  { id: 3, slug: "genesis-electrified-g80", image: "/assets/images/dashboard/card-3.png", title: "Genesis Electrified G80", brand: "Audi", year: "2021", transmission: "Automatic", fuel: "Benzin + Plin" },
+  { id: 1, slug: "toyota-avanza-1-5-g-2022", image: "/assets/images/dashboard/card-1.jpg", title: "Toyota Avanza 1.5 G", brand: "Toyota", year: "2022", transmission: "Manual", fuel: "Bensin" },
+  { id: 2, slug: "honda-brio-satya-e-2023", image: "/assets/images/dashboard/card-2.png", title: "Honda Brio Satya E", brand: "Honda", year: "2023", transmission: "Matic", fuel: "Bensin" },
+  { id: 3, slug: "daihatsu-xenia-r-2021", image: "/assets/images/dashboard/card-3.png", title: "Daihatsu Xenia R", brand: "Daihatsu", year: "2021", transmission: "Matic", fuel: "Bensin" },
 ];
 
 // Migrated from ../aurexo/dashboard.html. First page of the Dashboard/account family — establishes

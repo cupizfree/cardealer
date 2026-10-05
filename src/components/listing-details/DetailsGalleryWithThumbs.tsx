@@ -18,7 +18,7 @@ import type { ListingGalleryImage } from "@/data/listings";
 // shows the SAME image (`slide-listing-details-5.jpg`) while the 7 thumbnails show 7 different
 // images (6,5,7,8,9,10,11), so clicking a thumbnail in source wouldn't actually change the main
 // photo shown. Since thumb-to-main syncing is real, load-bearing behavior (not decorative, unlike
-// "Play Video"), this renders the SAME `images` array for both sliders so they genuinely stay in
+// "Putar Video"), this renders the SAME `images` array for both sliders so they genuinely stay in
 // sync — not a re-transcription of the broken pairing.
 export default function DetailsGalleryWithThumbs({ images }: { images: ListingGalleryImage[] }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
@@ -41,11 +41,11 @@ export default function DetailsGalleryWithThumbs({ images }: { images: ListingGa
               <div className="listing-details-item--content">
                 <a className="listing-details-item--button" href="#" onClick={(event) => event.preventDefault()}>
                   <Image src="/assets/icons/playcircle.svg" alt="play" width={20} height={20} />
-                  Play Video
+                  Putar Video
                 </a>
                 <a className="listing-details-item--button" href="#" onClick={(event) => event.preventDefault()}>
                   <Image src="/assets/icons/view-all-photo.svg" alt="view" width={20} height={20} />
-                  View All Photo
+                  Lihat Semua Foto
                 </a>
               </div>
             </div>

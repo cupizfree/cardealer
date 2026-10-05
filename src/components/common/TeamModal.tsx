@@ -3,10 +3,10 @@ import Modal from "./Modal";
 import { TEAM_SOCIAL_LINKS } from "@/components/common/SocialIcons";
 
 // Quick-view team-member panel (#TeamModal, modal-right). Source shows this SAME fixed content
-// ("Bessie Cooper") no matter which of the 4 Executive Team cards' name link was clicked (see
+// ("Rina Kusumawati") no matter which of the 4 Executive Team cards' name link was clicked (see
 // ExecutiveTeam.tsx) — preserved verbatim, same "one static modal, many identical triggers" pattern
 // as `CardCompareModal`. Note a genuine source content inconsistency, also preserved as-is (not
-// "fixed"): the heading says "Bessie Cooper" but the bio paragraphs refer to "Oliver" and a Chief
+// "fixed"): the heading says "Rina Kusumawati" but the bio paragraphs refer to "Oliver" and a Chief
 // Financial Officer role, mismatching both the name and the card's own "Chief Operating Officer" title.
 export default function TeamModal() {
   return (
@@ -16,7 +16,7 @@ export default function TeamModal() {
           <Image className="w-full radius-24" src="/assets/images/pages/sale-agent-2.jpg" alt="sale-agent-1" width={495} height={495} />
         </div>
         <div>
-          <h2 className="mb-24">Bessie Cooper</h2>
+          <h2 className="mb-24">Rina Kusumawati</h2>
 
           <ul className="contact-page-info-social flex gap-8 mb-24">
             {TEAM_SOCIAL_LINKS.map(({ href, Icon }) => (
@@ -29,27 +29,25 @@ export default function TeamModal() {
           </ul>
 
           <p className="text-body-style-2 mb-24">
-            Bessie Cooper is the Chief Financial Officer at Aurexo, Inc. responsible for financial
-            strategy, accounting operations, tax compliance and investor relations. Oliver has over 10
-            years of experience in senior corporate finance & strategy roles across several high-growth
-            consumer brands, having joined the company Flexcar.
+            Rina Kusumawati adalah Kepala Operasional MARF Showroom Mobil Purwokerto, bertanggung jawab
+            atas operasional harian, pengelolaan stok unit, kelengkapan dokumen, dan hubungan dengan
+            mitra pembiayaan. Ia lebih dari 10 tahun menangani jual beli mobil di wilayah Banyumas.
           </p>
 
           <p className="text-body-style-2 mb-40">
-            Prior to Flexcar, Oliver was VP of Strategy at Leaf Group Ltd., a publicly traded Internet,
-            media, and ecommerce company where he was responsible for driving profitable growth
-            strategies for its two-sided marketplace business, Society6. Prior to Leaf Group, Oliver
-            was Director of Finance at Ogin, Inc., a private equity backed clean technology company. He
-            began his career in corporate advisory and M&A at Capstone Advisory Group.
+            Sebelum bergabung dengan MARF, ia mengelola unit usaha dagang keluarga di Purwokerto dan
+            menjadi pengawas mutu di beberapa showroom rekanan. Ia memegang prinsip sederhana: unit yang
+            dijual harus jujur kondisinya, dan setiap pembeli berhak tahu riwayat mobilnya sedetail
+            mungkin sebelum memutuskan.
           </p>
 
           <div className="divider mb-40" />
 
-          <p className="h3 mb-16">Infomation</p>
+          <p className="h3 mb-16">Informasi</p>
 
           <div className="grid grid-cols-2 gap-20 md-grid-cols-1">
             <div>
-              <p className="text-sm uppercase text-secondary">AGE:</p>
+              <p className="text-sm uppercase text-secondary">USIA:</p>
               <p className="h5 capitalize">48 years old</p>
             </div>
 
@@ -72,8 +70,8 @@ export default function TeamModal() {
             </div>
 
             <div>
-              <p className="text-sm uppercase text-secondary">FROM:</p>
-              <p className="h5 capitalize">Los Angeles,California</p>
+              <p className="text-sm uppercase text-secondary">DARI:</p>
+              <p className="h5 capitalize">Purwokerto, Jawa Tengah</p>
             </div>
           </div>
         </div>

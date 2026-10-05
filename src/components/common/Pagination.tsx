@@ -33,7 +33,7 @@ export default function Pagination({
         <li>
           <a
             href="#"
-            aria-label="Next page"
+            aria-label="Halaman berikutnya"
             aria-disabled={page >= totalPages}
             className="pagination__link"
             style={page >= totalPages ? { opacity: 0.4, pointerEvents: "none" } : undefined}

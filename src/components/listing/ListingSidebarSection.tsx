@@ -35,7 +35,7 @@ export const SIDEBAR_LR_GRID_CLASS: GridClassMap = {
 };
 
 // Source's permanent sidebar (../aurexo/listing-liststyle-sidebar.html, listing-sidebar-left.html)
-// has 3 extra decorative filter fields not present on the grid pages' popup sidebar: "Drive Type",
+// has 3 extra decorative filter fields not present on the grid pages' popup sidebar: "Penggerak",
 // "Select miles", and a Min/Max Year dropdown pair. None have a corresponding `Listing` field (no
 // drive-type/mileage-band/year-band data was ever modeled) and — like Body Style/Door count/
 // Cylinders/Colors on the shared `FilterFields` — would be purely decorative if added. Deliberately
@@ -93,7 +93,7 @@ export default function ListingSidebarSection({
               <div className="flex items-center gap-16">
                 <button className="btn-filter hidden md-block" onClick={() => setIsFilterOpen(true)}>
                   <FilterIcon />
-                  Filters
+                  Filter
                 </button>
                 <p className="md-hidden">
                   Showing {rangeStart} – {rangeEnd} of {sortedListings.length} Listings

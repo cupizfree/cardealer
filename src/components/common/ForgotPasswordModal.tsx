@@ -12,7 +12,7 @@ export default function ForgotPasswordModal() {
 
   return (
     <Modal id="ForgotPasswordModal" className="modal-login" contentClassName="modal-sm">
-      <h2 className="mt-20 mb-20 text-center">Forgot Password</h2>
+      <h2 className="mt-20 mb-20 text-center">Lupa Kata Sandi</h2>
       <form action="#">
         <label htmlFor="email-forgot-password" className="mb-20 px-2">
           <span className="mb-8 flex">Username or email address *</span>
@@ -27,14 +27,14 @@ export default function ForgotPasswordModal() {
         </label>
 
         <button type="submit" className="btn btn-primary btn-large w-full mb-12 font-weight-600">
-          Get Reset Code
+          Minta Kode Reset
         </button>
 
         <p
           className="text-sm text-secondary flex gap-8 justify-center cursor-pointer"
           onClick={() => openModal("SignUpModal")}
         >
-          Not registered yet? <span className="text-sm font-weight-600 text-underline">Sign Up</span>
+          Belum punya akun? <span className="text-sm font-weight-600 text-underline">Daftar</span>
         </p>
       </form>
     </Modal>

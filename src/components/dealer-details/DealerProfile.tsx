@@ -15,7 +15,7 @@ import ReviewsSection from "@/components/common/ReviewsSection";
 // The rating ("4.8", "751 review") has no per-dealer equivalent anywhere in source — `Dealer` only
 // carries a `filledStars` (5 vs. 4-visual) flag, not a distinct decimal average per dealer — so this
 // one stays source's literal shared value on every dealer's page, same treatment as the "Dealer
-// Inventory"/"Customer Reviews" sections below (no real per-dealer data to pull instead).
+// Inventory"/"Ulasan Pelanggan" sections below (no real per-dealer data to pull instead).
 //
 // The two bio paragraphs are the SAME literal generic text as sale-agents-details.html (source copy-
 // pasted the same "Darrell Steward is a dedicated automotive professional..." bio onto this page
@@ -24,7 +24,7 @@ import ReviewsSection from "@/components/common/ReviewsSection";
 // gender at all, so keeping source's literal masculine pronouns here would be even less appropriate
 // than on the agent page).
 //
-// "Dealer Inventory (3)" and "Customer Reviews" are byte-identical to sale-agents-details.html's own
+// "Dealer Inventory (3)" and "Ulasan Pelanggan" are byte-identical to sale-agents-details.html's own
 // (same 3 listing titles/images with the same per-page drift, same 4.8/3-reviewer review data) — reused
 // via the same `HalfMapListingCard`/`ReviewsSection` components and the same canonical `allListings`
 // data, not a second transcription.
@@ -42,7 +42,7 @@ export default function DealerProfile({ dealer }: { dealer: Dealer }) {
           <div className="flex mb-14">
             <div className="verify">
               <Image src="/assets/icons/SealCheck.svg" alt="verified" width={16} height={16} />
-              <p className="text-highlight text-sm">Verified Dealer</p>
+              <p className="text-highlight text-sm">Showroom Terverifikasi</p>
             </div>
           </div>
           <p className="h3 mb-12">{dealer.name}</p>

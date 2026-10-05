@@ -7,12 +7,12 @@ import { useModal } from "./ModalProvider";
 import { useCart } from "./CartProvider";
 import { allProducts, parsePrice, type ProductCardData } from "@/data/products";
 
-// The right-side "Quick View" drawer (`#QuickViewModal`), triggered from shop.html's product-card eye
+// The right-side "Lihat Cepat" drawer (`#QuickViewModal`), triggered from shop.html's product-card eye
 // icons. Traced `shop.js`'s click handler in full and confirmed a genuinely odd but real behavior:
 // the modal's own displayed title/price/specs/gallery are 100% STATIC — always "Fog Light Lamp
 // White/Yellow Dual Colors" (byte-identical to `allProducts[0]`, the same demo product shown on its
 // own detail page), regardless of which product card's eye icon was actually clicked. Only two things
-// genuinely change per-click: the "Add to Cart" button's own total-price text (real quantity × the
+// genuinely change per-click: the "Masukkan Keranjang" button's own total-price text (real quantity × the
 // REAL clicked product's real price, via `updateTotalPriceInModal()`) and which product actually gets
 // added to the cart. Reproduced faithfully rather than "fixed" into a real per-product quick view: the
 // static content comes straight from `allProducts[0]`, while `modalPayload` (see `ModalProvider.tsx`)
@@ -63,7 +63,7 @@ export default function QuickViewModal() {
 
         <div className="product-info">
           <div className="modal-inner--title">
-            <p className="h4 mb-20">Quick View</p>
+            <p className="h4 mb-20">Lihat Cepat</p>
           </div>
           <div className="inner-content">
             <p className="mb-16 flex items-center gap-4">
@@ -100,7 +100,7 @@ export default function QuickViewModal() {
             <div className="divider mb-20" />
 
             <div className="mb-20">
-              <p className="h7 font-weight-500 line-height-28 mb-8">Quantity:</p>
+              <p className="h7 font-weight-500 line-height-28 mb-8">Jumlah:</p>
               <div className="quantity-selector style-2">
                 <button
                   type="button"
@@ -153,7 +153,7 @@ export default function QuickViewModal() {
                 </a>
               </div>
               <a href="/check-out" className="btn btn-primary-3 btn-large font-weight-600">
-                Buy It Now
+                Beli Sekarang
               </a>
             </div>
           </div>

@@ -10,10 +10,10 @@ import CountUpNumber from "./CountUpNumber";
 // lacks it — stays static there; home-03.html's body has it — real animated count-up there, see
 // `CountUpNumber.tsx`).
 const stats: Array<{ dataTo: number; decimals?: number; suffix: string; label: string }> = [
-  { dataTo: 18, suffix: "K+", label: "Car For Sale" },
+  { dataTo: 18, suffix: "K+", label: "Mobil Dijual" },
   { dataTo: 8, suffix: "k+", label: "Visitors per day" },
-  { dataTo: 4.5, decimals: 1, suffix: "k+", label: "Dealer Reviews" },
-  { dataTo: 3.5, decimals: 1, suffix: "k+", label: "Verified Dealers" },
+  { dataTo: 4.5, decimals: 1, suffix: "k+", label: "Ulasan Showroom" },
+  { dataTo: 3.5, decimals: 1, suffix: "k+", label: "Showroom Terverifikasi" },
 ];
 
 export default function WhyChooseUsSection({
@@ -56,28 +56,27 @@ export default function WhyChooseUsSection({
           </div>
 
           <div className="wow fadeIn" data-wow-delay={dark ? "0.3s" : "0.2s"}>
-            <h2 className={resolvedHeadingClassName}>Why Choose Us?</h2>
+            <h2 className={resolvedHeadingClassName}>Kenapa Pilih Kami?</h2>
             <p className="text-muted mb-20">
-              Explore our wide selection, competitive prices, and exceptional service for a hassle-free
-              car-buying experience.
+              Jelajahi pilihan luas, harga bersaing, dan layanan prima kami untuk pengalaman beli mobil yang mudah.
             </p>
 
             <ul className="list mb-32">
               <li className={`flex items-center gap-12 mb-8 font-weight-500 h7 md-items-start${dark ? " text-white" : ""}`}>
                 <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-                Wide Selection – A variety of cars to fit every need.
+                Pilihan Luas – Beragam mobil untuk setiap kebutuhan.
               </li>
               <li className={`flex items-center gap-12 mb-8 font-weight-500 h7 md-items-start${dark ? " text-white" : ""}`}>
                 <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-                Competitive Prices: Great deals and flexible financing.
+                Harga Bersaing: Penawaran bagus dan pembiayaan fleksibel.
               </li>
               <li className={`flex items-center gap-12 mb-8 font-weight-500 h7 md-items-start${dark ? " text-white" : ""}`}>
                 <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-                Trusted Service: Transparent, honest, and reliable.
+                Layanan Terpercaya: Transparan, jujur, dan andal.
               </li>
               <li className={`flex items-center gap-12 mb-8 font-weight-500 h7 md-items-start${dark ? " text-white" : ""}`}>
                 <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-                Excellent Support: Always here to assist you.
+                Dukungan Prima: Selalu siap membantu Anda.
               </li>
             </ul>
 
@@ -85,7 +84,7 @@ export default function WhyChooseUsSection({
               href="/sell-your-car"
               className={`btn btn-large font-weight-600 max-w-min${dark ? " btn-white text-primary" : " btn-primary"}`}
             >
-              Find Your Car Now!
+              Temukan Mobil Anda Sekarang!
             </Link>
           </div>
         </div>

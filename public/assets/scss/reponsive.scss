@@ -546,6 +546,12 @@
         display: none;
     }
 
+    /* Logo desktop disembunyikan di mobile — varian `.logo-mobile` yang tampil.
+       Aturan ini hilang dari template asal, akibatnya dua logo tampil berdampingan. */
+    .header .logo {
+        display: none;
+    }
+
     .header .logo-mobile,
     .mobile-button {
         display: block;
@@ -1960,7 +1966,13 @@
     .header.header-style-2 .header-inner {
         justify-content: center;
     }
-    .header .logo-mobile img, .header .logo img,
+    /* Rasio logo dijaga. `max-height: 54px` sudah mengunci tinggi, jadi lebar
+       dibiarkan `auto` agar mengikuti. Memaksa `width: 120px` di sini membuat
+       crest MARF yang hampir persegi (rasio 1,221) tertarik melebar jadi 2,22. */
+    .header .logo-mobile img, .header .logo img {
+        width: auto;
+        height: 54px;
+    }
     .header.header-style-2 .logo-mobile-header,
     .logo-mobile-header {
         width: 120px;

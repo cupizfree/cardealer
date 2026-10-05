@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function AboutHero() {
   return (
       <div className="container">
-        <h2>About Us</h2>
+        <h2>Tentang Kami</h2>
         <div className="tf-spacing-style3" />
 
         <div className="row">
@@ -29,38 +29,38 @@ export default function AboutHero() {
           </div>
           <div className="col-lg-6">
             <div className="about-content">
-              <h2 className="font-weight-600 mb-20">Driving Your Ultimate Automotive Dreams Forward</h2>
+              <h2 className="font-weight-600 mb-20">Wujudkan Mobil Impian Anda Bersama Kami</h2>
 
               <p className="text-secondary h7 line-height-28 mb-32">
-                At Aurexo, we make car ownership simple and accessible with expert guidance, personalized
-                solutions, and exceptional service. Our team is committed to helping you find the perfect
-                vehicle while ensuring a hassle-free experience.
+                Di MARF, kami membuat proses memiliki mobil jadi sederhana dan terjangkau: panduan dari
+                orang yang paham, pilihan yang disesuaikan kebutuhan, dan pelayanan yang tidak berbelit.
+                Tim kami membantu Anda menemukan unit yang tepat tanpa drama.
               </p>
 
               <ul className="flex flex-col gap-24 mb-32">
                 <li className="flex gap-4">
                   <Image className="w-24 h-24" src="/assets/icons/check.svg" alt="check" width={24} height={24} />
-                  <p className="h5">Experienced Automotive Experts</p>
+                  <p className="h5">Tim Berpengalaman</p>
                 </li>
                 <li className="flex gap-4">
                   <Image className="w-24 h-24" src="/assets/icons/check.svg" alt="check" width={24} height={24} />
-                  <p className="h5">Transparent Pricing, No Hidden Fees</p>
+                  <p className="h5">Harga Terbuka, Tanpa Biaya Tersembunyi</p>
                 </li>
                 <li className="flex gap-4">
                   <Image className="w-24 h-24" src="/assets/icons/check.svg" alt="check" width={24} height={24} />
-                  <p className="h5">Quick Process, Smooth Transactions</p>
+                  <p className="h5">Proses Cepat, Transaksi Lancar</p>
                 </li>
               </ul>
 
               <div className="flex gap-28 items-center">
                 <Link href="/contact-us" className="btn btn-primary btn-large font-weight-600">
-                  Contact Us
+                  Hubungi Kami
                 </Link>
 
                 <a href="#" className="flex gap-16">
                   <Image src="/assets/icons/PhoneCall-3.svg" alt="PhoneCall" width={24} height={24} />
                   <div className="mt2">
-                    <span className="text-sm text-secondary">Have any Question?</span>
+                    <span className="text-sm text-secondary">Ada Pertanyaan?</span>
                     <p className="h4">1-555-678-8888</p>
                   </div>
                 </a>

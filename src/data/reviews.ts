@@ -1,4 +1,4 @@
-// Canonical customer-review entity, shared by dashboard.html's own "Recent Reviews" widget
+// Canonical customer-review entity, shared by dashboard.html's own "Ulasan Terbaru" widget
 // (`dashboard/RecentReviews.tsx`) and reviews.html's own dedicated page (`reviews/ReviewsSection.tsx`) —
 // both show the exact same 3 reviews (confirmed via source diff), so this file is the single source of
 // truth instead of two copies drifting apart. `rating` comes from reviews.html's own real `data-start`
@@ -25,7 +25,7 @@ export const customerReviews: CustomerReview[] = [
     dateIso: "2025-08-13",
     rating: 5,
     title: "Great Experience!",
-    text: "I had an amazing experience buying my car from this website. The selection was huge, and I found the perfect car in no time. The process was smooth, and the customer support team was very helpful throughout. Highly recommend!",
+    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu. Sangat saya rekomendasikan!",
   },
   {
     id: 2,
@@ -34,8 +34,8 @@ export const customerReviews: CustomerReview[] = [
     date: "August 22, 2025",
     dateIso: "2025-08-22",
     rating: 5,
-    title: "Easy and Convenient!",
-    text: "Buying a car online was easier than I expected. The site was user-friendly, and I was able to compare multiple cars within minutes. The financing options were flexible, making it much easier to find a deal that worked for me.",
+    title: "Mudah dan Praktis!",
+    text: "Beli mobil online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, dan saya bisa membandingkan banyak mobil dalam hitungan menit. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran yang cocok.",
   },
   {
     id: 3,
@@ -45,6 +45,6 @@ export const customerReviews: CustomerReview[] = [
     dateIso: "2025-08-22",
     rating: 5,
     title: "Trustworthy and Reliable",
-    text: "I’ve bought several cars over the years, but this was by far the best experience. The service was honest and transparent, and the car I purchased was exactly as described. I’ll definitely be returning for my next vehicle!",
+    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
   },
 ];

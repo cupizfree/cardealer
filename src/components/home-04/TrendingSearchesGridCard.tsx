@@ -113,11 +113,11 @@ export default function TrendingSearchesGridCard({ listing }: { listing: Listing
               <path d="M6.875 10H13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M10 6.875V13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Compare
+            Bandingkan
           </p>
 
           <Link href={href} className="view-details">
-            View details
+            Lihat detail
             <Image className="ml-4" src="/assets/icons/CaretCircleRight.svg" alt="CaretCircleRight.svg" width={16} height={16} />
           </Link>
         </div>

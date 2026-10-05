@@ -4,8 +4,8 @@ import HalfMapListingSection from "@/components/listing/HalfMapListingSection";
 import { allListings } from "@/data/listings";
 
 export const metadata: Metadata = {
-  title: "Listing Grid Half Map | Aurexo",
-  description: "Browse car listings split between a grid/list and a map.",
+  title: "Katalog Mobil",
+  description: "Lihat katalog mobil terbagi antara grid/daftar dan peta.",
 };
 
 // Migrated from ../aurexo/listing-gridstyle-halfmap.html — see docs/migration/MIGRATION_STATUS.md and

@@ -16,7 +16,7 @@ import { useWishlist } from "@/components/common/WishlistProvider";
 // seen anon. Aouda was anxious...") regardless of which car — preserved as a shared generic string
 // (not per-listing data we have), matching the same "reuse generic content" pattern already applied
 // to listing-details (see docs/migration/LISTING_DATA_MAP.md).
-const GENERIC_BLURB = "How the adventure ended will be seen anon. Aouda was anxious...";
+const GENERIC_BLURB = "Unit terawat, dokumen lengkap, siap pakai. Riwayat servis tersedia...";
 
 // `.heart` now really adds/removes this listing from the shared `WishlistProvider`, same wiring as
 // `ListingCard.tsx` — see that file's own comment for the full "why" (source's own heart is a shallow
@@ -125,11 +125,11 @@ export default function HalfMapListingCard({ listing }: { listing: ListingCardDa
               <path d="M6.875 10H13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M10 6.875V13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Compare
+            Bandingkan
           </p>
 
           <Link href={href} className="view-details">
-            View details
+            Lihat detail
             <Image className="ml-4" src="/assets/icons/CaretCircleRight.svg" alt="CaretCircleRight.svg" width={16} height={16} />
           </Link>
         </div>

@@ -20,7 +20,7 @@ export default function OrderSummarySidebar() {
   return (
     <div className="innerpage__sidebar">
       <div className="listing-details--sidebar-box">
-        <p className="h4 mb-20 capitalize">Order Summary</p>
+        <p className="h4 mb-20 capitalize">Ringkasan Pesanan</p>
 
         <form action="#" className="send-inquiry" onSubmit={(event) => event.preventDefault()}>
           <p className="flex justify-between gap-8 mb-18">
@@ -31,20 +31,20 @@ export default function OrderSummarySidebar() {
           <div className="divider mb-20" />
 
           <p className="flex justify-between gap-8 mb-20">
-            <span className="font-weight-600">Discounts</span>
+            <span className="font-weight-600">Diskon</span>
             <span className="font-weight-600">-$8.00</span>
           </p>
 
           <div className="divider mb-20" />
 
           <div className="flex justify-between gap-8 mb-20">
-            <span className="font-weight-600">Shipping</span>
+            <span className="font-weight-600">Pengiriman</span>
             <div className="filter-radio-group flex-col">
               <label className="filter-radio-style-2 flex">
                 <input type="radio" name="payment" value="0" defaultChecked />
                 <span className="label-focus w-full flex">
                   <span className="flex gap-8 w-full justify-between">
-                    <span>Free Shipping:</span> $0.00
+                    <span>Gratis Pengiriman:</span> $0.00
                   </span>
                 </span>
               </label>
@@ -52,7 +52,7 @@ export default function OrderSummarySidebar() {
                 <input type="radio" name="payment" value="35" />
                 <span className="label-focus w-full flex">
                   <span className="flex gap-8 w-full justify-between">
-                    <span>Local:</span> $35.00
+                    <span>Lokal:</span> $35.00
                   </span>
                 </span>
               </label>
@@ -60,7 +60,7 @@ export default function OrderSummarySidebar() {
                 <input type="radio" name="payment" value="35" />
                 <span className="label-focus w-full flex">
                   <span className="flex gap-8 w-full justify-between">
-                    <span>Flat Rate:</span> $35.00
+                    <span>Tarif Tetap:</span> $35.00
                   </span>
                 </span>
               </label>
@@ -75,10 +75,10 @@ export default function OrderSummarySidebar() {
           </div>
 
           <Link href="/check-out" className="btn btn-primary btn-large font-weight-600 w-full mb-12">
-            Process To Checkout
+            Lanjut ke Checkout
           </Link>
           <Link href="/check-out" className="text-underline text-center block">
-            Or continue shopping
+            Atau lanjut belanja
           </Link>
         </form>
       </div>

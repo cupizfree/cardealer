@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
 
-// Same circular-arrow icon reused for "View All Brand" on `home/BrandsSection.tsx` — confirmed
+// Same circular-arrow icon reused for "Lihat Semua Merek" on `home/BrandsSection.tsx` — confirmed
 // byte-identical SVG path across both source buttons.
 const CHECK_ALL_ICON = (
   <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,21 +17,21 @@ const CHECK_ALL_ICON = (
 );
 
 const TYPES = [
-  { name: "Electric", image: "/assets/images/card/card-27.png", vehicles: 24 },
+  { name: "Listrik", image: "/assets/images/card/card-27.png", vehicles: 24 },
   { name: "Sedan", image: "/assets/images/card/card-28.png", vehicles: 32 },
   { name: "SUV", image: "/assets/images/card/card-29.png", vehicles: 28 },
-  { name: "Pickup Truck", image: "/assets/images/card/card-30.png", vehicles: 22 },
+  { name: "Pikap", image: "/assets/images/card/card-30.png", vehicles: 22 },
   { name: "Hatchback", image: "/assets/images/card/card-31.png", vehicles: 38 },
   { name: "Crossover", image: "/assets/images/card/card-32.png", vehicles: 29 },
   { name: "Coupe", image: "/assets/images/card/card-33.png", vehicles: 23 },
-  { name: "Convertible", image: "/assets/images/card/card-34.png", vehicles: 32 },
+  { name: "Konvertibel", image: "/assets/images/card/card-34.png", vehicles: 32 },
 ];
 
 // Migrated from ../aurexo/home-03.html lines 1723-1832 (`.swiper-card-8`, `.card-box-style-5`). A 3rd
-// distinct "Browse By Type" variant — neither index.html's icon-only carousel over a parallax banner
+// distinct "Cari Berdasarkan Tipe" variant — neither index.html's icon-only carousel over a parallax banner
 // nor home-02.html's `.card-box-style-3`/`.swiper-card-6` white cards (confirmed via source diff: real
 // photo cards, own `card-27..34.png` images, no banner, no icon SVGs, its own 8-type set without
-// "Luxury"). Kept as its own component per the variant classification rule.
+// "Mewah"). Kept as its own component per the variant classification rule.
 //
 // Retroactive fix: `assets/js/swiper.js`'s real `.swiper-card-8` config uses `slidesPerColumn: 2`/
 // `slidesPerColumnFill: "row"` (a real 2-row grid per page, NOT a single-row carousel) with breakpoints
@@ -49,10 +49,10 @@ const TYPES = [
 // this whole page uses `tf-spacing` divider divs between sections instead of section-level padding,
 // confirmed via source diff) — exposed via `sectionClassName`.
 //
-// RETROACTIVE FIX (found while checking home-06's own "Browse By Type" button): the "Check All Car
+// RETROACTIVE FIX (found while checking home-06's own "Cari Berdasarkan Tipe" button): the "Check All Car
 // Type" link never rendered its real icon — confirmed present (byte-identical circular-arrow SVG,
 // `fill="#1C1C1C"`) in home-03.html's own source and every other page that reuses this component
-// (home-06/home-09/home-10.html) — the same icon already used for "View All Brand" on
+// (home-06/home-09/home-10.html) — the same icon already used for "Lihat Semua Merek" on
 // `home/BrandsSection.tsx`. Fixed by adding it as the default `CHECK_ALL_ICON`; this fixes all 4 pages
 // at once since they all share this one component.
 export default function BrowseByTypePhotoCards({
@@ -66,9 +66,9 @@ export default function BrowseByTypePhotoCards({
     <section className={sectionClassName}>
       <div className="container">
         <div className={`title-section ${titleSectionClassName}`}>
-          <h2>Browse By Type</h2>
+          <h2>Cari Berdasarkan Tipe</h2>
           <Link href="/listing-grid4-columns" className="btn btn-line-style-2 effect-line-primary hover-fill-white btn-large">
-            Check All Car Type
+            Lihat Semua Tipe
             {CHECK_ALL_ICON}
           </Link>
         </div>

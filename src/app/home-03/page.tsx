@@ -11,20 +11,20 @@ import WhyChooseUsSection from "@/components/common/WhyChooseUsSection";
 import CompareTopRatedSection from "@/components/home-02/CompareTopRatedSection";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Beranda Varian 3",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/home-03.html (3174 lines). Reuses `HeaderStyle2` with home-03's own real
 // differences exposed as props (light top bar, no search bar, plain `.container` middle row,
-// `.effect-svg-hover` social icons, `header-style-3` modifier, its own "View on map" `tel:` bug — see
+// `.effect-svg-hover` social icons, `header-style-3` modifier, its own "Lihat di peta" `tel:` bug — see
 // `HeaderStyle2.tsx`'s own header comment). Popular Searches here is untabbed (unlike home-02.html's
 // 7-tab version); Browse By Type is a 3rd distinct photo-card variant; "Why Choose Us" reuses the same
 // content as about-us.html's own but on a dark background with REAL animated counters (this page's own
 // `<body class="counter-scroll ...">`, confirmed via source read, makes `app.js`'s `flatCounter()`
 // genuinely fire here — about-us.html's body lacks that class, so its own numbers stay static); "Compare
 // Top Rated Vehicles" reuses home-02.html's own component with a 3rd pair and its own class names;
-// "Trending Searches Near You" and "Clients Reviews" both introduce genuinely new per-page data (see
+// "Trending Searches Near You" and "Ulasan Pelanggan" both introduce genuinely new per-page data (see
 // their own components' header comments for the full source-evidence trail). "Explore Our Brands" is
 // content-identical to index.html's own (`BrandsSection`, minor `data-wow-delay`/spacing-class
 // differences accepted as-is, same precedent as other pages' minor per-page CSS drift).
@@ -45,10 +45,10 @@ export default function Home03Page() {
       <HeroSearchSection
         title={
           <>
-            Browse, Compare, Drive <br /> Find Your Car!
+            Cari, Bandingkan, Bawa Pulang <br /> Temukan Mobil Anda!
           </>
         }
-        subtitle="Easily browse, compare, and find the perfect car that suits your needs."
+        subtitle="Jelajahi, bandingkan, dan temukan mobil yang paling sesuai dengan kebutuhan Anda."
         subtitleClassName="h7 text-white mb-36 wow fadeInUp"
         sectionModifierClass="page-title-style-3 height-664 effect-content-slide effect-2"
         heightClass=""

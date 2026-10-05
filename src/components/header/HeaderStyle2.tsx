@@ -32,7 +32,7 @@ const LANGUAGES = ["English", "Viet Nam", "Chinese", "Japanese"];
 // also has several real, confirmed DOM differences alongside it: a light (not colored) top bar with dark
 // text, no `.header-search` bar in the middle row, a plain `.container` (not `.header-container-fluid
 // max-w-1920`) wrapping the middle row, `.effect-svg-hover` (not `.effect-svg-primary`) on social icons,
-// and its own "View on map" link literally pointing at a phone `tel:` href (a real, disclosed source bug,
+// and its own "Lihat di peta" link literally pointing at a phone `tel:` href (a real, disclosed source bug,
 // not corrected) — all exposed as props below rather than forking the component.
 //
 // Retroactive fix: the top-bar's 5 social icons (Facebook/X/Instagram/Skype/Telegram) were rendering
@@ -79,7 +79,7 @@ export default function HeaderStyle2({
   /** home-03.html wraps the middle row in a plain `.container`, not `.header-container-fluid max-w-1920`. */
   middleRowContainerFluid?: boolean;
   socialHoverClass?: string;
-  /** home-03.html's own "View on map" link literally points at a `tel:` href, not the maps URL — a real,
+  /** home-03.html's own "Lihat di peta" link literally points at a `tel:` href, not the maps URL — a real,
    *  disclosed source bug, preserved via this prop rather than silently corrected. */
   viewOnMapHref?: string;
 }) {
@@ -126,7 +126,7 @@ export default function HeaderStyle2({
           const topBarInner = (
             <>
               <p className={`header-top-bar--text flex items-center${topBarLabelClass ? ` ${topBarLabelClass}` : ""}`}>
-                Find Your Dream Car Today – Browse Our Inventory Now!
+                Temukan Mobil Impian Anda Hari Ini – Lihat Koleksi Kami Sekarang!
               </p>
 
               <div className="header-top-bar--socical-wrapper flex items-center gap-40 md-hidden">
@@ -230,12 +230,12 @@ export default function HeaderStyle2({
               <div className="header-inner header-inner-style-2 items-center w-full flex">
                 <div className="logo">
                   <Link href="/">
-                    <Image src="/assets/images/logo.png" alt="logo" width={163} height={54} />
+                    <Image src="/assets/images/logo.png" alt="logo" width={66} height={54} />
                   </Link>
                 </div>
                 <div className="logo-mobile">
                   <Link href="/">
-                    <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={140} height={36} />
+                    <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={44} height={36} />
                   </Link>
                 </div>
 
@@ -287,7 +287,7 @@ export default function HeaderStyle2({
                           15505 Roscoe Blvd, North Hills, USA
                         </a>
                         <a target="_blank" rel="noreferrer" className="text-xs font-weight-500 uppercase" href={viewOnMapHref}>
-                          View on map
+                          Lihat di peta
                         </a>
                       </div>
                     </li>
@@ -298,12 +298,12 @@ export default function HeaderStyle2({
                   onClick={() => openModal("LoginModal")}
                 >
                   <SignInIcon />
-                  Sign In
+                  Masuk
                 </button>
 
                 <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
                   <AddListingIcon />
-                  Add Listing
+                  Tambah Iklan
                 </Link>
               </div>
             </div>
@@ -322,7 +322,7 @@ export default function HeaderStyle2({
 
                 <div className="header-actions ml-20">
                   <Link href="/">
-                    <Image className="logo-mobile-header" src="/assets/images/logo-white.png" alt="logo" width={140} height={36} />
+                    <Image className="logo-mobile-header" src="/assets/images/logo-white.png" alt="logo" width={44} height={36} />
                   </Link>
                   <div className="header-search-wrapper show-tablet">
                     <span className="header-action-btn" id="searchToggle" onClick={() => openModal("SearchModal")}>
@@ -336,7 +336,7 @@ export default function HeaderStyle2({
                   <Link
                     href="/compare"
                     className="header-action-btn header-action-icon"
-                    aria-label="Compare"
+                    aria-label="Bandingkan"
                     data-badge={compareItems.length > 0 ? compareItems.length : undefined}
                   >
                     <CompareIcon />
@@ -345,7 +345,7 @@ export default function HeaderStyle2({
                   <Link
                     href="/my-favorites"
                     className="header-action-btn header-action-icon"
-                    aria-label="Wishlist"
+                    aria-label="Favorit"
                     data-badge={wishlistItems.length > 0 ? wishlistItems.length : undefined}
                   >
                     <WishlistIcon />
@@ -370,11 +370,11 @@ export default function HeaderStyle2({
               onClick={() => openModal("LoginModal")}
             >
               <SignInIcon />
-              Sign In
+              Masuk
             </button>
             <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
               <AddListingIcon />
-              Add Listing
+              Tambah Iklan
             </Link>
           </div>
         </div>
@@ -391,7 +391,7 @@ export default function HeaderStyle2({
             `header/Header.tsx`'s own comment for why. Rendered a 2nd time here (not literally moved). */}
         <div className="logo-mobile">
           <Link href="/">
-            <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={140} height={36} />
+            <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={44} height={36} />
           </Link>
         </div>
         <MobileMenu />
@@ -401,11 +401,11 @@ export default function HeaderStyle2({
             onClick={() => openModal("LoginModal")}
           >
             <SignInIcon />
-            Sign In
+            Masuk
           </button>
           <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
             <AddListingIcon />
-            Add Listing
+            Tambah Iklan
           </Link>
         </div>
       </Offcanvas>

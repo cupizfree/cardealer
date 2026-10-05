@@ -5,7 +5,7 @@ import Image from "next/image";
 import CheckboxDropdown from "@/components/listing/CheckboxDropdown";
 import RangeSlider from "@/components/listing/RangeSlider";
 
-// Migrated from ../aurexo/home-06.html lines 650-1023 ("All Car", `.page-title--form`). Genuinely
+// Migrated from ../aurexo/home-06.html lines 650-1023 ("Semua Mobil", `.page-title--form`). Genuinely
 // different composition from every other home hero filter bar: home-06.html moves its tabs + filters
 // into their own separate `bg-primary py-40` section BELOW the hero (not inside the hero section
 // itself like `HeroSearchSection.tsx`/`home-05/HeroSearchSliderSection.tsx` do). The primary Brand/
@@ -42,13 +42,13 @@ export default function FilterBarSection() {
             <div className="overflow-x-auto">
               <ul className="menu-tab menu-tab-style1 text-white margin-auto">
                 <li className={activeTab === "all" ? "active" : ""} onClick={() => setActiveTab("all")}>
-                  <span className="text-white font-weight-600">All Car</span>
+                  <span className="text-white font-weight-600">Semua Mobil</span>
                 </li>
                 <li className={activeTab === "new" ? "active" : ""} onClick={() => setActiveTab("new")}>
-                  <span className="text-white font-weight-600">New Car</span>
+                  <span className="text-white font-weight-600">Mobil Baru</span>
                 </li>
                 <li className={activeTab === "used" ? "active" : ""} onClick={() => setActiveTab("used")}>
-                  <span className="text-white font-weight-600">Used Car</span>
+                  <span className="text-white font-weight-600">Mobil Bekas</span>
                 </li>
               </ul>
             </div>
@@ -57,9 +57,9 @@ export default function FilterBarSection() {
           <div className="search-cars__filters">
             <CheckboxDropdown
               name="brand"
-              label="Select Brand"
+              label="Pilih Merek"
               toggleId="Home06BrandSelectToggle"
-              defaultText="All Brand"
+              defaultText="Semua Merek"
               options={["Audi", "Chevrolet", "Hyundai", "Mustang"]}
               isOpen={openDropdown === "brand"}
               onToggleOpen={() => toggleDropdown("brand")}
@@ -67,19 +67,19 @@ export default function FilterBarSection() {
             />
             <CheckboxDropdown
               name="model"
-              label="Select Model"
+              label="Pilih Model"
               toggleId="Home06ModelSelectToggle"
-              defaultText="All Model"
-              options={["Model 1", "Model 2"]}
+              defaultText="Semua Model"
+              options={["Model 1", "Honda Brio"]}
               isOpen={openDropdown === "model"}
               onToggleOpen={() => toggleDropdown("model")}
               layout="bar"
             />
             <CheckboxDropdown
               name="miles"
-              label="Select Miles"
+              label="Pilih Jarak Tempuh"
               toggleId="Home06MilesSelectToggle"
-              defaultText="All miles"
+              defaultText="Semua jarak"
               options={["0-10k", "$10k-$20k"]}
               isOpen={openDropdown === "miles"}
               onToggleOpen={() => toggleDropdown("miles")}
@@ -87,9 +87,9 @@ export default function FilterBarSection() {
             />
             <CheckboxDropdown
               name="price"
-              label="Max Price"
+              label="Harga Maksimal"
               toggleId="Home06MaxPriceSelectToggle"
-              defaultText="All Price"
+              defaultText="Semua Harga"
               options={["0-10k", "$10k-$20k"]}
               isOpen={openDropdown === "price"}
               onToggleOpen={() => toggleDropdown("price")}
@@ -107,7 +107,7 @@ export default function FilterBarSection() {
 
             <button type="submit" className="search-cars__search flex items-center gap-8 justify-center md-w-full">
               <Image src="/assets/icons/search.svg" alt="search" width={16} height={16} />
-              Show 1,029 Matches
+              Tampilkan 1.029 Unit
             </button>
           </div>
 
@@ -115,38 +115,38 @@ export default function FilterBarSection() {
             <div className="search-cars__advanced" id="advancedFilters" style={{ display: "block" }}>
               <div className="search-cars__advanced-content">
                 <div className="search-cars__advanced-row">
-                  <select className="search-cars__select-advanced" name="fuel-type" defaultValue="Fuel Type">
-                    <option>Fuel Type</option>
-                    <option>Petrol</option>
-                    <option>Diesel</option>
-                    <option>Electric</option>
+                  <select className="search-cars__select-advanced" name="fuel-type" defaultValue="Bahan Bakar">
+                    <option>Bahan Bakar</option>
+                    <option>Bensin</option>
+                    <option>Solar</option>
+                    <option>Listrik</option>
                   </select>
-                  <select className="search-cars__select-advanced" name="transmission" defaultValue="Transmission">
-                    <option>Transmission</option>
+                  <select className="search-cars__select-advanced" name="transmission" defaultValue="Transmisi">
+                    <option>Transmisi</option>
                     <option>Manual</option>
-                    <option>Automatic</option>
+                    <option>Matic</option>
                   </select>
-                  <select className="search-cars__select-advanced" name="drive-type" defaultValue="Drive Type">
-                    <option>Drive Type</option>
+                  <select className="search-cars__select-advanced" name="drive-type" defaultValue="Penggerak">
+                    <option>Penggerak</option>
                     <option>FWD</option>
                     <option>RWD</option>
                     <option>AWD</option>
                   </select>
-                  <select className="search-cars__select-advanced" name="color" defaultValue="Color">
-                    <option>Color</option>
-                    <option>Red</option>
-                    <option>Blue</option>
-                    <option>Black</option>
+                  <select className="search-cars__select-advanced" name="color" defaultValue="Warna">
+                    <option>Warna</option>
+                    <option>Merah</option>
+                    <option>Biru</option>
+                    <option>Hitam</option>
                   </select>
-                  <select className="search-cars__select-advanced" name="cylinders" defaultValue="Cylinders">
-                    <option>Cylinders</option>
+                  <select className="search-cars__select-advanced" name="cylinders" defaultValue="Silinder">
+                    <option>Silinder</option>
                     <option>4</option>
                     <option>6</option>
                     <option>8</option>
                   </select>
                   <div className="search-cars__range">
                     <p className="search-cars__range-label">
-                      Year: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
+                      Tahun: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
                     </p>
                     <div className="search-cars__range-wrapper" id="yearRangeWrapper">
                       <RangeSlider min={2015} max={2026} step={1} value={yearRange} onChange={setYearRange} />

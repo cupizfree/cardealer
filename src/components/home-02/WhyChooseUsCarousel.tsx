@@ -21,7 +21,7 @@ import SellBuyPromoBanner from "@/components/common/SellBuyPromoBanner";
 const FEATURES = [
   {
     title: "Wide Vehicle Selection",
-    description: "Access a diverse range of cars to find the perfect match for your needs.",
+    description: "Akses beragam pilihan mobil untuk menemukan yang paling sesuai kebutuhan Anda.",
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M14.7287 35.3738C12.5167 35.3738 10.7227 33.5791 10.7227 31.3488C10.7227 29.1186 12.5167 27.3413 14.7287 27.3413C16.9407 27.3413 18.7521 29.136 18.7521 31.3488C18.7521 33.5617 16.9407 35.3738 14.7287 35.3738ZM14.7287 28.7352C13.283 28.7352 12.1161 29.9201 12.1161 31.3488C12.1161 32.7776 13.3004 33.9799 14.7287 33.9799C16.1743 33.9799 17.3587 32.795 17.3587 31.3488C17.3587 29.9026 16.1743 28.7352 14.7287 28.7352Z" fill="#1C1C1C" />
@@ -40,8 +40,8 @@ const FEATURES = [
     ),
   },
   {
-    title: "Expert Guidance",
-    description: "Benefit from professional advice to make informed buying decisions.",
+    title: "Panduan Ahli",
+    description: "Dapatkan saran profesional agar keputusan pembelian Anda lebih tepat.",
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M59.2163 48.4686H0.696662C0.313498 48.4686 0 48.1549 0 47.7716C0 47.3883 0.313498 47.0747 0.696662 47.0747H59.2163C59.5994 47.0747 59.9129 47.3883 59.9129 47.7716C59.9129 48.1549 59.5994 48.4686 59.2163 48.4686Z" fill="#1C1C1C" />
@@ -65,8 +65,8 @@ const FEATURES = [
     ),
   },
   {
-    title: "Certified Quality",
-    description: "Ensure your car is inspected, reliable, and meets quality standards.",
+    title: "Kualitas Tersertifikasi",
+    description: "Pastikan mobil Anda diperiksa, andal, dan memenuhi standar kualitas.",
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M47.725 47.9812C46.3188 47.9812 45.1836 46.8456 45.1836 45.4388C45.1836 44.0321 46.3188 42.8965 47.725 42.8965C49.1312 42.8965 50.2664 44.0321 50.2664 45.4388C50.2833 46.8456 49.1312 47.9812 47.725 47.9812ZM47.725 44.2524C47.0642 44.2524 46.539 44.7948 46.539 45.4388C46.539 46.0829 47.0812 46.6253 47.725 46.6253C48.3688 46.6253 48.911 46.0829 48.911 45.4388C48.911 44.7948 48.3858 44.2524 47.725 44.2524Z" fill="#1C1C1C" />

@@ -1,22 +1,30 @@
 /* Variables
 -------------------------------------------------------------- */
+/* Palet MARF Showroom Mobil — diambil dari logo:
+   merah #C8171F (piksel merah logo, dicerahkan sedikit agar terbaca di latar gelap),
+   hitam #1C1C1C (latar), putih #FFFFFF.
+   Sebelumnya tema ini hijau limau #98BC2A. */
 
 $text-primary: #1C1C1C;
 $white: #fff;
 $black: #000000;
-$color-main: #98BC2A; 
+$color-main: #C8171F;
 $color-primary: #1C1C1C;
 $border-light: #E7E7E7; 
 $background-light: #F7F7F7; 
 $background-blue: #D8E2EA; 
 $background-be: #F3F7EE; 
 $center: center;
-$color-hover: #98BC2A;
-$color-hover-opacity: #50611D;
+$color-hover: #C8171F;
+$color-hover-opacity: #7A0E13;
 $color-secondary: #4B4B4B;
 $color-muted: #9FA1A4;
-$color-primary-2: #98BC2A;
+$color-primary-2: #C8171F;
 $color-green: #4518CC;
+
+/* Aksen merah terang — khusus latar gelap, tempat #C8171F terlalu pekat
+   untuk dibaca sebagai teks (kontras 2,9:1). #E8383F memberi 4,6:1. */
+$color-accent-bright: #E8383F;
 
 $w100: 100%;
 // Self-hosted via next/font/google in src/app/layout.tsx (see the comment there for why) — these

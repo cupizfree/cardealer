@@ -7,11 +7,11 @@ import BlogStandardList from "@/components/blog-standard/BlogStandardList";
 import BlogListingSidebar from "@/components/common/BlogListingSidebar";
 
 export const metadata: Metadata = {
-  title: "Blog Standard | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Artikel",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-// Migrated from ../aurexo/blog-standard.html. Breadcrumb's last crumb literally reads "News" (not
+// Migrated from ../aurexo/blog-standard.html. Breadcrumb's last crumb literally reads "Artikel" (not
 // "Blog Standard", confirmed via source read) despite the `<h2>` right below reading "Blog Standard" —
 // a real source mismatch, preserved as-is. Real pagination (standing rule): source's own `.pagination`
 // has no backing JS anywhere on the site (confirmed via grep across assets/js), but the 6 real grid
@@ -26,13 +26,13 @@ export default function BlogStandardPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>News</span>
+              <span>Artikel</span>
             </li>
           </ul>
         </div>
@@ -40,7 +40,7 @@ export default function BlogStandardPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Blog Standard</h2>
+          <h2>Artikel</h2>
         </div>
         <div className="tf-spacing-style3" />
 

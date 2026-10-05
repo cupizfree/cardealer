@@ -22,16 +22,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = allProducts.find((p) => p.slug === slug);
   return {
-    title: product ? `${product.title} | Aurexo` : "Product Details | Aurexo",
+    title: product ? `${product.title}` : "Detail Produk",
     description: product ? `${product.title} — ${product.price}` : undefined,
   };
 }
 
 // Migrated from ../aurexo/product-details.html — see src/data/products.ts for the full source-evidence
 // trail (the breadcrumb/title/description/add-to-cart-label mismatches, the broken gallery pairing,
-// the shirt-copy "Description" tab, the Privacy-Policy "Shipping & Returns" tab). Only product id 1
+// the shirt-copy "Deskripsi" tab, the Privacy-Policy "Shipping & Returns" tab). Only product id 1
 // (this page's own real subject) has real detail-page content; every other product in `allProducts` is
-// a card-only stub from this page's own "Related Products" carousel and renders the same full section
+// a card-only stub from this page's own "Produk Terkait" carousel and renders the same full section
 // layout via `withProductDetailFallback` — same precedent as `/listing-details/[slug]`'s
 // `withDetailFallback`.
 export default async function ProductDetailsPage({
@@ -54,19 +54,19 @@ export default async function ProductDetailsPage({
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <Link href="/">Pages</Link>
+              <Link href="/">Layanan</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <Link href="/shop">Shop</Link>
+              <Link href="/shop">Toko Aksesori</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />

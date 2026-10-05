@@ -6,11 +6,11 @@ import Footer from "@/components/footer/Footer";
 import BlogGridStyle3Content from "@/components/blog-grid-style-3/BlogGridStyle3Content";
 
 export const metadata: Metadata = {
-  title: "Blog Grid Style 3 | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Berita Otomotif",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-// Migrated from ../aurexo/blog-grid-style-3.html. Same "News" breadcrumb-vs-`<h2>` mismatch as the other
+// Migrated from ../aurexo/blog-grid-style-3.html. Same "Artikel" breadcrumb-vs-`<h2>` mismatch as the other
 // blog listing pages. No sidebar, no tabs (full-width 2-column grid, confirmed via source). Real
 // pagination (standing rule): source's own `.pagination` has zero backing JS (confirmed via grep), and
 // its 8 real posts split 3-per-page (3+3+2) across exactly the 3 pages source's own literal markup shows.
@@ -23,13 +23,13 @@ export default function BlogGridStyle3Page() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>News</span>
+              <span>Artikel</span>
             </li>
           </ul>
         </div>
@@ -37,7 +37,7 @@ export default function BlogGridStyle3Page() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Blog Grid Style 3</h2>
+          <h2>Berita Otomotif</h2>
         </div>
         <div className="tf-spacing-style3" />
 

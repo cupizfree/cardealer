@@ -2,16 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const services = [
-  "Oil Change & Filter Replacement",
-  "Transmission Service",
-  "Brake Inspection & Repair",
-  "AC & Heating Repair",
-  "Tire Rotation & Balancing",
-  "Wheel Alignment",
-  "Battery Testing & Replacement",
-  "Suspension & Steering Repair",
-  "Engine Diagnostics & Repair",
-  "Exhaust System Maintenance",
+  "Ganti Oli & Filter",
+  "Servis Transmisi",
+  "Periksa & Perbaikan Rem",
+  "Perbaikan AC & Pemanas",
+  "Rotasi & Balancing Ban",
+  "Spooring & Balancing",
+  "Tes & Ganti Aki",
+  "Perbaikan Suspensi & Kemudi",
+  "Diagnosa & Perbaikan Mesin",
+  "Perawatan Sistem Knalpot",
 ];
 
 // Migrated from ../aurexo/services-center.html lines 483-570.
@@ -19,18 +19,18 @@ export default function ServicesHero() {
   return (
     <section className="bg-white pb-100">
       <div className="container">
-        <h2>Sevices Center</h2>
+        <h2>Pusat Servis</h2>
         <div className="tf-spacing-style3" />
 
         <div className="grid grid-cols-2 xl-grid-cols-2 lg-grid-cols-1 gap-30">
           <div className="flex justify-center flex-col wow fadeInUp">
-            <h2 className="mb-12 capitalize">Aurexo Services Center</h2>
+            <h2 className="mb-12 capitalize">Pusat Servis MARF</h2>
             <p className="mb-40 h7 line-height-28 text-secondary">
-              Your one-stop destination for expert car services, maintenance, and repairs—keeping your
-              vehicle in top condition.
+              Pusat servis mobil, perawatan, dan perbaikan dengan teknisi ahli—menjaga
+              kendaraan Anda selalu prima.
             </p>
 
-            <p className="h4 mb-20 capitalize">Our Services Include</p>
+            <p className="h4 mb-20 capitalize">Layanan Kami Meliputi</p>
             <ul className="grid grid-cols-2 sm-grid-cols-1 gap-x-60 gap-y-8 mb-40">
               {services.map((service) => (
                 <li className="flex items-start gap-8" key={service}>
@@ -44,7 +44,7 @@ export default function ServicesHero() {
 
             <div className="flex">
               <Link href="/contact-us" className="btn btn-primary btn-large-3 font-weight-600">
-                Contact Us
+                Hubungi Kami
               </Link>
             </div>
           </div>

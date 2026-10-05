@@ -4,22 +4,22 @@ import { useState } from "react";
 
 const LINKS = [
   { id: "Overview", label: "Overview" },
-  { id: "Description", label: "Description" },
-  { id: "Infomation", label: "Infomation" },
+  { id: "Deskripsi", label: "Deskripsi" },
+  { id: "Informasi", label: "Informasi" },
   { id: "Inquiry", label: "Inquiry" },
-  { id: "Location", label: "Location" },
-  { id: "Reviews", label: "Reviews" },
+  { id: "Lokasi", label: "Lokasi" },
+  { id: "Ulasan", label: "Ulasan" },
 ] as const;
 
 // Matches ../aurexo/listing-details-4.html's `.flat-tabs.scroll-element` tab bar — real smooth-scroll
 // navigation (assets/js/app.js's `scrollElement()`: scrolls to the target id offset by the header's
 // height + 20px), not decorative. "Inquiry" targets the SIDEBAR's Send Inquiry box (a cross-column
 // jump — confirmed via direct source read, `id="Inquiry"` sits on `ListingDetailsSidebar`'s send-inquiry
-// box, not anything in the main content column). Source has no scroll-spy (the "Description" tab's
+// box, not anything in the main content column). Source has no scroll-spy (the "Deskripsi" tab's
 // `active` class is just static initial markup, never updated by JS) — the click-driven `activeId`
 // state here is an equivalent, reasonable real behavior, not an invented one.
 export default function ListingDetailsScrollNav() {
-  const [activeId, setActiveId] = useState<string>("Description");
+  const [activeId, setActiveId] = useState<string>("Deskripsi");
 
   return (
     <div className="flat-tabs scroll-element mb-60">

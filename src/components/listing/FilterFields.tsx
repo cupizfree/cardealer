@@ -48,9 +48,9 @@ export default function FilterFields({
     <div className="filter-sidebar__content">
       <CheckboxDropdown
         name="brand"
-        label="Select Brand"
+        label="Pilih Merek"
         toggleId="BrandSelectToggle"
-        defaultText="All Brand"
+        defaultText="Semua Merek"
         options={["ALL", "BMW", "SUV", "Mercedes", "Audi", "Honda", "Toyota", "Volvo"]}
         selected={filters.brand}
         onToggle={(value) => onFilterChange({ brand: toggleValue(filters.brand, value) })}
@@ -60,10 +60,10 @@ export default function FilterFields({
 
       <CheckboxDropdown
         name="model"
-        label="Select Model"
+        label="Pilih Model"
         toggleId="modelSelectToggle"
-        defaultText="All Model"
-        options={["All Model", "A3", "A4", "A6", "A8"]}
+        defaultText="Semua Model"
+        options={["Semua Model", "A3", "A4", "A6", "A8"]}
         searchable
         selected={filters.model}
         onToggle={(value) => onFilterChange({ model: toggleValue(filters.model, value) })}
@@ -76,11 +76,11 @@ export default function FilterFields({
         <div className="filter-radio-group">
           <label className="filter-radio">
             <input type="radio" name="payment2" value="full" defaultChecked />
-            <span>Full Price</span>
+            <span>Harga Penuh</span>
           </label>
           <label className="filter-radio">
             <input type="radio" name="payment2" value="monthly" />
-            <span>Monthly</span>
+            <span>Bulanan</span>
           </label>
         </div>
 
@@ -96,10 +96,10 @@ export default function FilterFields({
           </div>
           <div className="filter-price-range-label">
             <p className="text-xs text-secondary">
-              Min price <span className="flex">$<span id="yearMin" className="block">{filters.priceRange[0].toLocaleString()}</span></span>
+              Harga minimal <span className="flex">$<span id="yearMin" className="block">{filters.priceRange[0].toLocaleString()}</span></span>
             </p>
             <p className="text-xs text-secondary">
-              Max price <span className="flex">$<span id="yearMax" className="block">{filters.priceRange[1].toLocaleString()}</span></span>
+              Harga maksimal <span className="flex">$<span id="yearMax" className="block">{filters.priceRange[1].toLocaleString()}</span></span>
             </p>
           </div>
         </div>
@@ -118,27 +118,27 @@ export default function FilterFields({
       />
 
       <CheckboxDropdown
-        name="FuelType"
-        label="Fuel Type"
+        name="Bahan Bakar"
+        label="Bahan Bakar"
         toggleId="FuelStyleSelectToggle"
         defaultText="Electrical"
-        options={["Electrical", "Petrol", "Diesel"]}
+        options={["Electrical", "Bensin", "Solar"]}
         selected={filters.fuelType}
         onToggle={(value) => onFilterChange({ fuelType: toggleValue(filters.fuelType, value) })}
-        isOpen={openDropdown === "FuelType"}
-        onToggleOpen={() => toggleDropdown("FuelType")}
+        isOpen={openDropdown === "Bahan Bakar"}
+        onToggleOpen={() => toggleDropdown("Bahan Bakar")}
       />
 
       <CheckboxDropdown
-        name="Transmission"
-        label="Transmission"
+        name="Transmisi"
+        label="Transmisi"
         toggleId="TransmissionSelectToggle"
-        defaultText="Automatic"
-        options={["Automatic", "Manual"]}
+        defaultText="Matic"
+        options={["Matic", "Manual"]}
         selected={filters.transmission}
         onToggle={(value) => onFilterChange({ transmission: toggleValue(filters.transmission, value) })}
-        isOpen={openDropdown === "Transmission"}
-        onToggleOpen={() => toggleDropdown("Transmission")}
+        isOpen={openDropdown === "Transmisi"}
+        onToggleOpen={() => toggleDropdown("Transmisi")}
       />
 
       <CheckboxDropdown
@@ -154,15 +154,15 @@ export default function FilterFields({
       />
 
       <CheckboxDropdown
-        name="Cylinders"
-        label="Cylinders"
+        name="Silinder"
+        label="Silinder"
         toggleId="CylindersSelectToggle"
         defaultText="4 cylinders"
         options={["4 cylinders", "6 cylinders", "8 cylinders"]}
         selected={filters.cylinders}
         onToggle={(value) => onFilterChange({ cylinders: toggleValue(filters.cylinders, value) })}
-        isOpen={openDropdown === "Cylinders"}
-        onToggleOpen={() => toggleDropdown("Cylinders")}
+        isOpen={openDropdown === "Silinder"}
+        onToggleOpen={() => toggleDropdown("Silinder")}
       />
 
       <ColorDropdown
@@ -187,7 +187,7 @@ export default function FilterFields({
       <div className="filter-group">
         <details className="core-collapse" open>
           <summary className="filter-label core-collapse__label flex items-center gap-8 justify-between">
-            <span className="h7 font-weight-500">Features</span>
+            <span className="h7 font-weight-500">Fitur</span>
             <Image src="/assets/icons/chevron-down-primary.svg" alt="chevron" className="core-collapse__icon" width={16} height={16} />
           </summary>
           <div className="filter-features scroll-custom">
@@ -221,7 +221,7 @@ export default function FilterFields({
           <path d="M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M15.8047 15.8047L21.0012 21.0012" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        Show Matches
+        Tampilkan Hasil
       </button>
     </div>
   );

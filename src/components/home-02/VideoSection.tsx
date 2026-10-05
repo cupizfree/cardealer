@@ -24,8 +24,8 @@ export default function VideoSection() {
           height={80}
           onClick={() => openModal("VideoModal")}
         />
-        <p className="text-56 text-white font-weight-600 mb-16 capitalize">Lots of cars at prices just for you.</p>
-        <p className="text-white h7">Discover a wide range of cars tailored to your budget and needs.</p>
+        <p className="text-56 text-white font-weight-600 mb-16 capitalize">Banyak mobil dengan harga khusus untuk Anda.</p>
+        <p className="text-white h7">Temukan beragam mobil yang sesuai anggaran dan kebutuhan Anda.</p>
       </div>
     </section>
   );

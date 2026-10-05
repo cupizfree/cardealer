@@ -30,7 +30,7 @@ const SLIDES: ListingCardData[] = [l13, l14, l15, mercedesTitleOverSourceMismatc
 
 // home-09.html reuses this exact same section with its own 5-slide sequence (l13, l14, l15, l14, l14 —
 // confirmed via title read, no 4th "Mercedes over mismatch" content-bug slide here), a lowercase
-// heading ("Trending searches near you", not "Trending Searches Near You"), and its own real `radius-40`
+// heading ("Pencarian populer di sekitar Anda", not "Trending Searches Near You"), and its own real `radius-40`
 // section modifier (same page-wide signature as its other sections) — exposed via `heading`/`slides`/
 // `sectionExtraClassName` props. Its own cards also use `divider-blur mb-14` (not `mb-16`, confirmed via
 // source diff) — threaded through via `ListingCardDark`'s own `dividerClassName` prop. Source's
@@ -46,7 +46,7 @@ const SLIDES: ListingCardData[] = [l13, l14, l15, mercedesTitleOverSourceMismatc
 // `slidesPerGroup`), same copy-paste error found and fixed identically in
 // `home-02/PopularSearchesSection.tsx` and `home-03/PopularSearchesCarousel.tsx`.
 //
-// Retroactive fix: the "View All" button was missing its real icon (a circular-arrow SVG, confirmed
+// Retroactive fix: the "Lihat Semua" button was missing its real icon (a circular-arrow SVG, confirmed
 // present in index.html's own source) — added back as the default `viewAllIcon`.
 const VIEW_ALL_ICON = (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@ const VIEW_ALL_ICON = (
 );
 
 export default function TrendingSearchesSection({
-  heading = "Trending Searches Near You",
+  heading = "Pencarian Populer di Sekitar Anda",
   slides = SLIDES,
   sectionExtraClassName,
   cardDividerClassName,
@@ -74,7 +74,7 @@ export default function TrendingSearchesSection({
         <div className="title-section mb-40 wow fadeInUp" data-wow-delay="0.1s">
           <h2 className="text-white">{heading}</h2>
           <Link href="/listing-grid4-columns" className="btn btn-line-blur effect-line-white hover-fill-primary font-weight-600 btn-large">
-            View All
+            Lihat Semua
             {VIEW_ALL_ICON}
           </Link>
         </div>

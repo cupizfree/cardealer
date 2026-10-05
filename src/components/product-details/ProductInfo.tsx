@@ -68,7 +68,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
 
       <div className="divider mb-20" />
 
-      <p className="h7 font-weight-500 mb-10">Quantity:</p>
+      <p className="h7 font-weight-500 mb-10">Jumlah:</p>
       <div className="quantity-selector style-2 mb-20">
         <svg
           width="24"
@@ -127,13 +127,13 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
         </a>
       </div>
       <Link href="/check-out" className="btn btn-primary-3 btn-large w-full mb-20">
-        Buy it now
+        Beli sekarang
       </Link>
 
       <p className="mb-8">
         Pickup available at{" "}
         <Link href="/contact-us" className="text-underline">
-          Shop location
+          Lokasi toko
         </Link>
         . Usually ready in 24 hours
       </p>
@@ -147,7 +147,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
                 fill="#1C1C1C"
               />
             </svg>
-            <span className="text-underline">View Store Information</span>
+            <span className="text-underline">Lihat Info Toko</span>
           </Link>
         </li>
 
@@ -160,7 +160,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
               />
             </svg>
             <p>
-              <span className="text-secondary">Estimated Delivery:</span> 12-26 days{" "}
+              <span className="text-secondary">Perkiraan Pengiriman:</span> 12-26 days{" "}
               <span className="text-secondary">(International)</span>, 3-6 days{" "}
               <span className="text-secondary">(United States)</span>
             </p>
@@ -176,7 +176,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
               />
             </svg>
             <p>
-              Return within <span className="text-secondary">45 days</span> of purchase. Duties &amp; taxes are
+              Pengembalian dalam <span className="text-secondary">45 days</span> of purchase. Duties &amp; taxes are
               non-refundable.
             </p>
           </a>
@@ -208,7 +208,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
                 fill="#1C1C1C"
               />
             </svg>
-            <p>Ask A Question</p>
+            <p>Tanya</p>
           </a>
         </li>
 
@@ -224,7 +224,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
                 fill="#1C1C1C"
               />
             </svg>
-            <p>Share</p>
+            <p>Bagikan</p>
           </a>
         </li>
       </ul>
@@ -232,19 +232,19 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
       <div className="divider mb-20" />
 
       <p className="mb-4">
-        SKU: <span className="text-secondary">{product.sku}</span>
+        Kode: <span className="text-secondary">{product.sku}</span>
       </p>
       <p className="mb-4">
-        Available: <span className="text-secondary">{product.availability}</span>
+        Tersedia: <span className="text-secondary">{product.availability}</span>
       </p>
       <p className="mb-20">
-        Categories: <span className="text-secondary">{product.categories.join(", ")}</span>
+        Kategori: <span className="text-secondary">{product.categories.join(", ")}</span>
       </p>
 
       <div className="divider mb-20" />
 
       <div className="flex items-center flex-wrap gap-16">
-        Guranteed safe checkout:
+        Checkout aman terjamin:
         <div className="checkouts flex gap-12 flex-wrap">
           {[1, 2, 3, 4, 5, 6].map((n) => (
             <Image key={n} src={`/assets/images/shop/checkout-${n}.png`} alt="" width={40} height={26} />

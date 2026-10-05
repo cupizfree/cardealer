@@ -11,15 +11,15 @@ import Pagination from "@/components/common/Pagination";
 // All 9 are real, distinct reviews (unlike about-us's swiper, which repeats slide 1 as slide 4) — no
 // content-drift/demo-repeat to disclose here.
 const testimonials = [
-  { name: "Emily Johnson", title: "CEO Avitex", avatar: "/assets/images/avatar/avatar-4.png", text: "I had an amazing experience buying my car from this website. The selection was huge, and I found the perfect car in no time. The process was smooth, and the customer support team was very helpful throughout." },
-  { name: "Benjamin Parker", title: "CEO Tesla", avatar: "/assets/images/avatar/avatar-1.png", text: "Buying a car online was easier than I expected. I was able to compare multiple cars within minutes. The financing options were flexible, making it much easier to find a deal that worked for me." },
-  { name: "Olivia Williams", title: "CEO BMW", avatar: "/assets/images/avatar/avatar-2.png", text: "I've bought several cars over the years, but this was by far the best experience. The service was honest and transparent, and the car I purchased was exactly as described. I'll definitely be returning for my next vehicle!" },
-  { name: "Michael Carter", title: "Manager, NexTech", avatar: "/assets/images/pages/sale-agent-3.jpg", text: "Buying my car through this platform was a breeze! The detailed car listings helped me make an informed choice. The support team answered all my questions promptly. I'm thrilled with my purchase!" },
-  { name: "Sophia Martinez", title: "Freelance Designer", avatar: "/assets/images/pages/sale-agent-2.jpg", text: "The professionalism displayed by this dealership was top-notch. They guided me through every step and ensured I got a great deal on my car. I'll definitely return here for my next car purchase." },
-  { name: "Sophia Carter", title: "CEO BMW", avatar: "/assets/images/pages/sale-agent-1.jpg", text: "Buying my car here was simple! The website was user-friendly, and I quickly found a car that perfectly fit my needs. Customer support was helpful throughout the seamless process, making everything stress-free." },
-  { name: "Daniel Wright", title: "Entrepreneur", avatar: "/assets/images/pages/sale-agent-4.jpg", text: "This platform's wide variety of cars made finding the perfect one for me incredibly easy. The process was straightforward and well-organized, and the team was attentive and helpful at every step along the way." },
-  { name: "Sarah Nguyen", title: "Accountant", avatar: "/assets/images/pages/sale-agent-6.jpg", text: "The intuitive website, along with detailed listings, made choosing a car enjoyable and effortless. Customer support promptly addressed all my concerns and ensured I was confident in my decision." },
-  { name: "James Anderson", title: "Project Manager", avatar: "/assets/images/pages/sale-agent-8.jpg", text: "This platform was fast, efficient, and very easy to use for finding a car. I found the right vehicle quickly, and the entire process was hassle-free and transparent. Definitely recommend this service to everyone!" },
+  { name: "Emily Johnson", title: "CEO Avitex", avatar: "/assets/images/avatar/avatar-4.png", text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu." },
+  { name: "Benjamin Parker", title: "CEO Tesla", avatar: "/assets/images/avatar/avatar-1.png", text: "Beli mobil online lebih mudah dari yang saya kira. Saya bisa membandingkan banyak mobil dalam hitungan menit. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran yang cocok." },
+  { name: "Olivia Williams", title: "CEO BMW", avatar: "/assets/images/avatar/avatar-2.png", text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!" },
+  { name: "Michael Carter", title: "Manager, NexTech", avatar: "/assets/images/pages/sale-agent-3.jpg", text: "Beli mobil lewat platform ini sangat mudah! Detail iklannya membantu saya mengambil keputusan. Tim dukungan menjawab semua pertanyaan saya dengan cepat. Saya sangat puas!" },
+  { name: "Sophia Martinez", title: "Freelance Designer", avatar: "/assets/images/pages/sale-agent-2.jpg", text: "Profesionalisme showroom ini luar biasa. Mereka membimbing saya di setiap langkah dan memastikan saya mendapat harga terbaik. Saya pasti kembali untuk pembelian berikutnya." },
+  { name: "Sophia Carter", title: "CEO BMW", avatar: "/assets/images/pages/sale-agent-1.jpg", text: "Beli mobil di sini simpel! Situsnya mudah dipakai, dan saya cepat menemukan mobil yang pas. Dukungan pelanggan membantu di seluruh proses, jadi semuanya tanpa stres." },
+  { name: "Daniel Wright", title: "Entrepreneur", avatar: "/assets/images/pages/sale-agent-4.jpg", text: "Pilihan mobil yang sangat banyak membuat saya mudah menemukan yang tepat. Prosesnya jelas dan tertata, dan timnya sigap membantu di setiap langkah." },
+  { name: "Sarah Nguyen", title: "Accountant", avatar: "/assets/images/pages/sale-agent-6.jpg", text: "Situsnya intuitif dan iklannya detail, jadi memilih mobil terasa mudah dan menyenangkan. Dukungan pelanggan cepat menanggapi semua kekhawatiran saya dan membuat saya yakin dengan pilihan saya." },
+  { name: "James Anderson", title: "Project Manager", avatar: "/assets/images/pages/sale-agent-8.jpg", text: "Platform ini cepat, efisien, dan sangat mudah dipakai. Saya cepat menemukan mobil yang tepat, dan seluruh prosesnya lancar serta transparan. Sangat saya rekomendasikan!" },
 ];
 
 // Pagination: standing rule (see docs/migration/COMPONENT_MAP.md #36) — any page with pagination
@@ -37,7 +37,7 @@ export default function ClientsReviewsSection() {
   return (
     <section className="pb-100">
       <div className="container">
-        <h2>Clients Reviews</h2>
+        <h2>Ulasan Pelanggan</h2>
         <div className="tf-spacing-style3" />
 
         <div className="grid grid-cols-3 gap-y-38 gap-x-30 lg-grid-cols-2 md-grid-cols-1 mb-40">

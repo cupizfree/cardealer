@@ -9,38 +9,38 @@ import NewsTipsSection from "@/components/financing/NewsTipsSection";
 import FaqAccordion from "@/components/common/FaqAccordion";
 
 export const metadata: Metadata = {
-  title: "Financing | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Pembiayaan",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-// Migrated from ../aurexo/financing.html. The "Auto financing FAQ" section is byte-identical to
+// Migrated from ../aurexo/financing.html. The "Tanya Jawab Pembiayaan" section is byte-identical to
 // sell-your-car.html's own FAQ (same 4 questions/answers, confirmed via source diff) — including
 // questions literally about "selling my car" on this financing page, a real source copy-paste
 // mismatch, not a transcription error here — reproduced verbatim via the same shared `FaqAccordion`.
 const faqItems = [
   {
-    question: "What paperwork is needed to sell my car?",
+    question: "Dokumen apa saja yang diperlukan untuk menjual mobil saya?",
     answer: [
-      "Usually, you will need the current registration for the vehicle signed by all registered owners, along with the car title and your ID or driver's license. You may also need to provide warranty information. To complete your sale transaction, you will likely need to complete a bill of sale.",
-      "Check with your local DMV to confirm what you'll need in your state.",
+      "Biasanya Anda perlu STNK yang masih berlaku dan ditandatangani seluruh pemilik terdaftar, beserta BPKB dan KTP atau SIM Anda. Informasi garansi juga mungkin diperlukan. Untuk menuntaskan transaksi, Anda umumnya perlu mengisi surat perjanjian jual beli.",
+      "Konfirmasikan ke Samsat setempat untuk memastikan persyaratan di wilayah Anda.",
     ],
   },
   {
-    question: "Can I sell my car if I still owe money on it?",
+    question: "Bisakah saya menjual mobil yang masih ada cicilannya?",
     answer: [
-      "An auto loan is a sum of money that you borrow in order to buy a car. The person or organization lending you the money is known as the lender, and the person or organization who borrows the money is the borrower. The borrower agrees to pay back the full amount they borrowed by a certain date in the future. They also pay interest, which is a percentage of the loan amount. They usually pay both these amounts via monthly payments.",
+      "Kredit mobil adalah sejumlah uang yang Anda pinjam untuk membeli mobil. Pihak yang meminjamkan uang disebut pemberi kredit, dan pihak yang meminjam disebut debitur. Debitur setuju mengembalikan seluruh jumlah pinjaman pada tanggal tertentu di masa depan. Debitur juga membayar bunga, yaitu persentase dari jumlah pinjaman. Keduanya biasanya dibayar melalui cicilan bulanan.",
     ],
   },
   {
-    question: "Can I sell my car if I am leasing?",
+    question: "Bisakah saya menjual mobil yang masih dalam masa sewa?",
     answer: [
-      "An auto loan is a sum of money that you borrow in order to buy a car. The person or organization lending you the money is known as the lender, and the person or organization who borrows the money is the borrower. The borrower agrees to pay back the full amount they borrowed by a certain date in the future. They also pay interest, which is a percentage of the loan amount. They usually pay both these amounts via monthly payments.",
+      "Kredit mobil adalah sejumlah uang yang Anda pinjam untuk membeli mobil. Pihak yang meminjamkan uang disebut pemberi kredit, dan pihak yang meminjam disebut debitur. Debitur setuju mengembalikan seluruh jumlah pinjaman pada tanggal tertentu di masa depan. Debitur juga membayar bunga, yaitu persentase dari jumlah pinjaman. Keduanya biasanya dibayar melalui cicilan bulanan.",
     ],
   },
   {
-    question: "What are the benefits of selling with Aurexo?",
+    question: "Apa keuntungan menjual mobil lewat MARF?",
     answer: [
-      "An auto loan is a sum of money that you borrow in order to buy a car. The person or organization lending you the money is known as the lender, and the person or organization who borrows the money is the borrower. The borrower agrees to pay back the full amount they borrowed by a certain date in the future. They also pay interest, which is a percentage of the loan amount. They usually pay both these amounts via monthly payments.",
+      "Kredit mobil adalah sejumlah uang yang Anda pinjam untuk membeli mobil. Pihak yang meminjamkan uang disebut pemberi kredit, dan pihak yang meminjam disebut debitur. Debitur setuju mengembalikan seluruh jumlah pinjaman pada tanggal tertentu di masa depan. Debitur juga membayar bunga, yaitu persentase dari jumlah pinjaman. Keduanya biasanya dibayar melalui cicilan bulanan.",
     ],
   },
 ];
@@ -54,19 +54,19 @@ export default function FinancingPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Pages</span>
+              <span>Layanan</span>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Financing</span>
+              <span>Pembiayaan</span>
             </li>
           </ul>
         </div>
@@ -80,7 +80,7 @@ export default function FinancingPage() {
 
       <section className="background-light py-100">
         <div className="container">
-          <h2 className="mb-40 text-center capitalize">Auto financing FAQ</h2>
+          <h2 className="mb-40 text-center capitalize">Tanya Jawab Pembiayaan</h2>
           <div className="max-width-930 mx-auto w-full">
             <FaqAccordion items={faqItems} />
           </div>

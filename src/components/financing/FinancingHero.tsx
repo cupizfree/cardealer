@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useModal } from "@/components/common/ModalProvider";
 
-// Migrated from ../aurexo/financing.html lines 484-532. "Sign in" is a real `open-modal` trigger for
+// Migrated from ../aurexo/financing.html lines 484-532. "Masuk" is a real `open-modal` trigger for
 // `LoginModal` (reused via `useModal`, same pattern as every other `open-modal` trigger this session).
-// "Get Prequalified" links to `/contact-us` (not yet migrated) — matches source's own
+// "Cek Pra-Layak" links to `/contact-us` (not yet migrated) — matches source's own
 // `href="contact-us.html"`.
 export default function FinancingHero() {
   const { openModal } = useModal();
@@ -14,48 +14,47 @@ export default function FinancingHero() {
   return (
     <section className="bg-white pb-100">
       <div className="container">
-        <h2>Financing</h2>
+        <h2>Pembiayaan</h2>
         <div className="tf-spacing-style3" />
 
         <div className="grid grid-cols-2 xl-grid-cols-2 lg-grid-cols-1 gap-30">
           <div className="wow fadeInUp">
-            <h2 className="mb-12 capitalize">Get Prequalified for Auto Financing</h2>
+            <h2 className="mb-12 capitalize">Cek Pra-Layak Pembiayaan Mobil</h2>
             <p className="mb-42 h7 line-height-28 text-secondary">
-              Explore personalized rates and flexible financing options in minutes—without impacting
-              your credit score.
+              Dapatkan suku bunga khusus dan opsi kredit fleksibel dalam hitungan menit—tanpa mempengaruhi skor kredit Anda.
             </p>
             <ul className="grid grid-cols-1 gap-26 mb-40">
               <li className="flex items-start gap-12">
                 <Image className="w-24 h-24" src="/assets/icons/check.svg" alt="check" width={24} height={24} />
                 <div>
-                  <p className="h5 mb-4 capitalize">Secure transactions and title transfer</p>
-                  <p className="h7">See your personalized rate from our network of lenders.</p>
+                  <p className="h5 mb-4 capitalize">Transaksi aman dan balik nama dokumen</p>
+                  <p className="h7">Lihat suku bunga khusus dari jaringan mitra pembiayaan kami.</p>
                 </div>
               </li>
               <li className="flex items-start gap-12">
                 <Image className="w-24 h-24" src="/assets/icons/check.svg" alt="check" width={24} height={24} />
                 <div>
-                  <p className="h5 mb-4 capitalize">No impact to your credit</p>
-                  <p className="h7">Prequalification with our lenders will not affect your credit score.</p>
+                  <p className="h5 mb-4 capitalize">Tidak mempengaruhi kredit Anda</p>
+                  <p className="h7">Pra-layak dengan mitra pembiayaan kami tidak akan mempengaruhi skor kredit Anda.</p>
                 </div>
               </li>
               <li className="flex items-start gap-12">
                 <Image className="w-24 h-24" src="/assets/icons/check.svg" alt="check" width={24} height={24} />
                 <div>
-                  <p className="h5 mb-4 capitalize">It only takes a few minutes</p>
-                  <p className="h7">Answer a few basic questions and instantly see your personalized results.</p>
+                  <p className="h5 mb-4 capitalize">Hanya butuh beberapa menit</p>
+                  <p className="h7">Jawab beberapa pertanyaan dasar dan lihat hasil khusus untuk Anda seketika.</p>
                 </div>
               </li>
             </ul>
 
             <div className="flex gap-20 items-center">
               <Link href="/contact-us" className="btn btn-primary btn-large-3 font-weight-600">
-                Get Prequalified
+                Cek Pra-Layak
               </Link>
               <p className="flex gap-8">
-                <span>Already prequalified?</span>
+                <span>Sudah pra-layak?</span>
                 <span className="font-weight-600 text-underline cursor-pointer" onClick={() => openModal("LoginModal")}>
-                  Sign in
+                  Masuk
                 </span>
               </p>
             </div>

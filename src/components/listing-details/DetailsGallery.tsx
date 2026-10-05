@@ -7,7 +7,7 @@ import type { ListingGalleryImage } from "@/data/listings";
 
 // Matches ../aurexo/assets/js/swiper.js's `.swiper-listing-details` config exactly: slidesPerView
 // 1 (→2 at 767px), spaceBetween 20, loop, custom prev/next (the breadcrumb row's
-// `.swiper-listing-details-prev/next`), speed 2000. "Play Video"/"View All Photo" are decorative in
+// `.swiper-listing-details-prev/next`), speed 2000. "Putar Video"/"Lihat Semua Foto" are decorative in
 // the source too (href="#", no fancybox/lightbox or video-player JS found anywhere in app.js/
 // plugin.js for `.listing-details-item--button`) — left as non-interactive here to match, not left
 // unwired due to a gap on our side.
@@ -18,11 +18,11 @@ function GallerySlideContent({ image }: { image: ListingGalleryImage }) {
       <div className="listing-details-item--content">
         <a className="listing-details-item--button" href="#">
           <Image src="/assets/icons/playcircle.svg" alt="play" width={20} height={20} />
-          Play Video
+          Putar Video
         </a>
         <a className="listing-details-item--button" href="#">
           <Image src="/assets/icons/view-all-photo.svg" alt="play" width={20} height={20} />
-          View All Photo
+          Lihat Semua Foto
         </a>
       </div>
     </div>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ComingSoonHero from "@/components/coming-soon/ComingSoonHero";
 
 export const metadata: Metadata = {
-  title: "Coming Soon | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Segera Hadir",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/coming-soon.html. Source has NO header/footer at all — a standalone

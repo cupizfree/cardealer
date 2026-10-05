@@ -14,7 +14,7 @@ import ParallaxImage from "@/components/common/ParallaxImage";
 // column (the right `col-lg-6` is empty), `relative py-90` (not `background-light py-100`) with a real
 // `simpleParallax` background (`.overlay.image`, `bg-video.jpg` — same mechanism as `ParallaxImage`),
 // field `mb-8` (not `mb-10`) on the first two labels, and `action="calculator.html"` (not `#`) — exposed
-// via `variant="parallax"` rather than forking the component. Source's own "Car Price" input there also
+// via `variant="parallax"` rather than forking the component. Source's own "Harga Mobil" input there also
 // carries a literal stray `value="$46.300|"` (trailing pipe character, confirmed via direct source
 // read) — kept verbatim as a disclosed source content quirk, not silently corrected.
 //
@@ -60,52 +60,52 @@ export default function FinancingCalculatorSection({
           <div className="row items-center">
             <div className="col-lg-6 wow fadeInUp">
               <div className="caculator-box bg-white outline radius-12">
-                <h2 className={outlineHeadingClassName}>Financing Calculator</h2>
+                <h2 className={outlineHeadingClassName}>Simulasi Kredit</h2>
 
                 <form action="calculator.html" onSubmit={(event) => event.preventDefault()}>
                   <div className="grid gap-22 gap-x-16 grid-cols-2 mb-20 md-grid-cols-1">
                     <div className="md-colspan-1">
-                      <p className={outlinePriceRateLabelClassName}>Car Price</p>
+                      <p className={outlinePriceRateLabelClassName}>Harga Mobil</p>
                       <input className="active" type="text" defaultValue="$46.300|" required />
                     </div>
 
                     <div className="md-colspan-1">
-                      <p className={outlinePriceRateLabelClassName}>Interest Rate</p>
+                      <p className={outlinePriceRateLabelClassName}>Bunga per Tahun</p>
                       <input type="text" defaultValue="1.2%" required />
                     </div>
 
                     <div className="md-colspan-1">
-                      <p className="mb-8">Loan Term (months)</p>
+                      <p className="mb-8">Tenor Pinjaman (bulan)</p>
                       <select>
-                        <option>60 months</option>
+                        <option>60 bulan</option>
                         <option>30 months</option>
                         <option>10 months</option>
                       </select>
                     </div>
 
                     <div>
-                      <p className="mb-8">Down Payment</p>
+                      <p className="mb-8">Uang Muka</p>
                       <input type="text" defaultValue="$400" required />
                     </div>
 
                     <button type="submit" className="btn btn-medium btn-primary col-span-2">
-                      Calculate
+                      Hitung
                     </button>
                   </div>
 
                   <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
                     <div>
-                      <p className={outlineResultLabelClassName}>Monthly Payment:</p>
+                      <p className={outlineResultLabelClassName}>Cicilan Bulanan:</p>
                       <p className="font-weight-600">$788.56/Month</p>
                     </div>
 
                     <div>
-                      <p className={outlineResultLabelClassName}>Total Interest Payment:</p>
+                      <p className={outlineResultLabelClassName}>Total Bunga:</p>
                       <p className="font-weight-600">$1413.60</p>
                     </div>
 
                     <div>
-                      <p className={outlineResultLabelClassName}>Est. Total Loan:</p>
+                      <p className={outlineResultLabelClassName}>Perk. Total Pinjaman:</p>
                       <p className="font-weight-600">$47713.60</p>
                     </div>
                   </div>
@@ -143,52 +143,52 @@ export default function FinancingCalculatorSection({
             <div className="col-lg-6" />
             <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
               <div className="caculator-box bg-white p-40 md-mb-0">
-                <h2 className="mb-20">Financing Calculator</h2>
+                <h2 className="mb-20">Simulasi Kredit</h2>
 
                 <form action="calculator.html" onSubmit={(event) => event.preventDefault()}>
                   <div className="grid gap-13 grid-cols-2 mb-20 md-grid-cols-1">
                     <div className="md-colspan-1">
-                      <p className="mb-8">Car Price</p>
-                      <input id="Price" name="Price" className="active" type="text" defaultValue="$46.300|" required />
+                      <p className="mb-8">Harga Mobil</p>
+                      <input id="Harga" name="Harga" className="active" type="text" defaultValue="$46.300|" required />
                     </div>
 
                     <div className="md-colspan-1">
-                      <p className="mb-8">Interest Rate</p>
+                      <p className="mb-8">Bunga per Tahun</p>
                       <input id="Rate" name="Rate" type="text" defaultValue="1.2%" required />
                     </div>
 
                     <div className="md-colspan-1">
-                      <p className="mb-8">Loan Term (months)</p>
+                      <p className="mb-8">Tenor Pinjaman (bulan)</p>
                       <select>
-                        <option>60 months</option>
+                        <option>60 bulan</option>
                         <option>30 months</option>
                         <option>10 months</option>
                       </select>
                     </div>
 
                     <div className="md-colspan-1">
-                      <p className="mb-8">Down Payment</p>
+                      <p className="mb-8">Uang Muka</p>
                       <input name="Payment" id="Payment" type="text" defaultValue="$400" required />
                     </div>
 
                     <button type="submit" className="btn btn-medium btn-primary col-span-2">
-                      Calculate
+                      Hitung
                     </button>
                   </div>
 
                   <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
                     <div>
-                      <p className="mb-4">Monthly Payment:</p>
+                      <p className="mb-4">Cicilan Bulanan:</p>
                       <p className="font-weight-600">$788.56/Month</p>
                     </div>
 
                     <div>
-                      <p className="mb-4">Total Interest Payment:</p>
+                      <p className="mb-4">Total Bunga:</p>
                       <p className="font-weight-600">$1413.60</p>
                     </div>
 
                     <div>
-                      <p className="mb-4">Est. Total Loan:</p>
+                      <p className="mb-4">Perk. Total Pinjaman:</p>
                       <p className="font-weight-600">$47713.60</p>
                     </div>
                   </div>
@@ -207,52 +207,52 @@ export default function FinancingCalculatorSection({
         <div className="row items-center">
           <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
             <div className="caculator-box bg-white p-40">
-              <h2 className="mb-20">Financing Calculator</h2>
+              <h2 className="mb-20">Simulasi Kredit</h2>
 
               <form action="#" onSubmit={(event) => event.preventDefault()}>
                 <div className="grid gap-13 grid-cols-2 mb-20 md-grid-cols-1">
                   <div className="md-colspan-1">
-                    <p className="mb-10">Car Price</p>
+                    <p className="mb-10">Harga Mobil</p>
                     <input className="active" type="text" defaultValue="$46.300" required />
                   </div>
 
                   <div className="md-colspan-1">
-                    <p className="mb-10">Interest Rate</p>
+                    <p className="mb-10">Bunga per Tahun</p>
                     <input type="text" defaultValue="1.2%" required />
                   </div>
 
                   <div className="md-colspan-1">
-                    <p className="mb-8">Loan Term (months)</p>
+                    <p className="mb-8">Tenor Pinjaman (bulan)</p>
                     <select>
-                      <option>60 months</option>
+                      <option>60 bulan</option>
                       <option>30 months</option>
                       <option>10 months</option>
                     </select>
                   </div>
 
                   <div>
-                    <p className="mb-8">Down Payment</p>
+                    <p className="mb-8">Uang Muka</p>
                     <input type="text" defaultValue="$400" required />
                   </div>
 
                   <button type="submit" className="btn btn-medium btn-primary col-span-2">
-                    Calculate
+                    Hitung
                   </button>
                 </div>
 
                 <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
                   <div>
-                    <p className="mb-4">Monthly Payment:</p>
+                    <p className="mb-4">Cicilan Bulanan:</p>
                     <p className="font-weight-600">$788.56/Month</p>
                   </div>
 
                   <div>
-                    <p className="mb-4">Total Interest Payment:</p>
+                    <p className="mb-4">Total Bunga:</p>
                     <p className="font-weight-600">$1413.60</p>
                   </div>
 
                   <div>
-                    <p className="mb-4">Est. Total Loan:</p>
+                    <p className="mb-4">Perk. Total Pinjaman:</p>
                     <p className="font-weight-600">$47713.60</p>
                   </div>
                 </div>

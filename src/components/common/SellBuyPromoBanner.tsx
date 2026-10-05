@@ -3,7 +3,7 @@ import Link from "next/link";
 
 // Extracted out of `home-02/WhyChooseUsCarousel.tsx` once home-03.html needed the exact same
 // 2-column promo banner (same images/titles/bullets/CTAs, confirmed byte-identical via source diff) —
-// there it follows the "Why Choose Us" icon-card carousel, here it follows "Clients Reviews" instead.
+// there it follows the "Why Choose Us" icon-card carousel, here it follows "Ulasan Pelanggan" instead.
 // Same "extract into `common/` once a second page needs it" precedent as `Pagination`/
 // `ClientsReviewsCarousel`/`WhyChooseUsSection`.
 export default function SellBuyPromoBanner({
@@ -12,20 +12,20 @@ export default function SellBuyPromoBanner({
   rightCtaHref,
   layout = "row",
 }: {
-  /** home-03.html's own "Buy Used Cars Easily" title links to `/listing-grid4-columns` instead of
+  /** home-03.html's own "Beli Mobil Bekas Jadi Mudah" title links to `/listing-grid4-columns` instead of
    *  `/sell-your-car` (confirmed via source diff against home-02.html's own usage). */
   leftTitleHref?: string;
-  /** home-02.html's own "Sell Your Car Simply" title is a literal dead `href="#"`; home-03.html's own
+  /** home-02.html's own "Jual Mobil Anda" title is a literal dead `href="#"`; home-03.html's own
    *  points at `/sell-your-car` instead (confirmed via source diff) — real per-page difference. */
   rightTitleHref?: string;
-  /** Retroactive fix: home-02.html's own "List Your Car Today!" bottom CTA really is a dead `href="#"`
+  /** Retroactive fix: home-02.html's own "Jual Mobil Anda Sekarang!" bottom CTA really is a dead `href="#"`
    *  (confirmed via source read) — kept as the default. home-03.html's AND home-04.html's own versions
    *  of this exact same CTA both point at `sell-your-car.html` instead (confirmed via source diff on
    *  both) — home-03's migration missed this real per-page difference until home-04's migration
    *  surfaced it; both callers now pass `/sell-your-car` explicitly. */
   rightCtaHref?: string;
   /** home-07.html's own reuse of these same 2 cards (byte-identical images/copy/hrefs, confirmed via
-   *  source diff) stacks them vertically inside its "Latest For Sale" sidebar column
+   *  source diff) stacks them vertically inside its "Terbaru Dijual" sidebar column
    *  (`.col-lg-4 > .flex.flex-col.gap-30`) instead of the `.container > .row > .col-lg-6` layout every
    *  other page uses. `"stack"` swaps only the outer wrapper — the cards themselves are unchanged. */
   layout?: "row" | "stack";
@@ -36,25 +36,25 @@ export default function SellBuyPromoBanner({
       <div className="content">
         <p className="h3">
           <Link href={leftTitleHref} className="card--title h3 text-white font-weight-600 mb-8">
-            Buy Used Cars Easily
+            Beli Mobil Bekas Jadi Mudah
           </Link>
         </p>
         <ul className="list">
           <li>
             <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-            Browse thousands of affordable options.
+            Jelajahi ribuan pilihan terjangkau.
           </li>
           <li>
             <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-            Smart tools to find your perfect car fast.
+            Alat pintar untuk menemukan mobil impian Anda dengan cepat.
           </li>
           <li>
             <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-            Safe transactions with quality assurance.
+            Transaksi aman dengan jaminan mutu.
           </li>
         </ul>
         <Link href="/sell-your-car" className="btn btn-white btn-large font-weight-600 max-w-min text-primary">
-          Find Your Car Now!
+          Temukan Mobil Anda Sekarang!
         </Link>
       </div>
     </div>
@@ -67,35 +67,35 @@ export default function SellBuyPromoBanner({
         <p className="h3">
           {rightTitleHref ? (
             <Link href={rightTitleHref} className="card--title h3 text-white font-weight-600 mb-8">
-              Sell Your Car Simply
+              Jual Mobil Anda
             </Link>
           ) : (
             <a href="#" className="card--title h3 text-white font-weight-600 mb-8">
-              Sell Your Car Simply
+              Jual Mobil Anda
             </a>
           )}
         </p>
         <ul className="list">
           <li>
             <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-            List in minutes with ease.
+            Pasang iklan dalam hitungan menit.
           </li>
           <li>
             <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-            Reach thousands of buyers instantly.
+            Jangkau ribuan pembeli seketika.
           </li>
           <li>
             <Image src="/assets/icons/check.svg" alt="check" width={20} height={20} />
-            Secure payment with loan assistance.
+            Pembayaran aman dengan bantuan kredit.
           </li>
         </ul>
         {rightCtaHref ? (
           <Link href={rightCtaHref} className="btn btn-white btn-large font-weight-600 max-w-min text-primary">
-            List Your Car Today!
+            Jual Mobil Anda Sekarang!
           </Link>
         ) : (
           <a href="#" className="btn btn-white btn-large font-weight-600 max-w-min text-primary">
-            List Your Car Today!
+            Jual Mobil Anda Sekarang!
           </a>
         )}
       </div>

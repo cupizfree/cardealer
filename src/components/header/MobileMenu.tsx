@@ -14,18 +14,18 @@ import { ChevronDownIcon } from "@/components/common/icons";
 // mobile` is the drawer's own outer id, now set by `Offcanvas`'s `panelId` prop one level up; this
 // `<ul>` is just its `.menu` child, previously had the wrong id directly on itself — see
 // `Offcanvas.tsx`'s own comment for the full bug). Aurexo's own JS nests a SECOND accordion level per
-// `.sub-menu-item-listing` column inside "Listing"/"Pages" (their own "Listing Layout"/"Features"/etc.
+// `.sub-menu-item-listing` column inside "Katalog"/"Layanan" (their own "Listing Layout"/"Fitur"/etc.
 // sub-headers); flattened here to one level (every link below is still present, just not grouped under
 // its own column sub-header) — a deliberate simplification, not a content cut. The 4 top-level sections
 // (Home/Listing/News/Pages) themselves are NOT mutually exclusive, matching source's own real
 // `#main-nav-mobile .menu-item` click handler (see `toggle` below).
 //
 // RETROACTIVE FIX (×2, found by Playwright verification while fixing the drawer's own visibility bug):
-// (1) the 4 top-level toggles ("Home"/"Listing"/"News"/"Pages") were `<p className="menu-item-inner-
+// (1) the 4 top-level toggles ("Beranda"/"Katalog"/"Artikel"/"Layanan") were `<p className="menu-item-inner-
 // title">` — but source's own real top-level items are `<a href="#">` (confirmed via source diff,
-// byte-identical to "Home"'s own real markup), and `menu.scss`'s `#main-nav-mobile > ul > li > a {
+// byte-identical to "Beranda"'s own real markup), and `menu.scss`'s `#main-nav-mobile > ul > li > a {
 // color: $white }` only matches `<a>` tags — so these 4 rendered with invisible near-black text on the
-// drawer's own dark background, while "About"/"Contact" (already real `<Link>`s) rendered correctly.
+// drawer's own dark background, while "Tentang"/"Kontak" (already real `<Link>`s) rendered correctly.
 // Fixed by switching to real `<a href="#">` tags with `preventDefault()` (matching source's own dead
 // `href="#"` on these JS-toggled items) instead of `<p>`.
 // (2) The SAME invisible-text bug one level deeper: each dropdown's sub-link `<ul>` was
@@ -51,8 +51,8 @@ import { ChevronDownIcon } from "@/components/common/icons";
 // `${link.href}-${index}` instead of the bare (sometimes-duplicate) `href`.
 //
 // RETROACTIVE FIX (found on request, "check mobileNav logic in app.js"): `openSection` used to be a
-// single `string | null`, making the 4 top-level dropdowns mutually exclusive (opening "Listing" auto-
-// closed "Home"). Source's own real handler (`app.js`'s `$(document).on("click", "#main-nav-mobile
+// single `string | null`, making the 4 top-level dropdowns mutually exclusive (opening "Katalog" auto-
+// closed "Beranda"). Source's own real handler (`app.js`'s `$(document).on("click", "#main-nav-mobile
 // .menu-item", ...)`) just does `$(this).toggleClass("active"); $(this).find(".sub-menu").first
 // ().slideToggle();` on whichever item was clicked — no code anywhere collapses the others, so multiple
 // dropdowns can genuinely be open at once in the real site. Fixed by tracking a `Set` of open sections
@@ -82,7 +82,7 @@ export default function MobileMenu() {
             toggle("home");
           }}
         >
-          Home <ChevronDownIcon />
+          Beranda <ChevronDownIcon />
         </a>
         {openSections.has("home") && (
           <ul className="sub-menu" style={{ display: "block" }}>
@@ -96,7 +96,7 @@ export default function MobileMenu() {
       </li>
 
       <li className="menu-item">
-        <Link href="/about-us">About</Link>
+        <Link href="/about-us">Tentang</Link>
       </li>
 
       <li className="menu-item">
@@ -108,7 +108,7 @@ export default function MobileMenu() {
             toggle("listing");
           }}
         >
-          Listing <ChevronDownIcon />
+          Katalog <ChevronDownIcon />
         </a>
         {openSections.has("listing") && (
           <ul className="sub-menu" style={{ display: "block" }}>
@@ -130,7 +130,7 @@ export default function MobileMenu() {
             toggle("news");
           }}
         >
-          News <ChevronDownIcon />
+          Artikel <ChevronDownIcon />
         </a>
         {openSections.has("news") && (
           <ul className="sub-menu" style={{ display: "block" }}>
@@ -152,7 +152,7 @@ export default function MobileMenu() {
             toggle("pages");
           }}
         >
-          Pages <ChevronDownIcon />
+          Layanan <ChevronDownIcon />
         </a>
         {openSections.has("pages") && (
           <ul className="sub-menu" style={{ display: "block" }}>
@@ -166,7 +166,7 @@ export default function MobileMenu() {
       </li>
 
       <li className="menu-item">
-        <Link href="/contact-us">Contact</Link>
+        <Link href="/contact-us">Kontak</Link>
       </li>
     </ul>
   );

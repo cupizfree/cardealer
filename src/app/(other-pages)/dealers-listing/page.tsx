@@ -7,12 +7,12 @@ import DealersListSection from "@/components/dealers/DealersListSection";
 import DealersBrandsCarousel from "@/components/dealers/DealersBrandsCarousel";
 
 export const metadata: Metadata = {
-  title: "Dealers Listing | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Daftar Showroom",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/dealers-listing.html. Source nests the dealer list, a `tf-spacing` divider,
-// and the "Dealers Brands" carousel all inside ONE `<section class="pb-100">` — assembled here to
+// and the "Merek di Showroom" carousel all inside ONE `<section class="pb-100">` — assembled here to
 // match that exact nesting (see `DealersListSection`/`DealersBrandsCarousel`'s own header comments).
 export default function DealersListingPage() {
   return (
@@ -23,19 +23,19 @@ export default function DealersListingPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <Link href="/">Pages</Link>
+              <Link href="/">Layanan</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Dealers Listing</span>
+              <span>Daftar Showroom</span>
             </li>
           </ul>
         </div>

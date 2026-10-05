@@ -7,8 +7,8 @@ import ListingGridSection from "@/components/listing/ListingGridSection";
 import { allListings } from "@/data/listings";
 
 export const metadata: Metadata = {
-  title: "Listing Grid 3 Columns | Aurexo",
-  description: "Browse car listings in a 3-column grid.",
+  title: "Katalog Mobil",
+  description: "Lihat katalog mobil dalam grid 3 kolom.",
 };
 
 // Migrated from ../aurexo/listing-grid3-columns.html — see docs/migration/MIGRATION_STATUS.md.
@@ -24,13 +24,13 @@ export default function ListingGrid3ColumnsPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Listing</span>
+              <span>Katalog</span>
             </li>
           </ul>
         </div>
@@ -38,7 +38,7 @@ export default function ListingGrid3ColumnsPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Listing Grid 3 Columns</h2>
+          <h2>Katalog Mobil</h2>
         </div>
         <div className="tf-spacing-style3" />
 

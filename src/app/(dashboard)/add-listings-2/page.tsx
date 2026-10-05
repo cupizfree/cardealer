@@ -3,8 +3,8 @@ import AddListingsHeader from "@/components/add-listings-2/AddListingsHeader";
 import AddListingsForm from "@/components/add-listings-2/AddListingsForm";
 
 export const metadata: Metadata = {
-  title: "Add Listings | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Tambah Iklan",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/add-listings-2.html. Uses the same `(dashboard)` shell as dashboard.html/

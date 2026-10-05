@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ProfileForm from "@/components/my-profile/ProfileForm";
 
 export const metadata: Metadata = {
-  title: "My Profile | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Profil Saya",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/my-profile.html. Uses the same `(dashboard)` shell as dashboard.html/
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function MyProfilePage() {
   return (
     <>
-      <p className="h3 mb-40">My profile</p>
+      <p className="h3 mb-40">Profil Saya</p>
       <ProfileForm />
     </>
   );

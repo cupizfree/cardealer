@@ -18,15 +18,15 @@ export type SortOption =
   | "oldest-listed";
 
 export const SORT_LABELS: Record<SortOption, string> = {
-  "best-match": "Best Match",
-  "lowest-price": "Lowest Price",
-  "highest-price": "Highest Price",
-  "lowest-mileage": "Lowest Mileage",
-  "highest-mileage": "Highest Mileage",
+  "best-match": "Paling Sesuai",
+  "lowest-price": "Harga Terendah",
+  "highest-price": "Harga Tertinggi",
+  "lowest-mileage": "Jarak Terendah",
+  "highest-mileage": "Jarak Tertinggi",
   "nearest-location": "Nearest Location",
-  "best-deal": "Best Deal",
-  "newest-year": "Newest Year",
-  "oldest-year": "Oldest Year",
+  "best-deal": "Penawaran Terbaik",
+  "newest-year": "Tahun Terbaru",
+  "oldest-year": "Tahun Terlama",
   "newest-listed": "Newest Listed",
   "oldest-listed": "Oldest Listed",
 };
@@ -87,7 +87,7 @@ export type FilterTag = { key: string; label: string; remove: (filters: FilterSt
 // visible listings. Body Style/Door count/Cylinders/Colors/Features tags are included here even
 // though they're decorative (see the scope note in FilterSidebar.tsx) — the source shows a tag for
 // those too, since the tag row just reflects "what's currently checked," not "what's filtering."
-// The source also always injects two extra default tags ("No accidents", "Great Price") that don't
+// The source also always injects two extra default tags ("No accidents", "Harga Bagus") that don't
 // correspond to any real field — those are deliberately NOT reproduced (no `Listing` field backs
 // them; inventing one would violate the no-data-invention rule), so this list only ever contains
 // tags a user actually created by interacting with the sidebar.

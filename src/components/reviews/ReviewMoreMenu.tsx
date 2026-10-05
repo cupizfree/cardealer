@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Migrated from ../aurexo/reviews.html's own per-review "..." menu (`.core-dropdown.more`). Traced
 // `app.js`'s generic `coreDropdown()` handler: it opens/closes any `.core-dropdown` for real (including
-// this variant), but "Send Message"/"View Profile"/"Delete Review" are all source's own literal dead
+// this variant), but "Kirim Pesan"/"Lihat Profil"/"Hapus Ulasan" are all source's own literal dead
 // `href="#"` — confirmed via grep, no script anywhere acts on any of the 3. Real open/close, decorative
 // menu items.
 export default function ReviewMoreMenu() {
@@ -35,17 +35,17 @@ export default function ReviewMoreMenu() {
         <ul className="core-dropdown__list more-links">
           <li>
             <a href="#" className="active" onClick={(event) => event.preventDefault()}>
-              Send Message
+              Kirim Pesan
             </a>
           </li>
           <li>
             <a href="#" onClick={(event) => event.preventDefault()}>
-              View Profile
+              Lihat Profil
             </a>
           </li>
           <li>
             <a href="#" onClick={(event) => event.preventDefault()}>
-              Delete Review
+              Hapus Ulasan
             </a>
           </li>
         </ul>

@@ -62,7 +62,7 @@ export default function ListingGridSection({
             <div className="flex items-center gap-16">
               <button className="btn-filter" onClick={() => setIsFilterOpen(true)}>
                 <FilterIcon />
-                Filters
+                Filter
               </button>
               <p className="md-hidden">
                 Showing {rangeStart} – {rangeEnd} of {sortedListings.length} Listings

@@ -15,8 +15,8 @@ import RelatedArticles from "@/components/blog-details/RelatedArticles";
 import { emilyBenjaminOliviaTestimonials } from "@/data/clientTestimonials";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Beranda Varian 10",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/home-10.html (4148 lines). `<body class="home-style-10 background-light">`,
@@ -78,34 +78,34 @@ export const metadata: Metadata = {
 // Hero (`home-10/HeroTextSlider.tsx`) is a genuinely new shape — a single swiper bundling background +
 // text/CTA overlay per slide (see that file's own comment).
 //
-// "Browse By Type" reuses `home-03/BrowseByTypePhotoCards` byte-for-byte (same 8-type dataset) via its
+// "Cari Berdasarkan Tipe" reuses `home-03/BrowseByTypePhotoCards` byte-for-byte (same 8-type dataset) via its
 // new `sectionClassName="bg-white"` prop (no `py-100`).
 //
 // "Explore Our Brands" reuses `home/BrandsSection`'s exact same 6-brand dataset byte-for-byte via 3 new
 // props (`sectionClassName="bg-white"`, `titleSectionClassName="mb-42"`, `cardClassName="out-brand-2"`
 // — not `out-brand`).
 //
-// RETROACTIVE FIX — the "View All Brand" button on `BrandsSection` was missing its real icon (a
+// RETROACTIVE FIX — the "Lihat Semua Merek" button on `BrandsSection` was missing its real icon (a
 // circular-arrow SVG, confirmed present in index.html's own source) — added back as the default.
 //
-// "Popular searches" (`home-10/PopularSearchesTabGridSection.tsx`) is a genuinely 3rd distinct "Popular
+// "Pencarian populer" (`home-10/PopularSearchesTabGridSection.tsx`) is a genuinely 3rd distinct "Popular
 // Searches" shape on the site — a real per-tab static grid (not a swiper carousel like every other
 // variant) — see that file's own comment.
 //
-// "Compare Top Rated Vehicles" reuses `home-02/CompareTopRatedSection` with the same
+// "Bandingkan Unit Terbaik" reuses `home-02/CompareTopRatedSection` with the same
 // `card-box-style-7 style3`/`content style-2`/`<br>`-title pairs as home-09.html's own reuse, but its
 // own `bg-white` section (no `py-100`) and `mb-14` title-section (not `mb-12`).
 //
-// "Financing Calculator" reuses `home/FinancingCalculatorSection`'s `"outline"` variant with its own
+// "Simulasi Kredit" reuses `home/FinancingCalculatorSection`'s `"outline"` variant with its own
 // `bg-white` section (no `py-100`) and `max-w-628 ml-60` companion image (not `...move3` like
 // home-08/09's own reuse) — otherwise the same `mb-20`/`mb-8`/`mb-4` label overrides.
 //
-// "Clients Reviews" reuses `common/ClientsReviewsCarousel` with the shared
+// "Ulasan Pelanggan" reuses `common/ClientsReviewsCarousel` with the shared
 // `emilyBenjaminOliviaTestimonials` dataset, real `cardHref="/clients-reviews"` links, its own plain
 // `.swiper-testimonior` config (the base config, not home-09's own `-2` variant), and a `bg-white`
 // section (no `py-100`).
 //
-// "All Car" is the same real 3-in-one-section composition already established for home-04.html: the 4
+// "Semua Mobil" is the same real 3-in-one-section composition already established for home-04.html: the 4
 // icon-box carousel (`home-02/WhyChooseUsCarousel`, all-same `/listing-grid4-columns` hrefs — the
 // component's own default) + its promo banner (`rightCtaHref="/sell-your-car"`, the only override
 // needed — `leftTitleHref`/`rightTitleHref` already default to this page's own real values) +
@@ -168,7 +168,7 @@ export default function Home10() {
               brand: "TESLA",
               title: (
                 <>
-                  2024 Ford Mustang <br className="lg-hidden" /> Mach-E
+                  2024 Ford Mustang <br className="lg-hidden" /> Toyota Avanza
                 </>
               ),
               price: "$42.900,00",
@@ -180,7 +180,7 @@ export default function Home10() {
               brand: "Honda",
               title: (
                 <>
-                  2022 Jeep Grand <br className="lg-hidden" /> Cherokee Overland
+                  2022 Jeep Grand <br className="lg-hidden" /> Toyota Fortuner VRZ
                 </>
               ),
               price: "$44.900,00",
@@ -189,7 +189,7 @@ export default function Home10() {
               brand: "Camry",
               title: (
                 <>
-                  2022 Toyota 4Runner <br className="lg-hidden" /> Limited
+                  2022 Toyota 4Runner <br className="lg-hidden" /> Terbatas
                 </>
               ),
               price: "$42.900,00",

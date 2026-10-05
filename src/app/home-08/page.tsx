@@ -13,8 +13,8 @@ import NewsReviewsGridSection from "@/components/home-08/NewsReviewsGridSection"
 import { emilyBenjaminOliviaTestimonials } from "@/data/clientTestimonials";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Beranda Varian 8",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/home-08.html (5129 lines). Header reuses the base `header/Header` component
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 // image side by side (`page-title-style-6`), a plain `<p class="h4">` title instead of a heading tag,
 // and its own distinct filter-icon button — see that file's own comment.
 //
-// "Browse By Type" reuses `home-02/BrowseByTypeCardsSection`'s exact same 10-type dataset byte-for-byte
+// "Cari Berdasarkan Tipe" reuses `home-02/BrowseByTypeCardsSection`'s exact same 10-type dataset byte-for-byte
 // (confirmed via source diff) via 6 new props for its own `bg-primary py-80` dark/blur skin
 // (`sectionClassName`/`headingClassName`/`checkAllButtonClassName`/`checkAllIcon`/`cardClassName`/
 // `cardTitleColorClass`/`paginationVariant`) — retroactively fixed a missing icon on the "Check All Car
@@ -39,30 +39,30 @@ export const metadata: Metadata = {
 // default dark text would render at very low contrast. Fixed via the new `cardTitleColorClass="text-white"`
 // prop.
 //
-// "Popular searches" reuses `home-03/PopularSearchesCarousel`'s untabbed shape with its own real
+// "Pencarian populer" reuses `home-03/PopularSearchesCarousel`'s untabbed shape with its own real
 // `.swiper-card-style-2` class (byte-identical config to `.swiper-card`, confirmed via `swiper.js`) and
 // its own 10-slide id sequence, via new `slideIds`/`swiperClassName`/`paginationClass` props.
 //
-// "Compare Top Rated Vehicles" reuses `home-02/CompareTopRatedSection` with home-03/05/06/07's own
+// "Bandingkan Unit Terbaik" reuses `home-02/CompareTopRatedSection` with home-03/05/06/07's own
 // `.swiper-card-3` classes/breakpoints and all 3 known pairs (same call shape as home-06/07's own).
 //
-// "Used Cars by Budget" (`home-08/UsedCarsByBudgetCarouselSection.tsx`) is genuinely new: a real
+// "Mobil Bekas Sesuai Anggaran" (`home-08/UsedCarsByBudgetCarouselSection.tsx`) is genuinely new: a real
 // per-tab swiper of the dark `ListingCardDark` card (not home-05.html's own static grid of light
 // `ListingCard`s) — see that file's own comment.
 //
-// "Clients Reviews" reuses `common/ClientsReviewsCarousel` with the same shared
+// "Ulasan Pelanggan" reuses `common/ClientsReviewsCarousel` with the same shared
 // `emilyBenjaminOliviaTestimonials` dataset as home-05/06/07, real `cardHref="/clients-reviews"` links,
 // and its `children` slot rendering `common/SellBuyPromoBanner` (both cards here link to
 // `/sell-your-car` — `leftTitleHref` already defaults to that, `rightTitleHref`/`rightCtaHref` passed
 // explicitly — confirmed via source diff, a real, distinct per-page href combo from home-02/03/04/07's
 // own calls).
 //
-// "Financing Calculator" reuses `home/FinancingCalculatorSection`'s `variant="outline"` with 4 new
+// "Simulasi Kredit" reuses `home/FinancingCalculatorSection`'s `variant="outline"` with 4 new
 // override props (`outlineSectionClassName="background-light py-100"`, `outlineHeadingClassName=
 // "mb-20"`, `outlinePriceRateLabelClassName="mb-8"`, `outlineResultLabelClassName="mb-4"`) — a real,
 // confirmed 4th spacing combo distinct from home-06.html's own `"outline"` defaults.
 //
-// "News & reviews" (`home-08/NewsReviewsGridSection.tsx`) is genuinely new: a static 2×2 grid of
+// "Berita & Ulasan" (`home-08/NewsReviewsGridSection.tsx`) is genuinely new: a static 2×2 grid of
 // `.post-style-4` cards, not a swiper carousel like `blog-details/RelatedArticles.tsx`.
 //
 // Footer reused as-is.

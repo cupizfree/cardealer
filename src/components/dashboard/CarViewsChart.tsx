@@ -37,7 +37,7 @@ export default function CarViewsChart() {
   return (
     <div className="dashboard-box car-views-chart bg-white mb-30">
       <div className="car-views-chart__header">
-        <p className="h4 car-views-chart__title">Car Views</p>
+        <p className="h4 car-views-chart__title">Dilihat</p>
         <CoreDropdown
           defaultValue="6-month"
           options={[

@@ -5,7 +5,7 @@ import Image from "next/image";
 // grid-cols-2` layout, `image-effect-scale` hover wrapper) and `services-center/DownloadAppSection.tsx`
 // (its own standalone `bg-white py-100` section, same `grid-cols-2` shape): this is a `.cta-section
 // .background-be` (`.cta--content`/`.cta--image` siblings, plain `<img>` with no hover-scale wrapper)
-// nested inside the SAME `py-100 bg-white` "Clients Reviews" section as a trailing `tf-spacing`-
+// nested inside the SAME `py-100 bg-white` "Ulasan Pelanggan" section as a trailing `tf-spacing`-
 // separated block (confirmed via source diff — one section wraps both), rendered here via
 // `common/ClientsReviewsCarousel`'s existing `children` slot rather than forcing a redundant extra
 // `<section>`. Uses the `-primary` app-store/google-play icon variant (same as
@@ -13,7 +13,7 @@ import Image from "next/image";
 // uses. App-store/Google Play links are literal `href="#"` in source (UI_ONLY, no real deep links).
 //
 // home-09.html reuses this exact same copy/images but as its own genuinely STANDALONE `py-100 bg-white`
-// section (not nested inside "Clients Reviews", confirmed via source diff), with a real `.cta-section
+// section (not nested inside "Ulasan Pelanggan", confirmed via source diff), with a real `.cta-section
 // .style-2`/`.cta--content.style-2` modifier (not `.background-be`) and a real `image-effect-scale`
 // hover wrapper on `.cta--image` (`.background-be`'s own version has none) — exposed via `variant`/
 // `standalone` props rather than forking the component.
@@ -30,10 +30,9 @@ export default function DownloadAppCtaSection({
     <div className="container">
       <div className={`cta-section${isStyle2 ? " style-2" : " background-be"}`}>
         <div className={`cta--content wow fadeInUp${isStyle2 ? " style-2" : ""}`} data-wow-delay="0.1s">
-          <h2 className="mb-12">Find Your Perfect Used Car Anytime, Anywhere!</h2>
+          <h2 className="mb-12">Temukan Mobil Bekas Impian Anda, Kapan Saja!</h2>
           <p className="mb-32">
-            Experience hassle-free car shopping with our app. Browse, compare, and buy used cars wherever
-            you are – it&apos;s fast, simple, and convenient.
+            Belanja mobil tanpa ribet lewat aplikasi kami. Jelajahi, bandingkan, dan beli mobil bekas dari mana saja – cepat, simpel, dan praktis.
           </p>
           <div className="flex items-center gap-12">
             <a href="#">

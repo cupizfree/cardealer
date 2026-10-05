@@ -20,7 +20,7 @@ export default function SortDropdown({ sort, onChange }: { sort: SortOption; onC
 
   return (
     <div className="flex items-center h-full gap-8 justify-end">
-      <p className="md-hidden">Sort Vehicles by</p>
+      <p className="md-hidden">Urutkan Mobil berdasarkan</p>
       <div className={`core-dropdown${isOpen ? " active" : ""}`} ref={ref}>
         <button className="core-dropdown__button" type="button" onClick={() => setIsOpen((open) => !open)}>
           <span className="core-dropdown__selected">{SORT_LABELS[sort]}</span>

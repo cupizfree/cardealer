@@ -7,7 +7,7 @@ import ParallaxImage from "@/components/common/ParallaxImage";
 // full-bleed background pattern as sell-your-car.html's `GetInTouchBanner` — gets the same real
 // `simpleParallaxVanilla.umd.js` scroll effect, see `common/ParallaxImage.tsx`.
 //
-// "Schedule A Services" is a distinct form from the shared `SendInquiryForm` (extra Date/Brand/Model
+// "Jadwalkan Servis" is a distinct form from the shared `SendInquiryForm` (extra Date/Brand/Model
 // fields, different button text/label) — not a reuse candidate, source's own field ids
 // (`SendInquiryname`/`SendInquiryemail`/`SendInquiryphone`) coincidentally match `SendInquiryForm`'s but
 // the full field set differs, so this stays its own component. `type="submit"`-less button with no
@@ -20,29 +20,27 @@ export default function ContactScheduleSection() {
       <div className="container relative index-10">
         <div className="grid grid-cols-2 lg-grid-cols-1 gap-30">
           <div className="services-center-info">
-            <h2 className="mb-12 text-white">Contact Infomation</h2>
+            <h2 className="mb-12 text-white">Informasi Kontak</h2>
             <p className="mb-28 text-white h7 line-height-28 font-weight-500">
-              Get in touch with us for expert service and support. Whether you need routine maintenance,
-              urgent repairs, or professional guidance, our dedicated team is here to ensure your vehicle
-              stays in top condition.
+              Hubungi kami untuk layanan dan dukungan ahli. Baik Anda butuh perawatan rutin, perbaikan darurat, atau saran profesional, tim kami siap memastikan kendaraan Anda selalu prima.
             </p>
 
             <ul className="grid grid-cols-2 lg-grid-cols-1 gap-x-8 gap-y-16 mb-40">
               <li className="font-weight-600 flex items-start gap-12 text-white">
                 <Image src="/assets/icons/check-white.svg" alt="check" width={24} height={24} />
-                Expert Technicians
+                Teknisi Berpengalaman
               </li>
               <li className="font-weight-600 flex items-start gap-12 text-white">
                 <Image src="/assets/icons/check-white.svg" alt="check" width={24} height={24} />
-                Quick Turnaround Time
+                Pengerjaan Cepat
               </li>
               <li className="font-weight-600 flex items-start gap-12 text-white">
                 <Image src="/assets/icons/check-white.svg" alt="check" width={24} height={24} />
-                Affordable Pricing
+                Harga Terjangkau
               </li>
               <li className="font-weight-600 flex items-start gap-12 text-white">
                 <Image src="/assets/icons/check-white.svg" alt="check" width={24} height={24} />
-                Comprehensive Vehicle Care
+                Perawatan Mobil Menyeluruh
               </li>
             </ul>
 
@@ -54,7 +52,7 @@ export default function ContactScheduleSection() {
                   <Image src="/assets/icons/PhoneCall-2.svg" alt="phone" width={20} height={20} />
                 </div>
                 <div className="flex flex-col gap-4">
-                  <p className="text-sm text-muted">Contact Us</p>
+                  <p className="text-sm text-muted">Hubungi Kami</p>
                   <a href="tel:1-555-678-8888" className="text-sm text-white">1-555-678-8888</a>
                   <a href="tel:1-333-123-6666" className="text-sm text-white">1-333-123-6666</a>
                 </div>
@@ -65,19 +63,19 @@ export default function ContactScheduleSection() {
                   <Image src="/assets/icons/Alarm.svg" alt="phone" width={32} height={32} />
                 </div>
                 <div className="flex flex-col gap-4">
-                  <p className="text-sm text-muted">Working Time</p>
-                  <span className="text-sm text-white">Mon-Sat:8:00am - 18:00pm</span>
-                  <span className="text-sm text-white">Sun: Closed</span>
+                  <p className="text-sm text-muted">Jam Kerja</p>
+                  <span className="text-sm text-white">Sen-Sab: 08.00 - 18.00</span>
+                  <span className="text-sm text-white">Min: Tutup</span>
                 </div>
               </li>
             </ul>
           </div>
           <div className="bg-white radius-20 services-center-form">
-            <p className="h4 mb-16">Schedule A Services</p>
+            <p className="h4 mb-16">Jadwalkan Servis</p>
             <form action="#" className="send-inquiry" onSubmit={(event) => event.preventDefault()}>
               <div className="grid grid-cols-2 lg-grid-cols-1 gap-x-12 gap-y-24 mb-22">
                 <div>
-                  <p className="mb-8">Name</p>
+                  <p className="mb-8">Nama</p>
                   <input className="active input-large" id="SendInquiryname" name="SendInquiryname" type="text" defaultValue="Tony Nguyen" required />
                 </div>
                 <div>
@@ -85,20 +83,20 @@ export default function ContactScheduleSection() {
                   <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" defaultValue="themesflat@gmail.com" required />
                 </div>
                 <div>
-                  <p className="mb-8">Phone</p>
-                  <input placeholder="Phone (optional)" className="input-large" name="SendInquiryphone" id="SendInquiryphone" type="tel" />
+                  <p className="mb-8">Telepon</p>
+                  <input placeholder="Telepon (opsional)" className="input-large" name="SendInquiryphone" id="SendInquiryphone" type="tel" />
                 </div>
                 <div>
-                  <p className="mb-8">Date</p>
+                  <p className="mb-8">Tanggal</p>
                   <input className="input-large" id="SendInquirydate" name="SendInquirydate" type="date" defaultValue="2024-01-23" required />
                 </div>
 
                 <div>
-                  <p className="mb-8">Brand</p>
+                  <p className="mb-8">Merek</p>
                   <select className="select-style-2" name="SendInquirybrand" id="SendInquirybrand">
                     <option>Audi</option>
-                    <option>Audi 2</option>
-                    <option>Audi 3</option>
+                    <option>Honda Brio</option>
+                    <option>Suzuki Ertiga</option>
                   </select>
                 </div>
 
@@ -106,13 +104,13 @@ export default function ContactScheduleSection() {
                   <p className="mb-8">Model</p>
                   <select className="select-style-2" name="SendInquirymodel" id="SendInquirymodel">
                     <option>Model</option>
-                    <option>Model 2</option>
-                    <option>Model 3</option>
+                    <option>Honda Brio</option>
+                    <option>Suzuki Ertiga</option>
                   </select>
                 </div>
               </div>
               <button type="submit" className="btn btn-primary btn-large font-weight-600 w-full">
-                Schedule Services
+                Jadwalkan Servis
               </button>
             </form>
           </div>

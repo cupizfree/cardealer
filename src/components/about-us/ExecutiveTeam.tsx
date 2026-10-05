@@ -6,7 +6,7 @@ import { useModal } from "@/components/common/ModalProvider";
 import { TEAM_SOCIAL_LINKS } from "@/components/common/SocialIcons";
 
 // Migrated from about-us.html lines 738-1034. Every card's name links to the SAME `#TeamModal`
-// (source shows fixed "Bessie Cooper" content regardless of which card was clicked — see
+// (source shows fixed "Rina Kusumawati" content regardless of which card was clicked — see
 // TeamModal.tsx) — preserved verbatim, matching the identical precedent already established by
 // `CardCompareModal` (one static modal, many identical triggers).
 //
@@ -17,10 +17,10 @@ import { TEAM_SOCIAL_LINKS } from "@/components/common/SocialIcons";
 // existent static route (see COMPONENT_MAP.md #37's follow-up) — a real destination instead of a dead
 // link, not a new invented fact (`slug` here is just each name's already-established canonical slug).
 const teamMembers = [
-  { name: "Robert Fox", role: "President and Chief Executive Officer", photo: "/assets/images/pages/sale-agent-1.jpg", slug: "robert-fox" },
-  { name: "Bessie Cooper", role: "Chief Operating Officer", photo: "/assets/images/pages/sale-agent-2.jpg", slug: "bessie-cooper" },
-  { name: "Brooklyn Simmons", role: "Chief Revenue Officer", photo: "/assets/images/pages/sale-agent-3.jpg", slug: "brooklyn-simmons" },
-  { name: "Kristin Watson", role: "Chief Financial Officer", photo: "/assets/images/pages/sale-agent-4.jpg", slug: "kristin-watson" },
+  { name: "Bagas Prasetyo", role: "Pendiri & Pemilik Showroom", photo: "/assets/images/pages/sale-agent-1.jpg", slug: "bagas-prasetyo" },
+  { name: "Rina Kusumawati", role: "Kepala Operasional", photo: "/assets/images/pages/sale-agent-2.jpg", slug: "rina-kusumawati" },
+  { name: "Dimas Nugroho", role: "Kepala Penjualan", photo: "/assets/images/pages/sale-agent-3.jpg", slug: "dimas-nugroho" },
+  { name: "Ayu Lestari", role: "Kepala Keuangan", photo: "/assets/images/pages/sale-agent-4.jpg", slug: "ayu-lestari" },
 ];
 
 export default function ExecutiveTeam() {
@@ -28,7 +28,7 @@ export default function ExecutiveTeam() {
 
   return (
     <section>
-      <h2 className="mb-40 text-center">Executive Team</h2>
+      <h2 className="mb-40 text-center">Tim Inti</h2>
       <div className="container">
         <div className="grid grid-cols-4 sm-grid-cols-1 lg-grid-cols-2 gap-30 xl-gap-16">
           {teamMembers.map((member) => (

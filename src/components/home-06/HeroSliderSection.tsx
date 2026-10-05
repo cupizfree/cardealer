@@ -78,7 +78,7 @@ export default function HeroSliderSection() {
         >
           {BANNERS.map((file) => (
             <SwiperSlide key={file}>
-              <h1 className="search-cars__title effect-item effect-left delay-3">Mercedes-Benz GLC Coupe 2024</h1>
+              <h1 className="search-cars__title effect-item effect-left delay-3">Toyota Fortuner VRZ 2021</h1>
               <p className="h3 sub-title text-white mb-36 capitalize effect-item effect-left delay-4">
                 $490/Month for 24 mont <span className="h7 font-weight-500 text-white">(0% APR Representativ)</span>
               </p>
@@ -86,7 +86,7 @@ export default function HeroSliderSection() {
                 href="/listing-grid4-columns"
                 className="btn btn-white text-primary btn-large-2 font-weight-600 max-w-min capitalize effect-item effect-left delay-5"
               >
-                Discovery Now
+                Lihat Unit
               </Link>
             </SwiperSlide>
           ))}

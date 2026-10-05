@@ -17,7 +17,7 @@ export default function NewsTipsSection() {
         <div className="mb-40">
           <h2 className="capitalize mb-12">News &amp; tips when financing a car</h2>
           <p className="text-secondary h7 line-height-28">
-            Get the latest insights, expert tips, and updates to stay informed and inspired.
+            Dapatkan wawasan terbaru, tips ahli, dan kabar terkini agar tetap update.
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export default function NewsTipsSection() {
               </div>
               <div className="content">
                 <div className="flex gap-12 justify-start mb-12">
-                  <span className="text-sm">by Admin</span>
+                  <span className="text-sm">oleh Admin</span>
                   <span className="text-sm">{post.date}</span>
                   <span className="text-sm text-highlight uppercase text-underline">{post.category}</span>
                 </div>

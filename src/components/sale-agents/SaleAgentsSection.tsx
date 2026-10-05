@@ -50,7 +50,7 @@ export default function SaleAgentsSection() {
   return (
     <section className="pb-100">
       <div className="container">
-        <h2>Sale Agents</h2>
+        <h2>Tim Sales</h2>
       </div>
       <div className="tf-spacing-style3" />
 

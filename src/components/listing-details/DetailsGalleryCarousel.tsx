@@ -61,11 +61,11 @@ export default function DetailsGalleryCarousel({ images }: { images: ListingGall
                 <div className="listing-details-item--content">
                   <a className="listing-details-item--button" href="#" onClick={(event) => event.preventDefault()}>
                     <Image src="/assets/icons/playcircle.svg" alt="play" width={20} height={20} />
-                    Play Video
+                    Putar Video
                   </a>
                   <a className="listing-details-item--button" href="#" onClick={(event) => event.preventDefault()}>
                     <Image src="/assets/icons/view-all-photo.svg" alt="view" width={20} height={20} />
-                    View All Photo
+                    Lihat Semua Foto
                   </a>
                 </div>
               </div>

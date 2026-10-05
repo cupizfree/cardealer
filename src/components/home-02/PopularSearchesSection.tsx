@@ -7,10 +7,10 @@ import ListingCard from "@/components/listing/ListingCard";
 import { allListings } from "@/data/listings";
 import { DARK_CAR_TYPE_ICONS } from "@/components/home/carTypeIcons";
 
-// Migrated from ../aurexo/home-02.html lines 1381-3409 (`.flat-tabs`, "Popular Searches"). 7 type tabs,
+// Migrated from ../aurexo/home-02.html lines 1381-3409 (`.flat-tabs`, "Pencarian Populer"). 7 type tabs,
 // each its own swiper of `card-box-style-1` cards. Every title across all 7 tabs already matches an
 // existing canonical listing (ids 1-4 only, confirmed via full source read) — no new data needed, same
-// conclusion as index.html's own "New Cars"/"Used Cars" tabs. Tab 2 ("Sedan") is the source's own
+// conclusion as index.html's own "Mobil Baru"/"Mobil Bekas" tabs. Tab 2 ("Sedan") is the source's own
 // default-active tab.
 //
 // Retroactive fix: this tab's `.swiper-card` config had wrong breakpoints (`575/767/1280` → `2/3/4`)
@@ -19,23 +19,23 @@ import { DARK_CAR_TYPE_ICONS } from "@/components/home/carTypeIcons";
 // `slidesPerGroup`), same copy-paste error found and fixed identically in
 // `home-03/PopularSearchesCarousel.tsx` and `home/TrendingSearchesSection.tsx`.
 const TABS: { label: string; ids: number[] }[] = [
-  { label: "Electric", ids: [2, 3, 4] },
+  { label: "Listrik", ids: [2, 3, 4] },
   { label: "Sedan", ids: [1, 2, 3, 4, 1, 2] },
   { label: "SUV", ids: [1, 2] },
-  { label: "Pickup Truck", ids: [2, 3, 4] },
-  { label: "Luxury", ids: [2, 3, 4] },
+  { label: "Pikap", ids: [2, 3, 4] },
+  { label: "Mewah", ids: [2, 3, 4] },
   { label: "Hatchback", ids: [1, 2] },
   { label: "Crossover", ids: [2, 3, 4] },
 ];
 
 // home-09.html reuses this exact same 7-tab shape (same dark tab-bar icons, same centered heading
-// wrapper) via `heading="New Vehicles"` and its own `background-light radius-40` section skin — 6 of
+// wrapper) via `heading="Mobil Baru"` and its own `background-light radius-40` section skin — 6 of
 // the 7 tabs' ids match byte-for-byte (Electric/SUV/Pickup Truck/Luxury/Hatchback/Crossover, confirmed
 // via full title read); only "Sedan" differs (`[1,2,3,4]`, not this component's own `[1,2,3,4,1,2]`) —
 // exposed via a `tabs` override prop rather than forking the component. It also has NO bullet
 // pagination at all (confirmed via grep — genuinely absent), exposed via `showPagination`.
 export default function PopularSearchesSection({
-  heading = "Popular Searches",
+  heading = "Pencarian Populer",
   sectionClassName = "py-100 flat-tabs",
   tabs = TABS,
   showPagination = true,

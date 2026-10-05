@@ -32,7 +32,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const listing = allListings.find((l) => l.slug === slug);
   return {
-    title: listing ? `${listing.title} | Aurexo` : "Listing Details | Aurexo",
+    title: listing ? `${listing.title}` : "Detail Unit",
     description: listing ? `${listing.title} — ${listing.price}` : undefined,
   };
 }
@@ -45,7 +45,7 @@ export async function generateMetadata({
 // (1) gallery is a 1-main + 2x2-thumbnail grid with a Fancybox-style lightbox instead of a Swiper
 // carousel — genuinely different DOM, hence the separate `DetailsGalleryGrid` component; (2) Car
 // Overview is a single flat icon+value list (no "Label:" text) instead of the 2-column labeled list;
-// (3) the default-active feature tab is "Interior" instead of "Exterior", and the "add a review"
+// (3) the default-active feature tab is "Interior" instead of "Exterior", and the "tambah ulasan"
 // section only ever shows the Login-gated button (no visible form fields), unlike
 // listing-details-1.html which shows both. (2) and (3) are handled as props on the SAME
 // `ListingDetailsContent` — see that component's header comment — rather than a duplicated file.

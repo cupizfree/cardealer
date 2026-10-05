@@ -8,10 +8,9 @@ export default function DownloadAppSection() {
       <div className="container">
         <div className="grid grid-cols-2 xl-grid-cols-2 lg-grid-cols-1 gap-30">
           <div className="flex flex-col justify-center pr-100 wow fadeInUp" data-wow-delay="0.1s">
-            <h2 className="text-white mb-12">Find Your Perfect Used Car Anytime, Anywhere!</h2>
+            <h2 className="text-white mb-12">Temukan Mobil Bekas Impian Anda, Kapan Saja!</h2>
             <p className="text-white mb-40">
-              Experience hassle-free car shopping with our app. Browse, compare, and buy used cars wherever you
-              are – it’s fast, simple, and convenient.
+              Belanja mobil tanpa ribet lewat aplikasi kami. Jelajahi, bandingkan, dan beli mobil bekas dari mana saja – cepat, simpel, dan praktis.
             </p>
             <div className="flex items-center gap-12">
               <a href="#">

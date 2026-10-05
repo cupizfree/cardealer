@@ -13,7 +13,7 @@ export default function RelatedListings({ listings }: { listings: Listing[] }) {
   return (
     <section className="py-100 background-light">
       <div className="container">
-        <p className="h3 mb-40 capitalize">You might also like</p>
+        <p className="h3 mb-40 capitalize">Anda mungkin juga suka</p>
         <Swiper
           modules={[Pagination]}
           spaceBetween={30}

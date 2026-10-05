@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ChangePasswordForm from "@/components/change-password/ChangePasswordForm";
 
 export const metadata: Metadata = {
-  title: "Change Password | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Ubah Kata Sandi",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/change-password.html. Last page of the Dashboard/account family. Uses the
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ChangePasswordPage() {
   return (
     <>
-      <p className="h3 mb-40">Change Password</p>
+      <p className="h3 mb-40">Ubah Kata Sandi</p>
       <ChangePasswordForm />
     </>
   );

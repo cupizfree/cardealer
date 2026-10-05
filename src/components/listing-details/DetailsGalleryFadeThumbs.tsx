@@ -176,7 +176,7 @@ export default function DetailsGalleryFadeThumbs({ images }: { images: ListingGa
         >
           <button
             type="button"
-            aria-label="Close"
+            aria-label="Tutup"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex(null);
@@ -200,7 +200,7 @@ export default function DetailsGalleryFadeThumbs({ images }: { images: ListingGa
           </button>
           <button
             type="button"
-            aria-label="Previous photo"
+            aria-label="Foto sebelumnya"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex((prev) => (prev === null ? prev : (prev - 1 + images.length) % images.length));
@@ -231,7 +231,7 @@ export default function DetailsGalleryFadeThumbs({ images }: { images: ListingGa
           </div>
           <button
             type="button"
-            aria-label="Next photo"
+            aria-label="Foto berikutnya"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex((prev) => (prev === null ? prev : (prev + 1) % images.length));

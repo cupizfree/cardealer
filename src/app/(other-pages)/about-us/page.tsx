@@ -11,8 +11,8 @@ import Brands from "@/components/about-us/Brands";
 import NewsletterModal from "@/components/common/NewsletterModal";
 
 export const metadata: Metadata = {
-  title: "About Us | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Tentang Kami",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/about-us.html. First page in the new `(other-pages)` route group (per
@@ -29,13 +29,13 @@ export default function AboutUsPage() {
           <div className="flex items-center justify-between">
             <ul className="breadcrumb">
               <li>
-                <Link href="/">Home</Link>
+                <Link href="/">Beranda</Link>
               </li>
               <li>
                 <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
               </li>
               <li>
-                <span>About Us</span>
+                <span>Tentang Kami</span>
               </li>
             </ul>
           </div>

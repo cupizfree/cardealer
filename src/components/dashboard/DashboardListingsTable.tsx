@@ -9,13 +9,13 @@ import CoreDropdown from "@/components/common/CoreDropdown";
 // Migrated from ../aurexo/dashboard.html lines 656-870, also reused verbatim by my-listings.html (byte-
 // identical search/sort/table/pagination markup, confirmed via source diff — the only differences are
 // the page's own real listing rows and whether the box has its own "All Listing" heading: dashboard.html
-// has one, my-listings.html doesn't since its page-level `<p class="h3">My Listings</p>` already serves
+// has one, my-listings.html doesn't since its page-level `<p class="h3">Iklan Saya</p>` already serves
 // as the title, exposed as an optional `title` prop). "Car" links resolve to each row's real matching
 // `allListings` slug (all titles across both pages already exist there) rather than the dead
 // `listing-details-1.html` every row literally uses in source. Every row shows the identical literal
-// subtitle ("How the adventure ended will...") and price ($44.900,00), and — a real, disclosed source
+// subtitle ("Bagaimana akhir petualangannya akan...") and price ($44.900,00), and — a real, disclosed source
 // content bug — a brand that frequently doesn't match the actual car, preserved verbatim rather than
-// corrected. "Edit Listing" links to `/add-listings` (not yet migrated, matching source's real href).
+// corrected. "Ubah Iklan" links to `/add-listings` (not yet migrated, matching source's real href).
 export type DashboardListing = {
   id: number;
   slug: string;
@@ -58,7 +58,7 @@ export default function DashboardListingsTable({
       <div className="flex justify-between items-center mb-20 gap-20 flex-wrap">
         <form action="#" className="search-form-listing" onSubmit={(event) => event.preventDefault()}>
           <input type="text" name="searchListing" id="searchListing" className="form-control" placeholder="Search by keyword" />
-          <button type="submit" aria-label="Search">
+          <button type="submit" aria-label="Cari">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M17.9438 17.0575L14.0321 13.1466C15.1659 11.7854 15.7312 10.0395 15.6106 8.27214C15.4899 6.50475 14.6925 4.85192 13.3843 3.65748C12.076 2.46304 10.3576 1.81895 8.58657 1.8592C6.81553 1.89945 5.12818 2.62094 3.87554 3.87358C2.62289 5.12622 1.9014 6.81357 1.86115 8.58462C1.8209 10.3557 2.46499 12.074 3.65943 13.3823C4.85387 14.6906 6.5067 15.488 8.27409 15.6086C10.0415 15.7293 11.7874 15.1639 13.1485 14.0302L17.0595 17.9419C17.1175 17.9999 17.1865 18.046 17.2623 18.0774C17.3382 18.1089 17.4195 18.125 17.5016 18.125C17.5838 18.125 17.6651 18.1089 17.741 18.0774C17.8168 18.046 17.8858 17.9999 17.9438 17.9419C18.0019 17.8838 18.048 17.8149 18.0794 17.739C18.1108 17.6631 18.127 17.5818 18.127 17.4997C18.127 17.4176 18.1108 17.3363 18.0794 17.2604C18.048 17.1845 18.0019 17.1156 17.9438 17.0575ZM3.12664 8.74969C3.12664 7.63717 3.45654 6.54963 4.07463 5.62461C4.69271 4.69958 5.57121 3.97861 6.59905 3.55287C7.62688 3.12712 8.75788 3.01573 9.84903 3.23277C10.9402 3.44981 11.9424 3.98554 12.7291 4.77221C13.5158 5.55888 14.0515 6.56116 14.2686 7.65231C14.4856 8.74345 14.3742 9.87445 13.9485 10.9023C13.5227 11.9301 12.8018 12.8086 11.8767 13.4267C10.9517 14.0448 9.86416 14.3747 8.75164 14.3747C7.26031 14.373 5.83053 13.7799 4.77599 12.7253C3.72146 11.6708 3.1283 10.241 3.12664 8.74969Z"
@@ -69,17 +69,17 @@ export default function DashboardListingsTable({
         </form>
 
         <div className="flex items-center gap-8">
-          <p className="text-secondary">Sort by:</p>
+          <p className="text-secondary">Urutkan:</p>
           <CoreDropdown
             defaultValue="lowest-price"
             options={[
-              { value: "best-match", label: "Best Match" },
-              { value: "lowest-price", label: "Lowest Price" },
-              { value: "highest-price", label: "Highest Price" },
-              { value: "lowest-mileage", label: "Lowest Mileage" },
-              { value: "highest-mileage", label: "Highest Mileage" },
+              { value: "best-match", label: "Paling Sesuai" },
+              { value: "lowest-price", label: "Harga Terendah" },
+              { value: "highest-price", label: "Harga Tertinggi" },
+              { value: "lowest-mileage", label: "Jarak Terendah" },
+              { value: "highest-mileage", label: "Jarak Tertinggi" },
               { value: "nearest-location", label: "Nearest" },
-              { value: "best-deal", label: "Best Deal" },
+              { value: "best-deal", label: "Penawaran Terbaik" },
             ]}
           />
         </div>
@@ -88,12 +88,12 @@ export default function DashboardListingsTable({
       {pageListings.length > 0 ? (
         <div className="cart-wrapper">
           <div className="cart-header">
-            <div className="font-weight-600">Car</div>
-            <div className="font-weight-600">Brand</div>
-            <div className="font-weight-600">Year</div>
-            <div className="font-weight-600">Transmission</div>
-            <div className="font-weight-600">FuelType</div>
-            <div className="font-weight-600">Action</div>
+            <div className="font-weight-600">Mobil</div>
+            <div className="font-weight-600">Merek</div>
+            <div className="font-weight-600">Tahun</div>
+            <div className="font-weight-600">Transmisi</div>
+            <div className="font-weight-600">Bahan Bakar</div>
+            <div className="font-weight-600">Aksi</div>
           </div>
 
           <div className="cart-items">
@@ -105,7 +105,7 @@ export default function DashboardListingsTable({
                   </div>
                   <div className="cart-item__name">
                     <p className="h4 clamp-1 clamp mb-8">{listing.title}</p>
-                    <p className="clamp-1 clamp text-secondary mb-12">How the adventure ended will...</p>
+                    <p className="clamp-1 clamp text-secondary mb-12">Bagaimana akhir petualangannya akan...</p>
                     <p className="h5">$44.900,00</p>
                   </div>
                 </Link>
@@ -129,7 +129,7 @@ export default function DashboardListingsTable({
                         fill="#1C1C1C"
                       />
                     </svg>
-                    <p className="tooltip">Edit Listing</p>
+                    <p className="tooltip">Ubah Iklan</p>
                   </Link>
                   <div className="hover-fill-white cart-item__remove action" onClick={() => handleRemove(listing.id)}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +138,7 @@ export default function DashboardListingsTable({
                         fill="#1C1C1C"
                       />
                     </svg>
-                    <p className="tooltip">Delete Listing</p>
+                    <p className="tooltip">Hapus Iklan</p>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default function DashboardListingsTable({
           </div>
         </div>
       ) : (
-        <p className="text-secondary">You have no listings yet.</p>
+        <p className="text-secondary">Anda belum punya iklan.</p>
       )}
     </div>
   );

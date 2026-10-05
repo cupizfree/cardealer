@@ -9,7 +9,7 @@ import { allListings } from "@/data/listings";
 
 // Migrated from ../aurexo/index.html lines 1107-2307 (`.flat-tabs`). Both tabs' card sets exactly
 // match existing canonical listings (ids 1-8, confirmed via full source title/spec/price read — the
-// "Used Cars" tab is a literal repeat of the first 6 "New Cars" entries), so this reuses
+// "Mobil Bekas" tab is a literal repeat of the first 6 "Mobil Baru" entries), so this reuses
 // `ListingCard`/`allListings` directly rather than any page-local data. Real tab switch — same
 // `content-tab > content-inner.active` pattern already used by `BlogGridStyle2Content.tsx`.
 const NEW_CAR_IDS = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -25,17 +25,17 @@ export default function NewCarsSection() {
       <div className="title-section mb-30 gap-8 wow fadeInUp" data-wow-delay="0.1s">
         <ul className="menu-tab menu-tab-style2 text-white gap-40 md-gap-12">
           <li className={activeTab === "new" ? "active" : ""} onClick={() => setActiveTab("new")}>
-            <h2 className="text">New Cars</h2>
+            <h2 className="text">Mobil Baru</h2>
           </li>
           <li className={activeTab === "used" ? "active" : ""} onClick={() => setActiveTab("used")}>
-            <h2 className="text">Used Cars</h2>
+            <h2 className="text">Mobil Bekas</h2>
           </li>
         </ul>
         <Link
           href="/listing-grid4-columns"
           className="btn btn-line-style-2 effect-line-primary hover-fill-white effect-line-primary btn-large"
         >
-          View All
+          Lihat Semua
         </Link>
       </div>
 

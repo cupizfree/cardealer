@@ -6,7 +6,7 @@ import type { FaqItem } from "@/components/common/FaqAccordion";
 export type FaqSection = { heading: string; items: FaqItem[] };
 
 // Migrated from ../aurexo/faqs.html lines 482-689. This page has 3 separate `.flat-accordion` groups
-// ("How To Buy?" / "Exchanges & Returns" / "Refund Questions"), unlike every other page that's used
+// ("Cara Membeli?" / "Exchanges & Returns" / "Refund Questions"), unlike every other page that's used
 // `FaqAccordion` so far (calculator/sell-your-car/financing), which each only ever have ONE group.
 //
 // Verified by testing the real static source HTML directly (not assumed from reading the JS): the
@@ -14,10 +14,10 @@ export type FaqSection = { heading: string; items: FaqItem[] };
 // group — `app.js`'s real handler (see `FaqAccordion`'s own header comment) selects
 // `$('.flat-accordion .flat-toggle')` / `$('.flat-accordion .toggle-content')` unqualified by which
 // specific `.flat-accordion` the clicked title belongs to, so opening a question in "Exchanges &
-// Returns" actually closes whatever was open in "How To Buy?" too. Confirmed directly: clicking
-// "Exchanges & Returns"'s first question closed "How To Buy?"'s (initially-open) first question.
+// Returns" actually closes whatever was open in "Cara Membeli?" too. Confirmed directly: clicking
+// "Exchanges & Returns"'s first question closed "Cara Membeli?"'s (initially-open) first question.
 // Also confirmed only ONE item across the whole page starts open (this page's very first question,
-// "Steps to purchase a car from our dealership?") — the other two groups' own first items do NOT start
+// "Langkah membeli mobil dari showroom kami?") — the other two groups' own first items do NOT start
 // active in source's markup, unlike an initial assumption that each group would have its own default-
 // open item independently.
 //

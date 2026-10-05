@@ -6,7 +6,7 @@ import PasswordInput from "@/components/common/PasswordInput";
 // literal value "themesflat@2026" (confirmed via source read, not a transcription shortcut), and the
 // email field's own value has a literal trailing "|" character ("themesflat@gmail.com|") — both real,
 // disclosed source content quirks, preserved verbatim. Confirmed no page-specific script beyond the
-// shared dashboard-sidebar toggle (already handled by `(dashboard)/layout.tsx`) — "Change Password" is
+// shared dashboard-sidebar toggle (already handled by `(dashboard)/layout.tsx`) — "Ubah Kata Sandi" is
 // UI_ONLY (no real validation anywhere, e.g. checking New/Retype match). Each password field's real
 // show/hide eye-icon toggle is `PasswordInput` — see that component's own comment for why this was a
 // genuine, previously-unwired site-wide gap found while migrating this page.
@@ -22,22 +22,22 @@ export default function ChangePasswordForm() {
 
           <label htmlFor="OldPassword">
             <span className="mb-8 flex font-weight-600">Old Password:*</span>
-            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="OldPassword" name="OldPassword" placeholder="Password" required />
+            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="OldPassword" name="OldPassword" placeholder="Kata Sandi" required />
           </label>
 
           <label htmlFor="NewPassword">
             <span className="mb-8 flex font-weight-600">New password:*</span>
-            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="NewPassword" name="NewPassword" placeholder="Password" required />
+            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="NewPassword" name="NewPassword" placeholder="Kata Sandi" required />
           </label>
 
           <label htmlFor="RetypeNewPassword">
             <span className="mb-8 flex font-weight-600">Retype new password:*</span>
-            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="RetypeNewPassword" name="RetypeNewPassword" placeholder="Password" required />
+            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="RetypeNewPassword" name="RetypeNewPassword" placeholder="Kata Sandi" required />
           </label>
 
           <div className="flex">
             <button type="submit" className="btn btn-primary btn-large-3 font-weight-600">
-              Change Password
+              Ubah Kata Sandi
             </button>
           </div>
         </div>

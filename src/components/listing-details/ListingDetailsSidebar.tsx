@@ -39,23 +39,23 @@ export default function ListingDetailsSidebar({
           <div className="overflow-x-auto mb-15">
             <ul className="menu-tab menu-tab-style5 grid-cols-2">
               <li className={tab === "cash" ? "active" : undefined} onClick={() => setTab("cash")}>
-                Cash
+                Tunai
               </li>
               <li className={tab === "finance" ? "active" : undefined} onClick={() => setTab("finance")}>
-                Finance
+                Kredit
               </li>
             </ul>
           </div>
 
           <div className="content-tab">
             <div className="content-inner active">
-              <p className="h5 mb-4">Price:</p>
+              <p className="h5 mb-4">Harga:</p>
               <p className="h4 mb-4">{price}</p>
-              <p className="text-secondary mb-16">List price w/o taxes, fees, and accessories</p>
+              <p className="text-secondary mb-16">Harga tanpa pajak, biaya, dan aksesori</p>
               <p className="flex items-center gap-8">
                 <Image src="/assets/icons/Info.svg" alt="info" width={16} height={16} />
                 <a href="#" className="text-underline text-highlight">
-                  Vehicle in the VAT system
+                  Kendaraan dalam sistem PPN
                 </a>
               </p>
             </div>
@@ -65,18 +65,18 @@ export default function ListingDetailsSidebar({
 
       {overview && (
         <div className="listing-details--sidebar-box mb-40">
-          <p className="h5 mb-4 capitalize">Car Overview</p>
+          <p className="h5 mb-4 capitalize">Ringkasan Mobil</p>
           <ul className="car-overview-list-style2">
-            <SidebarOverviewRow icon="icon-gauge.svg" label="Mileage:" value={overview.mileage} />
+            <SidebarOverviewRow icon="icon-gauge.svg" label="Jarak Tempuh:" value={overview.mileage} />
             <SidebarOverviewRow icon="calendar.svg" label="Years:" value={overview.year} />
-            <SidebarOverviewRow icon="gaspump.svg" label="Fuel:" value={overview.fuel} />
-            <SidebarOverviewRow icon="palette.svg" label="Color:" value={overview.color} />
+            <SidebarOverviewRow icon="gaspump.svg" label="Bahan Bakar:" value={overview.fuel} />
+            <SidebarOverviewRow icon="palette.svg" label="Warna:" value={overview.color} />
             <SidebarOverviewRow icon="MapPin.svg" label="Location:" value={overview.location} />
             <SidebarOverviewRow icon="Seatbelt.svg" label="Interior:" value={overview.interior} />
             <SidebarOverviewRow icon="Frame.svg" label="Engine:" value={overview.engine} />
-            <SidebarOverviewRow icon="transmission-2.svg" label="Transmission:" value={overview.transmission} />
+            <SidebarOverviewRow icon="transmission-2.svg" label="Transmisi:" value={overview.transmission} />
             <SidebarOverviewRow icon="Barcode.svg" label="VIN:" value={overview.vin} />
-            <SidebarOverviewRow icon="QrCode.svg" label="Stock Number:" value={overview.stockNumber} />
+            <SidebarOverviewRow icon="QrCode.svg" label="Nomor Stok:" value={overview.stockNumber} />
           </ul>
         </div>
       )}
@@ -92,7 +92,7 @@ export default function ListingDetailsSidebar({
               {dealer.verified && (
                 <div className="verify">
                   <Image src="/assets/icons/SealCheck.svg" alt="verified" width={16} height={16} />
-                  <p className="text-highlight text-sm">Verified Dealer</p>
+                  <p className="text-highlight text-sm">Showroom Terverifikasi</p>
                 </div>
               )}
             </div>
@@ -106,7 +106,7 @@ export default function ListingDetailsSidebar({
               <div className="flex flex-col gap-4">
                 <a href="#">{dealer.address}</a>
                 <a href="#" className="text-underline text-highlight text-sm">
-                  Get Directions
+                  Petunjuk Arah
                 </a>
               </div>
             </li>
@@ -129,14 +129,14 @@ export default function ListingDetailsSidebar({
           {/* /dealer-details is now a per-dealer [slug] route (see COMPONENT_MAP.md's dealer-details
               entry) — links to a representative real dealer, same pattern as the "Listing Details 1-6"/
               "Sale Agents Detail" nav items using a specific real slug instead of a bare route. */}
-          <Link href="/dealer-details/dynamic-drive-garage" className="btn btn-medium btn-primary-3 font-weight-600 mb-12 gap-5">
+          <Link href="/dealer-details/marf-showroom-pusat" className="btn btn-medium btn-primary-3 font-weight-600 mb-12 gap-5">
             <Image src="/assets/icons/PhoneCall-2.svg" alt="phone" width={20} height={20} />
-            Call To Dealer
+            Telepon Showroom
           </Link>
 
           <a href="#" className="btn btn-medium btn-primary-4 font-weight-600 gap-5">
             <Image src="/assets/icons/ChatCircleDots.svg" alt="phone" width={20} height={20} />
-            Chat via WhatsApp
+            Chat WhatsApp
           </a>
         </div>
       </div>

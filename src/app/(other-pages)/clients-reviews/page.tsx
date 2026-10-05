@@ -6,11 +6,11 @@ import Footer from "@/components/footer/Footer";
 import ClientsReviewsSection from "@/components/clients-reviews/ClientsReviewsSection";
 
 export const metadata: Metadata = {
-  title: "Clients Reviews | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Ulasan Pelanggan",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-// Migrated from ../aurexo/clients-reviews.html. Source's breadcrumb "Pages" crumb is a plain `<span>`
+// Migrated from ../aurexo/clients-reviews.html. Source's breadcrumb "Layanan" crumb is a plain `<span>`
 // here (not a link) — same as sell-your-car.html's breadcrumb, confirmed via direct source read.
 export default function ClientsReviewsPage() {
   return (
@@ -21,19 +21,19 @@ export default function ClientsReviewsPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Pages</span>
+              <span>Layanan</span>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Clients Reviews</span>
+              <span>Ulasan Pelanggan</span>
             </li>
           </ul>
         </div>

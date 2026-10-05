@@ -24,16 +24,16 @@ export default function NotFound() {
 
           <div>
             <div className="content">
-              <p className="title mb-55">oops!</p>
+              <p className="title mb-55">Aduh!</p>
 
-              <h2 className="mb-12">Something is Missing....</h2>
+              <h2 className="mb-12">Ada yang Hilang....</h2>
               <p className="mb-24">
-                The page you are looking for cannot be found. take a break before trying again
+                Halaman yang Anda cari tidak ditemukan. Istirahat sejenak, lalu coba lagi.
               </p>
 
               <div className="flex">
                 <Link href="/" className="btn btn-primary btn-large font-weight-600">
-                  Back To Homepage
+                  Kembali ke Beranda
                 </Link>
               </div>
             </div>

@@ -106,16 +106,16 @@ export default function HeroSearchSliderSection() {
             {BANNERS.map((file) => (
               <SwiperSlide key={file}>
                 <h1 className="search-cars__title text-center effect-item effect-up delay-3">
-                  Browse, Compare, Drive <br className="lg-hide" /> Find Your Car!
+                  Cari, Bandingkan, Bawa Pulang <br className="lg-hide" /> Temukan Mobil Anda!
                 </h1>
                 <p className="h7 text-white mb-36 text-center effect-item effect-up delay-4">
-                  Discover the perfect car for you with a wide selection at great prices.
+                  Temukan mobil yang tepat untuk Anda dari pilihan luas dengan harga terbaik.
                 </p>
                 <Link
                   href="/listing-grid4-columns"
                   className="btn btn-white text-primary btn-large-2 font-weight-600 max-w-min capitalize mx-auto effect-item effect-up delay-5"
                 >
-                  Discovery Now
+                  Lihat Unit
                 </Link>
               </SwiperSlide>
             ))}
@@ -125,13 +125,13 @@ export default function HeroSearchSliderSection() {
             <div className="overflow-x-auto">
               <ul className="menu-tab menu-tab-style1 text-white margin-auto">
                 <li className={activeTab === "all" ? "active" : ""} onClick={() => setActiveTab("all")}>
-                  <span className="text-white font-weight-600">All Car</span>
+                  <span className="text-white font-weight-600">Semua Mobil</span>
                 </li>
                 <li className={activeTab === "new" ? "active" : ""} onClick={() => setActiveTab("new")}>
-                  <span className="text-white font-weight-600">New Car</span>
+                  <span className="text-white font-weight-600">Mobil Baru</span>
                 </li>
                 <li className={activeTab === "used" ? "active" : ""} onClick={() => setActiveTab("used")}>
-                  <span className="text-white font-weight-600">Used Car</span>
+                  <span className="text-white font-weight-600">Mobil Bekas</span>
                 </li>
               </ul>
             </div>
@@ -140,9 +140,9 @@ export default function HeroSearchSliderSection() {
           <div className="search-cars__filters">
             <CheckboxDropdown
               name="brand"
-              label="Select Brand"
+              label="Pilih Merek"
               toggleId="Home05BrandSelectToggle"
-              defaultText="All Brand"
+              defaultText="Semua Merek"
               options={["Audi", "Chevrolet", "Hyundai", "Mustang"]}
               isOpen={openDropdown === "brand"}
               onToggleOpen={() => toggleDropdown("brand")}
@@ -150,19 +150,19 @@ export default function HeroSearchSliderSection() {
             />
             <CheckboxDropdown
               name="model"
-              label="Select Model"
+              label="Pilih Model"
               toggleId="Home05ModelSelectToggle"
-              defaultText="All Model"
-              options={["Model 1", "Model 2"]}
+              defaultText="Semua Model"
+              options={["Model 1", "Honda Brio"]}
               isOpen={openDropdown === "model"}
               onToggleOpen={() => toggleDropdown("model")}
               layout="bar"
             />
             <CheckboxDropdown
               name="miles"
-              label="Select Miles"
+              label="Pilih Jarak Tempuh"
               toggleId="Home05MilesSelectToggle"
-              defaultText="All miles"
+              defaultText="Semua jarak"
               options={["0-10k", "$10k-$20k"]}
               isOpen={openDropdown === "miles"}
               onToggleOpen={() => toggleDropdown("miles")}
@@ -170,9 +170,9 @@ export default function HeroSearchSliderSection() {
             />
             <CheckboxDropdown
               name="price"
-              label="Max Price"
+              label="Harga Maksimal"
               toggleId="Home05MaxPriceSelectToggle"
-              defaultText="All Price"
+              defaultText="Semua Harga"
               options={["0-10k", "$10k-$20k"]}
               isOpen={openDropdown === "price"}
               onToggleOpen={() => toggleDropdown("price")}
@@ -190,7 +190,7 @@ export default function HeroSearchSliderSection() {
 
             <button type="submit" className="search-cars__search flex items-center gap-8 justify-center md-w-full">
               <Image src="/assets/icons/search.svg" alt="search" width={16} height={16} />
-              Show 1,029 Matches
+              Tampilkan 1.029 Unit
             </button>
           </div>
 
@@ -202,9 +202,9 @@ export default function HeroSearchSliderSection() {
                     <FilterSelectDropdown
                       name="fuel-type"
                       options={[
-                        { value: "Petrol", label: "Petrol" },
-                        { value: "Diesel", label: "Diesel" },
-                        { value: "Electric", label: "Electric" },
+                        { value: "Bensin", label: "Bensin" },
+                        { value: "Solar", label: "Solar" },
+                        { value: "Listrik", label: "Listrik" },
                       ]}
                       isOpen={openDropdown === "fuel-type"}
                       onToggleOpen={() => toggleDropdown("fuel-type")}
@@ -212,13 +212,13 @@ export default function HeroSearchSliderSection() {
                   </div>
                   <div className="search-cars__select-wrapper">
                     <FilterSelectDropdown
-                      name="Transmission"
+                      name="Transmisi"
                       options={[
                         { value: "Manual", label: "Manual" },
-                        { value: "Automatic", label: "Automatic" },
+                        { value: "Matic", label: "Matic" },
                       ]}
-                      isOpen={openDropdown === "Transmission"}
-                      onToggleOpen={() => toggleDropdown("Transmission")}
+                      isOpen={openDropdown === "Transmisi"}
+                      onToggleOpen={() => toggleDropdown("Transmisi")}
                     />
                   </div>
                   <div className="search-cars__select-wrapper">
@@ -238,8 +238,8 @@ export default function HeroSearchSliderSection() {
                       name="colorTyle"
                       options={[
                         { value: "Red", label: "Red" },
-                        { value: "Blue", label: "Blue" },
-                        { value: "Black", label: "Black" },
+                        { value: "Biru", label: "Biru" },
+                        { value: "Hitam", label: "Hitam" },
                       ]}
                       isOpen={openDropdown === "colorTyle"}
                       onToggleOpen={() => toggleDropdown("colorTyle")}
@@ -247,19 +247,19 @@ export default function HeroSearchSliderSection() {
                   </div>
                   <div className="search-cars__select-wrapper">
                     <FilterSelectDropdown
-                      name="Cylinders"
+                      name="Silinder"
                       options={[
                         { value: "4", label: "4" },
                         { value: "3", label: "3" },
                         { value: "2", label: "2" },
                       ]}
-                      isOpen={openDropdown === "Cylinders"}
-                      onToggleOpen={() => toggleDropdown("Cylinders")}
+                      isOpen={openDropdown === "Silinder"}
+                      onToggleOpen={() => toggleDropdown("Silinder")}
                     />
                   </div>
                   <div className="search-cars__range">
                     <p className="search-cars__range-label">
-                      Year: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
+                      Tahun: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
                     </p>
                     <div className="search-cars__range-wrapper" id="yearRangeWrapper">
                       <RangeSlider min={2015} max={2026} step={1} value={yearRange} onChange={setYearRange} />

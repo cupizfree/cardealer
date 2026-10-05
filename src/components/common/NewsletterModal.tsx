@@ -49,9 +49,9 @@ export default function NewsletterModal() {
         </div>
 
         <div className="newsletter--content flex justify-center items-center flex-col">
-          <p className="text-highlight mb-8">Subscribe To Our Newletter!</p>
+          <p className="text-highlight mb-8">Berlangganan Buletin Kami!</p>
           <p className="h5 mb-28">
-            Sign Up For Updates On Our <br className="lg-hidden" /> Latest News &amp; Events.
+            Daftar untuk Kabar Terbaru <br className="lg-hidden" /> Latest News &amp; Events.
           </p>
 
           <form action="#" className="newsletter-form mb-16" onSubmit={(e) => e.preventDefault()}>
@@ -63,7 +63,7 @@ export default function NewsletterModal() {
               placeholder="Enter your e-mail"
               required
             />
-            <button type="submit">Subscribe</button>
+            <button type="submit">Berlangganan</button>
           </form>
 
           <ul className="newsletter-social flex gap-4">

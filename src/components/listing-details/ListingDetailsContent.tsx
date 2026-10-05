@@ -27,12 +27,12 @@ import ReviewsSection from "@/components/common/ReviewsSection";
 // listing-details-4.html: a 4th Car Overview presentation (`car-overview-list-style3`, 5-column
 // bordered cards, icon/label/value stacked vertically), plus a real scroll-to-anchor tab bar
 // (`ListingDetailsScrollNav`) that needs `id="Overview"` on this component's own wrapper and
-// `id="Description"`/`id="Infomation"`/`id="Location"`/`id="Reviews"` on each section — added to each
+// `id="Deskripsi"`/`id="Informasi"`/`id="Lokasi"`/`id="Ulasan"` on each section — added to each
 // section's leading heading/wrapper rather than reproducing source's exact divider-inside-vs-outside
 // nesting, since the only observable effect of those ids is as a scroll target (confirmed no CSS
 // keys off them) — landing on the heading is behaviorally identical to landing on source's div.
 // `reviewsHeaderButton=false` matches listing-details-4.html's Customer Reviews heading having no
-// small "Write a review" button next to it (only the rating-box's own button remains) — confirmed
+// small "Tulis ulasan" button next to it (only the rating-box's own button remains) — confirmed
 // via direct source diff against v1/v2/v3, which all have both.
 //
 // `overviewLayout="cardsRow"` covers listing-details-5.html: a 5th Car Overview presentation
@@ -63,23 +63,23 @@ export default function ListingDetailsContent({
     <>
       {overviewLayout !== "none" && (
         <>
-          <p className="h4 mb-16">Car Overview</p>
+          <p className="h4 mb-16">Ringkasan Mobil</p>
 
           {overviewLayout === "columns" && (
             <div className="grid grid-cols-2 md-grid-cols-1 gap-24 mb-40">
               <ul className="flex flex-col gap-16">
-                <OverviewRow icon="icon-gauge.svg" label="Mileage:" value={overview.mileage} />
+                <OverviewRow icon="icon-gauge.svg" label="Jarak Tempuh:" value={overview.mileage} />
                 <OverviewRow icon="calendar.svg" label="Years:" value={overview.year} />
-                <OverviewRow icon="gaspump.svg" label="Fuel:" value={overview.fuel} />
-                <OverviewRow icon="palette.svg" label="Color:" value={overview.color} />
+                <OverviewRow icon="gaspump.svg" label="Bahan Bakar:" value={overview.fuel} />
+                <OverviewRow icon="palette.svg" label="Warna:" value={overview.color} />
                 <OverviewRow icon="MapPin.svg" label="Location:" value={overview.location} />
               </ul>
               <ul className="flex flex-col gap-16">
                 <OverviewRow icon="Seatbelt.svg" label="Interior:" value={overview.interior} />
                 <OverviewRow icon="Frame.svg" label="Engine:" value={overview.engine} />
-                <OverviewRow icon="transmission-2.svg" label="Transmission:" value={overview.transmission} />
+                <OverviewRow icon="transmission-2.svg" label="Transmisi:" value={overview.transmission} />
                 <OverviewRow icon="Barcode.svg" label="VIN:" value={overview.vin} />
-                <OverviewRow icon="QrCode.svg" label="Stock Number:" value={overview.stockNumber} />
+                <OverviewRow icon="QrCode.svg" label="Nomor Stok:" value={overview.stockNumber} />
               </ul>
             </div>
           )}
@@ -104,13 +104,13 @@ export default function ListingDetailsContent({
               <CardOverviewRow icon="icon-gauge.svg" label="Mileage" value={overview.mileage} />
               <CardOverviewRow icon="calendar.svg" label="Years" value={overview.year} />
               <CardOverviewRow icon="gaspump.svg" label="Fuel" value={overview.fuel} />
-              <CardOverviewRow icon="palette.svg" label="Color" value={overview.color} />
-              <CardOverviewRow icon="MapPin.svg" label="Location" value={overview.location} />
+              <CardOverviewRow icon="palette.svg" label="Warna" value={overview.color} />
+              <CardOverviewRow icon="MapPin.svg" label="Lokasi" value={overview.location} />
               <CardOverviewRow icon="Seatbelt.svg" label="Interior" value={overview.interior} />
               <CardOverviewRow icon="Frame.svg" label="Engine" value={overview.engine} />
-              <CardOverviewRow icon="transmission-2.svg" label="Transmission" value={overview.transmission} />
+              <CardOverviewRow icon="transmission-2.svg" label="Transmisi" value={overview.transmission} />
               <CardOverviewRow icon="Barcode.svg" label="VIN" value={overview.vin} />
-              <CardOverviewRow icon="QrCode.svg" label="Stock Number" value={overview.stockNumber} />
+              <CardOverviewRow icon="QrCode.svg" label="Nomor Stok" value={overview.stockNumber} />
             </ul>
           )}
 
@@ -119,89 +119,89 @@ export default function ListingDetailsContent({
               <CardRowOverviewRow icon="icon-gauge.svg" label="Mileage" value={overview.mileage} />
               <CardRowOverviewRow icon="calendar.svg" label="Years" value={overview.year} />
               <CardRowOverviewRow icon="gaspump.svg" label="Fuel" value={overview.fuel} />
-              <CardRowOverviewRow icon="palette.svg" label="Color" value={overview.color} />
-              <CardRowOverviewRow icon="MapPin.svg" label="Location" value={overview.location} />
+              <CardRowOverviewRow icon="palette.svg" label="Warna" value={overview.color} />
+              <CardRowOverviewRow icon="MapPin.svg" label="Lokasi" value={overview.location} />
               <CardRowOverviewRow icon="Seatbelt.svg" label="Interior" value={overview.interior} />
               <CardRowOverviewRow icon="Frame.svg" label="Engine" value={overview.engine} />
-              <CardRowOverviewRow icon="transmission-2.svg" label="Transmission" value={overview.transmission} />
+              <CardRowOverviewRow icon="transmission-2.svg" label="Transmisi" value={overview.transmission} />
               <CardRowOverviewRow icon="Barcode.svg" label="VIN" value={overview.vin} />
-              <CardRowOverviewRow icon="QrCode.svg" label="Stock Number" value={overview.stockNumber} />
+              <CardRowOverviewRow icon="QrCode.svg" label="Nomor Stok" value={overview.stockNumber} />
             </ul>
           )}
 
           <div className="divider w-full mb-40" />
         </>
       )}
-      <p className="h4 mb-16" id={sectionIds ? "Description" : undefined}>
-        Description
+      <p className="h4 mb-16" id={sectionIds ? "Deskripsi" : undefined}>
+        Deskripsi
       </p>
       <p className="text-secondary mb-40">{listing.description}</p>
 
       <div className="divider w-full mb-40" />
-      <p className="h4 mb-16 capitalize" id={sectionIds ? "Infomation" : undefined}>
-        Get To Know this car
+      <p className="h4 mb-16 capitalize" id={sectionIds ? "Informasi" : undefined}>
+        Kenali Mobil Ini
       </p>
       <FeatureTabs features={listing.features} defaultActive={featureDefaultTab} />
 
       <div className="divider w-full mb-40" />
       {/* Financing calculator is static, unwired UI in the source (no JS handler anywhere for
           `FinancingCalculator*` inputs — see LISTING_DATA_MAP.md #6, treated as UI_ONLY). */}
-      <p className="h4 mb-16">Financing Calculator</p>
+      <p className="h4 mb-16">Simulasi Kredit</p>
       <form action="#" className="financing-calculator mb-40">
         <div className="financing-calculator-form mb-24">
           <div className="grid grid-cols-4 xl2-grid-cols-2 md-grid-cols-1 gap-12">
             <div>
-              <p className="mb-10">Car Price</p>
+              <p className="mb-10">Harga Mobil</p>
               <input className="active" id="FinancingCalculatorCarPrice" name="FinancingCalculatorCarPrice" type="text" defaultValue="$46.300" required />
             </div>
             <div>
-              <p className="mb-10">Interest Rate</p>
+              <p className="mb-10">Bunga per Tahun</p>
               <input id="FinancingCalculatorInterestRate" name="FinancingCalculatorInterestRate" type="text" defaultValue="1.2%" required />
             </div>
             <div>
-              <p className="mb-8">Loan Term (months)</p>
+              <p className="mb-8">Tenor Pinjaman (bulan)</p>
               <select id="FinancingCalculatorLoanTerm" name="FinancingCalculatorLoanTerm">
-                <option>60 months</option>
+                <option>60 bulan</option>
                 <option>30 months</option>
                 <option>10 months</option>
               </select>
             </div>
             <div>
-              <p className="mb-8">Down Payment</p>
+              <p className="mb-8">Uang Muka</p>
               <input id="FinancingCalculatorDownPayment" name="FinancingCalculatorDownPayment" type="text" defaultValue="$400" required />
             </div>
           </div>
           <button type="button" className="btn btn-medium btn-primary mb-2">
-            Calculate
+            Hitung
           </button>
         </div>
         <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
           <div>
-            <p className="mb-4">Monthly Payment:</p>
+            <p className="mb-4">Cicilan Bulanan:</p>
             <p className="font-weight-600">$788.56/Month</p>
           </div>
           <div>
-            <p className="mb-4">Total Interest Payment:</p>
+            <p className="mb-4">Total Bunga:</p>
             <p className="font-weight-600">$1413.60</p>
           </div>
           <div>
-            <p className="mb-4">Est. Total Loan:</p>
+            <p className="mb-4">Perk. Total Pinjaman:</p>
             <p className="font-weight-600">$47713.60</p>
           </div>
         </div>
       </form>
 
       <div className="divider w-full mb-40" />
-      <div className="flex items-center gap-16 justify-between mb-16 md-flex-col md-items-start" id={sectionIds ? "Location" : undefined}>
+      <div className="flex items-center gap-16 justify-between mb-16 md-flex-col md-items-start" id={sectionIds ? "Lokasi" : undefined}>
         <div>
-          <p className="h4 mb-12">Location</p>
+          <p className="h4 mb-12">Lokasi</p>
           <p className="flex items-center gap-8">
             <Image className="w-16 h-16" src="/assets/icons/MapPin.svg" alt="location" width={16} height={16} />
             {location.address}
           </p>
         </div>
         <a href="#" className="text-sm text-underline text-highlight">
-          Get Directions
+          Petunjuk Arah
         </a>
       </div>
       <div className="widget-gg-map flex radius-16 overflow-hidden mb-40">
@@ -221,7 +221,7 @@ export default function ListingDetailsContent({
         reviews={reviews}
         reviewsHeaderButton={reviewsHeaderButton}
         reviewFormVariant={reviewFormVariant}
-        sectionId={sectionIds ? "Reviews" : undefined}
+        sectionId={sectionIds ? "Ulasan" : undefined}
       />
     </>
   );

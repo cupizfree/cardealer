@@ -7,8 +7,8 @@ import ListingSidebarSection, { SIDEBAR_LR_GRID_CLASS } from "@/components/listi
 import { allListings } from "@/data/listings";
 
 export const metadata: Metadata = {
-  title: "Listing Sidebar Right | Aurexo",
-  description: "Browse car listings with a permanent filter sidebar on the right.",
+  title: "Katalog Mobil",
+  description: "Lihat katalog mobil dengan sidebar filter tetap di kanan.",
 };
 
 // Migrated from ../aurexo/listing-sidebar-right.html — same permanent-sidebar page family as
@@ -29,13 +29,13 @@ export default function ListingSidebarRightPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Listing</span>
+              <span>Katalog</span>
             </li>
           </ul>
         </div>
@@ -43,7 +43,7 @@ export default function ListingSidebarRightPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Listing Sidebar Right</h2>
+          <h2>Katalog Mobil</h2>
         </div>
         <div className="tf-spacing-style3" />
 

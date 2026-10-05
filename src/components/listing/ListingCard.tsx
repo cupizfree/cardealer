@@ -29,7 +29,7 @@ export default function ListingCard({
    *  (`mb-8`/`mb-10` become `mb-10`/`mb-8`) — confirmed via source diff, bundled under one flag since
    *  they're always the same 3 changes together. */
   compact?: boolean;
-  /** home-08.html's own "Popular searches" cards carry an extra `mt-1` on the title (confirmed via
+  /** home-08.html's own "Pencarian populer" cards carry an extra `mt-1` on the title (confirmed via
    *  source diff) — a trivial 1px nudge, not bundled with any other change. */
   titleExtraClassName?: string;
 }) {
@@ -145,11 +145,11 @@ export default function ListingCard({
               <path d="M6.875 10H13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M10 6.875V13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Compare
+            Bandingkan
           </p>
 
           <Link href={href} className="view-details">
-            View details
+            Lihat detail
             <Image className="ml-4" src="/assets/icons/CaretCircleRight.svg" alt="CaretCircleRight.svg" width={16} height={16} />
           </Link>
         </div>

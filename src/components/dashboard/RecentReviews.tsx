@@ -10,7 +10,7 @@ import { customerReviews } from "@/data/reviews";
 export default function RecentReviews() {
   return (
     <div className="dashboard-box bg-white">
-      <p className="h4 mb-20">Recent Reviews</p>
+      <p className="h4 mb-20">Ulasan Terbaru</p>
       <div className="comments">
         {customerReviews.map((review) => (
           <div className="comment-box" key={review.id}>

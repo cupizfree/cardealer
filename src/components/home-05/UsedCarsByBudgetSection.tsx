@@ -4,7 +4,7 @@ import { useState } from "react";
 import ListingCard from "@/components/listing/ListingCard";
 import { allListings } from "@/data/listings";
 
-// Migrated from ../aurexo/home-05.html lines 1847-3538 ("Used Cars by Budget"). A genuinely new
+// Migrated from ../aurexo/home-05.html lines 1847-3538 ("Mobil Bekas Sesuai Anggaran"). A genuinely new
 // section — 5 price-range tabs (`.menu-tab-style2 .car-box`) each with its own static
 // `grid-cols-3 xl-grid-cols-2 sm-grid-cols-1` grid of `.card-box.card-box-style-1` cards (the exact
 // `ListingCard` shape — reused directly). Every title across all 5 tabs matches an existing canonical
@@ -17,7 +17,7 @@ import { allListings } from "@/data/listings";
 // inconsistency, not filtered/enforced here, same as every other decorative-tab pattern already
 // documented in this migration.
 const TABS: { label: string; ids: number[] }[] = [
-  { label: "All Cars", ids: [1, 2, 3, 4, 5, 6, 7, 8] },
+  { label: "Semua Mobil", ids: [1, 2, 3, 4, 5, 6, 7, 8] },
   { label: "$20.000 - $50.000", ids: [1, 2, 3] },
   { label: "$50.000 - $70.000", ids: [6, 7, 8] },
   { label: "$70.000 - $100.000", ids: [5, 6] },
@@ -33,7 +33,7 @@ export default function UsedCarsByBudgetSection() {
     <section className="py-100 flat-tabs">
       <div className="container">
         <div className="flex items-center justify-center mb-40 wow fadeInUp">
-          <h2>Used Cars by Budget</h2>
+          <h2>Mobil Bekas Sesuai Anggaran</h2>
         </div>
         <div className="flex items-center justify-center overflow-x-auto mb-40 gap-8 wow fadeIn" data-wow-delay="0.1s">
           <ul className="menu-tab menu-tab-style2 margin-auto gap-10">

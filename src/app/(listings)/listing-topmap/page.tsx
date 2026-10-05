@@ -5,8 +5,8 @@ import TopMapListingSection from "@/components/listing/TopMapListingSection";
 import { allListings } from "@/data/listings";
 
 export const metadata: Metadata = {
-  title: "Listing Top Map | Aurexo",
-  description: "Browse car listings with a full-width map above the search filters.",
+  title: "Katalog Mobil",
+  description: "Lihat katalog mobil dengan peta lebar penuh di atas filter pencarian.",
 };
 
 // Migrated from ../aurexo/listing-topmap.html — no breadcrumb/heading section (source goes

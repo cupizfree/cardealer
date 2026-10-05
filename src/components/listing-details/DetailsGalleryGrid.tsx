@@ -11,7 +11,7 @@ import type { ListingGalleryImage } from "@/data/listings";
 // plugin for this, but pulling in jQuery + a lightbox library for one gallery isn't proportionate
 // (same "Package Principle" call as `RangeSlider` hand-rolling the price slider) — this reproduces
 // the actual click-to-enlarge/cycle-through-photos behavior with a small local lightbox instead of
-// leaving it decorative, since (unlike "Play Video", which has no real source to play) "view the
+// leaving it decorative, since (unlike "Putar Video", which has no real source to play) "view the
 // photo bigger" is a real, deliverable interaction.
 export default function DetailsGalleryGrid({ images }: { images: ListingGalleryImage[] }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -37,7 +37,7 @@ export default function DetailsGalleryGrid({ images }: { images: ListingGalleryI
               <div className="listing-details-item--content">
                 <a className="listing-details-item--button" href="#" onClick={(event) => event.preventDefault()}>
                   <Image src="/assets/icons/playcircle.svg" alt="play" width={20} height={20} />
-                  Play Video
+                  Putar Video
                 </a>
                 <a
                   className="listing-details-item--button"
@@ -48,7 +48,7 @@ export default function DetailsGalleryGrid({ images }: { images: ListingGalleryI
                   }}
                 >
                   <Image src="/assets/icons/view-all-photo.svg" alt="play" width={20} height={20} />
-                  View All Photo
+                  Lihat Semua Foto
                 </a>
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function DetailsGalleryGrid({ images }: { images: ListingGalleryI
         >
           <button
             type="button"
-            aria-label="Close"
+            aria-label="Tutup"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex(null);
@@ -120,7 +120,7 @@ export default function DetailsGalleryGrid({ images }: { images: ListingGalleryI
           </button>
           <button
             type="button"
-            aria-label="Previous photo"
+            aria-label="Foto sebelumnya"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex((prev) => (prev === null ? prev : (prev - 1 + images.length) % images.length));
@@ -151,7 +151,7 @@ export default function DetailsGalleryGrid({ images }: { images: ListingGalleryI
           </div>
           <button
             type="button"
-            aria-label="Next photo"
+            aria-label="Foto berikutnya"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex((prev) => (prev === null ? prev : (prev + 1) % images.length));

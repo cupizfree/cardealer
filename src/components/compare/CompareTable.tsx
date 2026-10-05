@@ -9,7 +9,7 @@ import { allListings, withDetailFallback, type Listing, type ListingOverview } f
 // (with "2024 Hyundai Elantra" literally repeated 3 times across different card images — a genuine
 // source content quirk, not something to reproduce since this page is now driven by real data). This
 // table now renders whichever listings are actually in `CompareProvider`'s state (added via
-// `ListingCard`/`HalfMapListingCard`'s "Compare" button) — a real new feature, not a migration of
+// `ListingCard`/`HalfMapListingCard`'s "Bandingkan" button) — a real new feature, not a migration of
 // source's static demo.
 //
 // Each column needs the full detail-page field set (Color/Location/Interior/Engine/VIN/Stock Number),
@@ -19,16 +19,16 @@ import { allListings, withDetailFallback, type Listing, type ListingOverview } f
 // every other listing falls back to that same template's real, source-derived values for the fields it
 // doesn't have — never fabricated fresh data.
 const ROWS: Array<{ icon: string; label: string; key: keyof ListingOverview }> = [
-  { icon: "mileage.svg", label: "Mileage:", key: "mileage" },
+  { icon: "mileage.svg", label: "Jarak Tempuh:", key: "mileage" },
   { icon: "years.svg", label: "Years:", key: "year" },
-  { icon: "fuel.svg", label: "Fuel:", key: "fuel" },
-  { icon: "color.svg", label: "Color:", key: "color" },
+  { icon: "fuel.svg", label: "Bahan Bakar:", key: "fuel" },
+  { icon: "color.svg", label: "Warna:", key: "color" },
   { icon: "location.svg", label: "Location:", key: "location" },
   { icon: "interior.svg", label: "Interior:", key: "interior" },
   { icon: "engine.svg", label: "Engine:", key: "engine" },
-  { icon: "transmission.svg", label: "Transmission:", key: "transmission" },
+  { icon: "transmission.svg", label: "Transmisi:", key: "transmission" },
   { icon: "VIN.svg", label: "VIN:", key: "vin" },
-  { icon: "QrCode.svg", label: "Stock Number:", key: "stockNumber" },
+  { icon: "QrCode.svg", label: "Nomor Stok:", key: "stockNumber" },
 ];
 
 const removeButtonStyle: React.CSSProperties = {
@@ -48,9 +48,9 @@ export default function CompareTable() {
   if (compareItems.length === 0) {
     return (
       <div className="compare-empty-state text-center">
-        <p className="text-muted mb-20">Your compare is currently empty</p>
+        <p className="text-muted mb-20">Perbandingan Anda masih kosong</p>
         <Link href="/listing-grid4-columns" className="btn btn-primary btn-large font-weight-600">
-          Browse Listings
+          Lihat Katalog
         </Link>
       </div>
     );
@@ -78,7 +78,7 @@ export default function CompareTable() {
                     aria-label={`Remove ${listing.title}`}
                     onClick={() => removeFromCompare(listing.id)}
                   >
-                    <Image src="/assets/icons/close-modal.svg" alt="Remove" width={24} height={24} />
+                    <Image src="/assets/icons/close-modal.svg" alt="Hapus" width={24} height={24} />
                   </button>
                   <Image className="mb-10 radius-16 image" src={listing.image} alt="" width={200} height={140} />
                   <p className="h4 text-center">{listing.title}</p>

@@ -14,22 +14,22 @@ import { CAR_TYPE_ICONS } from "./carTypeIcons";
 // Hero's own `.category-list` stops at 9 types and omits Wagon/Minivan (added only in
 // `BrowseByTypeSection`'s 10-item list) — confirmed via direct source read.
 const CAR_TYPES = [
-  "Electric",
+  "Listrik",
   "Sedan",
   "SUV",
-  "Pickup Truck",
-  "Luxury",
+  "Pikap",
+  "Mewah",
   "Hatchback",
   "Crossover",
-  "Convertible",
+  "Konvertibel",
   "Coupe",
 ];
 
 // Migrated from ../aurexo/index.html lines 458-1105 (`.page-title`). Everything under this section —
-// tab pills, all filter fields, "Show 1,029 Matches", and the year range — is UI_ONLY: the homepage
+// tab pills, all filter fields, "Tampilkan 1.029 Unit", and the year range — is UI_ONLY: the homepage
 // has no real listing grid to filter, so every field is local, decorative-only state, same scope
 // decision already made for `TopSearchFilterBar.tsx`'s own Miles/Price/DriveType/Color/Cylinders/Year
-// fields (see that file's header comment). The source's ~40-checkbox "Features" collapse under
+// fields (see that file's header comment). The source's ~40-checkbox "Fitur" collapse under
 // Advanced Filters is deliberately NOT reproduced, per the same precedent (COMPONENT_MAP.md #28):
 // purely decorative filler riddled with copy-paste id/label mismatches, no functional payoff.
 // Fuel Type/Transmission/Drive Type/Color/Cylinders reuse `common/FilterSelectDropdown` (no
@@ -40,7 +40,7 @@ const DEFAULT_SUBTITLE_CLASS = "h7 text-white font-weight-500 mb-36 text-center 
 const DEFAULT_BANNER_ORDER = ["banner-1.jpg", "banner-2.jpg", "banner-3.jpg", "banner-5.jpg"];
 
 export default function HeroSearchSection({
-  title = "Search Cars Near You - Buy Today!",
+  title = "Cari Mobil di Sekitar Anda - Beli Hari Ini!",
   subtitle,
   subtitleClassName = DEFAULT_SUBTITLE_CLASS,
   titleCentered = false,
@@ -140,7 +140,7 @@ export default function HeroSearchSection({
    *  large-screen-hidden spacer) right after the `.page-title` section, inside the same `<form>`
    *  (confirmed via source diff — no other `HeroSearchSection` caller has this). */
   showMobileSpacer?: boolean;
-  /** RETROACTIVE FIX: the "All Car"/"New Car"/"Used Car" tab labels always hardcoded `text-white`, but
+  /** RETROACTIVE FIX: the "Semua Mobil"/"Mobil Baru"/"Mobil Bekas" tab labels always hardcoded `text-white`, but
    *  home-07.html's own real source uses `text-primary` (dark) on these specific `<span>`s (confirmed
    *  via source diff — every other caller genuinely is `text-white`) — because home-07's own hero sits
    *  on a pale `background-blue` (`#D8E2EA`) rather than a photo/dark background, white text there would
@@ -266,13 +266,13 @@ export default function HeroSearchSection({
             <div className="overflow-x-auto">
               <ul className={`menu-tab menu-tab-style1 text-white${titleCentered ? " margin-auto" : ""}`}>
                 <li className={activeTab === "all" ? "active" : ""} onClick={() => setActiveTab("all")}>
-                  <span className={`${tabTextColorClass} font-weight-600`}>All Car</span>
+                  <span className={`${tabTextColorClass} font-weight-600`}>Semua Mobil</span>
                 </li>
                 <li className={activeTab === "new" ? "active" : ""} onClick={() => setActiveTab("new")}>
-                  <span className={`${tabTextColorClass} font-weight-600`}>New Car</span>
+                  <span className={`${tabTextColorClass} font-weight-600`}>Mobil Baru</span>
                 </li>
                 <li className={activeTab === "used" ? "active" : ""} onClick={() => setActiveTab("used")}>
-                  <span className={`${tabTextColorClass} font-weight-600`}>Used Car</span>
+                  <span className={`${tabTextColorClass} font-weight-600`}>Mobil Bekas</span>
                 </li>
               </ul>
             </div>
@@ -284,40 +284,40 @@ export default function HeroSearchSection({
           >
             <CheckboxDropdown
               name="brand"
-              label="Select Brand"
+              label="Pilih Merek"
               toggleId="HeroBrandSelectToggle"
-              defaultText="All Brand"
-              options={["Audi", "Chevrolet", "Hyundai", "Mustang"]}
+              defaultText="Semua Merek"
+              options={["Toyota", "Honda", "Daihatsu", "Suzuki", "Mitsubishi", "Nissan"]}
               isOpen={openDropdown === "brand"}
               onToggleOpen={() => toggleDropdown("brand")}
               layout="bar"
             />
             <CheckboxDropdown
               name="model"
-              label="Select Model"
+              label="Pilih Model"
               toggleId="HeroModelSelectToggle"
-              defaultText="All Model"
-              options={["Model 1", "Model 2"]}
+              defaultText="Semua Model"
+              options={["Avanza", "Brio", "Xenia", "Ertiga", "Rush", "Mobilio"]}
               isOpen={openDropdown === "model"}
               onToggleOpen={() => toggleDropdown("model")}
               layout="bar"
             />
             <CheckboxDropdown
               name="miles"
-              label="Select Miles"
+              label="Jarak Tempuh"
               toggleId="HeroMilesSelectToggle"
-              defaultText="All miles"
-              options={["0-10k", "$10k-$20k"]}
+              defaultText="Semua jarak"
+              options={["0-50rb km", "50-100rb km"]}
               isOpen={openDropdown === "miles"}
               onToggleOpen={() => toggleDropdown("miles")}
               layout="bar"
             />
             <CheckboxDropdown
               name="price"
-              label="Max Price"
+              label="Harga Maksimal"
               toggleId="HeroMaxPriceSelectToggle"
-              defaultText="All Price"
-              options={["0-10k", "$10k-$20k"]}
+              defaultText="Semua Harga"
+              options={["Rp 0-100 jt", "Rp 100-200 jt"]}
               isOpen={openDropdown === "price"}
               onToggleOpen={() => toggleDropdown("price")}
               layout="bar"
@@ -327,7 +327,7 @@ export default function HeroSearchSection({
               type="button"
               className={`search-cars__filter${(filterButtonStyle2 ?? titleCentered) ? " style2" : ""}`}
               id="filterToggle"
-              aria-label="Toggle advanced filters"
+              aria-label="Buka filter lanjutan"
               onClick={() => setIsAdvancedOpen((prev) => !prev)}
             >
               <Image src="/assets/icons/filter.svg" alt="Filter" width={20} height={20} />
@@ -335,7 +335,7 @@ export default function HeroSearchSection({
 
             <button type="submit" className="search-cars__search flex items-center gap-8 justify-center md-w-full">
               <Image src="/assets/icons/search.svg" alt="search" width={16} height={16} />
-              Show 1,029 Matches
+              Tampilkan 1.029 Unit
             </button>
           </div>
 
@@ -347,9 +347,9 @@ export default function HeroSearchSection({
                     <FilterSelectDropdown
                       name="fuel-type"
                       options={[
-                        { value: "Petrol", label: "Petrol" },
-                        { value: "Diesel", label: "Diesel" },
-                        { value: "Electric", label: "Electric" },
+                        { value: "Bensin", label: "Bensin" },
+                        { value: "Solar", label: "Solar" },
+                        { value: "Listrik", label: "Listrik" },
                       ]}
                       isOpen={openDropdown === "fuel-type"}
                       onToggleOpen={() => toggleDropdown("fuel-type")}
@@ -357,13 +357,13 @@ export default function HeroSearchSection({
                   </div>
                   <div className="search-cars__select-wrapper">
                     <FilterSelectDropdown
-                      name="Transmission"
+                      name="Transmisi"
                       options={[
                         { value: "Manual", label: "Manual" },
-                        { value: "Automatic", label: "Automatic" },
+                        { value: "Matic", label: "Matic" },
                       ]}
-                      isOpen={openDropdown === "Transmission"}
-                      onToggleOpen={() => toggleDropdown("Transmission")}
+                      isOpen={openDropdown === "Transmisi"}
+                      onToggleOpen={() => toggleDropdown("Transmisi")}
                     />
                   </div>
                   <div className="search-cars__select-wrapper">
@@ -382,9 +382,9 @@ export default function HeroSearchSection({
                     <FilterSelectDropdown
                       name="colorTyle"
                       options={[
-                        { value: "Red", label: "Red" },
-                        { value: "Blue", label: "Blue" },
-                        { value: "Black", label: "Black" },
+                        { value: "Red", label: "Merah" },
+                        { value: "Biru", label: "Biru" },
+                        { value: "Hitam", label: "Hitam" },
                       ]}
                       isOpen={openDropdown === "colorTyle"}
                       onToggleOpen={() => toggleDropdown("colorTyle")}
@@ -392,19 +392,19 @@ export default function HeroSearchSection({
                   </div>
                   <div className="search-cars__select-wrapper">
                     <FilterSelectDropdown
-                      name="Cylinders"
+                      name="Silinder"
                       options={[
                         { value: "4", label: "4" },
                         { value: "3", label: "3" },
                         { value: "2", label: "2" },
                       ]}
-                      isOpen={openDropdown === "Cylinders"}
-                      onToggleOpen={() => toggleDropdown("Cylinders")}
+                      isOpen={openDropdown === "Silinder"}
+                      onToggleOpen={() => toggleDropdown("Silinder")}
                     />
                   </div>
                   <div className="search-cars__range">
                     <p className="search-cars__range-label">
-                      Year: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
+                      Tahun: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
                     </p>
                     <div className="search-cars__range-wrapper" id="yearRangeWrapper">
                       <RangeSlider min={2015} max={2026} step={1} value={yearRange} onChange={setYearRange} />

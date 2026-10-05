@@ -24,10 +24,10 @@ const BRANDS = [
 // this had `spaceBetween: 16` and `575: 3` (should stay 2 until 767), same copy-paste error already
 // found and fixed for `.swiper-card`/`.swiper-card-5`/etc. (COMPONENT_MAP.md #81).
 //
-// Retroactive fix: the "View All Brand" button was missing its real icon (a circular-arrow SVG,
+// Retroactive fix: the "Lihat Semua Merek" button was missing its real icon (a circular-arrow SVG,
 // confirmed present in index.html's own source) — added back as the default `viewAllIcon`, same class
-// of bug already found and fixed on `BrowseByTypeCardsSection`'s "Check All Car Type" button and
-// `TrendingSearchesSection`'s "View All" button.
+// of bug already found and fixed on `BrowseByTypeCardsSection`'s "Lihat Semua Tipe" button and
+// `TrendingSearchesSection`'s "Lihat Semua" button.
 //
 // home-10.html reuses this exact same 6-brand dataset byte-for-byte (confirmed via source diff), just
 // with its own `bg-white` section (no `py-100`, this whole page uses `tf-spacing` divider divs between
@@ -55,9 +55,9 @@ export default function BrandsSection({
     <section className={sectionClassName}>
       <div className="container wow fadeIn" data-wow-delay="0.3s">
         <div className={`title-section ${titleSectionClassName}`}>
-          <h2 className="">Explore Our Brands</h2>
+          <h2 className="">Jelajahi Merek Kami</h2>
           <Link href="/listing-grid4-columns" className="btn btn-line-style-2 effect-line-primary hover-fill-white btn-large">
-            View All Brand
+            Lihat Semua Merek
             {VIEW_ALL_ICON}
           </Link>
         </div>

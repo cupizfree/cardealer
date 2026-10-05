@@ -6,10 +6,10 @@ import MessageOptionsMenu from "./MessageOptionsMenu";
 import MessageItem, { type ChatMessage } from "./MessageItem";
 
 const INITIAL_MESSAGES: ChatMessage[] = [
-  { id: 1, type: "received", text: "How was your weekend?", time: "10:00 PM" },
-  { id: 2, type: "sent", text: "Hi, John! It was great, thanks for asking. I went hiking with some friends. How about you?", time: "10:12 PM" },
-  { id: 3, type: "received", text: "By the way, did you hear about the new project our team is starting?", time: "Today, 5:02 AM", dateSeparatorBefore: "Today, April 22" },
-  { id: 4, type: "sent", text: "Yes, I did! It sounds exciting. Are you involved in it?", time: "5:04 AM" },
+  { id: 1, type: "received", text: "Bagaimana akhir pekan Anda?", time: "10:00 PM" },
+  { id: 2, type: "sent", text: "Hai, Andi! Kabar baik, terima kasih. Saya pergi hiking dengan beberapa teman. Kalau kamu?", time: "10:12 PM" },
+  { id: 3, type: "received", text: "Ngomong-ngomong, kamu sudah dengar soal proyek baru tim kita?", time: "Today, 5:02 AM", dateSeparatorBefore: "Today, April 22" },
+  { id: 4, type: "sent", text: "Sudah! Kedengarannya menarik. Kamu terlibat di dalamnya?", time: "5:04 AM" },
 ];
 
 let nextId = 5;
@@ -56,10 +56,10 @@ export default function MessageChat() {
       <div className="message-chat__header">
         <div className="message-chat__user">
           <div className="message-chat__avatar user-online">
-            <Image src="/assets/images/avatar/avatar-6.png" alt="John Smith" width={48} height={48} />
+            <Image src="/assets/images/avatar/avatar-6.png" alt="Andi Wijaya" width={48} height={48} />
           </div>
           <div className="message-chat__user-info">
-            <div className="message-chat__name">John Smith</div>
+            <div className="message-chat__name">Andi Wijaya</div>
             <div className="message-chat__email">grew-sra@gmail.com</div>
           </div>
         </div>

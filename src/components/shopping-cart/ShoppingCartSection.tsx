@@ -18,9 +18,9 @@ export default function ShoppingCartSection() {
     return (
       <div className="innerpage__content md-mb-30">
         <div className="compare-empty-state text-center">
-          <p className="text-muted mb-20">Your cart is currently empty</p>
+          <p className="text-muted mb-20">Keranjang Anda masih kosong</p>
           <Link href="/shop" className="btn btn-primary btn-large font-weight-600">
-            Continue Shopping
+            Lanjut Belanja
           </Link>
         </div>
       </div>
@@ -46,13 +46,12 @@ function ShoppingCartTable({
       <p className="flash-sale mb-20">
         <Image className="icon" src="/assets/icons/flash.png" alt="flash" width={24} height={24} />
         <span className="text-primary">
-          Your cart will expire in <span className="font-bold text-primary">04:48</span> minutes! Please checkout
-          now before your items sell out!
+          Keranjang Anda akan kedaluwarsa dalam <span className="font-bold text-primary">04:48</span> menit! Segera checkout sebelum barang habis!
         </span>
       </p>
 
       <p className="mb-4">
-        Buy <span className="font-weight-600">$70.00</span> more to get <span className="font-weight-600">Freeship</span>
+        Beli <span className="font-weight-600">$70.00</span> lagi untuk dapat <span className="font-weight-600">Gratis kirim</span>
       </p>
 
       <div className="progress-bar mb-30">
@@ -62,10 +61,10 @@ function ShoppingCartTable({
 
       <div className="cart-wrapper">
         <div className="cart-header">
-          <div className="font-weight-600">Products</div>
-          <div className="font-weight-600">Price</div>
-          <div className="font-weight-600">Quantity</div>
-          <div className="font-weight-600">Total Price</div>
+          <div className="font-weight-600">Produk</div>
+          <div className="font-weight-600">Harga</div>
+          <div className="font-weight-600">Jumlah</div>
+          <div className="font-weight-600">Total Harga</div>
           <div className="font-weight-600" />
         </div>
 
@@ -133,20 +132,20 @@ function ShoppingCartTable({
         </div>
       </div>
 
-      {/* "Update Cart" has no matching handler anywhere in source (quantity edits already apply
+      {/* "Perbarui Keranjang" has no matching handler anywhere in source (quantity edits already apply
           immediately via the real +/- and typed-value handlers above, so there's nothing left to
-          "commit") and "Apply Coupon" has no matching handler either — both UI_ONLY, same as every
+          "commit") and "Pakai Kupon" has no matching handler either — both UI_ONLY, same as every
           other unwired form control this session. */}
       <div className="cart-total flex justify-between gap-12">
         <div className="cart-total__voucher">
           <input type="text" className="input-large" placeholder="Add voucher discount" />
           <button type="button" className="btn btn-small-2 btn-primary">
-            Apply Coupon
+            Pakai Kupon
           </button>
         </div>
         <div className="cart-total__actions">
           <button type="button" className="btn btn-primary btn-large-3">
-            Update Cart
+            Perbarui Keranjang
           </button>
         </div>
       </div>

@@ -9,8 +9,8 @@ import DownloadAppSection from "@/components/services-center/DownloadAppSection"
 import ContactScheduleSection from "@/components/services-center/ContactScheduleSection";
 
 export const metadata: Metadata = {
-  title: "Services Center | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Servis & Perawatan",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/services-center.html. Source's own h2/breadcrumb literally read "Sevices
@@ -24,19 +24,19 @@ export default function ServicesCenterPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Pages</span>
+              <span>Layanan</span>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Sevices Center</span>
+              <span>Pusat Servis</span>
             </li>
           </ul>
         </div>

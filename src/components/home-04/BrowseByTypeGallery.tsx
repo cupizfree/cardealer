@@ -7,7 +7,7 @@ import Link from "next/link";
 const ITEMS = [
   { image: "/assets/images/card/card-37.jpg", label: "SUV" },
   { image: "/assets/images/card/card-38.jpg", label: "SUV" },
-  { image: "/assets/images/card/card-39.jpg", label: "Pickup Truck" },
+  { image: "/assets/images/card/card-39.jpg", label: "Pikap" },
   { image: "/assets/images/card/card-40.jpg", label: "Sedan" },
   { image: "/assets/images/card/card-41.jpg", label: "Hatchback" },
   { image: "/assets/images/card/card-42.jpg", label: "Crossover" },

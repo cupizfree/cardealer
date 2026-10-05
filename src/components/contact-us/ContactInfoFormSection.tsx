@@ -17,8 +17,8 @@ import { socialIconPaths } from "@/data/socialIconPaths";
 //
 // Form (First/Last name, Email, Phone, Message) is UI_ONLY — confirmed no script anywhere touches
 // `Firstname`/`Lastname`/`SendInquiryemail`/`SendInquiryphone`/`message` on this page — same treatment
-// as every other unwired form this session. Source's own "First Name" field is prefilled with "Tony"
-// (matching the same demo-name convention as `SendInquiryForm`'s "Tony Nguyen"), "Last Name" is empty.
+// as every other unwired form this session. Source's own "Nama Depan" field is prefilled with "Tony"
+// (matching the same demo-name convention as `SendInquiryForm`'s "Tony Nguyen"), "Nama Belakang" is empty.
 export default function ContactInfoFormSection() {
   return (
     <section className="bg-white pb-84">
@@ -26,9 +26,9 @@ export default function ContactInfoFormSection() {
       <div className="container contact-page">
         <div className="grid grid-cols-2 lg-grid-cols-1 gap-30">
           <div className="contact-page-info">
-            <p className="h3 mb-12 capitalize">Reach Out to Us</p>
+            <p className="h3 mb-12 capitalize">Hubungi Kami</p>
             <p className="text-body-style-2 mb-24">
-              We&rsquo;re here to assist with any questions, concerns, or inquiries—contact us today!
+              Kami siap membantu dengan pertanyaan, keluhan, atau permintaan apa pun—hubungi kami hari ini!
             </p>
 
             <ul className="grid grid-cols-1 gap-24 mb-24">
@@ -37,7 +37,7 @@ export default function ContactInfoFormSection() {
                   <Image src="/assets/icons/MapPin.svg" alt="phone" width={28} height={28} />
                 </div>
                 <div className="flex flex-col">
-                  <p className="h5 mb-8">Address Business</p>
+                  <p className="h5 mb-8">Alamat Usaha</p>
                   <p className="text-secondary">6205 Peachtree Dunwoody Rd, Atlanta, GA 30328</p>
                 </div>
               </li>
@@ -46,7 +46,7 @@ export default function ContactInfoFormSection() {
                   <Image src="/assets/icons/PhoneCall.svg" alt="phone" width={24} height={24} />
                 </div>
                 <div className="flex flex-col">
-                  <p className="h5 mb-8">Contact Us</p>
+                  <p className="h5 mb-8">Hubungi Kami</p>
                   <a href="tel:1-555-678-8888" className="text-secondary">
                     1-555-678-8888
                   </a>
@@ -60,14 +60,14 @@ export default function ContactInfoFormSection() {
                   <Image src="/assets/icons/Alarm-white.svg" alt="phone" width={32} height={32} />
                 </div>
                 <div className="flex flex-col">
-                  <p className="h5 mb-8">Working Time</p>
-                  <p className="text-secondary">Week-Day: 8:00 - 18:00</p>
-                  <p className="text-secondary">Sunday: Closed</p>
+                  <p className="h5 mb-8">Jam Kerja</p>
+                  <p className="text-secondary">Sen-Jum: 08.00 - 18.00</p>
+                  <p className="text-secondary">Minggu: Tutup</p>
                 </div>
               </li>
             </ul>
 
-            <p className="h5 mb-20 capitalize">Follow Us On social media:</p>
+            <p className="h5 mb-20 capitalize">Ikuti Kami di media sosial:</p>
 
             <ul className="contact-page-info-social flex gap-8">
               <li>
@@ -120,34 +120,34 @@ export default function ContactInfoFormSection() {
           </div>
 
           <div className="bg-white radius-20 contact-page-form">
-            <p className="h3 mb-12 capitalize">get in touch</p>
-            <p className="text-body-style-2 mb-32">We&apos;d love to hear from you! If you have any questions</p>
+            <p className="h3 mb-12 capitalize">hubungi kami</p>
+            <p className="text-body-style-2 mb-32">Kami senang mendengar dari Anda! Jika Anda punya pertanyaan</p>
 
             <form action="#" onSubmit={(event) => event.preventDefault()}>
               <div className="grid grid-cols-2 md-grid-cols-1 gap-x-20 gap-y-24 mb-22">
                 <div className="md-col-span-2 padding-0">
-                  <p className="mb-8">First Name</p>
+                  <p className="mb-8">Nama Depan</p>
                   <input className="active input-large" id="Firstname" name="Firstname" type="text" defaultValue="Tony" required />
                 </div>
                 <div className="md-col-span-2 padding-0">
-                  <p className="mb-8">Last Name</p>
-                  <input className="input-large" placeholder="Enter your last name" id="Lastname" name="Lastname" type="text" required />
+                  <p className="mb-8">Nama Belakang</p>
+                  <input className="input-large" placeholder="Masukkan nama belakang Anda" id="Lastname" name="Lastname" type="text" required />
                 </div>
                 <div className="md-col-span-2 padding-0">
                   <p className="mb-8">Email</p>
-                  <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" placeholder="Enter your email address" required />
+                  <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" placeholder="Masukkan alamat email Anda" required />
                 </div>
                 <div className="md-col-span-2 padding-0">
-                  <p className="mb-8">Phone Number</p>
-                  <input placeholder="Enter your phone number" className="input-large" name="SendInquiryphone" id="SendInquiryphone" type="number" required />
+                  <p className="mb-8">Nomor Telepon</p>
+                  <input placeholder="Masukkan nomor telepon Anda" className="input-large" name="SendInquiryphone" id="SendInquiryphone" type="number" required />
                 </div>
                 <div className="col-span-2 padding-0">
-                  <p className="mb-8">Message</p>
-                  <textarea placeholder="Your Message*" rows={3} tabIndex={5} name="message" className="message" id="message" required />
+                  <p className="mb-8">Pesan</p>
+                  <textarea placeholder="Pesan Anda*" rows={3} tabIndex={5} name="message" className="message" id="message" required />
                 </div>
               </div>
               <button type="submit" className="btn btn-primary btn-large font-weight-600 w-full">
-                Send Message
+                Kirim Pesan
               </button>
             </form>
           </div>

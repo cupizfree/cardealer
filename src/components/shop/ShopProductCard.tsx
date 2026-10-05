@@ -10,7 +10,7 @@ import { useModal } from "@/components/common/ModalProvider";
 // Migrated from ../aurexo/shop.html's `#product-list` `.product` card (lines 568-809 in the static
 // fallback markup — see `products.ts`'s `ProductShopMeta` comment for why the REAL rendered card data
 // comes from `fake_data/product.json` instead, e.g. no old-price strikethrough anywhere and a promo
-// badge on only 2 of 9 products). "Add to Cart" is real (`CartProvider`) and — matching source's own
+// badge on only 2 of 9 products). "Masukkan Keranjang" is real (`CartProvider`) and — matching source's own
 // `class="product-add-to-cart open-modal" data-modal-id="#ShoppingCartModal"` — also opens the real
 // cart tray so the user sees what was just added, same as `RelatedProducts`' own Add to Cart button on
 // product-details.html. The eye icon opens the real
@@ -59,7 +59,7 @@ export default function ShopProductCard({ product }: { product: Product }) {
             openModal("ShoppingCartModal");
           }}
         >
-          Add to Cart
+          Masukkan Keranjang
         </p>
       </div>
       <Link href={href} className="block mb-4 h7 font-weight-500">

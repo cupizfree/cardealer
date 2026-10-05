@@ -4,15 +4,15 @@ import { useState } from "react";
 import type { ProductWithDetail } from "@/data/products";
 import ProductReviews from "./ProductReviews";
 
-const TABS = ["Description", "Customer Reviews", "Shipping & Returns"] as const;
+const TABS = ["Deskripsi", "Ulasan Pelanggan", "Shipping & Returns"] as const;
 type Tab = (typeof TABS)[number];
 
 // Migrated from ../aurexo/product-details.html lines 709-1030. Source itself defaults to the
-// "Customer Reviews" tab active (confirmed via its `active` class sitting on that `<li>` and the
-// matching `content-inner`, not "Description") — reproduced as the real `defaultActive`, not "fixed"
+// "Ulasan Pelanggan" tab active (confirmed via its `active` class sitting on that `<li>` and the
+// matching `content-inner`, not "Deskripsi") — reproduced as the real `defaultActive`, not "fixed"
 // to open on the first tab.
 export default function ProductTabs({ product }: { product: ProductWithDetail }) {
-  const [active, setActive] = useState<Tab>("Customer Reviews");
+  const [active, setActive] = useState<Tab>("Ulasan Pelanggan");
 
   return (
     <>
@@ -31,17 +31,17 @@ export default function ProductTabs({ product }: { product: ProductWithDetail })
       </div>
 
       <div className="rating-box-product-detail rating-box max-w-1170 mx-auto content-tab">
-        <div className={`content-inner${active === "Description" ? " active" : ""}`}>
+        <div className={`content-inner${active === "Deskripsi" ? " active" : ""}`}>
           <p className="mb-24">{product.descriptionTab.intro}</p>
           <div className="tf-product-des-demo grid grid-cols-2 gap-30">
             <div className="right">
-              <p className="font-weight-500 h5">Features</p>
+              <p className="font-weight-500 h5">Fitur</p>
               <ul>
                 {product.descriptionTab.features.map((feature) => (
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
-              <p className="font-weight-500 h5">Materials Care</p>
+              <p className="font-weight-500 h5">Perawatan Bahan</p>
               <ul className="mb-0">
                 {product.descriptionTab.materialsContent.map((line) => (
                   <li key={line}>{line}</li>
@@ -49,7 +49,7 @@ export default function ProductTabs({ product }: { product: ProductWithDetail })
               </ul>
             </div>
             <div className="left">
-              <p className="font-weight-500 h5 mb-15">Materials Care</p>
+              <p className="font-weight-500 h5 mb-15">Perawatan Bahan</p>
               {product.descriptionTab.careInstructions.map((line, index, arr) => (
                 <div
                   className={`flex gap-10 items-center${index < arr.length - 1 ? " mb-16" : ""}`}
@@ -62,7 +62,7 @@ export default function ProductTabs({ product }: { product: ProductWithDetail })
           </div>
         </div>
 
-        <div className={`content-inner${active === "Customer Reviews" ? " active" : ""}`}>
+        <div className={`content-inner${active === "Ulasan Pelanggan" ? " active" : ""}`}>
           <ProductReviews ratingSummary={product.ratingSummary} reviews={product.reviews} />
         </div>
 

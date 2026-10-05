@@ -12,7 +12,7 @@ import type { ProductGalleryImage } from "@/data/products";
 // `swiper-listing-details-thumbs`/`listing-details-item`/`listing-details-thumb`) as
 // listing-details-3.html's own gallery — confirmed source reuses that template's markup wholesale for
 // the shop page too. Not reusing `DetailsGalleryWithThumbs` verbatim though: this page's slides have NO
-// "Play Video"/"View All Photo" overlay buttons at all (confirmed absent from source), so it's its own
+// "Putar Video"/"Lihat Semua Foto" overlay buttons at all (confirmed absent from source), so it's its own
 // small component rather than adding a shop-specific prop to that already-focused listing-details
 // component.
 //

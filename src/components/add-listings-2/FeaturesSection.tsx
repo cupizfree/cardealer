@@ -15,8 +15,8 @@ const FEATURE_GROUPS = [
       { id: "Audiosystem", label: "Audio system", checked: false },
       { id: "Touchscreendisplay", label: "Touchscreen display", checked: false },
       { id: "GPSnavigation", label: "GPS navigation", checked: false },
-      { id: "Phoneconnectivity", label: "Phone connectivity", checked: false },
-      { id: "IncarWiFi", label: "In-car Wi-Fi", checked: false },
+      { id: "Phoneconnectivity", label: "Konektivitas ponsel", checked: false },
+      { id: "IncarWiFi", label: "Wi-Fi dalam mobil", checked: false },
     ],
   },
   {
@@ -33,7 +33,7 @@ const FEATURE_GROUPS = [
     label: "Interior",
     items: [
       { id: "Premiumleather", label: "Premium leather seats", checked: false },
-      { id: "Woodtrim", label: "Wood trim", checked: false },
+      { id: "Woodtrim", label: "Aksen kayu", checked: false },
       { id: "Minibar", label: "Mini bar", checked: false },
       { id: "ventilation", label: "Rear seat ventilation", checked: false },
       { id: "Infotainment", label: "Infotainment screen", checked: false },
@@ -56,7 +56,7 @@ const FEATURE_GROUPS = [
 export default function FeaturesSection() {
   return (
     <div className="dashboard-box bg-white style-3 mb-30">
-      <p className="h4 mb-20">Features</p>
+      <p className="h4 mb-20">Fitur</p>
       <div className="search-cars__features-grid grid grid-cols-5 gap-30 xl-grid-cols-3 md-grid-cols-2 sm-grid-cols-1">
         {FEATURE_GROUPS.map((group) => (
           <div className="flex flex-col gap-12" key={group.label}>

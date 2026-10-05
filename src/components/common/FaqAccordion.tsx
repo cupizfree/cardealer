@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 // `.flat-toggle`/`.toggle-title`/`.toggle-content` accordion, shared by any page using this pattern
-// (calculator.html's "Calculator FAQ", and faqs.html later — same markup, confirmed via source diff).
+// (calculator.html's "Tanya Jawab Simulasi", and faqs.html later — same markup, confirmed via source diff).
 //
 // Real, single-open accordion — verified by testing the actual static source HTML directly (clicking
 // a closed question DOES expand it and collapse whichever other one was open). `app.js`'s

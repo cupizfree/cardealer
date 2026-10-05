@@ -19,7 +19,7 @@ import { useCart } from "@/components/common/CartProvider";
 //
 // Traced `updateSubtotal()`/`updateShoppingCartSubtotal()` again: neither's selector scope
 // (`.bottom-modal`/`.send-inquiry`) matches anything on this page, so Shipping/Discounts/Total are
-// never touched by any script here — they stay permanently static ("Free"/"-$80.00"/"$186,99")
+// never touched by any script here — they stay permanently static ("Gratis"/"-$80.00"/"$186,99")
 // regardless of what's actually in the cart, reproduced as literal strings, not computed.
 export default function CheckoutOrderSummary() {
   const { items } = useCart();
@@ -28,7 +28,7 @@ export default function CheckoutOrderSummary() {
     <div className="right">
       <div className="h-48 lg-hidden" />
       <div className="tf-spacing-style3" />
-      <p className="h4 mb-30">Your Order</p>
+      <p className="h4 mb-30">Pesanan Anda</p>
 
       <div className="your-order mb-20">
         {items.map((item) => (
@@ -48,22 +48,22 @@ export default function CheckoutOrderSummary() {
         <div className="cart-total__voucher full">
           <input type="text" className="input-large" placeholder="Add voucher discount" />
           <button type="button" className="btn btn-small-2 btn-primary">
-            Apply Coupon
+            Pakai Kupon
           </button>
         </div>
       </div>
 
-      <p className="text-sm mb-30">Discount code is only used for orders with a total value of products over $50.00</p>
+      <p className="text-sm mb-30">Kode diskon hanya berlaku untuk pesanan dengan total produk di atas Rp 750.000</p>
 
       <div className="divider mb-20" />
 
       <div className="flex justify-between gap-8 mb-16">
-        <p className="font-weight-600">Shipping</p>
-        <p className="text-secondary">Free</p>
+        <p className="font-weight-600">Pengiriman</p>
+        <p className="text-secondary">Gratis</p>
       </div>
 
       <div className="flex justify-between gap-8 mb-20">
-        <p className="font-weight-600">Discounts</p>
+        <p className="font-weight-600">Diskon</p>
         <p className="text-secondary">-$80.00</p>
       </div>
 

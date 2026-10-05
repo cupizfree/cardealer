@@ -1,7 +1,7 @@
 import ClientsReviewsCarousel from "@/components/common/ClientsReviewsCarousel";
 import SellBuyPromoBanner from "@/components/common/SellBuyPromoBanner";
 
-// Migrated from ../aurexo/home-03.html lines 2306-2519 ("Clients Reviews"). Own distinct testimonial
+// Migrated from ../aurexo/home-03.html lines 2306-2519 ("Ulasan Pelanggan"). Own distinct testimonial
 // content (3 real testimonials repeated once across 6 slides, `star.svg`, no `initialSlide` — confirmed
 // via source diff against `home/HomeClientsReviews.tsx`'s 8-testimonial dataset and
 // `about-us/Testimonials.tsx`'s 4-testimonial one), and each card is a real link to `/clients-reviews`
@@ -14,37 +14,37 @@ const testimonials = [
     name: "Benjamin Parker",
     title: "CEO Tesla",
     avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Buying a car online was easier than I expected. The site was user-friendly, allowing me to compare multiple cars quickly. The flexible financing options made it much easier to find a deal that fit my budget.",
+    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
   },
   {
     name: "Olivia Williams",
     title: "CEO BMW",
     avatar: "/assets/images/avatar/avatar-1.png",
-    text: "I’ve bought several cars over the years, but this was by far the best experience. The service was honest and transparent, and the car I purchased was exactly as described. I’ll definitely be returning for my next vehicle!",
+    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
   },
   {
     name: "Olivia Williams",
     title: "CEO BMW",
     avatar: "/assets/images/avatar/avatar-3.png",
-    text: "I’ve bought several cars over the years, but this was by far the best experience. The service was honest and transparent, and the car I purchased was exactly as described. I’ll definitely be returning for my next vehicle!",
+    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
   },
   {
     name: "Benjamin Parker",
     title: "CEO Tesla",
     avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Buying a car online was easier than I expected. The site was user-friendly, allowing me to compare multiple cars quickly. The flexible financing options made it much easier to find a deal that fit my budget.",
+    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
   },
   {
     name: "Olivia Williams",
     title: "CEO BMW",
     avatar: "/assets/images/avatar/avatar-1.png",
-    text: "I’ve bought several cars over the years, but this was by far the best experience. The service was honest and transparent, and the car I purchased was exactly as described. I’ll definitely be returning for my next vehicle!",
+    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
   },
   {
     name: "Olivia Williams",
     title: "CEO BMW",
     avatar: "/assets/images/avatar/avatar-3.png",
-    text: "I’ve bought several cars over the years, but this was by far the best experience. The service was honest and transparent, and the car I purchased was exactly as described. I’ll definitely be returning for my next vehicle!",
+    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
   },
 ];
 

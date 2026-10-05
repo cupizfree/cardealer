@@ -32,7 +32,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const listing = allListings.find((l) => l.slug === slug);
   return {
-    title: listing ? `${listing.title} | Aurexo` : "Listing Details | Aurexo",
+    title: listing ? `${listing.title}` : "Detail Unit",
     description: listing ? `${listing.title} — ${listing.price}` : undefined,
   };
 }

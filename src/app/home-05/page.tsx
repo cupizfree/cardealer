@@ -12,25 +12,25 @@ import NewsReviewsSplitSection from "@/components/home-05/NewsReviewsSplitSectio
 import { emilyBenjaminOliviaTestimonials } from "@/data/clientTestimonials";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Beranda Varian 5",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/home-05.html (4412 lines). Header is a genuinely new variant
 // (`header/HeaderStyle4.tsx`, `header-style-4 header-blur` — real contact-info top bar + one combined
 // logo/nav/actions row). Hero (`home-05/HeroSearchSliderSection.tsx`) is a real hybrid of
 // `home-04/HeroBannerSlider.tsx`'s dual-swiper Controller sync + real nav arrows and
-// `home/HeroSearchSection.tsx`'s full filter-bar UI — see that file's own comment. "New Vehicles"
+// `home/HeroSearchSection.tsx`'s full filter-bar UI — see that file's own comment. "Mobil Baru"
 // reuses `home-04/PopularSearchesPeekCarousel` byte-for-byte via its new `heading`/`sectionClassName`
 // props. "Explore Our Brands" is a genuinely different 12-brand `.swiper-outbrand-3` variant with a
 // real 2-row grid (`home-05/BrandsGridCarousel.tsx`) — NOT the same component as `home/BrandsSection`.
-// "Browse By Type" reuses `home-04/BrowseByTypeGallery` via its new `variant="scroll"` prop (same
+// "Cari Berdasarkan Tipe" reuses `home-04/BrowseByTypeGallery` via its new `variant="scroll"` prop (same
 // click-expand mechanism, different flex ratio + horizontal-scroll wrapper). "Compare Top Rated
 // Vehicles" reuses `home-02/CompareTopRatedSection` with its own 2 pairs (the same Tesla pair as
 // home-02's default, plus the same Porsche pair already used as home-03's 3rd pair) — all defaults
 // (`card-box-style-4`/`swiper-card-2`/breakpoints) match source exactly, so no new props needed here.
-// "Used Cars by Budget" is a genuinely new 5-tab section (`home-05/UsedCarsByBudgetSection.tsx`, real
-// client tab switch, static grid, all ids reused from `allListings`). "Clients Reviews" reuses
+// "Mobil Bekas Sesuai Anggaran" is a genuinely new 5-tab section (`home-05/UsedCarsByBudgetSection.tsx`, real
+// client tab switch, static grid, all ids reused from `allListings`). "Ulasan Pelanggan" reuses
 // `common/ClientsReviewsCarousel` with its own 3-testimonial (repeated to 6) dataset, 2 of which are
 // verbatim reused from `home/HomeClientsReviews.tsx`'s own set (see above). "News & Reviews" is a
 // genuinely new static split layout (`home-05/NewsReviewsSplitSection.tsx`, 1 large + 2 small posts,
@@ -42,7 +42,7 @@ export default function Home05() {
       <HeaderStyle4 activePath="/home-05" />
 
       <HeroSearchSliderSection />
-      <PopularSearchesPeekCarousel heading="New Vehicles" sectionClassName="py-100 background-light" />
+      <PopularSearchesPeekCarousel heading="Mobil Baru" sectionClassName="py-100 background-light" />
       <BrandsGridCarousel />
       <BrowseByTypeGallery variant="scroll" />
       <CompareTopRatedSection

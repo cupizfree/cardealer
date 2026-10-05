@@ -11,17 +11,17 @@ export default function GetInTouchBanner() {
       <div className="overlay-parallax" />
       <ParallaxImage src="/assets/images/banner/bg-cta.jpg" />
       <div className="container relative index-10">
-        <h2 className="mb-12 text-white capitalize">Get in Touch with Us</h2>
+        <h2 className="mb-12 text-white capitalize">Hubungi Kami</h2>
         <p className="h7 line-height-28 text-white mb-20">
-          We&apos;re here to assist with any questions, concerns, or <br className="lg-hidden" /> inquiries
-          contact us today!
+          Kami siap membantu dengan pertanyaan, keluhan, atau <br className="lg-hidden" /> permintaan
+          apa pun—hubungi kami hari ini!
         </p>
-        <p className="mb-4 text-white">Monday - Saturday: 08:00AM - 17:00PM</p>
-        <p className="mb-20 text-white">Sunday: Close</p>
+        <p className="mb-4 text-white">Senin - Sabtu: 08.00 - 17.00</p>
+        <p className="mb-20 text-white">Minggu: Tutup</p>
 
         <div className="flex">
           <Link href="/contact-us" className="btn btn-white text-primary btn-large-3 font-weight-600">
-            Contact Us
+            Hubungi Kami
           </Link>
         </div>
       </div>

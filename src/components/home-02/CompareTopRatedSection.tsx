@@ -25,7 +25,7 @@ export type CompareTopRatedPair = {
 // here uses a different image/price than the real listing of the same title elsewhere on this page —
 // real, disclosed template bugs, preserved verbatim rather than reconciled against `allListings`. Only
 // 2 distinct pairs exist; source repeats them across 4 slides — reproduced as 2 slides, not duplicated.
-// "Compare" opens the same static `#CardModal` every "Compare Top Rated Vehicles"/"Trending" card
+// "Bandingkan" opens the same static `#CardModal` every "Bandingkan Unit Terbaik"/"Trending" card
 // already opens elsewhere in the app (its own content is fixed regardless of trigger, confirmed via
 // source read) — no new modal needed.
 //
@@ -41,7 +41,7 @@ export type CompareTopRatedPair = {
 // every viewport). Now a `breakpoints` prop (defaulting to `.swiper-card-2`'s real config) lets
 // home-03.html's page pass its own distinct `.swiper-card-3` breakpoints instead of sharing home-02's.
 //
-// RETROACTIVE FIX (found while checking home-06's own "Compare Top Rated Vehicles" button): the "View
+// RETROACTIVE FIX (found while checking home-06's own "Bandingkan Unit Terbaik" button): the "View
 // All" link never rendered its real icon — confirmed present (the same circular-arrow SVG used
 // elsewhere) in EVERY page's own source that reuses this component: home-02.html (line 3942, the
 // component's own base), home-03.html, home-06.html, home-09.html, home-10.html — all byte-identical.
@@ -69,7 +69,7 @@ const DEFAULT_PAIRS: CompareTopRatedPair[] = [
   },
 ];
 
-// Same circular-arrow icon reused for "View All Brand" on `home/BrandsSection.tsx` and "Check All Car
+// Same circular-arrow icon reused for "Lihat Semua Merek" on `home/BrandsSection.tsx` and "Check All Car
 // Type" on `home-03/BrowseByTypePhotoCards.tsx` — confirmed byte-identical SVG path across all 3.
 const VIEW_ALL_ICON = (
   <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,9 +123,9 @@ export default function CompareTopRatedSection({
     <section className={sectionClassName}>
       <div className="container relative wow fadeIn" data-wow-delay="0.1s">
         <div className={`title-section ${titleSectionClassName}`}>
-          <h2>Compare Top Rated Vehicles</h2>
+          <h2>Bandingkan Unit Terbaik</h2>
           <Link href="/listing-grid4-columns" className="btn btn-line-style-2 effect-line-primary btn-large hover-fill-white">
-            View All
+            Lihat Semua
             {VIEW_ALL_ICON}
           </Link>
         </div>
@@ -162,7 +162,7 @@ export default function CompareTopRatedSection({
                   {pair.ctaHref ? (
                     <Link href={pair.ctaHref} className="btn btn-small btn-line-1 text-sm">
                       <CompareGlyph />
-                      Compare
+                      Bandingkan
                     </Link>
                   ) : (
                     <span
@@ -170,7 +170,7 @@ export default function CompareTopRatedSection({
                       onClick={() => openModal("CardModal")}
                     >
                       <CompareGlyph />
-                      Compare
+                      Bandingkan
                     </span>
                   )}
                 </div>

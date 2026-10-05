@@ -7,7 +7,7 @@ import { allDealers, ACTIVE_DEALER_SLUG } from "@/data/dealers";
 import Pagination from "@/components/common/Pagination";
 
 // Migrated from ../aurexo/dealers-listing.html lines 482-867 (the container only — source nests this,
-// a `tf-spacing` div, and the "Dealers Brands" carousel all inside the SAME `<section class="pb-100">`,
+// a `tf-spacing` div, and the "Merek di Showroom" carousel all inside the SAME `<section class="pb-100">`,
 // so that wrapper lives in page.tsx, not here — same pattern as about-us's `AboutHero`/`Testimonials`).
 // `.dealer-box` (see assets/scss/component/box.scss) is a horizontal row card — genuinely different DOM
 // shape from `.sale-agent-box`'s photo-grid card, not a variant of it.
@@ -30,7 +30,7 @@ export default function DealersListSection() {
       <div className="tf-spacing-style3" />
 
       <div className="container">
-        <h2 className="mb-40 capitalize">car dealerships</h2>
+        <h2 className="mb-40 capitalize">showroom mobil</h2>
 
         <div className="flex flex-col gap-24 mb-38 dealer-box-wrapper">
           {pageDealers.map((dealer) => (
@@ -84,7 +84,7 @@ export default function DealersListSection() {
 
               <div className="flex justify-end">
                 <Link href={`/dealer-details/${dealer.slug}`} className="btn btn-line btn-large">
-                  Dealer Details
+                  Detail Showroom
                 </Link>
               </div>
             </div>

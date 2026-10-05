@@ -5,9 +5,9 @@ import type { FilterState } from "./FilterSidebar";
 import type { FilterTag } from "./useListingFilters";
 
 // Source hides this entire block (#filterResults) whenever no filter is active — but only because
-// it always has 2 non-removed default tags ("No accidents"/"Great Price") baked in, which we
+// it always has 2 non-removed default tags ("No accidents"/"Harga Bagus") baked in, which we
 // deliberately don't reproduce (no backing Listing field, see useListingFilters). So here "X matches"
-// always shows (a real, useful number), and only the divider/tags/"Remove All" portion is
+// always shows (a real, useful number), and only the divider/tags/"Hapus Semua" portion is
 // conditional on filterTags.length.
 export default function FilterTagsRow({
   matchCount,
@@ -23,7 +23,7 @@ export default function FilterTagsRow({
   return (
     <div className="col-md-12 gap-7 mb-32 inline" id="filterResults">
       <p className="inline gap-4">
-        <span id="filterMatchesCount">{matchCount} </span> matches
+        <span id="filterMatchesCount">{matchCount} </span> hasil
       </p>
       {filterTags.length > 0 && (
         <>
@@ -37,7 +37,7 @@ export default function FilterTagsRow({
             ))}
           </div>
           <button className="btn-clear-items" id="btnClearAll" onClick={onClearAll}>
-            Remove All
+            Hapus Semua
             <Image src="/assets/icons/X-White.svg" alt="X" width={16} height={16} />
           </button>
         </>

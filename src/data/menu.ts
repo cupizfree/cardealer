@@ -1,7 +1,11 @@
-// Site navigation. Mirrors the mega-menu actually found in the Aurexo header markup
-// (../aurexo/listing-grid4-columns.html and sibling pages). Homepage sub-items only list
-// Homepage 01-10 because that's what the source's own <nav> markup contains (home-11.html
-// exists as a page but is not linked from this menu in the source either).
+// Navigasi situs MARF Showroom Mobil Purwokerto.
+// Satu arah: showroom mobil. Seluruh label berbahasa Indonesia.
+//
+// CATATAN JUJUR soal tautan: template ini tidak punya mesin filter, jadi tautan
+// kategori/harga/merek memakai parameter kueri (?tipe=, ?harga=, ?merek=) yang
+// BELUM diproses halaman listing. Tautannya unik (menghindari peringatan
+// duplicate-key React) dan siap disambungkan begitu filter asli dibuat.
+// Tautan yang benar-benar berfungsi: rute /listing-* dan /listing-details/*.
 
 export type SimpleLink = {
   label: string;
@@ -22,124 +26,126 @@ export type PagesMenuColumn = {
   links: SimpleLink[];
 };
 
+// Kategori mobil — dipakai sebagai kisi bergambar di menu "Mobil".
 export const homeMenuItems: HomeMenuItem[] = [
-  { label: "Homepage 01", href: "/", image: "/assets/images/home/home-1.jpg" },
-  { label: "Homepage 02", href: "/home-02", image: "/assets/images/home/home-2.jpg" },
-  { label: "Homepage 03", href: "/home-03", image: "/assets/images/home/home-3.jpg" },
-  { label: "Homepage 04", href: "/home-04", image: "/assets/images/home/home-4.jpg" },
-  { label: "Homepage 05", href: "/home-05", image: "/assets/images/home/home-5.jpg" },
-  { label: "Homepage 06", href: "/home-06", image: "/assets/images/home/home-6.jpg" },
-  { label: "Homepage 07", href: "/home-07", image: "/assets/images/home/home-7.jpg" },
-  { label: "Homepage 08", href: "/home-08", image: "/assets/images/home/home-8.jpg" },
-  { label: "Homepage 09", href: "/home-09", image: "/assets/images/home/home-9.jpg" },
-  { label: "Homepage 10", href: "/home-10", image: "/assets/images/home/home-10.jpg" },
+  { label: "SUV", href: "/listing-grid3-columns?tipe=suv", image: "/assets/images/card/card-1.jpg" },
+  { label: "MPV", href: "/listing-grid3-columns?tipe=mpv", image: "/assets/images/card/card-2.jpg" },
+  { label: "Sedan", href: "/listing-grid3-columns?tipe=sedan", image: "/assets/images/card/card-3.jpg" },
+  { label: "Hatchback", href: "/listing-grid3-columns?tipe=hatchback", image: "/assets/images/card/card-4.jpg" },
+  { label: "City Car", href: "/listing-grid3-columns?tipe=city-car", image: "/assets/images/card/card-5.jpg" },
+  { label: "Pikap", href: "/listing-grid3-columns?tipe=pickup", image: "/assets/images/card/card-6.jpg" },
+  { label: "Double Cabin", href: "/listing-grid3-columns?tipe=double-cabin", image: "/assets/images/card/card-7.jpg" },
+  { label: "Minibus", href: "/listing-grid3-columns?tipe=minibus", image: "/assets/images/card/card-8.jpg" },
 ];
 
 export const listingMenuColumns: ListingMenuColumn[] = [
   {
-    title: "Listing Layout",
+    title: "Jenis Mobil",
     links: [
-      { label: "Grid Style 4 Columns", href: "/listing-grid4-columns" },
-      { label: "Grid Style 3 Columns", href: "/listing-grid3-columns" },
-      { label: "Grid Style 2 Columns", href: "/listing-grid2-columns" },
-      { label: "Grid Style Half Map", href: "/listing-gridstyle-halfmap" },
-      { label: "List Style Half Map", href: "/listing-liststyle-halfmap" },
-      { label: "List Style Sidebar", href: "/listing-liststyle-sidebar" },
+      { label: "SUV", href: "/listing-grid3-columns?tipe=suv" },
+      { label: "MPV", href: "/listing-grid3-columns?tipe=mpv" },
+      { label: "Sedan", href: "/listing-grid3-columns?tipe=sedan" },
+      { label: "Hatchback", href: "/listing-grid3-columns?tipe=hatchback" },
+      { label: "City Car", href: "/listing-grid3-columns?tipe=city-car" },
+      { label: "Pikap", href: "/listing-grid3-columns?tipe=pickup" },
     ],
   },
   {
-    title: "Features",
+    title: "Rentang Harga",
     links: [
-      { label: "Listing Left Sidebar", href: "/listing-sidebar-left" },
-      { label: "Listing Right Sidebar", href: "/listing-sidebar-right" },
-      { label: "Listing Top Map", href: "/listing-topmap" },
-      { label: "Listing Half Map", href: "/listing-liststyle-halfmap" },
-      { label: "Listing Filter Canvas", href: "/listing-liststyle-halfmap?filterToggle=true" },
+      { label: "Di bawah Rp 100 juta", href: "/listing-grid3-columns?harga=0-100" },
+      { label: "Rp 100 – 150 juta", href: "/listing-grid3-columns?harga=100-150" },
+      { label: "Rp 150 – 200 juta", href: "/listing-grid3-columns?harga=150-200" },
+      { label: "Rp 200 – 300 juta", href: "/listing-grid3-columns?harga=200-300" },
+      { label: "Di atas Rp 300 juta", href: "/listing-grid3-columns?harga=300-plus" },
+      { label: "Kredit & cicilan", href: "/calculator" },
     ],
   },
   {
-    title: "Listing Style",
+    title: "Merek Populer",
     links: [
-      { label: "Listing Grid", href: "/listing-grid4-columns" },
-      { label: "Listing List", href: "/listing-liststyle-sidebar" },
+      { label: "Toyota", href: "/listing-grid3-columns?merek=toyota" },
+      { label: "Honda", href: "/listing-grid3-columns?merek=honda" },
+      { label: "Daihatsu", href: "/listing-grid3-columns?merek=daihatsu" },
+      { label: "Suzuki", href: "/listing-grid3-columns?merek=suzuki" },
+      { label: "Mitsubishi", href: "/listing-grid3-columns?merek=mitsubishi" },
+      { label: "Nissan", href: "/listing-grid3-columns?merek=nissan" },
     ],
   },
   {
-    title: "Listing Details",
+    title: "Tampilan Daftar",
     links: [
-      { label: "Listing Details 1", href: "/listing-details/2022-ford-mustang-gtd" },
-      { label: "Listing Details 2", href: "/listing-details-2/2022-ford-mustang-gtd" },
-      { label: "Listing Details 3", href: "/listing-details-3/2022-ford-mustang-gtd" },
-      { label: "Listing Details 4", href: "/listing-details-4/2022-ford-mustang-gtd" },
-      { label: "Listing Details 5", href: "/listing-details-5/2022-ford-mustang-gtd" },
-      { label: "Listing Details 6", href: "/listing-details-6/2022-ford-mustang-gtd" },
+      { label: "Semua Unit", href: "/listing-grid3-columns" },
+      { label: "Grid 4 Kolom", href: "/listing-grid4-columns" },
+      { label: "Daftar + Sidebar", href: "/listing-liststyle-sidebar" },
+      { label: "Dengan Peta", href: "/listing-liststyle-halfmap" },
+      { label: "Peta Penuh", href: "/listing-topmap" },
     ],
   },
 ];
 
 export const listingPromo = {
   image: "/assets/images/card/card-52.jpg",
-  title: "Sell Your Car Simply",
+  title: "Jual Mobil Anda",
   items: [
-    "List in minutes with ease.",
-    "Reach thousands of buyers instantly.",
-    "Secure payment with loan assistance.",
+    "Pasang iklan dalam hitungan menit.",
+    "Jangkau ribuan pembeli di Banyumas.",
+    "Bantu urus dokumen dan pembayaran.",
   ],
-  ctaLabel: "List Your Car Today!",
+  ctaLabel: "Jual Mobil Sekarang!",
   ctaHref: "/sell-your-car",
 };
 
 export const newsMenuLinks: SimpleLink[] = [
-  { label: "Blog Standard", href: "/blog-standard" },
-  { label: "Blog List", href: "/blog-list" },
-  { label: "Blog Grid 1", href: "/blog-grid-style-1" },
-  { label: "Blog Grid 2", href: "/blog-grid-style-2" },
-  { label: "Blog Grid 3", href: "/blog-grid-style-3" },
-  { label: "Blog Details 1", href: "/blog-details-1/compact-suv-vs-full-size-suv" },
-  { label: "Blog Details 2", href: "/blog-details-2/compact-suv-vs-full-size-suv" },
+  { label: "Semua Artikel", href: "/blog-standard" },
+  { label: "Daftar Artikel", href: "/blog-list" },
+  { label: "Grid Artikel", href: "/blog-grid-style-1" },
+  { label: "Tips & Panduan", href: "/blog-grid-style-2" },
+  { label: "Berita Otomotif", href: "/blog-grid-style-3" },
+  { label: "Detail Artikel", href: "/blog-details-1/compact-suv-vs-full-size-suv" },
 ];
 
 export const pagesMenuColumns: PagesMenuColumn[] = [
   {
-    title: "Sale Agents",
+    title: "Tim Sales",
     links: [
-      { label: "Sale Agents List", href: "/sale-agents" },
-      { label: "Sale Agents Detail", href: "/sale-agents-details/robert-fox" },
+      { label: "Daftar Sales", href: "/sale-agents" },
+      { label: "Profil Sales", href: "/sale-agents-details/bagas-prasetyo" },
     ],
   },
   {
-    title: "Dealer",
+    title: "Showroom",
     links: [
-      { label: "Dealer Listing", href: "/dealers-listing" },
-      { label: "Dealer Detail", href: "/dealer-details/dynamic-drive-garage" },
-    ],
-  },
-  {
-    links: [
-      { label: "Calculator", href: "/calculator" },
-      { label: "Compare", href: "/compare" },
-      { label: "Sell Your Car", href: "/sell-your-car" },
-      { label: "Clients Reviews", href: "/clients-reviews" },
-      { label: "Financing", href: "/financing" },
-      { label: "Sevices Center", href: "/services-center" },
-    ],
-  },
-  {
-    title: "Shop",
-    links: [
-      { label: "Products", href: "/shop" },
-      { label: "Product Details", href: "/product-details/fog-light-lamp-white-yellow-dual-colors" },
-      { label: "Shopping Cart", href: "/shopping-cart" },
-      { label: "Check Out", href: "/check-out" },
+      { label: "Daftar Showroom", href: "/dealers-listing" },
+      { label: "Detail Showroom", href: "/dealer-details/marf-showroom-pusat" },
     ],
   },
   {
     links: [
-      { label: "FAQs", href: "/faqs" },
-      { label: "404 Error", href: "/404" },
-      { label: "Coming Soon", href: "/coming-soon" },
-      { label: "Terms of use", href: "/terms" },
-      { label: "Dashboard", href: "/dashboard" },
+      { label: "Simulasi Kredit", href: "/calculator" },
+      { label: "Bandingkan Mobil", href: "/compare" },
+      { label: "Jual Mobil", href: "/sell-your-car" },
+      { label: "Ulasan Pelanggan", href: "/clients-reviews" },
+      { label: "Pembiayaan", href: "/financing" },
+      { label: "Servis & Perawatan", href: "/services-center" },
+    ],
+  },
+  {
+    title: "Toko Aksesori",
+    links: [
+      { label: "Produk", href: "/shop" },
+      { label: "Detail Produk", href: "/product-details/fog-light-lamp-white-yellow-dual-colors" },
+      { label: "Keranjang", href: "/shopping-cart" },
+      { label: "Checkout", href: "/check-out" },
+    ],
+  },
+  {
+    links: [
+      { label: "Tanya Jawab", href: "/faqs" },
+      { label: "Halaman 404", href: "/404" },
+      { label: "Segera Hadir", href: "/coming-soon" },
+      { label: "Syarat & Ketentuan", href: "/terms" },
+      { label: "Dasbor", href: "/dashboard" },
     ],
   },
 ];

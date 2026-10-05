@@ -19,12 +19,12 @@ export type MessageContact = {
 };
 
 export const messageContacts: MessageContact[] = [
-  { id: "marvin", name: "Marvin McKinney", avatarSrc: "/assets/images/avatar/avatar-5.png", avatarAlt: "Marvin McKinney", preview: "Hey! there I'm available", time: "16:24 PM", badge: "2" },
-  { id: "john", name: "John Smith", avatarSrc: "/assets/images/avatar/avatar-6.png", avatarAlt: "John Smith", preview: "Hey! there I'm available", time: "15:56 PM", status: "online", active: true },
-  { id: "brooklyn", name: "Brooklyn Simmons", avatarSrc: "/assets/images/avatar/avatar-7.png", avatarAlt: "Brooklyn Simmons", preview: "Hey! there I'm available", time: "14:10 PM", badge: "2", status: "offline" },
-  { id: "arlene", name: "Arlene McCoy", avatarSrc: "/assets/images/avatar/avatar-8.png", avatarAlt: "Arlene McCoy", preview: "Hey! there I'm available", time: "11:23 AM" },
-  { id: "darrell", name: "Darrell Steward", avatarSrc: "/assets/images/avatar/avatar-9.png", avatarAlt: "Darrell Steward", preview: "Hey! there I'm available", time: "Yesterday" },
-  { id: "arlene-2", name: "Arlene McCoy", avatarSrc: "/assets/images/avatar/avatar-5.png", avatarAlt: "Theresa Webb", preview: "Hey! there I'm available", time: "Tuesday" },
-  { id: "brooklyn-2", name: "Brooklyn Simmons", avatarSrc: "/assets/images/avatar/avatar-6.png", avatarAlt: "Theresa Webb", preview: "Hey! there I'm available", time: "01/06/2024" },
-  { id: "theresa", name: "Theresa Webb", avatarSrc: "/assets/images/avatar/avatar-7.png", avatarAlt: "Theresa Webb", preview: "Hey! there I'm available", time: "06/06/2024" },
+  { id: "marvin", name: "Bagas Prasetyo", avatarSrc: "/assets/images/avatar/avatar-5.png", avatarAlt: "Bagas Prasetyo", preview: "Halo, ada yang bisa dibantu?", time: "16:24 PM", badge: "2" },
+  { id: "john", name: "Andi Wijaya", avatarSrc: "/assets/images/avatar/avatar-6.png", avatarAlt: "Andi Wijaya", preview: "Halo, ada yang bisa dibantu?", time: "15:56 PM", status: "online", active: true },
+  { id: "brooklyn", name: "Rina Kusumawati", avatarSrc: "/assets/images/avatar/avatar-7.png", avatarAlt: "Rina Kusumawati", preview: "Halo, ada yang bisa dibantu?", time: "14:10 PM", badge: "2", status: "offline" },
+  { id: "arlene", name: "Dewi Anggraini", avatarSrc: "/assets/images/avatar/avatar-8.png", avatarAlt: "Dewi Anggraini", preview: "Halo, ada yang bisa dibantu?", time: "11:23 AM" },
+  { id: "darrell", name: "Fajar Ramadhan", avatarSrc: "/assets/images/avatar/avatar-9.png", avatarAlt: "Fajar Ramadhan", preview: "Halo, ada yang bisa dibantu?", time: "Kemarin" },
+  { id: "arlene-2", name: "Dewi Anggraini", avatarSrc: "/assets/images/avatar/avatar-5.png", avatarAlt: "Dewi Anggraini", preview: "Halo, ada yang bisa dibantu?", time: "Selasa" },
+  { id: "brooklyn-2", name: "Rina Kusumawati", avatarSrc: "/assets/images/avatar/avatar-6.png", avatarAlt: "Rina Kusumawati", preview: "Halo, ada yang bisa dibantu?", time: "01/06/2024" },
+  { id: "theresa", name: "Maya Sari", avatarSrc: "/assets/images/avatar/avatar-7.png", avatarAlt: "Maya Sari", preview: "Halo, ada yang bisa dibantu?", time: "06/06/2024" },
 ];

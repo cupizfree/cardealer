@@ -44,19 +44,19 @@ export default function HeroSplitSearchSection() {
         <div className="container">
           <div className="page-title-wrapper">
             <div className="search-cars wow fadeInUp">
-              <p className="h4 search-cars__title text-primary letter-normal">Search Cars Near You – Buy Today!</p>
+              <p className="h4 search-cars__title text-primary letter-normal">Cari Mobil di Sekitar Anda – Beli Hari Ini!</p>
 
               <div className="flat-tabs mb-14">
                 <div className="overflow-x-auto">
                   <ul className="menu-tab menu-tab-style1 text-white">
                     <li className={activeTab === "all" ? "active" : ""} onClick={() => setActiveTab("all")}>
-                      <span className="font-weight-600">All Car</span>
+                      <span className="font-weight-600">Semua Mobil</span>
                     </li>
                     <li className={activeTab === "new" ? "active" : ""} onClick={() => setActiveTab("new")}>
-                      <span className="font-weight-600">New Car</span>
+                      <span className="font-weight-600">Mobil Baru</span>
                     </li>
                     <li className={activeTab === "used" ? "active" : ""} onClick={() => setActiveTab("used")}>
-                      <span className="font-weight-600">Used Car</span>
+                      <span className="font-weight-600">Mobil Bekas</span>
                     </li>
                   </ul>
                 </div>
@@ -65,9 +65,9 @@ export default function HeroSplitSearchSection() {
               <div className="search-cars__filters">
                 <CheckboxDropdown
                   name="brand"
-                  label="Select Brand"
+                  label="Pilih Merek"
                   toggleId="Hero08BrandSelectToggle"
-                  defaultText="All Brand"
+                  defaultText="Semua Merek"
                   options={["Audi", "Chevrolet", "Hyundai", "Mustang"]}
                   isOpen={openDropdown === "brand"}
                   onToggleOpen={() => toggleDropdown("brand")}
@@ -75,19 +75,19 @@ export default function HeroSplitSearchSection() {
                 />
                 <CheckboxDropdown
                   name="model"
-                  label="Select Model"
+                  label="Pilih Model"
                   toggleId="Hero08ModelSelectToggle"
-                  defaultText="All Model"
-                  options={["Model 1", "Model 2"]}
+                  defaultText="Semua Model"
+                  options={["Model 1", "Honda Brio"]}
                   isOpen={openDropdown === "model"}
                   onToggleOpen={() => toggleDropdown("model")}
                   layout="bar"
                 />
                 <CheckboxDropdown
                   name="miles"
-                  label="Select Miles"
+                  label="Pilih Jarak Tempuh"
                   toggleId="Hero08MilesSelectToggle"
-                  defaultText="All miles"
+                  defaultText="Semua jarak"
                   options={["0-10k", "$10k-$20k"]}
                   isOpen={openDropdown === "miles"}
                   onToggleOpen={() => toggleDropdown("miles")}
@@ -95,9 +95,9 @@ export default function HeroSplitSearchSection() {
                 />
                 <CheckboxDropdown
                   name="price"
-                  label="Max Price"
+                  label="Harga Maksimal"
                   toggleId="Hero08MaxPriceSelectToggle"
-                  defaultText="All Price"
+                  defaultText="Semua Harga"
                   options={["0-10k", "$10k-$20k"]}
                   isOpen={openDropdown === "price"}
                   onToggleOpen={() => toggleDropdown("price")}
@@ -122,7 +122,7 @@ export default function HeroSplitSearchSection() {
 
                   <button type="submit" className="search-cars__search flex items-center gap-8 justify-center md-w-full">
                     <Image src="/assets/icons/search.svg" alt="search" width={16} height={16} />
-                    Show 1,029 Matches
+                    Tampilkan 1.029 Unit
                   </button>
                 </div>
               </div>
@@ -135,9 +135,9 @@ export default function HeroSplitSearchSection() {
                         <FilterSelectDropdown
                           name="fuel-type"
                           options={[
-                            { value: "Petrol", label: "Petrol" },
-                            { value: "Diesel", label: "Diesel" },
-                            { value: "Electric", label: "Electric" },
+                            { value: "Bensin", label: "Bensin" },
+                            { value: "Solar", label: "Solar" },
+                            { value: "Listrik", label: "Listrik" },
                           ]}
                           isOpen={openDropdown === "fuel-type"}
                           onToggleOpen={() => toggleDropdown("fuel-type")}
@@ -145,13 +145,13 @@ export default function HeroSplitSearchSection() {
                       </div>
                       <div className="search-cars__select-wrapper">
                         <FilterSelectDropdown
-                          name="Transmission"
+                          name="Transmisi"
                           options={[
                             { value: "Manual", label: "Manual" },
-                            { value: "Automatic", label: "Automatic" },
+                            { value: "Matic", label: "Matic" },
                           ]}
-                          isOpen={openDropdown === "Transmission"}
-                          onToggleOpen={() => toggleDropdown("Transmission")}
+                          isOpen={openDropdown === "Transmisi"}
+                          onToggleOpen={() => toggleDropdown("Transmisi")}
                         />
                       </div>
                       <div className="search-cars__select-wrapper">
@@ -171,8 +171,8 @@ export default function HeroSplitSearchSection() {
                           name="colorTyle"
                           options={[
                             { value: "Red", label: "Red" },
-                            { value: "Blue", label: "Blue" },
-                            { value: "Black", label: "Black" },
+                            { value: "Biru", label: "Biru" },
+                            { value: "Hitam", label: "Hitam" },
                           ]}
                           isOpen={openDropdown === "colorTyle"}
                           onToggleOpen={() => toggleDropdown("colorTyle")}
@@ -180,19 +180,19 @@ export default function HeroSplitSearchSection() {
                       </div>
                       <div className="search-cars__select-wrapper">
                         <FilterSelectDropdown
-                          name="Cylinders"
+                          name="Silinder"
                           options={[
                             { value: "4", label: "4" },
                             { value: "3", label: "3" },
                             { value: "2", label: "2" },
                           ]}
-                          isOpen={openDropdown === "Cylinders"}
-                          onToggleOpen={() => toggleDropdown("Cylinders")}
+                          isOpen={openDropdown === "Silinder"}
+                          onToggleOpen={() => toggleDropdown("Silinder")}
                         />
                       </div>
                       <div className="search-cars__range">
                         <p className="search-cars__range-label">
-                          Year: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
+                          Tahun: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
                         </p>
                         <div className="search-cars__range-wrapper" id="yearRangeWrapper">
                           <RangeSlider min={2015} max={2026} step={1} value={yearRange} onChange={setYearRange} />

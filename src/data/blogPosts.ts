@@ -68,7 +68,7 @@ export const allBlogPosts: BlogPost[] = [
     intro:
       "When choosing between a compact SUV and a full-size SUV, there are several key factors to consider. Understanding the differences between these two vehicle types can significantly impact your decision-making process, helping you find the one that best aligns with your lifestyle, driving habits, and needs.",
     quote: {
-      text: "“Choosing the right SUV isn’t just about size—it’s about finding the perfect fit for your lifestyle, needs, and adventures.”",
+      text: "“Memilih SUV yang tepat bukan sekadar soal ukuran—tapi soal menemukan yang paling sesuai dengan gaya hidup, kebutuhan, dan petualangan Anda.”",
       author: "Nelson Mandela",
     },
     introContinued:
@@ -80,7 +80,7 @@ export const allBlogPosts: BlogPost[] = [
         body: "Full-size SUVs offer more interior space, making them ideal for larger families or those who need more cargo capacity. On the other hand, compact SUVs are more maneuverable and easier to park, making them a great choice for urban driving.",
       },
       {
-        heading: "2. Fuel Efficiency",
+        heading: "2. Efisiensi Bahan Bakar",
         body: "Generally, compact SUVs tend to be more fuel-efficient compared to their full-size counterparts. If fuel economy is a priority for you, a compact SUV could save you money on gas over time.",
       },
       {
@@ -96,63 +96,63 @@ export const allBlogPosts: BlogPost[] = [
       heading: "Conclusion",
       body: "Choosing between a compact SUV and a full-size SUV depends on your specific needs, whether that’s maximizing fuel efficiency, interior space, or performance. Understanding these differences can help you make a more informed decision that aligns with your lifestyle and budget.",
     },
-    tags: ["Performance", "Luxury"],
+    tags: ["Performance", "Mewah"],
     comments: [
       {
         id: 1,
         authorName: "Guy Hawkins",
         avatar: "/assets/images/blog/comments-post-1.jpg",
         timeAgo: "1 days ago",
-        text: "Great article! Understanding the differences between compact and full-size SUVs helped my decision.",
+        text: "Artikel bagus! Penjelasan perbedaan SUV kompak dan SUV besar sangat membantu keputusan saya.",
       },
       {
         id: 2,
         authorName: "Tony Nguyen",
         avatar: "/assets/images/blog/comments-post-2.jpg",
         timeAgo: "2 days ago",
-        text: "Interesting read! I’m looking for advice on choosing the right SUV. Any recommendations?",
+        text: "Menarik! Saya sedang mencari saran memilih SUV yang tepat. Ada rekomendasi?",
       },
       {
         id: 3,
-        authorName: "John Smith",
+        authorName: "Andi Wijaya",
         avatar: "/assets/images/blog/comments-post-3.jpg",
         timeAgo: "3 days ago",
-        text: "Glad you found it helpful! Choosing between compact and full-size SUVs impacts convenience.",
+        text: "Senang artikelnya membantu! Memilih antara SUV kompak dan SUV besar berpengaruh pada kenyamanan.",
       },
     ],
   },
   {
     id: 2,
     slug: "luxury-suvs-vs-crossovers",
-    title: "Luxury SUVs vs. Crossovers: Which is Right for You?",
-    category: "MAINTENANCE",
-    date: "Aug. 21, 2025",
+    title: "SUV Mewah vs. Crossover: Mana yang Tepat untuk Anda?",
+    category: "PERAWATAN",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-32.jpg",
     excerpt:
-      "Explore the differences between luxury SUVs and crossovers to determine which type of vehicle best meets your...",
+      "Ketahui perbedaan SUV mewah dan crossover untuk menentukan jenis kendaraan yang paling sesuai dengan...",
   },
   {
     id: 3,
     slug: "truck-vs-minivan",
-    title: "Truck vs. Minivan: Which is Better for Family Needs?",
-    category: "NEWS",
-    date: "Aug. 21, 2025",
+    title: "Pikap vs. Minibus: Mana yang Lebih Baik untuk Keluarga?",
+    category: "BERITA",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-31.jpg",
     excerpt:
-      "Compare trucks and minivans to help you decide which vehicle is more suitable for your family's transportation...",
+      "Bandingkan pikap dan minibus untuk membantu Anda menentukan kendaraan yang lebih cocok untuk transportasi keluarga...",
   },
   {
     id: 4,
     slug: "tires-all-season-vs-summer-vs-winter",
-    title: "Tires: All-Season vs. Summer vs. Winter – What You Need to Know",
+    title: "Ban: Segala Musim vs. Musim Panas vs. Musim Dingin – Yang Perlu Anda Tahu",
     category: "TIPS",
-    date: "Aug. 21, 2025",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-23.jpg",
     excerpt:
-      "Learn about the differences between all-season, summer, and winter tires to choose the best tire type for your...",
+      "Pelajari perbedaan ban segala musim, musim panas, dan musim dingin untuk memilih jenis ban terbaik untuk...",
   },
   // ids 5-8: real card titles/images/dates captured from blog-standard.html's own featured card + grid
   // (the page being migrated when these were added) — not invented. That page repeats 2 of its own
@@ -164,47 +164,47 @@ export const allBlogPosts: BlogPost[] = [
     id: 5,
     slug: "sports-cars-vs-luxury-cars",
     title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
-    category: "LUXURY",
+    category: "MEWAH",
     date: "Aug. 11, 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-18.jpg",
     excerpt:
-      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+      "Bandingkan kelebihan dan kekurangan mobil hibrida dan listrik untuk membantu Anda menentukan pilihan yang tepat...",
   },
   {
     id: 6,
     slug: "hybrid-vs-electric-cars",
-    title: "Hybrid vs. Electric Cars: Which One Should You Choose?",
-    category: "EXPERT REVIEW",
-    date: "Aug. 21, 2025",
+    title: "Mobil Hibrida vs. Listrik: Mana yang Harus Anda Pilih?",
+    category: "ULASAN AHLI",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-44.jpg",
     excerpt:
-      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+      "Bandingkan kelebihan dan kekurangan mobil hibrida dan listrik untuk membantu Anda menentukan pilihan yang tepat...",
   },
   {
     id: 7,
     slug: "diesel-vs-gasoline-engines",
     title: "Diesel vs. Gasoline Engines: Pros and Cons Explained",
     category: "PERFORMANCE",
-    date: "Aug. 21, 2025",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-22.jpg",
     excerpt:
-      "Discover the differences between compact and full-size SUVs, including space, fuel efficiency, and features...",
+      "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },
   {
     id: 8,
     slug: "manual-vs-automatic-transmission",
-    title: "Manual vs. Automatic Transmission: Which is Better for You?",
-    category: "EXPERT REVIEW",
-    date: "Aug. 21, 2025",
+    title: "Manual vs. Matic: Mana yang Lebih Baik untuk Anda?",
+    category: "ULASAN AHLI",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-23.jpg",
     excerpt:
-      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+      "Bandingkan kelebihan dan kekurangan mobil hibrida dan listrik untuk membantu Anda menentukan pilihan yang tepat...",
   },
-  // ids 9-12: real card titles/images/dates for the "Recent posts" sidebar widget (post-25..28), shared
+  // ids 9-12: real card titles/images/dates for the "Artikel terbaru" sidebar widget (post-25..28), shared
   // verbatim by `blog-details/BlogSidebar.tsx` and `blog-standard/BlogStandardSidebar.tsx`. Originally
   // left un-sluggified as decorative filler (both sidebars just pointed every card at one existing real
   // slug), but the user explicitly asked for clicking a Recent Posts card to show that card's own real
@@ -214,25 +214,25 @@ export const allBlogPosts: BlogPost[] = [
   {
     id: 9,
     slug: "top-5-tips-car-resale-value",
-    title: "Top 5 Tips for Maintaining Your Car's Resale Value",
-    category: "NEWS",
-    date: "Aug. 5, 2025",
+    title: "5 Tips Menjaga Nilai Jual Mobil Anda",
+    category: "BERITA",
+    date: "5 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-25.jpg",
   },
   {
     id: 10,
     slug: "rise-of-autonomous-vehicles",
-    title: "The Rise of Autonomous Vehicles: What to Expect",
-    category: "EXPERT REVIEW",
-    date: "Aug. 21, 2025",
+    title: "Bangkitnya Kendaraan Otonom: Apa yang Bisa Diharapkan",
+    category: "ULASAN AHLI",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-26.jpg",
   },
   {
     id: 11,
     slug: "how-to-choose-best-tires",
-    title: "How to Choose the Best Tires for Your Car",
+    title: "Cara Memilih Ban Terbaik untuk Mobil Anda",
     category: "TIPS",
     date: "Aug. 24, 2025",
     author: "Admin",
@@ -254,9 +254,9 @@ export const allBlogPosts: BlogPost[] = [
   {
     id: 13,
     slug: "2025-bmw-5-series-priced",
-    title: "2025 BMW 5 Series Priced From $59,375; i5 EV From $68,275",
-    category: "Expert Review",
-    date: "Aug. 5, 2025",
+    title: "BMW Seri 5 2025 Dibanderol Mulai Rp 950 Juta; i5 EV Mulai Rp 1,1 Miliar",
+    category: "Ulasan Ahli",
+    date: "5 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-4.jpg",
   },
@@ -268,11 +268,11 @@ export const allBlogPosts: BlogPost[] = [
     slug: "electric-vs-ice-cars",
     title: "Electric vs. Internal Combustion Engine (ICE) Cars",
     category: "TREND",
-    date: "Aug. 21, 2025",
+    date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-24.jpg",
     excerpt:
-      "Compare electric vehicles (EVs) with traditional internal combustion engine (ICE) cars to understand their...",
+      "Bandingkan mobil listrik (EV) dengan mobil mesin pembakaran biasa (ICE) untuk memahami...",
   },
 ];
 

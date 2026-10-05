@@ -15,14 +15,14 @@ export default function LoginModal() {
 
   return (
     <Modal id="LoginModal" className="modal-login" contentClassName="modal-sm">
-      <h2 className="mb-20 text-center">Log In</h2>
+      <h2 className="mb-20 text-center">Masuk</h2>
       <form action="#">
         <div className="resutl mb-20">
           <p className="text-secondary mb-4">
-            Username: <span className="font-weight-600 capitalize">demo</span>
+            Nama Pengguna: <span className="font-weight-600 capitalize">demo</span>
           </p>
           <p className="text-secondary">
-            Password: <span className="font-weight-600 capitalize">demo</span>
+            Kata Sandi: <span className="font-weight-600 capitalize">demo</span>
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export default function LoginModal() {
             type="email"
             id="email-login"
             name="email-login"
-            placeholder="Enter your email"
+            placeholder="Masukkan email Anda"
             required
           />
         </label>
@@ -47,7 +47,7 @@ export default function LoginModal() {
             className="input-large active"
             id="Password-login"
             name="Password-login"
-            placeholder="Password"
+            placeholder="Kata Sandi"
             required
           />
         </label>
@@ -55,25 +55,25 @@ export default function LoginModal() {
         <div className="flex justify-between gap-12 mb-20">
           <label className="filter-checkbox style-5">
             <input type="checkbox" name="features" value="touch-screen" defaultChecked />
-            <span className="text-sm">Remember me</span>
+            <span className="text-sm">Ingat saya</span>
           </label>
           <span
             className="text-sm font-bold text-underline cursor-pointer"
             onClick={() => openModal("ForgotPasswordModal")}
           >
-            Forgot Your Password?
+            Lupa Kata Sandi Anda?
           </span>
         </div>
 
         <button type="submit" className="btn btn-primary btn-large w-full mb-12 font-weight-600">
-          Login
+          Masuk
         </button>
 
         <p
           className="text-sm text-secondary flex gap-8 justify-center cursor-pointer"
           onClick={() => openModal("SignUpModal")}
         >
-          Not registered yet? <span className="text-sm font-weight-600 text-underline">Sign Up</span>
+          Belum punya akun? <span className="text-sm font-weight-600 text-underline">Daftar</span>
         </p>
       </form>
     </Modal>

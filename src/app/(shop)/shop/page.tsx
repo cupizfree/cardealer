@@ -7,12 +7,12 @@ import ShopSidebarSection from "@/components/shop/ShopSidebarSection";
 import { getShopProducts } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Shop | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Toko Aksesori",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-// Migrated from ../aurexo/shop.html. Breadcrumb's "Pages" AND "Shop" crumbs are both dead `<span>`s in
-// source (confirmed via source read) — "Shop" being a dead span here (the current page) matches the
+// Migrated from ../aurexo/shop.html. Breadcrumb's "Layanan" AND "Toko Aksesori" crumbs are both dead `<span>`s in
+// source (confirmed via source read) — "Toko Aksesori" being a dead span here (the current page) matches the
 // same "current-page crumb is never a link" pattern seen throughout the site.
 export default function ShopPage() {
   const products = getShopProducts();
@@ -25,19 +25,19 @@ export default function ShopPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Pages</span>
+              <span>Layanan</span>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Shop</span>
+              <span>Toko Aksesori</span>
             </li>
           </ul>
         </div>
@@ -45,7 +45,7 @@ export default function ShopPage() {
 
       <section className="bg-white pb-100">
         <div className="container">
-          <h2>Shop</h2>
+          <h2>Toko Aksesori</h2>
           <div className="tf-spacing-style3" />
 
           <ShopSidebarSection products={products} />

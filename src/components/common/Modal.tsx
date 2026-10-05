@@ -29,7 +29,7 @@ export default function Modal({ id, className, contentClassName, children }: Mod
     <div className={`modal${className ? ` ${className}` : ""}${isOpen ? " active" : ""}`}>
       <div className="bg-modal" onClick={closeModal} />
       <div className={`modal-content${contentClassName ? ` ${contentClassName}` : ""}`}>
-        <button className="close-modal" onClick={closeModal} aria-label="Close">
+        <button className="close-modal" onClick={closeModal} aria-label="Tutup">
           <Image src="/assets/icons/close-modal.svg" alt="close-modal" width={24} height={24} />
         </button>
         <div className="modal-container">

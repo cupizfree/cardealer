@@ -22,7 +22,7 @@ function toggleValue(list: string[], value: string): string[] {
 // already applied to Body Style/Door count/Cylinders/Colors on the sidebar pages (see
 // docs/migration/COMPONENT_MAP.md #24) — so they get local component state for visual
 // open/close/select interaction only, not wired into the shared filter/tag state. The source's
-// "Features" checklist under Advanced (~34 checkboxes, itself riddled with copy-paste id/label
+// "Fitur" checklist under Advanced (~34 checkboxes, itself riddled with copy-paste id/label
 // mismatches — e.g. `id="AdjustableSteering"` paired with the label "Engine Start Stop Button") is
 // deliberately NOT reproduced at all: purely decorative filler with no functional or visual payoff
 // proportional to transcribing it. See docs/migration/COMPONENT_MAP.md #28.
@@ -68,9 +68,9 @@ export default function TopSearchFilterBar({
       <div className="search-cars__filters">
         <CheckboxDropdown
           name="brand"
-          label="Select Brand"
+          label="Pilih Merek"
           toggleId="topmapBrandToggle"
-          defaultText="All Brand"
+          defaultText="Semua Merek"
           options={["Audi", "Chevrolet", "Hyundai", "Mustang"]}
           selected={filters.brand}
           onToggle={(value) => onFilterChange({ brand: toggleValue(filters.brand, value) })}
@@ -81,9 +81,9 @@ export default function TopSearchFilterBar({
 
         <CheckboxDropdown
           name="model"
-          label="Select Model"
+          label="Pilih Model"
           toggleId="topmapModelToggle"
-          defaultText="All Model"
+          defaultText="Semua Model"
           options={["A3", "A4", "A6", "A8"]}
           selected={filters.model}
           onToggle={(value) => onFilterChange({ model: toggleValue(filters.model, value) })}
@@ -94,9 +94,9 @@ export default function TopSearchFilterBar({
 
         <CheckboxDropdown
           name="miles"
-          label="Select Miles"
+          label="Pilih Jarak Tempuh"
           toggleId="topmapMilesToggle"
-          defaultText="All miles"
+          defaultText="Semua jarak"
           options={["0-10k", "$10k-$20k"]}
           selected={miles}
           onToggle={(value) => setMiles((prev) => toggleValue(prev, value))}
@@ -107,9 +107,9 @@ export default function TopSearchFilterBar({
 
         <CheckboxDropdown
           name="maxPrice"
-          label="Max Price"
+          label="Harga Maksimal"
           toggleId="topmapMaxPriceToggle"
-          defaultText="All Price"
+          defaultText="Semua Harga"
           options={["0-10k", "$10k-$20k"]}
           selected={maxPrice}
           onToggle={(value) => setMaxPrice((prev) => toggleValue(prev, value))}
@@ -136,32 +136,32 @@ export default function TopSearchFilterBar({
           <div className="search-cars__advanced-content">
             <div className="search-cars__advanced-row">
               <CheckboxDropdown
-                name="FuelType"
-                label="Fuel Type"
+                name="Bahan Bakar"
+                label="Bahan Bakar"
                 toggleId="topmapFuelTypeToggle"
                 defaultText="All Fuel Type"
-                options={["Petrol", "Diesel", "Electric"]}
+                options={["Bensin", "Solar", "Listrik"]}
                 selected={filters.fuelType}
                 onToggle={(value) => onFilterChange({ fuelType: toggleValue(filters.fuelType, value) })}
-                isOpen={openDropdown === "FuelType"}
-                onToggleOpen={() => toggleDropdown("FuelType")}
+                isOpen={openDropdown === "Bahan Bakar"}
+                onToggleOpen={() => toggleDropdown("Bahan Bakar")}
               />
 
               <CheckboxDropdown
-                name="Transmission"
-                label="Transmission"
+                name="Transmisi"
+                label="Transmisi"
                 toggleId="topmapTransmissionToggle"
                 defaultText="All Transmission"
-                options={["Manual", "Automatic"]}
+                options={["Manual", "Matic"]}
                 selected={filters.transmission}
                 onToggle={(value) => onFilterChange({ transmission: toggleValue(filters.transmission, value) })}
-                isOpen={openDropdown === "Transmission"}
-                onToggleOpen={() => toggleDropdown("Transmission")}
+                isOpen={openDropdown === "Transmisi"}
+                onToggleOpen={() => toggleDropdown("Transmisi")}
               />
 
               <CheckboxDropdown
                 name="DriveType"
-                label="Drive Type"
+                label="Penggerak"
                 toggleId="topmapDriveTypeToggle"
                 defaultText="All Drive Type"
                 options={["FWD", "RWD", "AWD"]}
@@ -173,7 +173,7 @@ export default function TopSearchFilterBar({
 
               <ColorDropdown
                 name="color"
-                label="Color"
+                label="Warna"
                 toggleId="topmapColorToggle"
                 selected={color}
                 onSelect={setColor}
@@ -182,20 +182,20 @@ export default function TopSearchFilterBar({
               />
 
               <CheckboxDropdown
-                name="Cylinders"
-                label="Cylinders"
+                name="Silinder"
+                label="Silinder"
                 toggleId="topmapCylindersToggle"
                 defaultText="All Cylinders"
                 options={["4", "3", "2"]}
                 selected={cylinders}
                 onToggle={(value) => setCylinders((prev) => toggleValue(prev, value))}
-                isOpen={openDropdown === "Cylinders"}
-                onToggleOpen={() => toggleDropdown("Cylinders")}
+                isOpen={openDropdown === "Silinder"}
+                onToggleOpen={() => toggleDropdown("Silinder")}
               />
 
               <div className="search-cars__range">
                 <p className="search-cars__range-label">
-                  Year: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
+                  Tahun: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
                 </p>
                 <div className="search-cars__range-wrapper" id="yearRangeWrapper">
                   <RangeSlider min={2015} max={2026} step={1} value={yearRange} onChange={setYearRange} />

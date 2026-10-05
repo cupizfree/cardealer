@@ -42,8 +42,8 @@ export default function FilterSidebar({
       <div className="filter-sidebar__overlay" onClick={onClose} />
       <div className="filter-sidebar__panel">
         <div className="filter-sidebar__header bg-white">
-          <p className="h5">Advanced Search</p>
-          <button className="filter-sidebar__close" onClick={onClose} aria-label="Close">
+          <p className="h5">Pencarian Lanjutan</p>
+          <button className="filter-sidebar__close" onClick={onClose} aria-label="Tutup">
             <Image src="/assets/icons/X.svg" alt="close" width={20} height={20} />
           </button>
         </div>

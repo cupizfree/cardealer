@@ -7,8 +7,8 @@ const CATEGORIES = [
   { value: "breake-system", label: "Breake System", count: 12 },
   { value: "engine-oil", label: "Engine Oil", count: 43 },
   { value: "cleaning-system", label: "Cleaning System", count: 21 },
-  { value: "car-battery", label: "Car Battery", count: 5 },
-  { value: "car-accessories", label: "Car Accessories", count: 17 },
+  { value: "car-battery", label: "Aki Mobil", count: 5 },
+  { value: "car-accessories", label: "Aksesori Mobil", count: 17 },
   { value: "care-care", label: "Care Care", count: 27 },
   { value: "tools", label: "Tools", count: 17 },
 ];
@@ -47,8 +47,8 @@ export default function ShopFilterFields({
     <>
       <form className="widget-search w-full mb-34" onSubmit={(event) => event.preventDefault()}>
         <div className="widget-search w-full mb-36">
-          <input className="input-normal" type="text" name="search-header" placeholder="Search products..." />
-          <button type="submit" className="widget-search-btn" aria-label="Search">
+          <input className="input-normal" type="text" name="search-header" placeholder="Cari produk..." />
+          <button type="submit" className="widget-search-btn" aria-label="Cari">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M15.8047 15.8047L21.0012 21.0012" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -56,7 +56,7 @@ export default function ShopFilterFields({
           </button>
         </div>
 
-        <p className="h4 mb-16">Categories</p>
+        <p className="h4 mb-16">Kategori</p>
         <div className="filter-features mb-32 style-2">
           {CATEGORIES.map((category) => (
             <label className="filter-checkbox style-4" key={category.value}>
@@ -76,7 +76,7 @@ export default function ShopFilterFields({
 
         <div className="divider mb-32" />
 
-        <p className="h4 mb-22">Price Range</p>
+        <p className="h4 mb-22">Rentang Harga</p>
         <div className="mb-28">
           <div className="search-cars__range style2">
             <div className="search-cars__range-wrapper mb-22" id="yearRangeWrapper">
@@ -90,7 +90,7 @@ export default function ShopFilterFields({
             </div>
             <div className="ranges-value gap-40 grid grid-cols-2">
               <div>
-                <p className="text-sm mb-4">Min price</p>
+                <p className="text-sm mb-4">Harga minimal</p>
                 <span className="value flex">
                   <span id="yearMin" className="block">
                     {filters.priceRange[0].toLocaleString()}
@@ -99,7 +99,7 @@ export default function ShopFilterFields({
                 </span>
               </div>
               <div>
-                <p className="text-sm mb-4">Max price</p>
+                <p className="text-sm mb-4">Harga maksimal</p>
                 <span className="value flex">
                   <span id="yearMax" className="block">
                     {filters.priceRange[1].toLocaleString()}
@@ -113,7 +113,7 @@ export default function ShopFilterFields({
 
         <div className="divider mb-32" />
 
-        <p className="h4 mb-16">Branding</p>
+        <p className="h4 mb-16">Merek</p>
         <div className="filter-features style-2">
           {BRANDING.map((brand) => (
             <label className="filter-checkbox style-4" key={brand.value}>

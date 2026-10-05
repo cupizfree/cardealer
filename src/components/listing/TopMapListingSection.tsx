@@ -26,7 +26,7 @@ const MAP_EMBED_URL = "https://www.google.com/maps?q=40.706243,-74.000303&z=13&o
 // Migrated from ../aurexo/listing-topmap.html: full-width map, then the horizontal
 // `TopSearchFilterBar` hero search (real Brand/Model/FuelType/Transmission filtering shared with
 // the grid below via one `useListingFilters` instance), then a 2/3/4-column listing grid. Unlike
-// `ListingGridSection`, source has no "Filters" button or filter-tags row on this page (filtering
+// `ListingGridSection`, source has no "Filter" button or filter-tags row on this page (filtering
 // lives entirely in the hero bar above) — a genuine DOM difference, not a trimmed-down reuse of
 // that component.
 export default function TopMapListingSection({ listings }: { listings: Listing[] }) {

@@ -20,8 +20,8 @@ export async function generateMetadata({
   const { slug } = await params;
   const agent = allSaleAgents.find((a) => a.slug === slug);
   return {
-    title: agent ? `${agent.name} | Aurexo` : "Sale Agent Details | Aurexo",
-    description: "Aurexo - Car Dealer, Rental & Listing",
+    title: agent ? `${agent.name}` : "Profil Sales",
+    description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
   };
 }
 
@@ -33,7 +33,7 @@ export async function generateMetadata({
 // This route now pulls each agent's OWN name/role/photo (the fields sale-agents.html's own 8 cards
 // already vary — see `src/data/saleAgents.ts`) into this shared template per the explicit follow-up
 // request ("cần lấy content theo item team để đổ vào single"). A useful side effect: source's own
-// name mismatch on this page (breadcrumb said "Mike Hanley", the heading+bio said "Darrell Steward")
+// name mismatch on this page (breadcrumb said "Bagas Prasetyo", the heading+bio said "Darrell Steward")
 // is naturally resolved, since both now come from the same `agent.name` field instead of two
 // hand-transcribed literal strings.
 //
@@ -61,19 +61,19 @@ export default async function SaleAgentsDetailsPage({
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <Link href="/">Pages</Link>
+              <Link href="/">Layanan</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <Link href="/sale-agents">Sale Agents</Link>
+              <Link href="/sale-agents">Tim Sales</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />

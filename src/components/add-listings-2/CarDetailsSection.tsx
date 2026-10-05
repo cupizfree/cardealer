@@ -22,12 +22,12 @@ export default function CarDetailsSection({
 }) {
   return (
     <div className="dashboard-box bg-white style-3 mb-30">
-      <p className="h4 mb-20">Car Details</p>
+      <p className="h4 mb-20">Detail Mobil</p>
 
       <div className="grid grid-cols-4 gap-20 sm-grid-cols-1">
         <div className="padding-0 col-span-4">
           <p className="mb-8 font-weight-600">Car Title*</p>
-          <input className="input-large" type="text" id="title" name="title" placeholder="Car Title*" defaultValue="Audi A6 Avant E-Tron" required />
+          <input className="input-large" type="text" id="title" name="title" placeholder="Car Title*" defaultValue="Toyota Avanza 1.5 G" required />
         </div>
 
         <div className="lg-col-span-2 padding-0 sm-col-span-4">
@@ -63,7 +63,7 @@ export default function CarDetailsSection({
         </div>
         <div className="lg-col-span-2 padding-0 sm-col-span-4">
           <p className="mb-8 font-weight-600">Transmission*</p>
-          <FilterSelectDropdown name="Transmission" options={GENERIC_OPTIONS("Transmission")} isOpen={openDropdown === "Transmission"} onToggleOpen={() => onToggleDropdown("Transmission")} />
+          <FilterSelectDropdown name="Transmisi" options={GENERIC_OPTIONS("Transmisi")} isOpen={openDropdown === "Transmisi"} onToggleOpen={() => onToggleDropdown("Transmisi")} />
         </div>
 
         <div className="lg-col-span-2 padding-0 sm-col-span-4">
@@ -76,22 +76,22 @@ export default function CarDetailsSection({
         </div>
         <div className="lg-col-span-2 padding-0 sm-col-span-4">
           <p className="mb-8 font-weight-600">Cylinders*</p>
-          <FilterSelectDropdown name="Cylinders" options={GENERIC_OPTIONS("Cylinders")} isOpen={openDropdown === "Cylinders"} onToggleOpen={() => onToggleDropdown("Cylinders")} />
+          <FilterSelectDropdown name="Silinder" options={GENERIC_OPTIONS("Silinder")} isOpen={openDropdown === "Silinder"} onToggleOpen={() => onToggleDropdown("Silinder")} />
         </div>
 
         <div className="lg-col-span-2 padding-0 sm-col-span-4">
           <p className="mb-8 font-weight-600">Fuel Type*</p>
-          <FilterSelectDropdown name="FuelType" options={GENERIC_OPTIONS("FuelType")} isOpen={openDropdown === "FuelType"} onToggleOpen={() => onToggleDropdown("FuelType")} />
+          <FilterSelectDropdown name="Bahan Bakar" options={GENERIC_OPTIONS("Bahan Bakar")} isOpen={openDropdown === "Bahan Bakar"} onToggleOpen={() => onToggleDropdown("Bahan Bakar")} />
         </div>
 
         <div className="lg-col-span-2 padding-0 sm-col-span-4">
           <p className="mb-8 font-weight-600">Doors*</p>
-          <FilterSelectDropdown name="Doors" options={GENERIC_OPTIONS("FuelType")} isOpen={openDropdown === "Doors"} onToggleOpen={() => onToggleDropdown("Doors")} />
+          <FilterSelectDropdown name="Doors" options={GENERIC_OPTIONS("Bahan Bakar")} isOpen={openDropdown === "Doors"} onToggleOpen={() => onToggleDropdown("Doors")} />
         </div>
 
         <div className="lg-col-span-2 padding-0 sm-col-span-4">
           <p className="mb-8 font-weight-600">Color*</p>
-          <input className="input-large" type="text" id="Color" name="Color" placeholder="Enter color" required />
+          <input className="input-large" type="text" id="Warna" name="Warna" placeholder="Enter color" required />
         </div>
 
         <div className="lg-col-span-2 padding-0 sm-col-span-4">

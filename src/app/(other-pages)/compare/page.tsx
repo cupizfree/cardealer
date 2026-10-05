@@ -6,12 +6,12 @@ import Footer from "@/components/footer/Footer";
 import CompareTable from "@/components/compare/CompareTable";
 
 export const metadata: Metadata = {
-  title: "Compare | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Bandingkan Mobil",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-// Migrated from ../aurexo/compare.html. Breadcrumb's "Pages" crumb is a REAL `<a href="/index.html">`
-// here (unlike every other page's dead `<span>Pages</span>` — sell-your-car.html, clients-reviews.html,
+// Migrated from ../aurexo/compare.html. Breadcrumb's "Layanan" crumb is a REAL `<a href="/index.html">`
+// here (unlike every other page's dead `<span>Layanan</span>` — sell-your-car.html, clients-reviews.html,
 // financing.html, services-center.html, faqs.html, terms.html) — preserved as its real (if pointless,
 // it just links to home) href rather than "corrected" into the dead-span pattern seen elsewhere.
 export default function ComparePage() {
@@ -23,19 +23,19 @@ export default function ComparePage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <Link href="/">Pages</Link>
+              <Link href="/">Layanan</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Compare</span>
+              <span>Bandingkan</span>
             </li>
           </ul>
         </div>
@@ -44,9 +44,9 @@ export default function ComparePage() {
       <section className="pb-100">
         <div className="tf-spacing-style3" />
         <div className="container">
-          <h2 className="text-center mb-12 capitalize">Compare Cars Side-by-Side</h2>
+          <h2 className="text-center mb-12 capitalize">Bandingkan Mobil Berdampingan</h2>
           <p className="mb-40 text-center text-secondary h7 line-height-28">
-            Compare features, performance, and pricing to choose the perfect car.
+            Bandingkan fitur, performa, dan harga untuk memilih mobil yang sempurna.
           </p>
 
           <CompareTable />

@@ -2,18 +2,18 @@ import Link from "next/link";
 import ParallaxImage from "@/components/common/ParallaxImage";
 
 const CAR_TYPES = [
-  "Electric",
+  "Listrik",
   "SUV",
   "Sedan",
-  "Pickup Truck",
-  "Luxury",
+  "Pikap",
+  "Mewah",
   "Crossover",
   "Hybrid",
-  "Diesel",
+  "Solar",
   "Coupe",
   "Hatchback",
   "Wagon",
-  "Convertible",
+  "Konvertibel",
   "Minivan",
   "Plug-in Hybrid",
   "Van",
@@ -59,7 +59,7 @@ const VIEW_ALL_ICON = (
   </svg>
 );
 
-// Migrated from ../aurexo/home-07.html lines 3686-3892 ("Browse by Type"). Genuinely different DOM from
+// Migrated from ../aurexo/home-07.html lines 3686-3892 ("Cari Berdasarkan Tipe"). Genuinely different DOM from
 // `home/BrowseByTypeSection.tsx` (the `.swiper-brand` carousel over `banner-brand.png`): this is a
 // static `flex flex-wrap` list of `.brand-item-style-3` pills (no swiper at all) over a real
 // `simpleParallax` background (`bg-fixed.jpg`, same mechanism as `common/ParallaxImage.tsx` — this
@@ -75,7 +75,7 @@ export default function BrowseByTypePillsSection() {
       <ParallaxImage src="/assets/images/background/bg-fixed.jpg" />
 
       <div className="container flex items-center justify-center flex-col relative text-center index-2 wow fadeIn" data-wow-delay="0.1s">
-        <h2 className="text-white mb-40 capitalize">Browse by Type</h2>
+        <h2 className="text-white mb-40 capitalize">Cari Berdasarkan Tipe</h2>
         <div className="flex flex-wrap justify-center gap-8 mb-28">
           {CAR_TYPES.map((type) => (
             <Link key={type} href="/listing-grid4-columns" className="brand-item-style-3">
@@ -85,7 +85,7 @@ export default function BrowseByTypePillsSection() {
           ))}
         </div>
         <Link href="/listing-grid4-columns" className="btn btn-line-primary h-50 btn-large font-weight-600">
-          View All
+          Lihat Semua
           {VIEW_ALL_ICON}
         </Link>
       </div>

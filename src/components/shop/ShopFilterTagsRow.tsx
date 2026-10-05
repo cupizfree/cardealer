@@ -21,7 +21,7 @@ export default function ShopFilterTagsRow({
   return (
     <div className="col-md-12 gap-7 mb-32 inline" id="filterResults">
       <p className="inline gap-4">
-        <span id="filterMatchesCount">{matchCount} </span> matches
+        <span id="filterMatchesCount">{matchCount} </span> hasil
       </p>
       {filterTags.length > 0 && (
         <>
@@ -35,7 +35,7 @@ export default function ShopFilterTagsRow({
             ))}
           </div>
           <button className="btn-clear-items" onClick={onClearAll}>
-            Remove All
+            Hapus Semua
             <Image src="/assets/icons/X-White.svg" alt="X" width={16} height={16} />
           </button>
         </>

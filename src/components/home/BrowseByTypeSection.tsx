@@ -7,14 +7,14 @@ import ParallaxImage from "@/components/common/ParallaxImage";
 import { CAR_TYPE_ICONS } from "./carTypeIcons";
 
 const CAR_TYPES = [
-  "Electric",
+  "Listrik",
   "Sedan",
   "Hatchback",
   "SUV",
   "Crossover",
-  "Pickup Truck",
+  "Pikap",
   "Coupe",
-  "Convertible",
+  "Konvertibel",
   "Wagon",
   "Minivan",
 ];
@@ -29,9 +29,9 @@ export default function BrowseByTypeSection() {
 
       <div className="container wow fadeIn relative" data-wow-delay="0.2s">
         <div className="title-section mb-40">
-          <h2 className="text-white text-center">Browse By Type</h2>
+          <h2 className="text-white text-center">Cari Berdasarkan Tipe</h2>
           <Link href="/listing-grid4-columns" className="btn btn-blur hover-fill-primary font-weight-600 btn-large">
-            Check All Car Type
+            Lihat Semua Tipe
           </Link>
         </div>
 

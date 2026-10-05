@@ -1,5 +1,5 @@
 // Migrated from ../aurexo/financing.html lines 535-561. Same `.sell-your-car-box` card shape already
-// used by sell-your-car.html's own "How It Works" (see `sell-your-car/HowItWorksSection.tsx`), but
+// used by sell-your-car.html's own "Cara Kerja" (see `sell-your-car/HowItWorksSection.tsx`), but
 // genuinely different here: a real CSS modifier `.style-2` (3-column grid instead of 4, see
 // `assets/scss/component/box.scss`), only 3 steps instead of 4, and this section additionally has a
 // subtitle paragraph + its own `background-light py-100` wrapper that sell-your-car.html's version
@@ -11,20 +11,20 @@ const steps = [
     number: "1",
     title: "Start with getting prequalified",
     description:
-      "Fill out a simple form in a few minutes, with no impact on your credit, and see personalized results instantly from trusted lending partners.",
+      "Isi formulir sederhana dalam beberapa menit, tanpa mempengaruhi kredit Anda, dan lihat hasilnya seketika dari mitra pembiayaan terpercaya.",
   },
   {
     number: "2",
-    title: "Search by your monthly budget",
+    title: "Cari sesuai anggaran bulanan Anda",
     description:
-      "Once you're prequalified, enter your preferred down payment, loan length, and monthly budget to see all the possibilities in your budget.",
+      "Setelah pra-layak, masukkan uang muka, tenor, dan anggaran bulanan Anda untuk melihat semua pilihan yang sesuai.",
     active: true,
   },
   {
     number: "3",
-    title: "Select an offer on the car",
+    title: "Pilih penawaran untuk mobil tersebut",
     description:
-      "Each prequalified offer is unique to the car. Select a car, view your vehicle specific prequalified offers, and take it to your local dealership.",
+      "Setiap penawaran pra-layak berbeda untuk tiap mobil. Pilih mobil, lihat penawaran khusus untuk unit tersebut, lalu bawa ke showroom terdekat.",
   },
 ];
 
@@ -33,9 +33,9 @@ export default function HowItWorksSection() {
     <section className="background-light py-100">
       <div className="container wow fadeIn" data-wow-delay="0.1s">
         <div className="flex flex-col items-center mb-40">
-          <h2 className="capitalize mb-14">How it works</h2>
+          <h2 className="capitalize mb-14">Cara kerja</h2>
           <p className="text-secondary h7 line-height-28">
-            Find the right car with the right features for the right budget.
+            Temukan mobil yang tepat dengan fitur yang tepat sesuai anggaran Anda.
           </p>
         </div>
 

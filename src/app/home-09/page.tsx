@@ -16,8 +16,8 @@ import { home09ClientTestimonials } from "@/data/clientTestimonials";
 import { allListings } from "@/data/listings";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Beranda Varian 9",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 const l13 = allListings.find((l) => l.id === 13)!;
@@ -91,10 +91,10 @@ const l15 = allListings.find((l) => l.id === 15)!;
 // `.search-cars` wrapper itself animates as one block (already fixed above). Fixed via
 // `titleWowDelay`/`tabsWowDelay`/`filtersWowDelay={null}`.
 //
-// "Browse By Type" reuses `home-03/BrowseByTypePhotoCards` byte-for-byte (same 8-type dataset) via its
+// "Cari Berdasarkan Tipe" reuses `home-03/BrowseByTypePhotoCards` byte-for-byte (same 8-type dataset) via its
 // new `titleSectionClassName` prop (`mb-28 wow fadeInDown`, not `mb-30 wow fadeInUp`).
 //
-// "New Vehicles" reuses `home-02/PopularSearchesSection`'s exact same 7-tab shape (same dark tab-bar
+// "Mobil Baru" reuses `home-02/PopularSearchesSection`'s exact same 7-tab shape (same dark tab-bar
 // icons) via new `heading`/`sectionClassName`/`tabs`/`showPagination` props — 6 of 7 tabs' ids are
 // byte-identical to home-02's own defaults; only "Sedan" differs (`[1,2,3,4]`, not `[1,2,3,4,1,2]`),
 // and this reuse has NO bullet pagination at all (confirmed via grep).
@@ -107,23 +107,23 @@ const l15 = allListings.find((l) => l.id === 15)!;
 // neither the light default's `gap-130 counter-spacing` nor home-04's own plain `gap-30`) + new
 // `headingClassName="mb-15"` + `sectionExtraClassName="radius-40"` props.
 //
-// "Compare Top Rated Vehicles" reuses `home-02/CompareTopRatedSection` with all 3 new props this
+// "Bandingkan Unit Terbaik" reuses `home-02/CompareTopRatedSection` with all 3 new props this
 // migration added (`sectionClassName="bg-white py-100"`, `titleSectionClassName`, `contentClassName=
 // "style-2"`) plus its own real `card-box-style-7 style3` card class (not `style2` like every other
 // reuse) and `<br>`-containing titles for pairs 2/3 (confirmed via source diff — `title` is now
 // `React.ReactNode`, not `string`).
 //
-// "Trending searches near you" reuses `home/TrendingSearchesSection` (index.html's own "Trending
+// "Pencarian populer di sekitar Anda" reuses `home/TrendingSearchesSection` (index.html's own "Trending
 // Searches Near You" widget) with its own 5-slide sequence (l13, l14, l15, l14, l14 — no 4th
 // content-mismatch slide here), lowercase heading, `radius-40` section modifier, and `mb-14` card
 // dividers (not `mb-16`) via the 4 new props this migration added.
 //
-// "Financing Calculator" reuses `home/FinancingCalculatorSection`'s `"outline"` variant with the SAME
+// "Simulasi Kredit" reuses `home/FinancingCalculatorSection`'s `"outline"` variant with the SAME
 // override values as home-08.html's own call (`bg-white py-100`/`mb-20`/`mb-8`/`mb-4`) plus a new 5th
 // override, `outlineImageClassName="max-w-628 ml-60 move3"` — a THIRD distinct companion-image
 // animation-class variant (confirmed via source diff).
 //
-// "Clients Reviews" reuses `common/ClientsReviewsCarousel` with `cardHref="/clients-reviews"` and its
+// "Ulasan Pelanggan" reuses `common/ClientsReviewsCarousel` with `cardHref="/clients-reviews"` and its
 // own real `.swiper-testimonior-2` config via the props this migration added. (Source's own slide 3 is a
 // plain, non-linked div while the other 4 are real links — a real, disclosed per-card inconsistency
 // treated as decorative demo noise and not reproduced at the link level, consistent with this
@@ -145,7 +145,7 @@ const l15 = allListings.find((l) => l.id === 15)!;
 //
 // "Find Your Perfect Used Car" reuses `home-07/DownloadAppCtaSection` via its new `variant="style-2"`
 // (a real `.cta-section.style-2`/`image-effect-scale` modifier combo, not `.background-be`) and
-// `standalone` (this reuse is its own `py-100 bg-white` section, not nested inside "Clients Reviews"
+// `standalone` (this reuse is its own `py-100 bg-white` section, not nested inside "Ulasan Pelanggan"
 // like home-07's own usage — confirmed via source diff).
 //
 // Footer reuses `footer/Footer` with its new `extraClassName="radius-40"` prop.
@@ -186,15 +186,15 @@ export default function Home09() {
       <BrowseByTypePhotoCards titleSectionClassName="mb-28 wow fadeInDown" />
 
       <PopularSearchesSection
-        heading="New Vehicles"
+        heading="Mobil Baru"
         sectionClassName="py-100 flat-tabs background-light radius-40"
         showPagination={false}
         tabs={[
-          { label: "Electric", ids: [2, 3, 4] },
+          { label: "Listrik", ids: [2, 3, 4] },
           { label: "Sedan", ids: [1, 2, 3, 4] },
           { label: "SUV", ids: [1, 2] },
-          { label: "Pickup Truck", ids: [2, 3, 4] },
-          { label: "Luxury", ids: [2, 3, 4] },
+          { label: "Pikap", ids: [2, 3, 4] },
+          { label: "Mewah", ids: [2, 3, 4] },
           { label: "Hatchback", ids: [1, 2] },
           { label: "Crossover", ids: [2, 3, 4] },
         ]}
@@ -229,7 +229,7 @@ export default function Home09() {
               brand: "TESLA",
               title: (
                 <>
-                  2024 Ford Mustang <br className="lg-hidden" /> Mach-E
+                  2024 Ford Mustang <br className="lg-hidden" /> Toyota Avanza
                 </>
               ),
               price: "$42.900,00",
@@ -241,7 +241,7 @@ export default function Home09() {
               brand: "Honda",
               title: (
                 <>
-                  2022 Jeep Grand <br className="lg-hidden" /> Cherokee Overland
+                  2022 Jeep Grand <br className="lg-hidden" /> Toyota Fortuner VRZ
                 </>
               ),
               price: "$44.900,00",
@@ -250,7 +250,7 @@ export default function Home09() {
               brand: "Camry",
               title: (
                 <>
-                  2022 Toyota 4Runner <br className="lg-hidden" /> Limited
+                  2022 Toyota 4Runner <br className="lg-hidden" /> Terbatas
                 </>
               ),
               price: "$42.900,00",
@@ -273,7 +273,7 @@ export default function Home09() {
       />
 
       <TrendingSearchesSection
-        heading="Trending searches near you"
+        heading="Pencarian populer di sekitar Anda"
         slides={[l13, l14, l15, l14, l14]}
         sectionExtraClassName="radius-40"
         cardDividerClassName="divider-blur mb-14"

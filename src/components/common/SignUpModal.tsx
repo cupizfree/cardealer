@@ -14,7 +14,7 @@ export default function SignUpModal() {
 
   return (
     <Modal id="SignUpModal" className="modal-login" contentClassName="modal-sm">
-      <h2 className="mb-20 text-center">Sign Up</h2>
+      <h2 className="mb-20 text-center">Daftar</h2>
       <form action="#">
         <label htmlFor="SignUp-login" className="mb-20 px-2">
           <span className="mb-8 flex">Email*</span>
@@ -24,7 +24,7 @@ export default function SignUpModal() {
             type="email"
             id="SignUp-login"
             name="SignUp-login"
-            placeholder="Enter your email"
+            placeholder="Masukkan email Anda"
             required
           />
         </label>
@@ -37,7 +37,7 @@ export default function SignUpModal() {
             className="input-large active"
             id="Password-SignUp"
             name="Password-SignUp"
-            placeholder="Password"
+            placeholder="Kata Sandi"
             required
           />
         </label>
@@ -47,7 +47,7 @@ export default function SignUpModal() {
             className="input-large active"
             id="ConfirmPassword-SignUp"
             name="ConfirmPassword-SignUp"
-            placeholder="Password"
+            placeholder="Kata Sandi"
             required
           />
         </label>
@@ -66,7 +66,7 @@ export default function SignUpModal() {
         </div>
 
         <button type="submit" className="btn btn-primary btn-large w-full mb-12 font-weight-600">
-          Create a new account
+          Buat akun baru
         </button>
 
         <p className="text-sm text-secondary flex gap-8 justify-center mb-20">
@@ -75,13 +75,13 @@ export default function SignUpModal() {
             className="text-sm font-weight-600 text-underline cursor-pointer"
             onClick={() => openModal("LoginModal")}
           >
-            Login Here
+            Masuk di sini
           </span>
         </p>
 
         <div className="flex justify-center items-center gap-20 mb-20">
           <p className="text-sm divider w-full" />
-          <p className="text-sm text-secondary text-center min-w-max">or sign up with</p>
+          <p className="text-sm text-secondary text-center min-w-max">atau daftar dengan</p>
           <p className="text-sm divider w-full" />
         </div>
 

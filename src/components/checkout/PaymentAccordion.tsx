@@ -34,7 +34,7 @@ const METHODS: PaymentMethod[] = [
     key: "credit-card",
     radioName: "CreditCard",
     radioValue: "35",
-    titleContent: <div className="flex items-center gap-8 font-weight-600">Credit Card</div>,
+    titleContent: <div className="flex items-center gap-8 font-weight-600">Kartu Kredit</div>,
     nameOnCardId: "NameOnCard",
     cardNumbersId: "CardNumbersCardNumbers",
     paymentAlt: "Payment",
@@ -45,7 +45,7 @@ const METHODS: PaymentMethod[] = [
     key: "cash-on-delivery",
     radioName: "Cashdelivery",
     radioValue: "32",
-    titleContent: <div className="flex items-center gap-8 font-weight-600">Cash on delivery</div>,
+    titleContent: <div className="flex items-center gap-8 font-weight-600">Bayar di tempat</div>,
     nameOnCardId: "CardNumbersNameOnCard",
     cardNumbersId: "CardNumbersCardNumbers2",
     paymentAlt: "Payment",
@@ -126,8 +126,7 @@ export default function PaymentAccordion() {
                     wrapper's state, caught via Playwright bounding-box check. */}
                 <div className="toggle-content" style={{ display: "block" }}>
                   <p className="mb-20 text-secondary">
-                    Make your payment directly into our bank account. Your order will not be shipped until the
-                    funds have cleared in our account.
+                    Lakukan pembayaran langsung ke rekening bank kami. Pesanan Anda baru dikirim setelah dana masuk ke rekening kami.
                   </p>
                   <div className="grid grid-cols-2 lg-grid-cols-1 gap-16">
                     <div className="col-span-2 padding-0">
@@ -146,7 +145,7 @@ export default function PaymentAccordion() {
 
                     <label className="filter-checkbox style-5">
                       <input type="checkbox" name="features" value="touch-screen" defaultChecked />
-                      <span>Save Card Details</span>
+                      <span>Simpan Detail Kartu</span>
                     </label>
                   </div>
                 </div>

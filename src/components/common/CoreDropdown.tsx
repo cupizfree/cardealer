@@ -5,7 +5,7 @@ import Image from "next/image";
 
 // Generic `.core-dropdown` widget. Started as open/close + label swap only, no side effects — traced
 // `app.js`'s generic `.core-dropdown__option` handler, which only ever updates the selected label/active
-// class. Used as-is (no `onChange`) for dashboard.html's "Car Views" range selector and "Sort by"
+// class. Used as-is (no `onChange`) for dashboard.html's "Dilihat" range selector and "Sort by"
 // dropdown, both confirmed genuinely decorative past the label swap — real widgets, but not a real
 // filter/sort, same class of decorative-but-interactive control as shop.html's own "Sort by" (see
 // COMPONENT_MAP.md #53). The optional `onChange` was added for reviews.html's own rating-filter/sort-

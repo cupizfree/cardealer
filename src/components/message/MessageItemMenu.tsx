@@ -6,7 +6,7 @@ import Image from "next/image";
 // Migrated from ../aurexo/message.html (each `.message-item__options`, e.g. lines 738-744). Traced this
 // page's own trailing inline script in full: `$(document).on('click', '.message-item__options
 // .core-dropdown__menu a', ...)` — a real, generic Delete handler that removes the message it belongs to
-// (matched by text content, "Delete" only; "Reply" has no handler anywhere, UI_ONLY). Reproduced as a
+// (matched by text content, "Hapus" only; "Balas" has no handler anywhere, UI_ONLY). Reproduced as a
 // real `onDelete` callback instead of the source's own text-matching + DOM removal.
 export default function MessageItemMenu({ onDelete }: { onDelete: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ export default function MessageItemMenu({ onDelete }: { onDelete: () => void }) 
       <ul className="core-dropdown__menu">
         <li>
           <a href="#" className="text-primary" onClick={(event) => event.preventDefault()}>
-            Reply
+            Balas
           </a>
         </li>
         <li>
@@ -41,7 +41,7 @@ export default function MessageItemMenu({ onDelete }: { onDelete: () => void }) 
               onDelete();
             }}
           >
-            Delete
+            Hapus
           </a>
         </li>
       </ul>

@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
 // Migrated from ../aurexo/index.html lines 3397-3458 (`.swiper-news`, `.post-effect-style-1`). All 3
-// slides share the identical real title "2025 BMW 5 Series Priced From $59,375; i5 EV From $68,275"
+// slides share the identical real title "BMW Seri 5 2025 Dibanderol Mulai Rp 950 Juta; i5 EV Mulai Rp 1,1 Miliar"
 // (confirmed via source read) — the same recurring article already added as id 13 in blogPosts.ts —
 // so all 3 link to that one real slug. Own literal `post-1/2/3.jpg` images and NEWS/Expert Review
 // category labels (distinct from `RelatedArticles.tsx`'s own post-4/5/6.jpg override for the same
@@ -18,20 +18,20 @@ const SLUG = "2025-bmw-5-series-priced";
 // 1280px as previously coded — same copy-paste breakpoint-threshold error already found and fixed for
 // `.swiper-card`/`.swiper-car-box`/etc. (COMPONENT_MAP.md #81).
 const SLIDES = [
-  { image: "/assets/images/blog/post-1.jpg", category: "NEWS" },
-  { image: "/assets/images/blog/post-2.jpg", category: "Expert Review" },
-  { image: "/assets/images/blog/post-3.jpg", category: "Expert Review" },
+  { image: "/assets/images/blog/post-1.jpg", category: "BERITA" },
+  { image: "/assets/images/blog/post-2.jpg", category: "Ulasan Ahli" },
+  { image: "/assets/images/blog/post-3.jpg", category: "Ulasan Ahli" },
 ];
-const TITLE = "2025 BMW 5 Series Priced From $59,375; i5 EV From $68,275";
+const TITLE = "BMW Seri 5 2025 Dibanderol Mulai Rp 950 Juta; i5 EV Mulai Rp 1,1 Miliar";
 
 export default function NewsAndReviewsSection() {
   return (
     <section className="py-100">
       <div className="container wow fadeIn" data-wow-delay="0.3s">
         <div className="title-section mb-28 wow fadeInUp">
-          <h2 className="">News & Reviews</h2>
+          <h2 className="">Berita & Ulasan</h2>
           <Link href="/blog-list" className="btn btn-line-style-2 effect-line-primary hover-fill-white btn-large">
-            View All
+            Lihat Semua
           </Link>
         </div>
 
@@ -53,8 +53,8 @@ export default function NewsAndReviewsSection() {
                   <div className="content border-top-none border-light">
                     <p className="h5 mb-4 title clamp clamp-2">{TITLE}</p>
                     <div className="tags clamp clamp-1">
-                      <span>by Admin</span>
-                      <span>Aug. 5, 2025</span>
+                      <span>oleh Admin</span>
+                      <span>5 Agu 2025</span>
                       <span className="text-highlight uppercase">{slide.category}</span>
                     </div>
                   </div>

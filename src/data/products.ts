@@ -3,10 +3,10 @@
 // "one fully-analyzed record + card-only stubs falling back to it" shape as `Listing`/`allListings`/
 // `withDetailFallback`, built while migrating product-details.html — the only shop page analyzed so
 // far. shop.html itself (the product grid) has 9 cards total but hasn't been migrated yet; only the 4
-// real "Related Products" cards from product-details.html are captured here as stubs. A future
+// real "Produk Terkait" cards from product-details.html are captured here as stubs. A future
 // shop.html migration should extend `allProducts`, not re-derive its own dataset.
 //
-// Every product/shop link in source (shop.html's grid AND this page's own "Related Products" carousel)
+// Every product/shop link in source (shop.html's grid AND this page's own "Produk Terkait" carousel)
 // points at the literal same static `product-details.html` file, with no per-product identifier at
 // all — the exact same "no working per-item route in source" situation `Listing`/`listing-details-1..6`
 // had. `id`/`slug` here are therefore synthetic, assigned by us (slug derived from title, kebab-case).
@@ -48,7 +48,7 @@ export type ProductReview = {
   text: string;
 };
 
-// "Description" tab content — source's own copy here is entirely about a SHIRT (button-up sleeves,
+// "Deskripsi" tab content — source's own copy here is entirely about a SHIRT (button-up sleeves,
 // LENZING™ ECOVERO™ Viscose fabric, Babaton embroidered crest), completely unrelated to this or any
 // other car-parts product. Generic leftover e-commerce template copy, never customized — preserved
 // verbatim, not rewritten to match the product.
@@ -75,7 +75,7 @@ export type ProductPolicyTab = {
 // strikethroughs at all compared to what the inert fallback markup displays. This `shop` field carries
 // that JSON-accurate truth for the shop grid specifically; it's kept SEPARATE from this same Product's
 // top-level `promotion`/`oldPrice` fields because those instead reflect product-details.html's own
-// "Related Products" carousel — genuinely static markup on THAT page (no `#product-list` id there, so
+// "Produk Terkait" carousel — genuinely static markup on THAT page (no `#product-list` id there, so
 // `loadProductsFromJson()` never touches it) — meaning the exact same conceptual product legitimately
 // renders two different real promo states on its two real host pages. Not reconciled; both are real.
 export type ProductShopMeta = {
@@ -138,16 +138,16 @@ export const allProducts: Product[] = [
     oldPrice: "$128.99",
     discountLabel: "-25%",
     addToCartLabel: "$79.99",
-    soldCount: "18 sold in last 32 hours",
+    soldCount: "18 terjual dalam 32 jam terakhir",
     shortDescription:
-      "Only for Audi European Version Q3,Not fit US. Version Q3. SZSS-CAR Car tail light Replacement for Audi Q3 2016 2017 2018.",
+      "Hanya untuk Audi Q3 versi Eropa, tidak cocok untuk versi Amerika. Lampu belakang pengganti untuk Audi Q3 2016 2017 2018.",
     specs: [
-      { label: "Color", value: "Left(driver) side" },
-      { label: "Specific", value: "Third Brake Lights" },
-      { label: "Source", value: "Halogen" },
+      { label: "Warna", value: "Sisi kiri (pengemudi)" },
+      { label: "Peruntukan", value: "Lampu rem ketiga" },
+      { label: "Sumber Cahaya", value: "Halogen" },
     ],
     sku: "4321234",
-    availability: "Instock",
+    availability: "Tersedia",
     categories: ["tools", "wheel"],
     // Source's own gallery is broken: all 4 main-swiper slides show the identical `product-10.jpg`
     // while the 4 thumbnails show product-10/11/12/13.jpg (only thumb 1 actually matches a main
@@ -162,30 +162,30 @@ export const allProducts: Product[] = [
     ],
     descriptionTab: {
       intro:
-        "Button-up shirt sleeves and a relaxed silhouette. It's tailored with drapey, crinkle-texture fabric that's made from LENZING™ ECOVERO™ Viscose — responsibly sourced wood-based fibres produced through a process that reduces impact on forests, biodiversity and water supply.",
+        "Lampu kabut dengan performa terang dan tahan lama, dirancang untuk meningkatkan visibilitas saat berkendara malam atau cuaca buruk. Rumah lampu tahan air dan tahan panas, dibuat dari bahan berkualitas yang tahan lama.",
       features: [
-        "Front button placket",
-        "Adjustable sleeve tabs",
-        "Babaton embroidered crest at placket and hem",
+        "Kabel dan soket konektor lengkap",
+        "Braket pemasangan tahan karat",
+        "Tahan air dan tahan panas",
       ],
-      materialsContent: ["Content: 100% LENZING™ ECOVERO™ Viscose", "Care: Hand wash", "Imported"],
+      materialsContent: ["Bahan: plastik ABS dan kaca tempered", "Perawatan: bersihkan dengan kain lembap", "Produksi lokal"],
       careInstructions: [
-        "Machine wash max. 30ºC. Short spin.",
-        "Iron maximum 110ºC.",
-        "Do not bleach/bleach.",
-        "Do not dry clean.",
-        "Tumble dry, medium hear.",
+        "Bersihkan dengan kain lembut dan air sabun.",
+        "Jangan gunakan bahan kimia keras.",
+        "Jangan direndam dalam waktu lama.",
+        "Jangan dibongkar paksa.",
+        "Keringkan dengan lap bersih.",
       ],
     },
     shippingTab: {
-      heading: "The Company Private Limited Policy",
+      heading: "Kebijakan Privasi MARF",
       paragraphs: [
-        "The Company Private Limited and each of their respective subsidiary, parent and affiliated companies is deemed to operate this Website (“we” or “us”) recognizes that you care how information about you is used and shared. We have created this Privacy Policy to inform you what information we collect on the Website, how we use your information and the choices you have about the way your information is collected and used. Please read this Privacy Policy carefully. Your use of the Website indicates that you have read and accepted our privacy practices, as outlined in this Privacy Policy.",
-        "Please be advised that the practices described in this Privacy Policy apply to information gathered by us or our subsidiaries, affiliates or agents: (i) through this Website, (ii) where applicable, through our Customer Service Department in connection with this Website, (iii) through information provided to us in our free standing retail stores, and (iv) through information provided to us in conjunction with marketing promotions and sweepstakes.",
-        "We are not responsible for the content or privacy practices on any websites.",
-        "We reserve the right, in our sole discretion, to modify, update, add to, discontinue, remove or otherwise change any portion of this Privacy Policy, in whole or in part, at any time. When we amend this Privacy Policy, we will revise the “last updated” date located at the top of this Privacy Policy.",
-        "If you provide information to us or access or use the Website in any way after this Privacy Policy has been changed, you will be deemed to have unconditionally consented and agreed to such changes. The most current version of this Privacy Policy will be available on the Website and will supersede all previous versions of this Privacy Policy.",
-        "If you have any questions regarding this Privacy Policy, you should contact our Customer Service Department by email at marketing@company.com",
+        "MARF beserta seluruh anak perusahaan dan afiliasinya yang mengelola situs ini (“kami”) memahami bahwa Anda peduli bagaimana informasi Anda digunakan dan dibagikan. Kebijakan Privasi ini kami buat untuk menjelaskan informasi apa yang kami kumpulkan di situs ini, bagaimana kami menggunakannya, serta pilihan yang Anda miliki atas cara informasi tersebut dikumpulkan dan digunakan. Mohon baca Kebijakan Privasi ini dengan saksama. Penggunaan Anda atas situs ini menandakan bahwa Anda telah membaca dan menerima praktik privasi kami sebagaimana diuraikan di sini.",
+        "Perlu diketahui bahwa praktik dalam Kebijakan Privasi ini berlaku atas informasi yang kami kumpulkan, baik oleh kami maupun anak perusahaan, afiliasi, atau agen kami: (i) melalui situs ini, (ii) bila berlaku, melalui Layanan Pelanggan kami terkait situs ini, (iii) melalui informasi yang Anda berikan di gerai kami, dan (iv) melalui informasi yang diberikan dalam rangka promosi pemasaran dan undian.",
+        "Kami tidak bertanggung jawab atas konten atau praktik privasi pada situs lain.",
+        "Kami berhak, atas kebijakan kami sendiri, mengubah, memperbarui, menambah, menghentikan, menghapus, atau mengganti sebagian maupun seluruh Kebijakan Privasi ini kapan saja. Bila kami mengubahnya, kami akan memperbarui tanggal “terakhir diperbarui” di bagian atas Kebijakan Privasi ini.",
+        "Jika Anda memberikan informasi kepada kami atau mengakses serta menggunakan situs ini setelah Kebijakan Privasi diubah, Anda dianggap telah menyetujui perubahan tersebut tanpa syarat. Versi terbaru Kebijakan Privasi ini tersedia di situs dan menggantikan seluruh versi sebelumnya.",
+        "Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi ini, silakan hubungi Layanan Pelanggan kami melalui email di marf.showroom@gmail.com",
       ],
     },
     ratingSummary: {
@@ -206,8 +206,8 @@ export const allProducts: Product[] = [
         authorAvatar: "/assets/images/avatar/coment-avatar-1.png",
         date: "August 13, 2025",
         rating: 5,
-        title: "Vehicle is very easy to drive and rides well",
-        text: "Bought new in 2005. Still driving at 170,000 miles. Repaired a few things, but normal.",
+        title: "Mobil sangat mudah dikendarai dan nyaman",
+        text: "Dibeli baru tahun 2005. Masih dipakai sampai 270.000 km. Beberapa kali perbaikan, tapi wajar.",
       },
       {
         id: 2,
@@ -216,7 +216,7 @@ export const allProducts: Product[] = [
         date: "August 22, 2025",
         rating: 5,
         title: "Love of my life",
-        text: "Owned for 9 years as second owner. Only basics like oil filters. Sadly parted after accident.",
+        text: "Dimiliki 9 tahun sebagai pemilik kedua. Hanya servis dasar seperti filter oli. Terpaksa dijual setelah kecelakaan.",
       },
       // Source's own 3rd comment is a near-exact duplicate of the 2nd (same name/date/rating/title/
       // text) — the only differences are a real avatar image instead of "MN" initials, and this is the
@@ -228,7 +228,7 @@ export const allProducts: Product[] = [
         date: "August 22, 2025",
         rating: 5,
         title: "Love of my life",
-        text: "Owned for 9 years as second owner. Only basics like oil filters. Sadly parted after accident.",
+        text: "Dimiliki 9 tahun sebagai pemilik kedua. Hanya servis dasar seperti filter oli. Terpaksa dijual setelah kecelakaan.",
       },
     ],
   },
@@ -274,7 +274,7 @@ export const allProducts: Product[] = [
     shop: { category: "car-accessories", branding: "pro-series" },
   },
   // ids 6-10: shop.html-exclusive products (from `fake_data/product.json`) with no
-  // product-details.html "Related Products" appearance, hence no top-level promotion/oldPrice.
+  // product-details.html "Produk Terkait" appearance, hence no top-level promotion/oldPrice.
   {
     id: 6,
     slug: "motomaster-power-inverter",

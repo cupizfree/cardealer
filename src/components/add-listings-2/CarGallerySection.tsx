@@ -16,7 +16,7 @@ const INITIAL_GALLERY = [
 const MAX_GALLERY = 6;
 
 // Migrated from ../aurexo/add-listings-2.html's own trailing inline `<script>` (real, page-specific).
-// Traced in full: clicking "Choose File" triggers the hidden file input; on selection, `FileReader`
+// Traced in full: clicking "Pilih Berkas" triggers the hidden file input; on selection, `FileReader`
 // reads each file as a data URL and swaps it into the preview image (single-image case) or fills the
 // gallery grid (first into any empty slot, then appends a new slot only while under 6 total).
 // Reproduced as real React state instead of direct DOM mutation. **Confirmed via Playwright that the
@@ -55,16 +55,16 @@ export default function CarGallerySection() {
 
   return (
     <div className="dashboard-box bg-white style-3 mb-30">
-      <p className="h4 mb-20">Gallery</p>
+      <p className="h4 mb-20">Galeri</p>
 
       <div className="car-preview-upload mb-20">
-        <p className="h4 mb-20">Car Preview</p>
+        <p className="h4 mb-20">Pratinjau Mobil</p>
         <div className="car-preview-upload__image-wrapper">
-          <Image id="carPreviewImage" src={previewSrc} alt="Car Preview" width={694} height={520} className="car-preview-upload__image" unoptimized={previewSrc.startsWith("data:")} />
+          <Image id="carPreviewImage" src={previewSrc} alt="Pratinjau Mobil" width={694} height={520} className="car-preview-upload__image" unoptimized={previewSrc.startsWith("data:")} />
         </div>
         <div className="car-preview-upload__actions">
           <button type="button" className="btn btn-line-1 btn-large font-weight-600 car-preview-upload__btn" onClick={() => previewInputRef.current?.click()}>
-            Choose File
+            Pilih Berkas
           </button>
           <input
             ref={previewInputRef}
@@ -74,12 +74,12 @@ export default function CarGallerySection() {
             className="car-preview-upload__input"
             onChange={handlePreviewChange}
           />
-          <span className="text-sm text-secondary">Upload file JPG, PNG</span>
+          <span className="text-sm text-secondary">Unggah berkas JPG, PNG</span>
         </div>
       </div>
 
       <div className="car-gallery-upload">
-        <p className="h4 mb-20">Car Gallery</p>
+        <p className="h4 mb-20">Galeri Mobil</p>
         <div className="car-gallery-upload__grid">
           {gallery.map((src, index) => (
             <div className="car-gallery-upload__item" key={index}>
@@ -89,7 +89,7 @@ export default function CarGallerySection() {
         </div>
         <div className="car-gallery-upload__actions">
           <button type="button" className="btn btn-line-1 btn-large font-weight-600 car-gallery-upload__btn" onClick={() => galleryInputRef.current?.click()}>
-            Choose File
+            Pilih Berkas
           </button>
           <input
             ref={galleryInputRef}
@@ -100,7 +100,7 @@ export default function CarGallerySection() {
             className="car-gallery-upload__input"
             onChange={handleGalleryChange}
           />
-          <span className="text-sm text-secondary">Upload file JPG, PNG</span>
+          <span className="text-sm text-secondary">Unggah berkas JPG, PNG</span>
         </div>
       </div>
     </div>

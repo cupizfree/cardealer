@@ -10,7 +10,7 @@ export default function LoginToReviewButton() {
       className="btn btn-primary btn-large font-weight-600 capitalize"
       onClick={() => openModal("LoginModal")}
     >
-      Login to add a Review
+      Masuk untuk memberi ulasan
     </button>
   );
 }

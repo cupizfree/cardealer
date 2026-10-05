@@ -6,20 +6,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
 
 const TYPES = [
-  { name: "Electric", image: "/assets/images/card/card-11.png", vehicles: 32 },
+  { name: "Listrik", image: "/assets/images/card/card-11.png", vehicles: 32 },
   { name: "Sedan", image: "/assets/images/card/card-12.png", vehicles: 23 },
   { name: "SUV", image: "/assets/images/card/card-13.png", vehicles: 29 },
-  { name: "Pickup Truck", image: "/assets/images/card/card-14.png", vehicles: 38 },
-  { name: "Luxury", image: "/assets/images/card/card-15.png", vehicles: 22 },
+  { name: "Pikap", image: "/assets/images/card/card-14.png", vehicles: 38 },
+  { name: "Mewah", image: "/assets/images/card/card-15.png", vehicles: 22 },
   { name: "Hatchback", image: "/assets/images/card/card-16.png", vehicles: 32 },
   { name: "Crossover", image: "/assets/images/card/card-17.png", vehicles: 16 },
   { name: "Coupe", image: "/assets/images/card/card-18.png", vehicles: 28 },
-  { name: "Convertible", image: "/assets/images/card/card-19.png", vehicles: 32 },
+  { name: "Konvertibel", image: "/assets/images/card/card-19.png", vehicles: 32 },
   { name: "Wagon", image: "/assets/images/card/card-20.png", vehicles: 24 },
 ];
 
 // Migrated from ../aurexo/home-02.html lines 1267-1379 (`.swiper-card-6`). Genuinely different DOM
-// from index.html's own "Browse By Type" (`BrowseByTypeSection.tsx`, an icon-only carousel over a
+// from index.html's own "Cari Berdasarkan Tipe" (`BrowseByTypeSection.tsx`, an icon-only carousel over a
 // parallax banner) — this is a white card carousel with real per-type photos and vehicle counts, so
 // it's its own component rather than a shared one (variant classification rule).
 //
@@ -30,18 +30,18 @@ const TYPES = [
 // `Grid` module (`grid={{ rows: 2, fill: "row" }}`, `swiper/css/grid` already imported globally in
 // `layout.tsx`).
 //
-// Retroactive fix: the "Check All Car Type" button was missing its real icon (a circular-arrow SVG,
+// Retroactive fix: the "Lihat Semua Tipe" button was missing its real icon (a circular-arrow SVG,
 // confirmed present in home-02.html's own source) — added back as the default `checkAllIcon`.
 //
 // home-08.html reuses this exact same 10-type dataset (byte-identical images/vehicle counts, confirmed
 // via source diff) inside a `bg-primary py-80` section instead of `background-light py-100`, with a
-// white heading, a `btn-blur` "Check All Car Type" button with its own distinct 20×20 white icon (not
+// white heading, a `btn-blur` "Lihat Semua Tipe" button with its own distinct 20×20 white icon (not
 // the 17×17 dark one used everywhere else), `card-box-blur` cards (not `bg-white`), and
 // `pagination-white` (not `pagination-dark`) — all real, confirmed per-page differences, exposed via
 // props rather than forking the component.
 //
 // RETROACTIVE FIX (found on request, "check Browse By Type card-box-style-3 color on home-08"): the
-// per-card type name (`<p>Electric</p>` etc.) always hardcoded no color class, correct for home-02.html's
+// per-card type name (`<p>Listrik</p>` etc.) always hardcoded no color class, correct for home-02.html's
 // own real `card-box-style-3 bg-white` cards (dark text on a white card, confirmed via source diff) — but
 // home-08.html's own real title is `h4 mb-4 text-white link` (confirmed via source diff), because its
 // `card-box-blur` variant is a near-transparent `rgba(255,255,255,0.1)` card sitting directly on the
@@ -78,9 +78,9 @@ export default function BrowseByTypeCardsSection({
     <section className={sectionClassName}>
       <div className="container">
         <div className="title-section mb-30 wow fadeInUp">
-          <h2 className={headingClassName}>Browse By Type</h2>
+          <h2 className={headingClassName}>Cari Berdasarkan Tipe</h2>
           <Link href="/listing-grid4-columns" className={checkAllButtonClassName}>
-            Check All Car Type
+            Lihat Semua Tipe
             {checkAllIcon}
           </Link>
         </div>

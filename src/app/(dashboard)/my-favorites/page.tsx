@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import MyFavoritesGrid from "@/components/my-favorites/MyFavoritesGrid";
 
 export const metadata: Metadata = {
-  title: "My Favorites | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Favorit Saya",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/my-favorites.html. Uses the same `(dashboard)` shell as dashboard.html/
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function MyFavoritesPage() {
   return (
     <>
-      <p className="h3 mb-40">My Favorites</p>
+      <p className="h3 mb-40">Favorit Saya</p>
       <MyFavoritesGrid />
     </>
   );

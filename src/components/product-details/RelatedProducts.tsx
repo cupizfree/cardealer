@@ -23,7 +23,7 @@ import { useModal } from "@/components/common/ModalProvider";
 //   `enableQuickView` to open it — each page's real source behavior is reproduced on its own terms
 //   rather than homogenized across every place this component is reused.
 // The heart (wishlist) icon is not wired to anything real in source on either page (no `shop.js`
-// favorites call reads this specific icon's state) and stays decorative everywhere. "Add to Cart" IS
+// favorites call reads this specific icon's state) and stays decorative everywhere. "Masukkan Keranjang" IS
 // real in source on both pages (`shop.js`'s `getProductDataFromCard` reads this exact card's own
 // name/image/price) — reproduced with the real `CartProvider` regardless of host page.
 export default function RelatedProducts({
@@ -41,7 +41,7 @@ export default function RelatedProducts({
   return (
     <>
       <div className="tf-spacing" />
-      <h2 className={headingClassName}>Related Products</h2>
+      <h2 className={headingClassName}>Produk Terkait</h2>
       <div className="swiper-card swiper-products">
         <Swiper
           modules={[Pagination]}
@@ -97,7 +97,7 @@ export default function RelatedProducts({
                       openModal("ShoppingCartModal");
                     }}
                   >
-                    Add to Cart
+                    Masukkan Keranjang
                   </p>
                 </div>
                 <Link href={`/product-details/${product.slug}`} className="font-weight-600">

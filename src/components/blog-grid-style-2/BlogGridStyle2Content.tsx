@@ -16,35 +16,35 @@ import Pagination from "@/components/common/Pagination";
 // title), continuing the recurring "same conceptual article, inconsistent per-page image" pattern.
 const TAB_POSTS = [
   {
-    label: "Car Reviews",
+    label: "Ulasan Mobil",
     posts: [
-      { slug: "hybrid-vs-electric-cars", image: "/assets/images/blog/post-19.jpg", category: "EXPERT REVIEW", title: "Hybrid vs. Electric Cars: Which One Should You Choose?" },
+      { slug: "hybrid-vs-electric-cars", image: "/assets/images/blog/post-19.jpg", category: "ULASAN AHLI", title: "Mobil Hibrida vs. Listrik: Mana yang Harus Anda Pilih?" },
       { slug: "compact-suv-vs-full-size-suv", image: "/assets/images/blog/post-20.jpg", category: "PERFORMANCE", title: "Compact SUV vs. Full-Size SUV: What’s the Difference?" },
-      { slug: "sports-cars-vs-luxury-cars", image: "/assets/images/blog/post-18.jpg", category: "LUXURY", title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match" },
+      { slug: "sports-cars-vs-luxury-cars", image: "/assets/images/blog/post-18.jpg", category: "MEWAH", title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match" },
       { slug: "diesel-vs-gasoline-engines", image: "/assets/images/blog/post-21.jpg", category: "DESIGN", title: "Diesel vs. Gasoline Engines: Pros and Cons Explained" },
-      { slug: "manual-vs-automatic-transmission", image: "/assets/images/blog/post-30.jpg", category: "REVIEWS", title: "Manual vs. Automatic Transmission: Which is Better for You?" },
+      { slug: "manual-vs-automatic-transmission", image: "/assets/images/blog/post-30.jpg", category: "ULASAN", title: "Manual vs. Matic: Mana yang Lebih Baik untuk Anda?" },
       { slug: "electric-vs-ice-cars", image: "/assets/images/blog/post-24.jpg", category: "TREND", title: "Electric vs. Internal Combustion Engine (ICE) Cars" },
-      { slug: "luxury-suvs-vs-crossovers", image: "/assets/images/blog/post-32.jpg", category: "MAINTENANCE", title: "Luxury SUVs vs. Crossovers: Which is Right for You?" },
-      { slug: "truck-vs-minivan", image: "/assets/images/blog/post-31.jpg", category: "NEWS", title: "Truck vs. Minivan: Which is Better for Family Needs?" },
-      { slug: "tires-all-season-vs-summer-vs-winter", image: "/assets/images/blog/post-23.jpg", category: "TIPS", title: "Tires: All-Season vs. Summer vs. Winter – What You Need to Know" },
+      { slug: "luxury-suvs-vs-crossovers", image: "/assets/images/blog/post-32.jpg", category: "PERAWATAN", title: "SUV Mewah vs. Crossover: Mana yang Tepat untuk Anda?" },
+      { slug: "truck-vs-minivan", image: "/assets/images/blog/post-31.jpg", category: "BERITA", title: "Pikap vs. Minibus: Mana yang Lebih Baik untuk Keluarga?" },
+      { slug: "tires-all-season-vs-summer-vs-winter", image: "/assets/images/blog/post-23.jpg", category: "TIPS", title: "Ban: Segala Musim vs. Musim Panas vs. Musim Dingin – Yang Perlu Anda Tahu" },
     ],
   },
   {
-    label: "Maintenance Tips",
+    label: "Tips Perawatan",
     posts: [
       { slug: "diesel-vs-gasoline-engines", image: "/assets/images/blog/post-21.jpg", category: "DESIGN", title: "Diesel vs. Gasoline Engines: Pros and Cons Explained" },
-      { slug: "manual-vs-automatic-transmission", image: "/assets/images/blog/post-30.jpg", category: "REVIEWS", title: "Manual vs. Automatic Transmission: Which is Better for You?" },
+      { slug: "manual-vs-automatic-transmission", image: "/assets/images/blog/post-30.jpg", category: "ULASAN", title: "Manual vs. Matic: Mana yang Lebih Baik untuk Anda?" },
       { slug: "electric-vs-ice-cars", image: "/assets/images/blog/post-24.jpg", category: "TREND", title: "Electric vs. Internal Combustion Engine (ICE) Cars" },
-      { slug: "luxury-suvs-vs-crossovers", image: "/assets/images/blog/post-32.jpg", category: "MAINTENANCE", title: "Luxury SUVs vs. Crossovers: Which is Right for You?" },
-      { slug: "truck-vs-minivan", image: "/assets/images/blog/post-31.jpg", category: "NEWS", title: "Truck vs. Minivan: Which is Better for Family Needs?" },
-      { slug: "tires-all-season-vs-summer-vs-winter", image: "/assets/images/blog/post-23.jpg", category: "TIPS", title: "Tires: All-Season vs. Summer vs. Winter – What You Need to Know" },
+      { slug: "luxury-suvs-vs-crossovers", image: "/assets/images/blog/post-32.jpg", category: "PERAWATAN", title: "SUV Mewah vs. Crossover: Mana yang Tepat untuk Anda?" },
+      { slug: "truck-vs-minivan", image: "/assets/images/blog/post-31.jpg", category: "BERITA", title: "Pikap vs. Minibus: Mana yang Lebih Baik untuk Keluarga?" },
+      { slug: "tires-all-season-vs-summer-vs-winter", image: "/assets/images/blog/post-23.jpg", category: "TIPS", title: "Ban: Segala Musim vs. Musim Panas vs. Musim Dingin – Yang Perlu Anda Tahu" },
     ],
   },
   {
     label: "Buying Guides",
     posts: [
       { slug: "diesel-vs-gasoline-engines", image: "/assets/images/blog/post-21.jpg", category: "DESIGN", title: "Diesel vs. Gasoline Engines: Pros and Cons Explained" },
-      { slug: "manual-vs-automatic-transmission", image: "/assets/images/blog/post-30.jpg", category: "REVIEWS", title: "Manual vs. Automatic Transmission: Which is Better for You?" },
+      { slug: "manual-vs-automatic-transmission", image: "/assets/images/blog/post-30.jpg", category: "ULASAN", title: "Manual vs. Matic: Mana yang Lebih Baik untuk Anda?" },
       { slug: "electric-vs-ice-cars", image: "/assets/images/blog/post-24.jpg", category: "TREND", title: "Electric vs. Internal Combustion Engine (ICE) Cars" },
     ],
   },
@@ -90,8 +90,8 @@ export default function BlogGridStyle2Content() {
                 <div className="content">
                   <p className="h5 title capitalize mb-12 text-white mb-8">{post.title}</p>
                   <div className="flex gap-12 justify-start">
-                    <span className="text-xs text-white">by Admin</span>
-                    <span className="text-xs text-white">Aug. 21, 2025</span>
+                    <span className="text-xs text-white">oleh Admin</span>
+                    <span className="text-xs text-white">21 Agu 2025</span>
                     <span className="text-xs text-highlight uppercase text-underline">{post.category}</span>
                   </div>
                 </div>

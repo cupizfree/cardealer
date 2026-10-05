@@ -7,8 +7,8 @@ import ListingSidebarSection from "@/components/listing/ListingSidebarSection";
 import { allListings } from "@/data/listings";
 
 export const metadata: Metadata = {
-  title: "Listing ListStyle Sidebar | Aurexo",
-  description: "Browse car listings with a permanent filter sidebar.",
+  title: "Katalog Mobil",
+  description: "Lihat katalog mobil dengan sidebar filter tetap.",
 };
 
 // Migrated from ../aurexo/listing-liststyle-sidebar.html — see docs/migration/MIGRATION_STATUS.md and
@@ -23,13 +23,13 @@ export default function ListingListstyleSidebarPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Listing</span>
+              <span>Katalog</span>
             </li>
           </ul>
         </div>
@@ -37,7 +37,7 @@ export default function ListingListstyleSidebarPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Listing ListStyle Sidebar</h2>
+          <h2>Katalog Mobil</h2>
         </div>
         <div className="tf-spacing-style3 md-hidden" />
 

@@ -279,12 +279,12 @@ export default function HeaderStyle4({
           <div className="header-inner" id="site-header-inner">
             <div className="logo">
               <Link href="/">
-                <Image src={logoSrc} alt="logo" width={163} height={54} />
+                <Image src={logoSrc} alt="logo" width={66} height={54} />
               </Link>
             </div>
             <div className="logo-mobile">
               <Link href="/">
-                <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={140} height={36} />
+                <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={44} height={36} />
               </Link>
             </div>
 
@@ -302,12 +302,12 @@ export default function HeaderStyle4({
                   onClick={() => openModal("LoginModal")}
                 >
                   <SignInIcon stroke={actionIconStroke} />
-                  Sign In
+                  Masuk
                 </button>
 
                 <Link href="/add-listings-2" className={addListingButtonClassName}>
                   <AddListingIcon color={addListingIconColor} />
-                  Add Listing
+                  Tambah Iklan
                 </Link>
               </div>
 
@@ -321,7 +321,7 @@ export default function HeaderStyle4({
                 <Link
                   href="/compare"
                   className="header-action-btn header-action-icon"
-                  aria-label="Compare"
+                  aria-label="Bandingkan"
                   data-badge={compareItems.length > 0 ? compareItems.length : undefined}
                 >
                   <CompareIcon stroke={actionIconStroke} />
@@ -330,7 +330,7 @@ export default function HeaderStyle4({
                 <Link
                   href="/my-favorites"
                   className="header-action-btn header-action-icon"
-                  aria-label="Wishlist"
+                  aria-label="Favorit"
                   data-badge={wishlistItems.length > 0 ? wishlistItems.length : undefined}
                 >
                   <WishlistIcon stroke={actionIconStroke} />
@@ -346,11 +346,11 @@ export default function HeaderStyle4({
           <div className="header-button header-button-mobile flex items-center gap-20">
             <button className="btn btn-primary btn-large font-weight-600" onClick={() => openModal("LoginModal")}>
               <SignInIcon />
-              Sign In
+              Masuk
             </button>
             <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
               <AddListingIcon />
-              Add Listing
+              Tambah Iklan
             </Link>
           </div>
         </div>
@@ -367,18 +367,18 @@ export default function HeaderStyle4({
             `header/Header.tsx`'s own comment for why. Rendered a 2nd time here (not literally moved). */}
         <div className="logo-mobile">
           <Link href="/">
-            <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={140} height={36} />
+            <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={44} height={36} />
           </Link>
         </div>
         <MobileMenu />
         <div className="header-button header-button-mobile flex items-center gap-20">
           <button className="btn btn-primary btn-large font-weight-600" onClick={() => openModal("LoginModal")}>
             <SignInIcon />
-            Sign In
+            Masuk
           </button>
           <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
             <AddListingIcon />
-            Add Listing
+            Tambah Iklan
           </Link>
         </div>
       </Offcanvas>

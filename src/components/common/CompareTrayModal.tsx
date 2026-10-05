@@ -65,13 +65,13 @@ export default function CompareTrayModal() {
                   closeModal() this tray would stay stacked open on top of /compare after navigating
                   there (a real page load in source would have reset it for free). */}
               <Link href="/compare" className="btn btn-primary btn-large font-weight-600" onClick={closeModal}>
-                Compare
+                Bandingkan
               </Link>
             </div>
           </div>
         ) : (
           <div className="compare-empty-state text-center" id="compareEmptyState">
-            <p className="text-muted">Your compare is currently empty</p>
+            <p className="text-muted">Perbandingan Anda masih kosong</p>
           </div>
         )}
       </div>

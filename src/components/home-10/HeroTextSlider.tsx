@@ -13,7 +13,7 @@ const BANNERS = ["banner-10.jpg", "banner-1.jpg", "banner-2.jpg", "banner-3.jpg"
 // source read — `.tp-showcase-slider-bg` and `.page-title--slider-content` are siblings inside the same
 // `.swiper-slide`, not two separately-synced swipers). All 4 slides repeat the identical text/price/CTA
 // ("Mercedes-Maybach S-Class Haute Voiture", "$490/Month for 24 mont (0% APR Representativ)" — both a
-// real, disclosed source typo, kept verbatim — "Discovery Now" → listing-details-1.html), only the
+// real, disclosed source typo, kept verbatim — "Lihat Unit" → listing-details-1.html), only the
 // background image differs (banner-10,1,2,3 — `banner-10.jpg` is a real, page-specific image not used
 // elsewhere). No nav arrows (confirmed via grep — only bullet pagination). Wrapped in its own `.px-15`
 // padding div and real `radius-20` rounded corners, matching source's own structure.
@@ -39,14 +39,14 @@ export default function HeroTextSlider() {
 
                 <div className="page-title--slider-content style-1 delay-3">
                   <h1 className="search-cars__title effect-item effect-left delay-4">
-                    Mercedes-Maybach S-Class <br className="lg-hidden" /> Haute Voiture
+                    Toyota Fortuner VRZ <br className="lg-hidden" /> Diesel 2021
                   </h1>
                   <p className="h3 sub-title text-white mb-36 capitalize effect-item effect-left delay-5">
-                    $490/Month for 24 mont <span className="h7 font-weight-500 text-white">(0% APR Representativ)</span>
+                    Rp 8.150.000/bulan, tenor 24 bulan <span className="h7 font-weight-500 text-white">(bunga 0%)</span>
                   </p>
                   <div className="btn-wrap effect-item effect-left delay-6">
-                    <Link href="/listing-details/audi-a6-avant-e-tron" className="btn btn-white text-primary btn-large-2 font-weight-600 max-w-min capitalize">
-                      Discovery Now
+                    <Link href="/listing-details/toyota-fortuner-vrz-2021" className="btn btn-white text-primary btn-large-2 font-weight-600 max-w-min capitalize">
+                      Lihat Unit
                     </Link>
                   </div>
                 </div>

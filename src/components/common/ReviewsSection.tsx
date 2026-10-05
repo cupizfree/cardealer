@@ -4,7 +4,7 @@ import StarRatingInput from "@/components/listing-details/StarRatingInput";
 import LoginToReviewButton from "@/components/listing-details/LoginToReviewButton";
 
 // Extracted out of `ListingDetailsContent` (rating-box + comments + add-review-form) once
-// sale-agents-details.html needed the exact same "Customer Reviews" block byte-identical to the
+// sale-agents-details.html needed the exact same "Ulasan Pelanggan" block byte-identical to the
 // listing-details pages' own (same 4.8 average/distribution, same 3 reviewers — confirmed via direct
 // source diff) — same "extract into shared files once a second feature needs it" precedent as
 // `SocialIcons`/`Pagination`. No listing-specific typing beyond the already-shared `Review`/
@@ -25,10 +25,10 @@ export default function ReviewsSection({
   return (
     <>
       <div className="flex items-center justify-between gap-16 mb-16" id={sectionId}>
-        <p className="h4">Customer Reviews</p>
+        <p className="h4">Ulasan Pelanggan</p>
         {reviewsHeaderButton && (
           <a href="#reviewForm" className="btn btn-primary btn-small-2 font-weight-600 capitalize">
-            Write a review
+            Tulis ulasan
           </a>
         )}
       </div>
@@ -62,7 +62,7 @@ export default function ReviewsSection({
           </div>
           <div className="rating-box__button">
             <a href="#reviewForm" className="btn btn-primary btn-large font-weight-600 capitalize">
-              Write a review
+              Tulis ulasan
             </a>
           </div>
         </div>
@@ -98,20 +98,20 @@ export default function ReviewsSection({
 
         <p>
           <a href="/clients-reviews" className="text-underline font-weight-600 capitalize">
-            View more reviews (98)
+            Lihat semua ulasan (98)
           </a>
         </p>
       </div>
 
       <div>
-        <p className="h4 capitalize mb-8">add a review</p>
+        <p className="h4 capitalize mb-8">tambah ulasan</p>
         {reviewFormVariant === "full" ? (
           <>
-            <p className="mb-24">Your email address will not be published</p>
+            <p className="mb-24">Alamat email Anda tidak akan dipublikasikan</p>
             <form action="#" className="add-review-form">
               <div className="grid grid-cols-2 gap-22 mb-12 md-grid-cols-1">
                 <div className="md-col-span-2 padding-0">
-                  <p className="mb-8">Name</p>
+                  <p className="mb-8">Nama</p>
                   <input className="active input-large" id="name-review" name="name-review" type="text" defaultValue="Tony Nguyen" required />
                 </div>
                 <div className="md-col-span-2 padding-0">
@@ -119,13 +119,13 @@ export default function ReviewsSection({
                   <input className="input-large" name="email-review" id="email-review" type="text" defaultValue="themesflat@gmail.com" required />
                 </div>
                 <div className="col-span-2 padding-0">
-                  <p className="mb-8">Review</p>
+                  <p className="mb-8">Ulasan</p>
                   <textarea placeholder="Your Review" rows={3} tabIndex={5} name="message" className="message" id="message" required />
                 </div>
               </div>
 
               <div className="col-span-2 padding-0">
-                <p className="mb-12">Rating</p>
+                <p className="mb-12">Penilaian</p>
                 <StarRatingInput defaultRating={4} />
               </div>
 
@@ -136,7 +136,7 @@ export default function ReviewsSection({
           // Some layout variants (e.g. listing-details-2.html) show the login-gated button only —
           // no visible Name/Email/Review/Rating fields at all (confirmed via direct source read).
           <>
-            <p className="mb-20">Your email address will not be published</p>
+            <p className="mb-20">Alamat email Anda tidak akan dipublikasikan</p>
             <LoginToReviewButton />
           </>
         )}

@@ -14,8 +14,8 @@ import RelatedArticles from "@/components/blog-details/RelatedArticles";
 import { emilyBenjaminOliviaTestimonials } from "@/data/clientTestimonials";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Beranda Varian 6",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/home-06.html (3522 lines). Header reuses `HeaderStyle4` with `bg-white`
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
 // at all. That filter bar instead lives in its own separate `bg-primary py-40` section
 // (`home-06/FilterBarSection.tsx`), whose Advanced panel uses plain native `<select>` elements instead
 // of the custom `FilterSelectDropdown` every other page uses (confirmed via source diff — a real,
-// different DOM). "New Cars"/"Used Cars" reuses `home/NewCarsSection` byte-for-byte (same `.swiper-
+// different DOM). "Mobil Baru"/"Mobil Bekas" reuses `home/NewCarsSection` byte-for-byte (same `.swiper-
 // card-7` ids/grid, zero new props). "Explore Our Brands" reuses `home/BrandsSection` byte-for-byte
-// (zero new props). "Browse By Type" reuses `home-03/BrowseByTypePhotoCards` byte-for-byte (zero new
-// props). "Compare Top Rated Vehicles" reuses `home-02/CompareTopRatedSection` with home-03/05's own
+// (zero new props). "Cari Berdasarkan Tipe" reuses `home-03/BrowseByTypePhotoCards` byte-for-byte (zero new
+// props). "Bandingkan Unit Terbaik" reuses `home-02/CompareTopRatedSection` with home-03/05's own
 // `.swiper-card-3` classes/breakpoints, but ALL 3 known pairs (Tesla + Jeep/Toyota + Porsche) instead of
-// a 2-pair subset. "Financing Calculator" reuses `home/FinancingCalculatorSection`'s new
+// a 2-pair subset. "Simulasi Kredit" reuses `home/FinancingCalculatorSection`'s new
 // `variant="outline"` (a 3rd real wrapper style — `bg-white`, `.outline.radius-12` — see that file's
 // own comment) followed by `common/SellBuyPromoBanner` in the same shared section (same
 // `leftTitleHref` override as home-03/05, everything else matches home-02's own defaults). "Clients
@@ -108,13 +108,13 @@ export default function Home06() {
 
       <RelatedArticles
         viewAllHref="/blog-list"
-        heading="News & reviews"
+        heading="Berita & Ulasan"
         swiperClassName="swiper-news-2"
         paginationClass="swiper-news-2-pagination"
         breakpoints={{ 0: { slidesPerView: 1 }, 400: { slidesPerView: 1 }, 767: { slidesPerView: 2 } }}
         slides={[
-          { image: "/assets/images/blog/post-4.jpg", category: "Expert Review" },
-          { image: "/assets/images/blog/post-6.jpg", category: "NEWS" },
+          { image: "/assets/images/blog/post-4.jpg", category: "Ulasan Ahli" },
+          { image: "/assets/images/blog/post-6.jpg", category: "BERITA" },
         ]}
       />
 

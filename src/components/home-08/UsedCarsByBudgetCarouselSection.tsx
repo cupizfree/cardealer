@@ -6,7 +6,7 @@ import { Pagination } from "swiper/modules";
 import ListingCardDark from "@/components/listing/ListingCardDark";
 import { allListings } from "@/data/listings";
 
-// Migrated from ../aurexo/home-08.html lines 2071-4127 ("Used Cars by Budget", 2055 lines — the
+// Migrated from ../aurexo/home-08.html lines 2071-4127 ("Mobil Bekas Sesuai Anggaran", 2055 lines — the
 // largest single section on this page). Genuinely different DOM from home-05.html's own "Used Cars by
 // Budget" (`home-05/UsedCarsByBudgetSection.tsx`, a static grid of light `ListingCard`s): this is a
 // real per-tab `.swiper-container.swiper-card` carousel (confirmed via source read — each of the 5
@@ -17,7 +17,7 @@ import { allListings } from "@/data/listings";
 // confirmed via full title read) — no new data needed, same conclusion as every other tabbed listing
 // section in this migration. "$20.000 - $50.000" is the source's own default-active tab.
 const TABS: { label: string; ids: number[] }[] = [
-  { label: "All Cars", ids: [13, 14, 15, 14, 15, 14] },
+  { label: "Semua Mobil", ids: [13, 14, 15, 14, 15, 14] },
   { label: "$20.000 - $50.000", ids: [13, 14, 15, 14, 13, 14] },
   { label: "$50.000 - $70.000", ids: [13, 14, 15, 14] },
   { label: "$70.000 - $100.000", ids: [13, 14, 15, 14] },
@@ -33,7 +33,7 @@ export default function UsedCarsByBudgetCarouselSection() {
     <section className="py-100 bg-primary flat-tabs">
       <div className="container">
         <h2 className="flex justify-center mb-42 text-white wow fadeInDown" data-wow-delay="0.1s">
-          Used Cars by Budget
+          Mobil Bekas Sesuai Anggaran
         </h2>
 
         <div className="overflow-x-auto flex justify-center">

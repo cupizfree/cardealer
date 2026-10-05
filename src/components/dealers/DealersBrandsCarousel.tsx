@@ -30,7 +30,7 @@ export default function DealersBrandsCarousel() {
     <>
       <div className="container wow fadeInUp" data-wow-delay="0.1s">
         <div className="flex justify-center mb-40">
-          <h2 className="">Dealers Brands</h2>
+          <h2 className="">Merek di Showroom</h2>
         </div>
       </div>
       <div className="container wow fadeIn" data-wow-delay="0.3s">

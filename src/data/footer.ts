@@ -1,5 +1,5 @@
-// Footer content. Structurally identical across Aurexo pages (see docs/migration/AUREXO_SOURCE.md §6);
-// this is the copy found in ../aurexo/listing-grid4-columns.html.
+// Konten footer MARF Showroom Mobil Purwokerto — seluruhnya bahasa Indonesia.
+// Strukturnya sama seperti template asal; hanya isi dan kontaknya yang diganti.
 
 export type FooterLink = {
   label: string;
@@ -12,57 +12,58 @@ export type FooterColumn = {
 };
 
 export const footerOpeningHours = {
-  line1: "Monday–Friday from 8 AM to 8 PM",
-  line2: "Saturday from 9 AM to 6 PM EST",
+  line1: "Senin–Sabtu, 08.00 – 17.00 WIB",
+  line2: "Minggu & hari libur: dengan perjanjian",
 };
 
 export const footerColumns: FooterColumn[] = [
   {
-    title: "QUICK LINKS",
+    title: "TAUTAN CEPAT",
     links: [
-      { label: "About Us", href: "/about-us" },
-      { label: "Buying a car", href: "/listing-grid4-columns" },
-      { label: "Selling a car", href: "/sell-your-car" },
-      { label: "Investor Relations", href: "/about-us" },
-      { label: "Careers", href: "/about-us" },
-      { label: "News", href: "/blog-standard" },
-      { label: "Contact Us", href: "/contact-us" },
+      { label: "Tentang Kami", href: "/about-us" },
+      { label: "Beli Mobil", href: "/listing-grid3-columns" },
+      { label: "Jual Mobil", href: "/sell-your-car" },
+      { label: "Simulasi Kredit", href: "/calculator" },
+      { label: "Ulasan Pelanggan", href: "/clients-reviews" },
+      { label: "Artikel", href: "/blog-standard" },
+      { label: "Hubungi Kami", href: "/contact-us" },
     ],
   },
   {
-    title: "BUYING & SELLING",
+    title: "JUAL & BELI",
     links: [
-      { label: "Financing", href: "/financing" },
-      { label: "Find a Car", href: "/listing-grid4-columns" },
-      { label: "Find a Dealer", href: "/sale-agents" },
-      { label: "Listings by City", href: "/listing-liststyle-halfmap" },
-      { label: "Certified Pre-Owned", href: "/listing-grid4-columns" },
-      { label: "Car Payment Calculators", href: "/calculator" },
-      { label: "Car Reviews & Ratings", href: "/clients-reviews" },
+      { label: "Pembiayaan", href: "/financing" },
+      { label: "Cari Mobil", href: "/listing-grid3-columns" },
+      { label: "Cari Showroom", href: "/dealers-listing" },
+      { label: "Daftar Unit + Peta", href: "/listing-liststyle-halfmap" },
+      { label: "Unit Garansi", href: "/listing-grid4-columns" },
+      { label: "Kalkulator Cicilan", href: "/calculator" },
+      { label: "Servis & Perawatan", href: "/services-center" },
     ],
   },
 ];
 
 export const footerContact = {
-  phone: "1-866-288-6868",
-  phoneHref: "tel:1-866-288-6868",
-  address: "6205 Peachtree Dunwoody Rd, Atlanta, GA 30328",
-  mapHref: "https://www.google.com/maps?q=123Yarranst,Punchbowl,NSW2196,Australia",
+  phone: "0822-4109-8298",
+  phoneHref: "tel:+6282241098298",
+  whatsapp: "https://wa.me/6282241098298",
+  address: "Purwokerto, Kabupaten Banyumas, Jawa Tengah",
+  mapHref: "https://www.google.com/maps/search/?api=1&query=Showroom+Mobil+Purwokerto",
 };
 
 export type SocialLink = { name: string; href: string };
 
+// Ganti ke akun resmi MARF begitu tersedia — sementara mengarah ke WhatsApp showroom
+// supaya tidak ada tautan mati ke akun orang lain.
 export const footerSocialLinks: SocialLink[] = [
-  { name: "facebook", href: "https://www.facebook.com/" },
-  { name: "x", href: "https://x.com/" },
-  { name: "instagram", href: "https://www.instagram.com/" },
-  { name: "tiktok", href: "https://www.tiktok.com/" },
-  { name: "amazon", href: "https://www.amazon.com/" },
-  { name: "pinterest", href: "https://www.pinterest.com" },
+  { name: "facebook", href: "https://wa.me/6282241098298" },
+  { name: "instagram", href: "https://wa.me/6282241098298" },
+  { name: "tiktok", href: "https://wa.me/6282241098298" },
+  { name: "x", href: "https://wa.me/6282241098298" },
 ];
 
 export const footerBottomLinks: FooterLink[] = [
-  { label: "Terms Of Services", href: "/terms" },
-  { label: "Privacy Policy", href: "/terms" },
-  { label: "Cookie Policy", href: "/terms" },
+  { label: "Syarat & Ketentuan", href: "/terms" },
+  { label: "Kebijakan Privasi", href: "/terms" },
+  { label: "Kebijakan Cookie", href: "/terms" },
 ];

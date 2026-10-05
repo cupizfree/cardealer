@@ -5,7 +5,7 @@
 // traced `app.js`'s `compareModal()` in full and confirmed it only handles removing items from a
 // hardcoded static list and toggling the empty state — nothing anywhere adds a real clicked listing to
 // compare, and the header's `data-badge="2"` is a literal hardcoded string. This Context is a genuine
-// new feature built for aurexo-nextjs (not a migration of existing behavior) so that clicking "Compare"
+// new feature built for aurexo-nextjs (not a migration of existing behavior) so that clicking "Bandingkan"
 // on a real `ListingCard`/`HalfMapListingCard` actually adds that listing here, and every consumer
 // (header badge, the tray, `/compare`) reads from the same shared state — same "small shared Context
 // for a cross-tree UI need" precedent as `ModalProvider`.

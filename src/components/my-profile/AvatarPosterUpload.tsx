@@ -52,12 +52,12 @@ export default function AvatarPosterUpload() {
             <Image id="avatarPreview" src={avatar.previewSrc} alt="Avatar Preview" width={120} height={120} unoptimized={avatar.previewSrc.startsWith("data:")} />
           </div>
           <div className="upload-content flex-1">
-            <p className="font-weight-600 mb-6">Upload File</p>
-            <p className="text-xs text-secondary mb-6">PNG, JPG, SVG dimension (400 * 400) max file not more then size 4 mb.</p>
+            <p className="font-weight-600 mb-6">Unggah Berkas</p>
+            <p className="text-xs text-secondary mb-6">PNG, JPG, SVG dimensi (400 × 400), ukuran berkas maksimal 4 MB.</p>
             <div className="flex">
               <div className="upload-action">
                 <button type="button" className="upload-btn" onClick={() => avatar.inputRef.current?.click()}>
-                  Choose File
+                  Pilih Berkas
                 </button>
                 <input
                   ref={avatar.inputRef}
@@ -81,12 +81,12 @@ export default function AvatarPosterUpload() {
             <Image id="posterPreview" src={poster.previewSrc} alt="Dealer Poster Preview" width={160} height={120} unoptimized={poster.previewSrc.startsWith("data:")} />
           </div>
           <div className="upload-content flex-1">
-            <p className="font-weight-600 mb-4">Upload File</p>
-            <p className="text-xs text-secondary mb-12">PNG, JPG, SVG dimension (400 * 400) max file not more then size 4 mb.</p>
+            <p className="font-weight-600 mb-4">Unggah Berkas</p>
+            <p className="text-xs text-secondary mb-12">PNG, JPG, SVG dimensi (400 × 400), ukuran berkas maksimal 4 MB.</p>
             <div className="flex">
               <div className="upload-action">
                 <button type="button" className="upload-btn" onClick={() => poster.inputRef.current?.click()}>
-                  Choose File
+                  Pilih Berkas
                 </button>
                 <input
                   ref={poster.inputRef}

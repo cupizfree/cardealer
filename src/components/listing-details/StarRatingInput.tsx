@@ -6,7 +6,7 @@ import Image from "next/image";
 // Matches `assets/js/app.js`'s rating-input__star click handler: clicking a star sets the hidden
 // rating value and marks every star up to that position "active" (swaps star-3.svg -> star-4.svg).
 // Source's form has no real submit handler either (no backend on this static site) — this stays a
-// visual-only picker feeding the (also decorative) "Login to add a Review" button below it.
+// visual-only picker feeding the (also decorative) "Masuk untuk memberi ulasan" button below it.
 export default function StarRatingInput({
   defaultRating = 4,
   activeIcon = "/assets/icons/star-4.svg",

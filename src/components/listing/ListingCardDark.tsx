@@ -17,10 +17,10 @@ export default function ListingCardDark({
   dividerClassName = "divider-blur mb-16",
 }: {
   listing: ListingCardData;
-  /** home-08.html's own "Used Cars by Budget" cards carry an extra `mt-1` on the title (confirmed via
+  /** home-08.html's own "Mobil Bekas Sesuai Anggaran" cards carry an extra `mt-1` on the title (confirmed via
    *  source diff, same trivial 1px nudge already found on `ListingCard.tsx`'s own home-08 reuse). */
   titleExtraClassName?: string;
-  /** home-09.html's own "Trending searches near you" cards use `divider-blur mb-14` (not `mb-16`,
+  /** home-09.html's own "Pencarian populer di sekitar Anda" cards use `divider-blur mb-14` (not `mb-16`,
    *  confirmed via source diff — index.html's/home-08.html's own usage really is `mb-16`). */
   dividerClassName?: string;
 }) {
@@ -126,11 +126,11 @@ export default function ListingCardDark({
               <path d="M6.875 10H13.125" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M10 6.875V13.125" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Compare
+            Bandingkan
           </p>
 
           <Link href={href} className="view-details text-white">
-            View details
+            Lihat detail
             <Image className="ml-4" src="/assets/icons/CaretCircleRight.svg" alt="CaretCircleRight.svg" width={16} height={16} />
           </Link>
         </div>

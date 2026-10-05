@@ -10,7 +10,7 @@ import BlogComments from "@/components/blog-details/BlogComments";
 // `blog-details/BlogPostBody.tsx`: single-column `.bloc-details-container` (max-width 1050px, no
 // sidebar at all — confirmed via source, no `.innerpage__sidebar` anywhere in this file), centered
 // `title-2` heading, a `.bloc-details-tag-style-2` meta row (icon+text pairs, not plain text links), and
-// the author "Mike Hanley" box embedded directly in the main content flow instead of in a sidebar. Body
+// the author "Bagas Prasetyo" box embedded directly in the main content flow instead of in a sidebar. Body
 // text (intro/quote/sections/conclusion/tags) is byte-identical to blog-details-1.html's own (confirmed
 // via source diff) — sourced from the same `BlogPostWithDetail`. `post-43.jpg` here is yet another real,
 // distinct image for the body (blog-details-1.html used `post-40.jpg`) — hardcoded rather than sourced
@@ -138,7 +138,7 @@ export default function BlogDetails2Content({ post }: { post: BlogPostWithDetail
 
             <div className="content">
               <a href="#" className="h4 mb-4 font-weight-600" onClick={(event) => event.preventDefault()}>
-                Mike Hanley
+                Bagas Prasetyo
               </a>
               <p className="text-secondary mb-18">200 Follower</p>
               <ul className="blog-detail-social flex gap-12">
@@ -172,7 +172,7 @@ export default function BlogDetails2Content({ post }: { post: BlogPostWithDetail
           </div>
 
           <p className="h7 line-height-28">
-            Mike Hanley (@mike_hanley) is a writer who draws. He’s the Bestselling author of “Number of The Year”.
+            Bagas Prasetyo adalah penulis dan ilustrator. Ia penulis buku terlaris “Number of The Year”.
           </p>
         </div>
 
@@ -180,16 +180,16 @@ export default function BlogDetails2Content({ post }: { post: BlogPostWithDetail
 
         <div className="flex justify-between mb-24 blog-detail-recentpost">
           <div className="previous">
-            <p className="font-weight-600 text-highlight uppercase mb-4">PREVIOUS</p>
+            <p className="font-weight-600 text-highlight uppercase mb-4">SEBELUMNYA</p>
             <Link href="/blog-details-1/truck-vs-minivan" className="h5 font-weight-500 capitalize">
-              Truck vs. Minivan: Which is Better for Family Needs?
+              Pikap vs. Minibus: Mana yang Lebih Baik untuk Keluarga?
             </Link>
           </div>
 
           <div className="next">
-            <p className="font-weight-600 text-highlight uppercase mb-4 text-right">NEXT</p>
+            <p className="font-weight-600 text-highlight uppercase mb-4 text-right">BERIKUTNYA</p>
             <Link href="/blog-details-1/tires-all-season-vs-summer-vs-winter" className="h5 font-weight-500 text-right capitalize">
-              Tires: All-Season vs. Summer vs. Winter – What You Need to Know
+              Ban: Segala Musim vs. Musim Panas vs. Musim Dingin – Yang Perlu Anda Tahu
             </Link>
           </div>
         </div>

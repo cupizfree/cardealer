@@ -13,20 +13,20 @@ export default function SearchModal() {
     <div className={`search-modal${isOpen ? " active" : ""}`}>
       <div className="search-modal__overlay" onClick={closeModal} />
       <div className="search-modal__content">
-        <button className="search-modal__close" onClick={closeModal} aria-label="Close">
+        <button className="search-modal__close" onClick={closeModal} aria-label="Tutup">
           <CloseXIcon />
         </button>
-        <h2 className="search-modal__title">WHAT ARE YOU LOOKING FOR?</h2>
+        <h2 className="search-modal__title">ANDA MENCARI APA?</h2>
         <form className="search-modal__form" action="#" method="get">
           <div className="search-modal__input-wrapper">
             <input
               type="text"
               className="search-modal__input"
-              placeholder="Search for anything"
+              placeholder="Cari apa saja"
               autoComplete="off"
               id="searchModalInput"
             />
-            <button type="submit" className="search-modal__submit" aria-label="Search">
+            <button type="submit" className="search-modal__submit" aria-label="Cari">
               <SearchIcon />
             </button>
           </div>

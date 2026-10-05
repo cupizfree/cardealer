@@ -11,25 +11,25 @@ const testimonials = [
     name: "Emily Johnson",
     title: "CEO Avitex",
     avatar: "/assets/images/avatar/avatar-4.png",
-    text: "I had an amazing experience buying my car from this website. The selection was huge, and I found the perfect car in no time. The process was smooth, and the customer support team was very helpful throughout.",
+    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu.",
   },
   {
     name: "Benjamin Parker",
     title: "CEO Tesla",
     avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Buying a car online was easier than I expected. I was able to compare multiple cars within minutes. The financing options were flexible, making it much easier to find a deal that worked for me.",
+    text: "Beli mobil online lebih mudah dari yang saya kira. Saya bisa membandingkan banyak mobil dalam hitungan menit. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran yang cocok.",
   },
   {
     name: "Olivia Williams",
     title: "CEO BMW",
     avatar: "/assets/images/avatar/avatar-2.png",
-    text: "I’ve bought several cars over the years, but this was by far the best experience. The service was honest and transparent, and the car I purchased was exactly as described. I’ll definitely be returning for my next vehicle!",
+    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
   },
   {
     name: "Emily Johnson",
     title: "CEO Avitex",
     avatar: "/assets/images/avatar/avatar-4.png",
-    text: "I had an amazing experience buying my car from this website. The selection was huge, and I found the perfect car in no time. The process was smooth, and the customer support team was very helpful throughout.",
+    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu.",
   },
 ];
 

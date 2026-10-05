@@ -16,7 +16,7 @@ import { FilterIcon } from "@/components/common/icons";
 // dropdown, matching source's actual (real-widget-but-no-real-resort) behavior.
 export default function ShopSidebarSection({ products }: { products: Product[] }) {
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const [sortLabel, setSortLabel] = useState("Lowest Price");
+  const [sortLabel, setSortLabel] = useState("Harga Terendah");
   const {
     isFilterOpen,
     setIsFilterOpen,
@@ -38,15 +38,15 @@ export default function ShopSidebarSection({ products }: { products: Product[] }
   const onFilterChange = (patch: Partial<typeof filters>) => setFilters((prev) => ({ ...prev, ...patch }));
 
   const SORT_OPTIONS = [
-    "Best Match",
-    "Lowest Price",
-    "Highest Price",
-    "Lowest Mileage",
-    "Highest Mileage",
+    "Paling Sesuai",
+    "Harga Terendah",
+    "Harga Tertinggi",
+    "Jarak Terendah",
+    "Jarak Tertinggi",
     "Nearest Location",
-    "Best Deal",
-    "Newest Year",
-    "Oldest Year",
+    "Penawaran Terbaik",
+    "Tahun Terbaru",
+    "Tahun Terlama",
     "Newest Listed",
     "Oldest Listed",
   ];
@@ -59,7 +59,7 @@ export default function ShopSidebarSection({ products }: { products: Product[] }
             <div className="flex items-center gap-16">
               <button className="btn-filter hidden md-block" onClick={() => setIsFilterOpen(true)}>
                 <FilterIcon />
-                Filters
+                Filter
               </button>
               <p>
                 Showing {rangeStart} – {rangeEnd} of {filteredProducts.length} Products
@@ -68,7 +68,7 @@ export default function ShopSidebarSection({ products }: { products: Product[] }
           </div>
           <div className="col-md-6">
             <div className="flex items-center gap-8 justify-end md-flex-start md-mt-16">
-              <p>Sort by:</p>
+              <p>Urutkan:</p>
               <div className={`core-dropdown${isSortOpen ? " active" : ""}`}>
                 <button className="core-dropdown__button" type="button" onClick={() => setIsSortOpen((open) => !open)}>
                   <span className="core-dropdown__selected">{sortLabel}</span>
@@ -126,8 +126,8 @@ export default function ShopSidebarSection({ products }: { products: Product[] }
         <div className="filter-sidebar__overlay" onClick={() => setIsFilterOpen(false)} />
         <div className="filter-sidebar__panel">
           <div className="filter-sidebar__header bg-white">
-            <p className="h5">Advanced Search</p>
-            <button className="filter-sidebar__close" onClick={() => setIsFilterOpen(false)} aria-label="Close">
+            <p className="h5">Pencarian Lanjutan</p>
+            <button className="filter-sidebar__close" onClick={() => setIsFilterOpen(false)} aria-label="Tutup">
               <Image src="/assets/icons/X.svg" alt="close" width={20} height={20} />
             </button>
           </div>

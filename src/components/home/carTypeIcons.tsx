@@ -160,6 +160,20 @@ export const CAR_TYPE_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
 };
+// Alias Indonesia — label kategori di UI berbahasa Indonesia tetap menemukan ikonnya.
+CAR_TYPE_ICONS.Listrik = CAR_TYPE_ICONS.Electric;
+CAR_TYPE_ICONS.Pikap = CAR_TYPE_ICONS["Pickup Truck"];
+CAR_TYPE_ICONS.Mewah = CAR_TYPE_ICONS.Luxury;
+CAR_TYPE_ICONS.Konvertibel = CAR_TYPE_ICONS.Convertible;
+
+// Alias lanjutan — label kategori berbahasa Indonesia tetap menemukan ikonnya.
+CAR_TYPE_ICONS["Mobil Listrik"] = CAR_TYPE_ICONS.Electric;
+CAR_TYPE_ICONS["Mobil Mewah"] = CAR_TYPE_ICONS.Luxury;
+CAR_TYPE_ICONS["Mobil Sedan"] = CAR_TYPE_ICONS.Sedan;
+CAR_TYPE_ICONS["Mobil SUV"] = CAR_TYPE_ICONS.SUV;
+CAR_TYPE_ICONS["Mobil Hatchback"] = CAR_TYPE_ICONS.Hatchback;
+CAR_TYPE_ICONS["Mobil Crossover"] = CAR_TYPE_ICONS.Crossover;
+
 
 // Real dark-stroke (`#1C1C1C`), tight-viewBox icon set from home-02.html's own "Popular Searches" tab
 // bar (lines 1389-1491) — a completely different set from `CAR_TYPE_ICONS` above (that one is
@@ -265,3 +279,17 @@ export const DARK_CAR_TYPE_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
 };
+// Alias Indonesia — label kategori di UI berbahasa Indonesia tetap menemukan ikonnya.
+DARK_CAR_TYPE_ICONS.Listrik = DARK_CAR_TYPE_ICONS.Electric;
+DARK_CAR_TYPE_ICONS.Pikap = DARK_CAR_TYPE_ICONS["Pickup Truck"];
+DARK_CAR_TYPE_ICONS.Mewah = DARK_CAR_TYPE_ICONS.Luxury;
+DARK_CAR_TYPE_ICONS.Konvertibel = DARK_CAR_TYPE_ICONS.Convertible;
+
+// Alias lanjutan — label kategori berbahasa Indonesia tetap menemukan ikonnya.
+DARK_CAR_TYPE_ICONS["Mobil Listrik"] = DARK_CAR_TYPE_ICONS.Electric;
+DARK_CAR_TYPE_ICONS["Mobil Mewah"] = DARK_CAR_TYPE_ICONS.Luxury;
+DARK_CAR_TYPE_ICONS["Mobil Sedan"] = DARK_CAR_TYPE_ICONS.Sedan;
+DARK_CAR_TYPE_ICONS["Mobil SUV"] = DARK_CAR_TYPE_ICONS.SUV;
+DARK_CAR_TYPE_ICONS["Mobil Hatchback"] = DARK_CAR_TYPE_ICONS.Hatchback;
+DARK_CAR_TYPE_ICONS["Mobil Crossover"] = DARK_CAR_TYPE_ICONS.Crossover;
+

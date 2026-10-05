@@ -34,7 +34,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const listing = allListings.find((l) => l.slug === slug);
   return {
-    title: listing ? `${listing.title} | Aurexo` : "Listing Details | Aurexo",
+    title: listing ? `${listing.title}` : "Detail Unit",
     description: listing ? `${listing.title} — ${listing.price}` : undefined,
   };
 }
@@ -53,7 +53,7 @@ export async function generateMetadata({
 //   "Inquiry" link targets the sidebar's Send Inquiry box specifically, hence `sendInquiryId="Inquiry"`
 //   below.
 // - Car Overview is a 4th presentation: a 5-column bordered-card grid (`overviewLayout="cards"`).
-// - Default feature tab is "Mechanical"; the "Customer Reviews" heading has no small "Write a review"
+// - Default feature tab is "Mechanical"; the "Ulasan Pelanggan" heading has no small "Tulis ulasan"
 //   button next to it this time (`reviewsHeaderButton={false}`) — only the rating-box's own button
 //   remains; add-review section is login-gated only (same as v2/v3).
 export default async function ListingDetails4Page({

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 // Migrated from ../aurexo/message.html lines 715-729 (the chat header's own "..." menu,
-// `.core-dropdown.more.style-2`). Both "Block" and "Delete" here are source's own literal dead
+// `.core-dropdown.more.style-2`). Both "Blokir" and "Hapus" here are source's own literal dead
 // `href="#"` — confirmed via grep, this page's own trailing inline script only wires up the DIFFERENT
 // per-message dropdown's Delete (see `MessageItemMenu.tsx`), not this one. Real open/close (traced
 // `app.js`'s generic `coreDropdown()` handler — opens/closes any `.core-dropdown` for real), decorative
@@ -35,12 +35,12 @@ export default function MessageOptionsMenu() {
         <ul className="core-dropdown__list more-links">
           <li>
             <a href="#" onClick={(event) => event.preventDefault()}>
-              Block
+              Blokir
             </a>
           </li>
           <li>
             <a href="#" onClick={(event) => event.preventDefault()}>
-              Delete
+              Hapus
             </a>
           </li>
         </ul>

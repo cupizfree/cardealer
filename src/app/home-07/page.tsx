@@ -12,8 +12,8 @@ import DownloadAppCtaSection from "@/components/home-07/DownloadAppCtaSection";
 import { emilyBenjaminOliviaTestimonials } from "@/data/clientTestimonials";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Beranda Varian 7",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/home-07.html (5215 lines, the largest home variant). Header reuses
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 // real, home-07-only `<div class="tf-spacing-style2 lg-hidden">` after the hero section (confirmed via
 // source diff — no other `HeroSearchSection` caller has it).
 //
-// RETROACTIVE FIX (found on request, "check the tab color"): the "All Car"/"New Car"/"Used Car" tab
+// RETROACTIVE FIX (found on request, "check the tab color"): the "Semua Mobil"/"Mobil Baru"/"Mobil Bekas" tab
 // labels always hardcoded `text-white`, but home-07.html's own real source uses `text-primary` (dark) on
 // these specific spans (confirmed via source diff — every other caller genuinely is `text-white`) —
 // because this page's hero sits on a pale `background-blue` (`#D8E2EA`), not a photo/dark background, so
@@ -67,28 +67,28 @@ export const metadata: Metadata = {
 // a literal dead `#`, `/services-center` — confirmed via source diff), unlike home-02's/home-04's own
 // all-same-href callers.
 //
-// "Popular searches" (`home-07/PopularSearchesGridSection.tsx`) is a genuinely new, different DOM from
-// every other "Popular Searches" section: a REAL per-tab static grid of `.card-box-style-1` cards (not a
-// swiper) — same shape as home-10.html's own "Popular searches". RETROACTIVE FIX (found while
+// "Pencarian populer" (`home-07/PopularSearchesGridSection.tsx`) is a genuinely new, different DOM from
+// every other "Pencarian Populer" section: a REAL per-tab static grid of `.card-box-style-1` cards (not a
+// swiper) — same shape as home-10.html's own "Pencarian populer". RETROACTIVE FIX (found while
 // investigating the same user layout report above): this component's own earlier claim that the 7
 // car-type tab pills were "purely decorative" over one static 29-card grid was wrong — a re-grep found 7
 // distinct `.content-inner` blocks (one per tab, 3/8/4/2/4/4/4 cards = 29 total), meaning the real page
 // shows only the active tab's small grid, not all 29 cards at once. Fixed to real tab-switching,
 // matching `home-10/PopularSearchesTabGridSection.tsx`'s pattern — see that component's own comment.
-// "Browse by Type"
+// "Cari Berdasarkan Tipe"
 // (`home-07/BrowseByTypePillsSection.tsx`) is a genuinely new static pill list over a real
 // `simpleParallax` background (`bg-fixed.jpg`, same mechanism as `common/ParallaxImage.tsx` — explicitly
 // listed as a home-07.html reuse target in that file's own header comment) with one repeated icon for
 // all 15 types (a real, disclosed simplification, confirmed via source read).
 //
-// "Latest For Sale" (`home-07/LatestForSaleSection.tsx`) reuses `listing/HalfMapListingCard` (the
+// "Terbaru Dijual" (`home-07/LatestForSaleSection.tsx`) reuses `listing/HalfMapListingCard` (the
 // `.card-box-style-9` "list view" shape) for its 4-card `col-lg-8` list, and `common/
 // SellBuyPromoBanner`'s new `layout="stack"` variant for its `col-lg-4` sidebar (same 2 cards/hrefs as
 // home-03/04's own calls, just stacked vertically instead of side-by-side — confirmed via source diff).
 // "Why Choose Us" reuses `common/WhyChooseUsSection`'s `variant="light"` default with its own 4th
 // distinct `wrapperClassName` combo (`"style2"` alone — neither the light default's `"style2 style3"`
 // nor home-04's `"outline style2"`) and home-04's own `statsGridModifierClass="gap-30"` (confirmed via
-// source diff). "Clients Reviews" reuses `common/ClientsReviewsCarousel` with the same shared
+// source diff). "Ulasan Pelanggan" reuses `common/ClientsReviewsCarousel` with the same shared
 // `emilyBenjaminOliviaTestimonials` dataset as home-05/06, real `cardHref="/clients-reviews"` links (same
 // as home-03's own), and its new `sectionClassName` prop — retroactive fix: this section's own
 // background genuinely varies per page (home-05: `background-light py-100`, home-06/07: `bg-white
@@ -119,7 +119,7 @@ export default function Home07() {
       />
 
       <HeroSearchSection
-        title="Search Cars Near You – Buy Today!"
+        title="Cari Mobil di Sekitar Anda – Beli Hari Ini!"
         titleCentered
         titleTag="h2"
         titleExtraClassName="text-primary letter-normal"

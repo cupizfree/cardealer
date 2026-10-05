@@ -12,7 +12,7 @@ import { allListings } from "@/data/listings";
 // title/spec/price but shows `card-4.jpg` (not id 1's own `card-1.jpg`) and adds a financing row id 1
 // doesn't have; slide 2 introduces a genuinely new badge value "Hot Offer" (`bg-primary`, a value not
 // seen on any other page) with `card-7.jpg` and a price ($35.200,00) that differs from id 2's canonical
-// $42.800,00; slide 3 shows a "Great Price" badge id 3 doesn't canonically have, `card-6.jpg`, and a
+// $42.800,00; slide 3 shows a "Harga Bagus" badge id 3 doesn't canonically have, `card-6.jpg`, and a
 // price ($22.800,00) differing from id 3's canonical $45.500,00. Each slide is its own literal
 // `ListingCardData` object (not spread from `allListings`) since so much of each record is overridden —
 // `slug`/`brandLabel`/`spec` are copied from the matching canonical id for routing/consistency, nothing
@@ -53,7 +53,7 @@ const SLIDES: ListingCardData[] = [
     title: l3.title,
     image: "/assets/images/card/card-6.jpg",
     brandLabel: l3.brandLabel,
-    badge: { text: "Great Price", colorClass: "bg-green" },
+    badge: { text: "Harga Bagus", colorClass: "bg-green" },
     photoCount: 8,
     videoCount: 1,
     price: "$22.800,00",
@@ -66,9 +66,9 @@ export default function TrendingSearchesGrid() {
     <section className="py-100">
       <div className="container relative">
         <div className="title-section mb-38 wow fadeInDown" data-wow-delay="0.1s">
-          <h2 className="capitalize">Trending searches near you</h2>
+          <h2 className="capitalize">Pencarian populer di sekitar Anda</h2>
           <Link href="/listing-grid4-columns" className="btn btn-line-style-2 effect-line-primary btn-large hover-fill-white">
-            View All
+            Lihat Semua
           </Link>
         </div>
       </div>

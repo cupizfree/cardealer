@@ -10,7 +10,7 @@ import ReviewsSection from "@/components/common/ReviewsSection";
 // `src/data/saleAgents.ts` and the `[slug]` route) instead of source's own hardcoded "Darrell
 // Steward"/`sale-agent-9.jpg` — the explicit follow-up request was to pull each team item's own
 // content into this shared template. A side effect: source's own name mismatch on this page
-// (breadcrumb said "Mike Hanley", heading+bio said "Darrell Steward") no longer exists, since the
+// (breadcrumb said "Bagas Prasetyo", heading+bio said "Darrell Steward") no longer exists, since the
 // breadcrumb (in the `[slug]` page) and this heading now both read from the same `agent.name`.
 //
 // The two bio paragraphs stay source's own literal generic text (source only ever wrote ONE agent
@@ -21,7 +21,7 @@ import ReviewsSection from "@/components/common/ReviewsSection";
 // same reasoning as this project's own pronoun-neutrality convention. This is a name/pronoun
 // substitution into an otherwise-unchanged generic narrative, not new biographical facts.
 //
-// "Dealer Inventory (3)" cards: all 3 titles ("Audi A6 Avant E-Tron", "2024 Hyundai Elantra", "Kia EV9
+// "Dealer Inventory (3)" cards: all 3 titles ("Toyota Avanza 1.5 G", "2024 Hyundai Elantra", "Kia EV9
 // 2024") match real `allListings` records (ids 1-3), but this page's own card images/specs/prices have
 // drifted from the canonical values (e.g. this page shows all 3 with an identical demo spec block —
 // 32500 miles/2022/EV/Manual — and its own `card-44/45/46.jpg` images) — same "per-page filler-content
@@ -45,7 +45,7 @@ export default function AgentProfile({ agent }: { agent: SaleAgent }) {
       <div className="flex">
         <div className="verify mb-16">
           <Image src="/assets/icons/SealCheck.svg" alt="verified" width={16} height={16} />
-          <p className="text-highlight text-sm">Verified Dealer</p>
+          <p className="text-highlight text-sm">Showroom Terverifikasi</p>
         </div>
       </div>
 

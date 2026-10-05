@@ -18,7 +18,7 @@ const FEATURED = {
   slug: "sports-cars-vs-luxury-cars",
   image: "/assets/images/blog/post-18.jpg",
   title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
-  category: "LUXURY",
+  category: "MEWAH",
   date: "Aug. 11, 2025",
 };
 
@@ -26,56 +26,56 @@ const GRID_POSTS = [
   {
     slug: "hybrid-vs-electric-cars",
     image: "/assets/images/blog/post-44.jpg",
-    category: "EXPERT REVIEW",
-    date: "Aug. 21, 2025",
-    title: "Hybrid vs. Electric Cars: Which One Should You Choose?",
+    category: "ULASAN AHLI",
+    date: "21 Agu 2025",
+    title: "Mobil Hibrida vs. Listrik: Mana yang Harus Anda Pilih?",
     excerpt:
-      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+      "Bandingkan kelebihan dan kekurangan mobil hibrida dan listrik untuk membantu Anda menentukan pilihan yang tepat...",
   },
   {
     slug: "compact-suv-vs-full-size-suv",
     image: "/assets/images/blog/post-20.jpg",
     category: "PERFORMANCE",
-    date: "Aug. 21, 2025",
+    date: "21 Agu 2025",
     title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
     excerpt:
-      "Discover the differences between compact and full-size SUVs, including space, fuel efficiency, and features...",
+      "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },
   {
     slug: "sports-cars-vs-luxury-cars",
     image: "/assets/images/blog/post-21.jpg",
-    category: "EXPERT REVIEW",
-    date: "Aug. 21, 2025",
+    category: "ULASAN AHLI",
+    date: "21 Agu 2025",
     title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
     excerpt:
-      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+      "Bandingkan kelebihan dan kekurangan mobil hibrida dan listrik untuk membantu Anda menentukan pilihan yang tepat...",
   },
   {
     slug: "diesel-vs-gasoline-engines",
     image: "/assets/images/blog/post-22.jpg",
     category: "PERFORMANCE",
-    date: "Aug. 21, 2025",
+    date: "21 Agu 2025",
     title: "Diesel vs. Gasoline Engines: Pros and Cons Explained",
     excerpt:
-      "Discover the differences between compact and full-size SUVs, including space, fuel efficiency, and features...",
+      "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },
   {
     slug: "manual-vs-automatic-transmission",
     image: "/assets/images/blog/post-23.jpg",
-    category: "EXPERT REVIEW",
-    date: "Aug. 21, 2025",
-    title: "Manual vs. Automatic Transmission: Which is Better for You?",
+    category: "ULASAN AHLI",
+    date: "21 Agu 2025",
+    title: "Manual vs. Matic: Mana yang Lebih Baik untuk Anda?",
     excerpt:
-      "Compare the benefits and drawbacks of hybrid and electric vehicles to help you decide which is the right choice...",
+      "Bandingkan kelebihan dan kekurangan mobil hibrida dan listrik untuk membantu Anda menentukan pilihan yang tepat...",
   },
   {
     slug: "compact-suv-vs-full-size-suv",
     image: "/assets/images/blog/post-24.jpg",
     category: "PERFORMANCE",
-    date: "Aug. 21, 2025",
+    date: "21 Agu 2025",
     title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
     excerpt:
-      "Discover the differences between compact and full-size SUVs, including space, fuel efficiency, and features...",
+      "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },
 ];
 
@@ -93,7 +93,7 @@ export default function BlogStandardList() {
         <div className="content">
           <p className="h3 text-white mb-8 capitalize">{FEATURED.title}</p>
           <div className="flex gap-12 justify-start mb-2">
-            <span className="text-white text-xs">by Admin</span>
+            <span className="text-white text-xs">oleh Admin</span>
             <span className="text-white text-xs">{FEATURED.date}</span>
             <span className="text-xs text-highlight uppercase text-underline">{FEATURED.category}</span>
           </div>
@@ -108,7 +108,7 @@ export default function BlogStandardList() {
             </div>
             <div className="content">
               <div className="flex gap-12 justify-start mb-12">
-                <span className="text-sm">by Admin</span>
+                <span className="text-sm">oleh Admin</span>
                 <span className="text-sm">{post.date}</span>
                 <span className="text-sm text-highlight uppercase text-underline">{post.category}</span>
               </div>

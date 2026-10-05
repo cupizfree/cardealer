@@ -88,7 +88,7 @@ function applyTheme(theme: Theme) {
 }
 
 // Migrated from ../aurexo/assets/js/switcher.js + assets/scss/component/themes.scss. This is Aurexo's
-// own template-demo "Setting" panel — a bottom-right floating gear that slides open a Light/Dark Mode
+// own template-demo "Pengaturan" panel — a bottom-right floating gear that slides open a Light/Dark Mode
 // switch — present on every real Aurexo page (appended to `<body>` in `$(document).ready` across all 63
 // source pages). Mounted once, globally, in `layout.tsx` to match that. Previously flagged in
 // COMPONENT_MAP.md as "almost certainly droppable" pending confirmation; now implemented per explicit
@@ -149,7 +149,7 @@ export default function ThemeSwitcher() {
   return (
     <div className={`switcher-container${isOpen ? " active" : ""}`}>
       <h2>
-        Setting
+        Pengaturan
         <a
           href="#"
           className="sw-click"
@@ -168,8 +168,8 @@ export default function ThemeSwitcher() {
         <div className="clearfix" />
         <div className="sw-odd">
           <h3>
-            Mode: <span className="light_mode">Light Mode</span>
-            <span className="dark_mode">Dark Mode</span>
+            Mode: <span className="light_mode">Mode Terang</span>
+            <span className="dark_mode">Mode Gelap</span>
           </h3>
           <div className="ws-colors">
             <a
@@ -180,7 +180,7 @@ export default function ThemeSwitcher() {
                 setTheme("dark");
               }}
             >
-              Dark Mode
+              Mode Gelap
             </a>
             <a
               href="#"
@@ -190,7 +190,7 @@ export default function ThemeSwitcher() {
                 setTheme("light");
               }}
             >
-              Light Mode
+              Mode Terang
             </a>
           </div>
         </div>

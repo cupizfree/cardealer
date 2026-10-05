@@ -12,10 +12,10 @@ import StarRatingInput from "@/components/listing-details/StarRatingInput";
 // component rather than bolting product-page-only markup onto the already-shared reviews block.
 //
 // The "Sort by" dropdown mirrors `app.js`'s real `core-dropdown` open/close + label-swap widget, but
-// the 3 options are source's own literal "Most Recent"/"Most Recent 2"/"Most Recent 3" placeholders —
+// the 3 options are source's own literal "Terbaru"/"Most Recent 2"/"Most Recent 3" placeholders —
 // clicking one only updates the displayed label (confirmed no script ever reorders `.comments`), so no
 // real sort is implemented here either, matching source's own limitation exactly.
-const SORT_OPTIONS = ["Most Recent", "Most Recent 2", "Most Recent 3"];
+const SORT_OPTIONS = ["Terbaru", "Most Recent 2", "Most Recent 3"];
 
 export default function ProductReviews({
   ratingSummary,
@@ -68,7 +68,7 @@ export default function ProductReviews({
         </div>
         <div className="rating-box__button">
           <a href="#reviewForm" className="btn btn-primary font-weight-600 capitalize btn-large-4">
-            Write a review
+            Tulis ulasan
           </a>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function ProductReviews({
         </div>
         <div className="flex items-center justify-end">
           <div className="flex items-center gap-8 justify-end lg-flex-start">
-            <p>Sort by:</p>
+            <p>Urutkan:</p>
             <div className={`core-dropdown${isSortOpen ? " active" : ""}`} ref={sortRef}>
               <button className="core-dropdown__button" type="button" onClick={() => setIsSortOpen((open) => !open)}>
                 <span className="core-dropdown__selected">{sortLabel}</span>
@@ -144,7 +144,7 @@ export default function ProductReviews({
 
       <div>
         <div className="flex gap-24 items-center mb-24">
-          <p className="h3 capitalize">add a review</p>
+          <p className="h3 capitalize">tambah ulasan</p>
           <StarRatingInput
             defaultRating={0}
             activeIcon="/assets/icons/star-4.svg"
@@ -156,18 +156,18 @@ export default function ProductReviews({
         <form action="#" className="add-review-form" onSubmit={(event) => event.preventDefault()}>
           <div className="grid grid-cols-2 gap-22 mb-12 md-grid-cols-1">
             <div className="md-col-span-2 padding-0 w-full col-span-2">
-              <p className="mb-8">Review Title</p>
+              <p className="mb-8">Judul Ulasan</p>
               <input className="active input-large" id="Title-review" name="Title-review" type="text" placeholder="Give your review a title" required />
             </div>
             <div className="col-span-2 padding-0">
-              <p className="mb-8">Review</p>
+              <p className="mb-8">Ulasan</p>
               <textarea placeholder="Write comment " rows={3} tabIndex={5} name="message" className="message" id="message" required />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-20 mb-24 md-grid-cols-1 w-full col-span-2 padding-0">
             <div className="md-col-span-2 padding-0">
-              <p className="mb-10">Name</p>
+              <p className="mb-10">Nama</p>
               <input className="active input-large" id="Name-review" name="Name-review" type="text" defaultValue="Tony Nguyen" required />
             </div>
             <div className="md-col-span-2 padding-0">
@@ -178,11 +178,11 @@ export default function ProductReviews({
 
           <label className="filter-checkbox style-2 style-3 mb-22">
             <input type="checkbox" name="features" value="touch-screen" />
-            <span>Save your name, email for the next time review</span>
+            <span>Simpan nama dan email untuk ulasan berikutnya</span>
           </label>
 
           <button type="submit" className="btn btn-primary-3 btn-large font-weight-600 capitalize">
-            submit review
+            kirim ulasan
           </button>
         </form>
       </div>

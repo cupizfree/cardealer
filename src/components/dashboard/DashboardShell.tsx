@@ -59,7 +59,7 @@ export default function DashboardShell({ children }: { children: React.ReactNode
               onClick={() => setIsSidebarOpen((open) => !open)}
               aria-label="Toggle Dashboard"
             >
-              Show Dashboard
+              Lihat Dashboard
             </button>
 
             {children}

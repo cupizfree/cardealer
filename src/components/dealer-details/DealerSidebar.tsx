@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Dealer } from "@/data/dealers";
 
 // Migrated from ../aurexo/dealer-details.html lines 991-1038. Unlike sale-agents-details.html's
-// sidebar, this page has NO "Send Inquiry about Vehicle" form at all (confirmed via source search) —
+// sidebar, this page has NO "Kirim Pertanyaan tentang Unit" form at all (confirmed via source search) —
 // just the Location box.
 //
 // Address/phones are this dealer's own real values from `src/data/dealers.ts` (the same fields
@@ -14,14 +14,14 @@ import type { Dealer } from "@/data/dealers";
 // The map iframe itself stays the one generic embed the whole site shares — there's no real per-dealer
 // map/pin data anywhere in source to replace it with.
 //
-// "Call To Dealer" literally links back to `dealer-details.html` itself in source (a real, if odd,
+// "Telepon Showroom" literally links back to `dealer-details.html` itself in source (a real, if odd,
 // source content bug — not a `tel:` action) — preserved as a self-link to this same dealer's own page.
 export default function DealerSidebar({ dealer }: { dealer: Dealer }) {
   return (
     <div className="innerpage__sidebar">
       <div className="listing-details--sidebar-box">
         <div className="listing-details--contact">
-          <p className="h4 mb-16">Location</p>
+          <p className="h4 mb-16">Lokasi</p>
 
           <div className="widget-gg-map flex radius-8 overflow-hidden mb-28">
             <iframe
@@ -42,7 +42,7 @@ export default function DealerSidebar({ dealer }: { dealer: Dealer }) {
               <div className="flex flex-col gap-4">
                 <a href="#">{dealer.address}</a>
                 <a href="#" className="text-underline text-highlight text-sm">
-                  Get Directions
+                  Petunjuk Arah
                 </a>
               </div>
             </li>
@@ -64,12 +64,12 @@ export default function DealerSidebar({ dealer }: { dealer: Dealer }) {
 
           <Link href={`/dealer-details/${dealer.slug}`} className="btn btn-medium btn-primary-3 font-weight-600 mb-12 gap-5">
             <Image src="/assets/icons/PhoneCall-2.svg" alt="phone" width={20} height={20} />
-            Call To Dealer
+            Telepon Showroom
           </Link>
 
           <a href="#" className="btn btn-medium btn-primary-4 font-weight-600 gap-5">
             <Image src="/assets/icons/ChatCircleDots.svg" alt="phone" width={20} height={20} />
-            Chat via WhatsApp
+            Chat WhatsApp
           </a>
         </div>
       </div>

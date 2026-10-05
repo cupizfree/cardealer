@@ -6,15 +6,15 @@ import Image from "next/image";
 type Attachment = { id: number; name: string; type: "PDF" | "Doc" };
 
 const INITIAL_ATTACHMENTS: Attachment[] = [
-  { id: 1, name: "Infomation", type: "PDF" },
-  { id: 2, name: "Infomation", type: "Doc" },
+  { id: 1, name: "Informasi", type: "PDF" },
+  { id: 2, name: "Informasi", type: "Doc" },
 ];
 
 let nextId = 3;
 
 // Migrated from ../aurexo/add-listings-2.html lines 1130-1170 + its own trailing inline `<script>`.
-// "Infomation" is source's own literal typo (same one already seen on services-center.html/about-us.html
-// TeamModal), preserved verbatim on the 2 initial items. Traced the real behavior in full: "Choose File"
+// "Informasi" is source's own literal typo (same one already seen on services-center.html/about-us.html
+// TeamModal), preserved verbatim on the 2 initial items. Traced the real behavior in full: "Pilih Berkas"
 // accepts only .pdf/.doc/.docx (unsupported extensions are silently skipped, matching source), each valid
 // file becomes a new real item showing its own file name and detected type/icon, and clicking the trash
 // icon really removes that item — reproduced as real React state instead of direct DOM append/remove.
@@ -40,8 +40,8 @@ export default function AttachmentsSection() {
   }
 
   return (
-    <div className="dashboard-box bg-white style-3 mb-30" id="Attachments">
-      <p className="h4 mb-20">Attachments</p>
+    <div className="dashboard-box bg-white style-3 mb-30" id="Lampiran">
+      <p className="h4 mb-20">Lampiran</p>
 
       <div className="attachments-box flex flex-wrap gap-20 mb-20">
         {attachments.map((attachment) => (
@@ -62,7 +62,7 @@ export default function AttachmentsSection() {
       </div>
       <div className="car-gallery-upload__actions">
         <button type="button" className="btn btn-line-1 btn-large font-weight-600 car-gallery-upload__btn" id="attachmentsChooseFileBtn" onClick={() => inputRef.current?.click()}>
-          Choose File
+          Pilih Berkas
         </button>
         <input
           ref={inputRef}
@@ -74,7 +74,7 @@ export default function AttachmentsSection() {
           style={{ display: "none" }}
           onChange={handleFileChange}
         />
-        <span className="text-sm text-secondary">Upload file PDF, Doc, Docx</span>
+        <span className="text-sm text-secondary">Unggah berkas PDF, Doc, Docx</span>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ export default function CompareButton() {
         <path d="M6.875 10H13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M10 6.875V13.125" stroke="#1C1C1C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-      Compare
+      Bandingkan
     </a>
   );
 }

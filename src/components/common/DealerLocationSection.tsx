@@ -26,7 +26,7 @@ export default function DealerLocationSection({
 }) {
   return (
     <div className="dashboard-box bg-white style-3 mb-30">
-      <p className="h4 mb-20">Location</p>
+      <p className="h4 mb-20">Lokasi</p>
 
       <div className="grid grid-cols-2 gap-20 md-grid-cols-1 mb-20">
         <div>

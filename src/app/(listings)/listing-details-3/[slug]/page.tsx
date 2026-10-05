@@ -34,7 +34,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const listing = allListings.find((l) => l.slug === slug);
   return {
-    title: listing ? `${listing.title} | Aurexo` : "Listing Details | Aurexo",
+    title: listing ? `${listing.title}` : "Detail Unit",
     description: listing ? `${listing.title} — ${listing.price}` : undefined,
   };
 }
@@ -52,7 +52,7 @@ export async function generateMetadata({
 //   `ListingDetailsSidebar` instead) as a `car-overview-list-style2` box between the Cash/Finance box
 //   and the contact-dealer box.
 // - Default feature tab is "Safety" (confirmed via source's `active` markers), and — same as
-//   listing-details-2.html — the "add a review" section is Login-gated only, no visible form fields.
+//   listing-details-2.html — the "tambah ulasan" section is Login-gated only, no visible form fields.
 export default async function ListingDetails3Page({
   params,
 }: {

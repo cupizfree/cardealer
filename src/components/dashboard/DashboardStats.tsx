@@ -5,10 +5,10 @@ import Image from "next/image";
 // Migrated from ../aurexo/dashboard.html lines 580-624. All 4 cards are source's own literal dead
 // `href="#"` (confirmed via source — no script touches any of them); static counts preserved verbatim.
 const STATS = [
-  { label: "My Listing", value: "12", icon: "/assets/images/dashboard/car.svg" },
+  { label: "Iklan Saya", value: "12", icon: "/assets/images/dashboard/car.svg" },
   { label: "Pending", value: "03", icon: "/assets/images/dashboard/clockCountdown.svg" },
-  { label: "My Favorites", value: "08", icon: "/assets/images/dashboard/star.svg" },
-  { label: "My Reviews", value: "137", icon: "/assets/images/dashboard/chats.svg" },
+  { label: "Favorit Saya", value: "08", icon: "/assets/images/dashboard/star.svg" },
+  { label: "Ulasan Saya", value: "137", icon: "/assets/images/dashboard/chats.svg" },
 ];
 
 export default function DashboardStats() {

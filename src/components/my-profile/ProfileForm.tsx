@@ -8,8 +8,8 @@ import DealerLocationSection from "@/components/common/DealerLocationSection";
 // Migrated from ../aurexo/my-profile.html lines 578-807 (the `<form>`). Real, disclosed source content
 // bugs preserved verbatim: "Sales Phone*" and "Company*" both carry the literal value
 // "themesflat@gmail.com" (an email, not a phone number or company name — confirmed via source read, a
-// copy-paste from "Email Address*" right next to them), and "Phone*"'s own value has literal extra
-// internal spaces ("123  456  7890 "). "Become A Dealer" is source's own literal dead `href="#"`
+// copy-paste from "Alamat Email*" right next to them), and "Phone*"'s own value has literal extra
+// internal spaces ("123  456  7890 "). "Jadi Showroom Rekanan" is source's own literal dead `href="#"`
 // (confirmed via grep — no script touches it).
 export default function ProfileForm() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -31,19 +31,19 @@ export default function ProfileForm() {
   return (
     <form action="#" onSubmit={(event) => event.preventDefault()}>
       <div className="dashboard-box bg-white style-5 mb-38">
-        <p className="h4 mb-20">Become Dealer</p>
+        <p className="h4 mb-20">Jadi Rekanan</p>
 
         <p className="hightlight-text text-sm mb-20 text-primary">
-          Your current account type is normal. If you want to become a dealer, please click on button Become a Dealer
+          Tipe akun Anda saat ini masih biasa. Jika ingin menjadi showroom rekanan, klik tombol Jadi Rekanan
         </p>
 
         <div className="flex mb-40">
           <a href="#" className="btn btn-primary btn-large-3 font-weight-600" onClick={(event) => event.preventDefault()}>
-            Become A Dealer
+            Jadi Showroom Rekanan
           </a>
         </div>
 
-        <p className="h4 mb-20">Infomation</p>
+        <p className="h4 mb-20">Informasi</p>
 
         <AvatarPosterUpload />
 
@@ -54,14 +54,14 @@ export default function ProfileForm() {
           </div>
 
           <div className="md-col-span-2 padding-0">
-            <p className="mb-8 font-weight-600">Last Name*</p>
-            <ClearableInput name="last_name" defaultValue="Smith" placeholder="Last Name*" />
+            <p className="mb-8 font-weight-600">Nama Belakang*</p>
+            <ClearableInput name="last_name" defaultValue="Smith" placeholder="Nama Belakang*" />
           </div>
 
           <div className="col-span-2 padding-0">
             <p className="mb-8 font-weight-600">Description*</p>
             <textarea
-              placeholder="Your Message*"
+              placeholder="Pesan Anda*"
               rows={4}
               tabIndex={5}
               name="message"
@@ -77,7 +77,7 @@ export default function ProfileForm() {
           <div>
             <p className="mb-8 font-weight-600">Phone*</p>
             <div className="input-clear-wrapper">
-              <input className="input-large" type="text" name="Phone" id="Phone" defaultValue="123  456  7890 " placeholder="Phone" />
+              <input className="input-large" type="text" name="Telepon" id="Telepon" defaultValue="123  456  7890 " placeholder="Telepon" />
             </div>
           </div>
 
@@ -88,9 +88,9 @@ export default function ProfileForm() {
             </div>
           </div>
           <div>
-            <p className="mb-8 font-weight-600">Email Address*</p>
+            <p className="mb-8 font-weight-600">Alamat Email*</p>
             <div className="input-clear-wrapper">
-              <input className="input-large" type="text" name="EmailAddress" id="EmailAddress" defaultValue="themesflat@gmail.com" placeholder="Email Address*" />
+              <input className="input-large" type="text" name="EmailAddress" id="EmailAddress" defaultValue="themesflat@gmail.com" placeholder="Alamat Email*" />
             </div>
           </div>
           <div>
@@ -104,9 +104,9 @@ export default function ProfileForm() {
         <div className="grid grid-cols-2 gap-20 md-grid-cols-1">
           <div>
             <p className="mb-8 font-weight-600">Gender*</p>
-            <select name="Gender" id="Gender" defaultValue="Male">
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+            <select name="Gender" id="Gender" defaultValue="Laki-laki">
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
             </select>
           </div>
 
@@ -118,7 +118,7 @@ export default function ProfileForm() {
       </div>
 
       <div className="dashboard-box bg-white style-5 mb-40">
-        <p className="h4 mb-20">Social Network</p>
+        <p className="h4 mb-20">Media Sosial</p>
 
         <div className="grid grid-cols-3 gap-32 mb-20 md-grid-cols-1">
           <ClearableInput

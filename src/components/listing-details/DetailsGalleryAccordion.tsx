@@ -51,7 +51,7 @@ export default function DetailsGalleryAccordion({ images }: { images: ListingGal
               <div className="listing-details-item--content">
                 <a className="listing-details-item--button" href="#" onClick={(event) => event.preventDefault()}>
                   <Image src="/assets/icons/playcircle.svg" alt="play" width={20} height={20} />
-                  Play Video
+                  Putar Video
                 </a>
                 <a
                   className="listing-details-item--button"
@@ -62,7 +62,7 @@ export default function DetailsGalleryAccordion({ images }: { images: ListingGal
                   }}
                 >
                   <Image src="/assets/icons/view-all-photo.svg" alt="play" width={20} height={20} />
-                  View All Photo
+                  Lihat Semua Foto
                 </a>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function DetailsGalleryAccordion({ images }: { images: ListingGal
         >
           <button
             type="button"
-            aria-label="Close"
+            aria-label="Tutup"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex(null);
@@ -111,7 +111,7 @@ export default function DetailsGalleryAccordion({ images }: { images: ListingGal
           </button>
           <button
             type="button"
-            aria-label="Previous photo"
+            aria-label="Foto sebelumnya"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex((prev) => (prev === null ? prev : (prev - 1 + images.length) % images.length));
@@ -142,7 +142,7 @@ export default function DetailsGalleryAccordion({ images }: { images: ListingGal
           </div>
           <button
             type="button"
-            aria-label="Next photo"
+            aria-label="Foto berikutnya"
             onClick={(event) => {
               event.stopPropagation();
               setLightboxIndex((prev) => (prev === null ? prev : (prev + 1) % images.length));

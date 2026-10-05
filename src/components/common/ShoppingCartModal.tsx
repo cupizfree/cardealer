@@ -25,7 +25,7 @@ export default function ShoppingCartModal() {
 
   return (
     <Modal id="ShoppingCartModal" className="modal-right shopping-cart">
-      <p className="h4 mb-16">Shopping Cart</p>
+      <p className="h4 mb-16">Keranjang</p>
 
       <div className="ship mb-18">
         <div className="progress-bar style-2">
@@ -55,7 +55,7 @@ export default function ShoppingCartModal() {
                 handleRemove(item.id);
               }}
             >
-              Remove
+              Hapus
             </a>
           </div>
         ))}
@@ -73,16 +73,16 @@ export default function ShoppingCartModal() {
             <span />
           </label>
           <a href="/terms">
-            I agree with <span className="text-underline">Terms &amp; Conditions</span>
+            Saya setuju dengan <span className="text-underline">Terms &amp; Conditions</span>
           </a>
         </div>
 
         <div className="grid grid-cols-2 gap-16 mb-16">
           <Link href="/shopping-cart" className="btn btn-line btn-large font-weight-600 capitalize w-full">
-            View Cart
+            Lihat Keranjang
           </Link>
           <Link href="/check-out" className="btn btn-primary btn-large font-weight-600 w-full">
-            Check Out
+            Checkout
           </Link>
         </div>
 
@@ -94,7 +94,7 @@ export default function ShoppingCartModal() {
             closeModal();
           }}
         >
-          Or continue shopping
+          Atau lanjut belanja
         </a>
       </div>
     </Modal>

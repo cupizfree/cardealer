@@ -14,7 +14,7 @@ export default function BlogDetailsBanner({ post }: { post: BlogPostWithDetail }
           <ul className="breadcrumb">
             <li>
               <Link className="text-white" href="/">
-                Home
+                Beranda
               </Link>
             </li>
             <li>

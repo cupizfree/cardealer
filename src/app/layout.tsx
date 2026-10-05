@@ -59,8 +59,27 @@ const albertSans = Albert_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: {
+    default: "MARF | Showroom Mobil Purwokerto",
+    template: "%s | MARF Showroom Mobil",
+  },
+  description:
+    "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
+  keywords: [
+    "showroom mobil purwokerto",
+    "jual mobil bekas purwokerto",
+    "beli mobil bekas",
+    "MARF showroom",
+    "dealer mobil banyumas",
+  ],
+  icons: { icon: "/favicon.png" },
+  openGraph: {
+    title: "MARF | Showroom Mobil Purwokerto",
+    description:
+      "Jual beli mobil bekas berkualitas di Purwokerto. Unit terawat, harga jujur, dokumen lengkap.",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -69,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${albertSans.variable}`}>
+    <html lang="id" className={`${manrope.variable} ${albertSans.variable}`}>
       <body>
         <CompareProvider>
           <WishlistProvider>

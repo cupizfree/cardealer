@@ -18,11 +18,11 @@ const STATE_OPTIONS = COUNTRY_OPTIONS;
 export default function BillingDetailsForm() {
   return (
     <>
-      <p className="h4 mb-20">Billing Details:</p>
+      <p className="h4 mb-20">Detail Penagihan:</p>
       <div className="grid grid-cols-2 md-grid-cols-1 gap-16 mb-35">
-        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="First Name*" name="first-name" id="first-name" required />
-        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Last Name*" name="last-name" id="last-name" required />
-        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Email Address*" name="EmailAddress" id="EmailAddress" required />
+        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Nama Depan*" name="first-name" id="first-name" required />
+        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Nama Belakang*" name="last-name" id="last-name" required />
+        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Alamat Email*" name="EmailAddress" id="EmailAddress" required />
         <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Phone Number*" name="PhoneNumber" id="PhoneNumber" required />
 
         <div className="mb-6 col-span-2 padding-0">
@@ -36,7 +36,7 @@ export default function BillingDetailsForm() {
         </div>
         <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Postal Code*" name="Postal" id="Postal" required />
         <div className="col-span-2 padding-0">
-          <textarea placeholder="Write note..." rows={3} tabIndex={5} name="Writenote" className="message" id="Writenote" />
+          <textarea placeholder="Tulis catatan..." rows={3} tabIndex={5} name="Writenote" className="message" id="Writenote" />
         </div>
       </div>
     </>

@@ -67,20 +67,20 @@ function AirConditioningIcon() {
 }
 
 const services = [
-  { title: "Oil Change", icon: OilChangeIcon, description: "Keep your engine running smoothly with regular oil changes and filter replacements.", href: "#" },
-  { title: "Tire Rotation & Balancing", icon: TireRotationIcon, description: "Extend tire life and improve vehicle performance with proper rotation and balancing.", href: "#" },
+  { title: "Oil Change", icon: OilChangeIcon, description: "Jaga mesin tetap halus dengan ganti oli dan filter secara rutin.", href: "#" },
+  { title: "Tire Rotation & Balancing", icon: TireRotationIcon, description: "Perpanjang umur ban dan tingkatkan performa dengan rotasi dan balancing yang tepat.", href: "#" },
   { title: "Brake Inspection & Repair", icon: BrakeInspectionIcon, description: "Ensure safety with comprehensive brake inspections, repairs, and replacements.", href: "#" },
-  { title: "Battery Testing & Replacement", icon: BatteryTestingIcon, description: "Keep your vehicle powered up with battery testing and timely replacements.", href: "#" },
-  { title: "Engine Diagnostics & Repair", icon: EngineDiagnosticsIcon, description: "Detect and fix engine issues with advanced diagnostic tools and expert repair services.", href: "/contact-us" },
-  { title: "Air Conditioning & Heating", icon: AirConditioningIcon, description: "Stay comfortable year-round with full AC and heating system inspections and repairs.", href: "/contact-us" },
+  { title: "Battery Testing & Replacement", icon: BatteryTestingIcon, description: "Jaga kendaraan Anda tetap bertenaga dengan tes aki dan penggantian tepat waktu.", href: "#" },
+  { title: "Engine Diagnostics & Repair", icon: EngineDiagnosticsIcon, description: "Deteksi dan perbaiki masalah mesin dengan alat diagnosa canggih dan teknisi ahli.", href: "/contact-us" },
+  { title: "Air Conditioning & Heating", icon: AirConditioningIcon, description: "Tetap nyaman sepanjang tahun dengan pemeriksaan dan perbaikan sistem AC menyeluruh.", href: "/contact-us" },
 ];
 
 export default function FeaturesServicesSection() {
   return (
     <section className="background-light py-100">
       <div className="container">
-        <h2 className="text-center capitalize mb-12">Features Services</h2>
-        <p className="mb-40 text-center">Find the right car with the right features for the right budget.</p>
+        <h2 className="text-center capitalize mb-12">Layanan Unggulan</h2>
+        <p className="mb-40 text-center">Temukan mobil yang tepat dengan fitur yang tepat sesuai anggaran Anda.</p>
 
         <div className="grid grid-cols-3 lg-grid-cols-2 md-grid-cols-1 gap-30">
           {services.map((service) => (

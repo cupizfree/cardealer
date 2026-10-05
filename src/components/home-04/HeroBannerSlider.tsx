@@ -15,7 +15,7 @@ const BANNERS = ["banner-4.jpg", "banner-2.jpg", "banner-3.jpg", "banner-5.jpg"]
 // already reproduced in `HeroSearchSection.tsx`) is synced via Swiper's own `controller` module to a
 // second `.sw-single-thumb` swiper holding the title/subtitle/CTA content (`swiperSingle.controller.
 // control = swiperThumb` and vice versa). Source's own 4 content slides are byte-identical text
-// ("Mercedes-Benz GLC Coupe 2024" every time) — kept as a real controlled 2-swiper sync (not collapsed
+// ("Toyota Fortuner VRZ 2021" every time) — kept as a real controlled 2-swiper sync (not collapsed
 // to static content) since other home variants sharing this exact `page-title-style-1` markup
 // (home-05/06/09/10/11.html, not yet migrated) may need genuinely different per-slide text later.
 export default function HeroBannerSlider() {
@@ -66,7 +66,7 @@ export default function HeroBannerSlider() {
           {BANNERS.map((file) => (
             <SwiperSlide key={file}>
               <h1 className="page-title--title text-white mb-16 effect-item effect-left delay-3">
-                Mercedes-Benz GLC Coupe 2024
+                Toyota Fortuner VRZ 2021
               </h1>
               <p className="h3 sub-title text-white mb-36 capitalize effect-item effect-left delay-4">
                 $490/Month for 24 mont <span className="h7 font-weight-500 text-white">(0% APR Representativ)</span>
@@ -75,7 +75,7 @@ export default function HeroBannerSlider() {
                 href="/listing-grid4-columns"
                 className="btn btn-white text-primary btn-large-2 font-weight-600 max-w-min capitalize effect-item effect-left delay-5"
               >
-                Discovery Now
+                Lihat Unit
               </Link>
             </SwiperSlide>
           ))}
@@ -157,7 +157,7 @@ export default function HeroBannerSlider() {
             />
             <path d="M25.5 21H16.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <p className="h5 item-title">Diesel</p>
+          <p className="h5 item-title">Solar</p>
         </Link>
         <Link href="/listing-grid4-columns" className="item wow fadeInUp" data-wow-delay="0.4s">
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

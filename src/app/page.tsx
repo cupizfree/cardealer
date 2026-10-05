@@ -13,8 +13,8 @@ import DownloadAppSection from "@/components/home/DownloadAppSection";
 import NewsAndReviewsSection from "@/components/home/NewsAndReviewsSection";
 
 export const metadata: Metadata = {
-  title: "Aurexo | Car Dealer, Rental & Listing",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: { absolute: "MARF | Showroom Mobil Purwokerto" },
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
 // Migrated from ../aurexo/index.html — the site's most complex page (per COMPONENT_MAP.md's own

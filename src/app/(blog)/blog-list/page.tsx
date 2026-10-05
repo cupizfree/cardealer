@@ -7,11 +7,11 @@ import BlogListContent from "@/components/blog-list/BlogListContent";
 import BlogListingSidebar from "@/components/common/BlogListingSidebar";
 
 export const metadata: Metadata = {
-  title: "Blog List | Aurexo",
-  description: "Aurexo - Car Dealer, Rental & Listing",
+  title: "Daftar Artikel",
+  description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-// Migrated from ../aurexo/blog-list.html. Same "News" breadcrumb-vs-`<h2>` mismatch as blog-standard.html
+// Migrated from ../aurexo/blog-list.html. Same "Artikel" breadcrumb-vs-`<h2>` mismatch as blog-standard.html
 // (a real, disclosed source inconsistency — the breadcrumb never actually matches the page's own title
 // text on either page). Real pagination (standing rule): source's own `.pagination` has zero backing JS
 // (confirmed via grep), and its 5 real posts split into 2/page (2+2+1) across the same 3 pages source's
@@ -25,13 +25,13 @@ export default function BlogListPage() {
         <div className="container">
           <ul className="breadcrumb">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>News</span>
+              <span>Artikel</span>
             </li>
           </ul>
         </div>
@@ -39,7 +39,7 @@ export default function BlogListPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Blog List</h2>
+          <h2>Daftar Artikel</h2>
         </div>
         <div className="tf-spacing-style3" />
 
