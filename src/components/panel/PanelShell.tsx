@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { minta } from "@/lib/klien";
 import { TOMBOL, TOMBOL_KECIL } from "./ui";
 
@@ -61,9 +61,28 @@ export default function PanelShell({
   const path = usePathname();
   const router = useRouter();
   const [keluar, setKeluar] = useState(false);
+  const [menuTerbuka, setMenuTerbuka] = useState(false);
 
   const nav = pengguna.peran === "admin" ? NAV_ADMIN : NAV_STAFF;
   const { judul, ket } = judulUntuk(path);
+
+  // Menu mobile menutup sendiri setiap kali halaman berpindah.
+  useEffect(() => {
+    setMenuTerbuka(false);
+  }, [path]);
+
+  const halamanAktif = nav.find((b) =>
+    b.href === "/admin" || b.href === "/staff" ? path === b.href : path.startsWith(b.href),
+  );
+
+  // Kelas tautan nav, dipakai bersama oleh sidebar desktop dan daftar mobile.
+  const kelasTautan = (href: string) => {
+    const aktif =
+      href === "/admin" || href === "/staff" ? path === href : path.startsWith(href);
+    return `flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13.5px] font-medium transition ${
+      aktif ? "bg-marf font-semibold text-white" : "text-[#c3c9d4] hover:bg-white/[0.06] hover:text-white"
+    }`;
+  };
 
   async function logout() {
     setKeluar(true);
@@ -100,30 +119,65 @@ export default function PanelShell({
             </button>
           </div>
 
-          <nav className="flex gap-1 overflow-x-auto px-2 py-2 lg:flex-1 lg:flex-col lg:gap-0.5 lg:overflow-y-auto lg:px-2.5 lg:py-3.5">
-            <div className="hidden px-2.5 pb-1.5 pt-3.5 text-[10.5px] font-bold uppercase tracking-[0.09em] text-[#8b93a1] lg:block">
+          {/* ── MOBILE: satu tombol menu, daftarnya membuka KE BAWAH ────────
+              Sebelumnya nav ini deretan horizontal yang bisa digeser, jadi
+              separuh label terpotong di layar sempit dan tidak ada petunjuk
+              bahwa masih ada menu di kanan. Kini: satu tombol berisi halaman
+              aktif + ikon hamburger, dan daftarnya turun ke bawah saat diklik. */}
+          <div className="lg:hidden">
+            <button
+              type="button"
+              onClick={() => setMenuTerbuka((v) => !v)}
+              aria-expanded={menuTerbuka}
+              aria-controls="menu-panel-mobile"
+              className="flex w-full items-center gap-2.5 border-b border-white/10 px-4 py-3 text-left text-[13.5px] font-semibold text-[#e8eaee] transition hover:bg-white/[0.06]"
+            >
+              <span className="flex w-4 shrink-0 flex-col gap-[3px]" aria-hidden="true">
+                <span className="block h-[2px] w-4 rounded-full bg-current" />
+                <span className="block h-[2px] w-4 rounded-full bg-current" />
+                <span className="block h-[2px] w-4 rounded-full bg-current" />
+              </span>
+              <span className="min-w-0 truncate">{halamanAktif?.label ?? "Menu"}</span>
+              <span
+                className={`ml-auto shrink-0 text-[10px] transition-transform duration-200 ${
+                  menuTerbuka ? "rotate-180" : ""
+                }`}
+                aria-hidden="true"
+              >
+                ▼
+              </span>
+            </button>
+
+            {menuTerbuka && (
+              <nav id="menu-panel-mobile" className="flex flex-col gap-0.5 border-b border-white/10 px-2 py-2">
+                {nav.map((b) => (
+                  <Link key={b.href} href={b.href} className={kelasTautan(b.href)}>
+                    <span className="w-4 shrink-0 text-center text-sm opacity-90">{b.ikon}</span>
+                    <span className="min-w-0 truncate">{b.label}</span>
+                  </Link>
+                ))}
+                <button
+                  onClick={logout}
+                  disabled={keluar}
+                  className={`${TOMBOL} ${TOMBOL_KECIL} mt-1.5 w-full`}
+                >
+                  {keluar ? "Keluar…" : "Keluar"}
+                </button>
+              </nav>
+            )}
+          </div>
+
+          {/* ── DESKTOP: sidebar tetap ───────────────────────────────────── */}
+          <nav className="hidden lg:flex lg:flex-1 lg:flex-col lg:gap-0.5 lg:overflow-y-auto lg:px-2.5 lg:py-3.5">
+            <div className="px-2.5 pb-1.5 pt-3.5 text-[10.5px] font-bold uppercase tracking-[0.09em] text-[#8b93a1]">
               Menu
             </div>
-            {nav.map((b) => {
-              const aktif =
-                b.href === "/admin" || b.href === "/staff"
-                  ? path === b.href
-                  : path.startsWith(b.href);
-              return (
-                <Link
-                  key={b.href}
-                  href={b.href}
-                  className={`flex shrink-0 items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13.5px] font-medium transition ${
-                    aktif
-                      ? "bg-marf font-semibold text-white"
-                      : "text-[#c3c9d4] hover:bg-white/[0.06] hover:text-white"
-                  }`}
-                >
-                  <span className="w-4 text-center text-sm opacity-90">{b.ikon}</span>
-                  {b.label}
-                </Link>
-              );
-            })}
+            {nav.map((b) => (
+              <Link key={b.href} href={b.href} className={kelasTautan(b.href)}>
+                <span className="w-4 shrink-0 text-center text-sm opacity-90">{b.ikon}</span>
+                <span className="min-w-0 truncate">{b.label}</span>
+              </Link>
+            ))}
           </nav>
 
           <div className="hidden border-t border-white/10 p-3.5 lg:block">

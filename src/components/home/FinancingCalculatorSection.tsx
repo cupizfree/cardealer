@@ -1,38 +1,132 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import ParallaxImage from "@/components/common/ParallaxImage";
+import {
+  AWAL_KREDIT,
+  PILIHAN_TENOR,
+  angkaDariTeks,
+  hitungKredit,
+  persenDariTeks,
+  rupiah,
+} from "@/lib/kredit";
 
-// Migrated from ../aurexo/index.html lines 2511-2573. Static/UI_ONLY — no JS handler anywhere wires
-// `#Financing...`-style inputs on this page (same conclusion already reached for the near-identical
-// inline calculator in `listing-details/ListingDetailsContent.tsx`, which shares the same static demo
-// numbers by design, not coincidence). Kept as its own component rather than extracted/shared: the
-// wrapping card, field grid (2-col here vs. 4-col there), and companion image column are genuinely
-// different DOM.
+// Blok "Simulasi Kredit" yang dipakai beranda dan varian home-04/06/08/09/10.
 //
-// home-04.html reuses the same form/values but a genuinely different wrapper: no companion image
-// column (the right `col-lg-6` is empty), `relative py-90` (not `background-light py-100`) with a real
-// `simpleParallax` background (`.overlay.image`, `bg-video.jpg` — same mechanism as `ParallaxImage`),
-// field `mb-8` (not `mb-10`) on the first two labels, and `action="calculator.html"` (not `#`) — exposed
-// via `variant="parallax"` rather than forking the component. Source's own "Harga Mobil" input there also
-// carries a literal stray `value="$46.300|"` (trailing pipe character, confirmed via direct source
-// read) — kept verbatim as a disclosed source content quirk, not silently corrected.
+// Sebelumnya seluruh blok ini UI_ONLY: angka `$46.300` / `$788.56/Month` adalah
+// defaultValue statis salinan templat, tidak ada state, dan tombol "Hitung"
+// tidak tersambung ke apa pun — dolar di situs berbahasa Indonesia yang menjual
+// mobil dalam Rupiah.
 //
-// home-06.html reuses the same form/values yet again with a THIRD wrapper: `bg-white py-100` (not
-// `background-light`/parallax), `.caculator-box.bg-white.outline.radius-12` (an `outline radius-12`
-// modifier neither other variant has), `h2.mb-18` (not `mb-20`), `gap-22 gap-x-16` grid gap (not
-// `gap-13`), `mb-2` result labels (not `mb-4`), and a plain `caculator-box--image` companion image
-// class (not `max-w-628 ml-60 move5`) — exposed via `variant="outline"`. Also carries the same real
-// stray `value="$46.300|"` trailing-pipe quirk as home-04's own version. home-06.html's own version
-// also shares this SAME section with a following 2-column promo banner (`tf-spacing` + `car-box-
-// style-3` pair, confirmed via source diff — one `bg-white py-100` section wraps both, not two
-// separately-padded sections) — the `afterContent` slot renders that banner inside the same section.
+// Kini memakai mesin hitung bersama di `@/lib/kredit`: isian dalam Rupiah,
+// hasil berubah begitu isian diubah, dan tenor memakai pilihan bulan yang lazim
+// di Indonesia (12/24/36/48/60) menggantikan "30 months"/"10 months" sisa templat.
 //
-// home-08.html reuses the exact same `.caculator-box.bg-white.outline.radius-12` shape, but with its
-// own `background-light py-100` section (not `bg-white`), `h2.mb-20` (not `mb-18`), uniform `mb-8` on
-// EVERY field label (not home-06's own mixed `mb-10`/`mb-8`), and `mb-4` result labels (not `mb-2`) —
-// all real, confirmed per-page differences, exposed via 4 new props on the `"outline"` variant rather
-// than a 4th variant string, since the wrapper/grid/image shape is otherwise identical to home-06's own.
+// Perbedaan antar-halaman tetap dipertahankan lewat prop kelas (gap grid, jarak
+// label) supaya tampilan tiap varian tidak berubah.
+
+/** Isian + hasil simulasi. Satu instance = satu state sendiri. */
+function IsianSimulasi({
+  gapGrid = "grid gap-13 grid-cols-2 mb-20 md-grid-cols-1",
+  labelHarga = "mb-10",
+  labelBunga = "mb-10",
+  labelMuka = "mb-8",
+  labelHasil = "mb-4",
+}: {
+  gapGrid?: string;
+  labelHarga?: string;
+  labelBunga?: string;
+  labelMuka?: string;
+  labelHasil?: string;
+}) {
+  const [harga, setHarga] = useState(String(AWAL_KREDIT.harga));
+  const [bunga, setBunga] = useState(String(AWAL_KREDIT.bungaPerTahun));
+  const [tenor, setTenor] = useState(AWAL_KREDIT.tenorBulan);
+  const [muka, setMuka] = useState(String(AWAL_KREDIT.uangMuka));
+
+  const hasil = hitungKredit({
+    harga: angkaDariTeks(harga),
+    uangMuka: angkaDariTeks(muka),
+    tenorBulan: tenor,
+    bungaPerTahun: persenDariTeks(bunga),
+    pajakPersen: AWAL_KREDIT.pajakPersen,
+    tukarTambah: 0,
+  });
+
+  return (
+    <form action="#" onSubmit={(event) => event.preventDefault()}>
+      <div className={gapGrid}>
+        <div className="md-colspan-1">
+          <p className={labelHarga}>Harga Mobil</p>
+          <input
+            className="active"
+            type="text"
+            inputMode="numeric"
+            value={harga}
+            onChange={(event) => setHarga(event.target.value)}
+            required
+          />
+        </div>
+
+        <div className="md-colspan-1">
+          <p className={labelBunga}>Bunga per Tahun (%)</p>
+          <input
+            type="text"
+            inputMode="decimal"
+            value={bunga}
+            onChange={(event) => setBunga(event.target.value)}
+            required
+          />
+        </div>
+
+        <div className="md-colspan-1">
+          <p className="mb-8">Tenor Pinjaman (bulan)</p>
+          <select value={tenor} onChange={(event) => setTenor(Number(event.target.value))}>
+            {PILIHAN_TENOR.map((bulan) => (
+              <option key={bulan} value={bulan}>
+                {bulan} bulan
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="md-colspan-1">
+          <p className={labelMuka}>Uang Muka</p>
+          <input
+            type="text"
+            inputMode="numeric"
+            value={muka}
+            onChange={(event) => setMuka(event.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn btn-medium btn-primary col-span-2">
+          Hitung
+        </button>
+      </div>
+
+      <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
+        <div>
+          <p className={labelHasil}>Cicilan Bulanan:</p>
+          <p className="font-weight-600">{rupiah(hasil.cicilanBulanan)}</p>
+        </div>
+
+        <div>
+          <p className={labelHasil}>Total Bunga:</p>
+          <p className="font-weight-600">{rupiah(hasil.bunga)}</p>
+        </div>
+
+        <div>
+          <p className={labelHasil}>Perk. Total Pinjaman:</p>
+          <p className="font-weight-600">{rupiah(hasil.totalPinjaman)}</p>
+        </div>
+      </div>
+    </form>
+  );
+}
+
 export default function FinancingCalculatorSection({
   variant = "withImage",
   afterContent,
@@ -62,54 +156,13 @@ export default function FinancingCalculatorSection({
               <div className="caculator-box bg-white outline radius-12">
                 <h2 className={outlineHeadingClassName}>Simulasi Kredit</h2>
 
-                <form action="calculator.html" onSubmit={(event) => event.preventDefault()}>
-                  <div className="grid gap-22 gap-x-16 grid-cols-2 mb-20 md-grid-cols-1">
-                    <div className="md-colspan-1">
-                      <p className={outlinePriceRateLabelClassName}>Harga Mobil</p>
-                      <input className="active" type="text" defaultValue="$46.300|" required />
-                    </div>
-
-                    <div className="md-colspan-1">
-                      <p className={outlinePriceRateLabelClassName}>Bunga per Tahun</p>
-                      <input type="text" defaultValue="1.2%" required />
-                    </div>
-
-                    <div className="md-colspan-1">
-                      <p className="mb-8">Tenor Pinjaman (bulan)</p>
-                      <select>
-                        <option>60 bulan</option>
-                        <option>30 months</option>
-                        <option>10 months</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <p className="mb-8">Uang Muka</p>
-                      <input type="text" defaultValue="$400" required />
-                    </div>
-
-                    <button type="submit" className="btn btn-medium btn-primary col-span-2">
-                      Hitung
-                    </button>
-                  </div>
-
-                  <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
-                    <div>
-                      <p className={outlineResultLabelClassName}>Cicilan Bulanan:</p>
-                      <p className="font-weight-600">$788.56/Month</p>
-                    </div>
-
-                    <div>
-                      <p className={outlineResultLabelClassName}>Total Bunga:</p>
-                      <p className="font-weight-600">$1413.60</p>
-                    </div>
-
-                    <div>
-                      <p className={outlineResultLabelClassName}>Perk. Total Pinjaman:</p>
-                      <p className="font-weight-600">$47713.60</p>
-                    </div>
-                  </div>
-                </form>
+                <IsianSimulasi
+                  gapGrid="grid gap-22 gap-x-16 grid-cols-2 mb-20 md-grid-cols-1"
+                  labelHarga={outlinePriceRateLabelClassName}
+                  labelBunga={outlinePriceRateLabelClassName}
+                  labelMuka="mb-8"
+                  labelHasil={outlineResultLabelClassName}
+                />
               </div>
             </div>
             <div className="col-lg-6 text-center wow fadeInUp">
@@ -145,54 +198,13 @@ export default function FinancingCalculatorSection({
               <div className="caculator-box bg-white p-40 md-mb-0">
                 <h2 className="mb-20">Simulasi Kredit</h2>
 
-                <form action="calculator.html" onSubmit={(event) => event.preventDefault()}>
-                  <div className="grid gap-13 grid-cols-2 mb-20 md-grid-cols-1">
-                    <div className="md-colspan-1">
-                      <p className="mb-8">Harga Mobil</p>
-                      <input id="Harga" name="Harga" className="active" type="text" defaultValue="$46.300|" required />
-                    </div>
-
-                    <div className="md-colspan-1">
-                      <p className="mb-8">Bunga per Tahun</p>
-                      <input id="Rate" name="Rate" type="text" defaultValue="1.2%" required />
-                    </div>
-
-                    <div className="md-colspan-1">
-                      <p className="mb-8">Tenor Pinjaman (bulan)</p>
-                      <select>
-                        <option>60 bulan</option>
-                        <option>30 months</option>
-                        <option>10 months</option>
-                      </select>
-                    </div>
-
-                    <div className="md-colspan-1">
-                      <p className="mb-8">Uang Muka</p>
-                      <input name="Payment" id="Payment" type="text" defaultValue="$400" required />
-                    </div>
-
-                    <button type="submit" className="btn btn-medium btn-primary col-span-2">
-                      Hitung
-                    </button>
-                  </div>
-
-                  <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
-                    <div>
-                      <p className="mb-4">Cicilan Bulanan:</p>
-                      <p className="font-weight-600">$788.56/Month</p>
-                    </div>
-
-                    <div>
-                      <p className="mb-4">Total Bunga:</p>
-                      <p className="font-weight-600">$1413.60</p>
-                    </div>
-
-                    <div>
-                      <p className="mb-4">Perk. Total Pinjaman:</p>
-                      <p className="font-weight-600">$47713.60</p>
-                    </div>
-                  </div>
-                </form>
+                <IsianSimulasi
+                  gapGrid="grid gap-13 grid-cols-2 mb-20 md-grid-cols-1"
+                  labelHarga="mb-8"
+                  labelBunga="mb-8"
+                  labelMuka="mb-8"
+                  labelHasil="mb-4"
+                />
               </div>
             </div>
           </div>
@@ -209,54 +221,13 @@ export default function FinancingCalculatorSection({
             <div className="caculator-box bg-white p-40">
               <h2 className="mb-20">Simulasi Kredit</h2>
 
-              <form action="#" onSubmit={(event) => event.preventDefault()}>
-                <div className="grid gap-13 grid-cols-2 mb-20 md-grid-cols-1">
-                  <div className="md-colspan-1">
-                    <p className="mb-10">Harga Mobil</p>
-                    <input className="active" type="text" defaultValue="$46.300" required />
-                  </div>
-
-                  <div className="md-colspan-1">
-                    <p className="mb-10">Bunga per Tahun</p>
-                    <input type="text" defaultValue="1.2%" required />
-                  </div>
-
-                  <div className="md-colspan-1">
-                    <p className="mb-8">Tenor Pinjaman (bulan)</p>
-                    <select>
-                      <option>60 bulan</option>
-                      <option>30 months</option>
-                      <option>10 months</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <p className="mb-8">Uang Muka</p>
-                    <input type="text" defaultValue="$400" required />
-                  </div>
-
-                  <button type="submit" className="btn btn-medium btn-primary col-span-2">
-                    Hitung
-                  </button>
-                </div>
-
-                <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
-                  <div>
-                    <p className="mb-4">Cicilan Bulanan:</p>
-                    <p className="font-weight-600">$788.56/Month</p>
-                  </div>
-
-                  <div>
-                    <p className="mb-4">Total Bunga:</p>
-                    <p className="font-weight-600">$1413.60</p>
-                  </div>
-
-                  <div>
-                    <p className="mb-4">Perk. Total Pinjaman:</p>
-                    <p className="font-weight-600">$47713.60</p>
-                  </div>
-                </div>
-              </form>
+              <IsianSimulasi
+                gapGrid="grid gap-13 grid-cols-2 mb-20 md-grid-cols-1"
+                labelHarga="mb-10"
+                labelBunga="mb-10"
+                labelMuka="mb-8"
+                labelHasil="mb-4"
+              />
             </div>
           </div>
           <div className="col-lg-6 text-center wow fadeInUp" data-wow-delay="0.3s">

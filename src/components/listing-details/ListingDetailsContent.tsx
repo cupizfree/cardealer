@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { FeatureCategory, ListingWithDetail } from "@/data/listings";
 import FeatureTabs from "./FeatureTabs";
+import KalkulatorKreditDetail from "./KalkulatorKreditDetail";
+import { angkaDariTeks } from "@/lib/kredit";
 import ReviewsSection from "@/components/common/ReviewsSection";
 
 // `listing` is expected to already be passed through `withDetailFallback` (src/data/listings.ts),
@@ -147,49 +149,7 @@ export default function ListingDetailsContent({
       {/* Financing calculator is static, unwired UI in the source (no JS handler anywhere for
           `FinancingCalculator*` inputs — see LISTING_DATA_MAP.md #6, treated as UI_ONLY). */}
       <p className="h4 mb-16">Simulasi Kredit</p>
-      <form action="#" className="financing-calculator mb-40">
-        <div className="financing-calculator-form mb-24">
-          <div className="grid grid-cols-4 xl2-grid-cols-2 md-grid-cols-1 gap-12">
-            <div>
-              <p className="mb-10">Harga Mobil</p>
-              <input className="active" id="FinancingCalculatorCarPrice" name="FinancingCalculatorCarPrice" type="text" defaultValue="$46.300" required />
-            </div>
-            <div>
-              <p className="mb-10">Bunga per Tahun</p>
-              <input id="FinancingCalculatorInterestRate" name="FinancingCalculatorInterestRate" type="text" defaultValue="1.2%" required />
-            </div>
-            <div>
-              <p className="mb-8">Tenor Pinjaman (bulan)</p>
-              <select id="FinancingCalculatorLoanTerm" name="FinancingCalculatorLoanTerm">
-                <option>60 bulan</option>
-                <option>30 months</option>
-                <option>10 months</option>
-              </select>
-            </div>
-            <div>
-              <p className="mb-8">Uang Muka</p>
-              <input id="FinancingCalculatorDownPayment" name="FinancingCalculatorDownPayment" type="text" defaultValue="$400" required />
-            </div>
-          </div>
-          <button type="button" className="btn btn-medium btn-primary mb-2">
-            Hitung
-          </button>
-        </div>
-        <div className="grid gap-8 grid-cols-3 md-grid-cols-1">
-          <div>
-            <p className="mb-4">Cicilan Bulanan:</p>
-            <p className="font-weight-600">$788.56/Month</p>
-          </div>
-          <div>
-            <p className="mb-4">Total Bunga:</p>
-            <p className="font-weight-600">$1413.60</p>
-          </div>
-          <div>
-            <p className="mb-4">Perk. Total Pinjaman:</p>
-            <p className="font-weight-600">$47713.60</p>
-          </div>
-        </div>
-      </form>
+      <KalkulatorKreditDetail hargaAwal={angkaDariTeks(listing.price)} />
 
       <div className="divider w-full mb-40" />
       <div className="flex items-center gap-16 justify-between mb-16 md-flex-col md-items-start" id={sectionIds ? "Lokasi" : undefined}>
