@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { XIcon, InstagramIcon } from "@/components/common/SocialIcons";
 import { socialIconPaths } from "@/data/socialIconPaths";
+import { minta } from "@/lib/klien";
 
 // Migrated from ../aurexo/contact-us.html lines 469-609. No breadcrumb section on this page (confirmed
 // via source grep) — genuinely different from every other `(other-pages)` route migrated so far, not
@@ -15,11 +17,44 @@ import { socialIconPaths } from "@/data/socialIconPaths";
 // Team set) — NOT the footer's fill-logo X/Instagram. Confirmed via direct path-data comparison, not
 // assumed from visual similarity. All 6 links are source's own literal dead `href="#"`, preserved as-is.
 //
-// Form (First/Last name, Email, Phone, Message) is UI_ONLY — confirmed no script anywhere touches
-// `Firstname`/`Lastname`/`SendInquiryemail`/`SendInquiryphone`/`message` on this page — same treatment
-// as every other unwired form this session. Source's own "Nama Depan" field is prefilled with "Tony"
-// (matching the same demo-name convention as `SendInquiryForm`'s "Tony Nguyen"), "Nama Belakang" is empty.
+// Form (Nama Depan/Belakang, Email, Telepon, Pesan) kini TERHUBUNG ke backend:
+// POST /api/prospek menyimpannya sebagai prospek berstatus "baru", yang lalu muncul
+// di panel admin & staff. Sebelumnya form ini murni tampilan (UI_ONLY).
 export default function ContactInfoFormSection() {
+  const [kirim, setKirim] = useState(false);
+  const [galat, setGalat] = useState<string | null>(null);
+  const [berhasil, setBerhasil] = useState(false);
+
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setGalat(null);
+    setKirim(true);
+
+    // Simpan elemen form sebelum await — currentTarget jadi null setelah dispatch React.
+    const form = event.currentTarget;
+    const f = new FormData(form);
+    const nama = `${f.get("Firstname") ?? ""} ${f.get("Lastname") ?? ""}`.trim();
+
+    const h = await minta("/api/prospek", {
+      method: "POST",
+      body: JSON.stringify({
+        nama: nama || "Tanpa nama",
+        email: String(f.get("SendInquiryemail") ?? ""),
+        telepon: String(f.get("SendInquiryphone") ?? ""),
+        pesan: String(f.get("message") ?? ""),
+        sumber: "kontak",
+      }),
+    });
+
+    setKirim(false);
+    if (!h.ok) {
+      setGalat(h.pesan);
+      return;
+    }
+    setBerhasil(true);
+    form.reset();
+  }
+
   return (
     <section className="bg-white pb-84">
       <div className="tf-spacing" />
@@ -123,11 +158,11 @@ export default function ContactInfoFormSection() {
             <p className="h3 mb-12 capitalize">hubungi kami</p>
             <p className="text-body-style-2 mb-32">Kami senang mendengar dari Anda! Jika Anda punya pertanyaan</p>
 
-            <form action="#" onSubmit={(event) => event.preventDefault()}>
+            <form onSubmit={onSubmit}>
               <div className="grid grid-cols-2 md-grid-cols-1 gap-x-20 gap-y-24 mb-22">
                 <div className="md-col-span-2 padding-0">
                   <p className="mb-8">Nama Depan</p>
-                  <input className="active input-large" id="Firstname" name="Firstname" type="text" defaultValue="Tony" required />
+                  <input className="active input-large" id="Firstname" name="Firstname" type="text" placeholder="Masukkan nama depan Anda" required />
                 </div>
                 <div className="md-col-span-2 padding-0">
                   <p className="mb-8">Nama Belakang</p>
@@ -135,19 +170,31 @@ export default function ContactInfoFormSection() {
                 </div>
                 <div className="md-col-span-2 padding-0">
                   <p className="mb-8">Email</p>
-                  <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" placeholder="Masukkan alamat email Anda" required />
+                  <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="email" placeholder="Masukkan alamat email Anda" required />
                 </div>
                 <div className="md-col-span-2 padding-0">
                   <p className="mb-8">Nomor Telepon</p>
-                  <input placeholder="Masukkan nomor telepon Anda" className="input-large" name="SendInquiryphone" id="SendInquiryphone" type="number" required />
+                  <input placeholder="Masukkan nomor telepon Anda" className="input-large" name="SendInquiryphone" id="SendInquiryphone" type="tel" required />
                 </div>
                 <div className="col-span-2 padding-0">
                   <p className="mb-8">Pesan</p>
                   <textarea placeholder="Pesan Anda*" rows={3} tabIndex={5} name="message" className="message" id="message" required />
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary btn-large font-weight-600 w-full">
-                Kirim Pesan
+
+              {galat && (
+                <p className="mb-16" style={{ color: "#C8171F" }}>
+                  {galat}
+                </p>
+              )}
+              {berhasil && (
+                <p className="mb-16" style={{ color: "#0f9d58" }}>
+                  Terima kasih! Pesan Anda sudah masuk — tim MARF akan menghubungi Anda.
+                </p>
+              )}
+
+              <button type="submit" className="btn btn-primary btn-large font-weight-600 w-full" disabled={kirim}>
+                {kirim ? "Mengirim…" : "Kirim Pesan"}
               </button>
             </form>
           </div>

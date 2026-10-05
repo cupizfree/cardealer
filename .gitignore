@@ -23,3 +23,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# basis data lokal panel (SQLite) — berisi hash kata sandi & token sesi.
+# JANGAN pernah dimasukkan ke git. Dibuat otomatis oleh src/lib/db.ts.
+/.data/
+*.db
+*.db-shm
+*.db-wal
