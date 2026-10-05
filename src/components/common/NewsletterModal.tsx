@@ -51,7 +51,7 @@ export default function NewsletterModal() {
         <div className="newsletter--content flex justify-center items-center flex-col">
           <p className="text-highlight mb-8">Berlangganan Buletin Kami!</p>
           <p className="h5 mb-28">
-            Daftar untuk Kabar Terbaru <br className="lg-hidden" /> Latest News &amp; Events.
+            Daftar untuk Berita &amp; <br className="lg-hidden" /> Acara Terbaru.
           </p>
 
           <form action="#" className="newsletter-form mb-16" onSubmit={(e) => e.preventDefault()}>
@@ -60,7 +60,7 @@ export default function NewsletterModal() {
               type="email"
               id="email-newsletter"
               name="email-newsletter"
-              placeholder="Enter your e-mail"
+              placeholder="Masukkan e-mail Anda"
               required
             />
             <button type="submit">Berlangganan</button>
