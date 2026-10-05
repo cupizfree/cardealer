@@ -2,6 +2,23 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { minta } from "@/lib/klien";
+import {
+  BarisKosong,
+  BarisMemuat,
+  INPUT,
+  JudulKartu,
+  KARTU,
+  Medan,
+  Pesan,
+  TABEL,
+  TABEL_BUNGKUS,
+  TD,
+  TH,
+  TOMBOL,
+  TOMBOL_BAHAYA,
+  TOMBOL_KECIL,
+  TOMBOL_UTAMA,
+} from "./ui";
 
 type Dealer = {
   id: number;
@@ -23,6 +40,8 @@ const KOSONG = {
   email: "",
   jam_buka: "Senin–Sabtu, 08.00–17.00 WIB",
 };
+
+const GRID = "grid gap-x-4 sm:grid-cols-2";
 
 export default function DaftarDealer() {
   const [baris, setBaris] = useState<Dealer[]>([]);
@@ -98,6 +117,7 @@ export default function DaftarDealer() {
 
   async function hapus(d: Dealer) {
     if (!confirm(`Hapus dealer "${d.nama}"?`)) return;
+    setGalat(null);
     const h = await minta(`/api/dealer/${d.id}`, { method: "DELETE" });
     if (!h.ok) {
       setGalat(h.pesan);
@@ -108,108 +128,122 @@ export default function DaftarDealer() {
   }
 
   return (
-    <>
-      {galat && <p className="panel-galat">{galat}</p>}
-      {pesan && <p className="panel-sukses">{pesan}</p>}
+    <div className="grid items-start gap-4 xl:grid-cols-[1fr_1.35fr]">
+      <form className={KARTU} onSubmit={simpan}>
+        <JudulKartu
+          judul={ubahId ? "Ubah Dealer" : "Tambah Dealer"}
+          ket={ubahId ? `Menyunting dealer #${ubahId}` : "Showroom rekanan yang menaungi unit"}
+        />
 
-      <div className="panel-kisi panel-kisi--2" style={{ alignItems: "start" }}>
-        <form className="panel-kartu" onSubmit={simpan}>
-          <h2 className="panel-kartu__judul">{ubahId ? "Ubah Dealer" : "Tambah Dealer"}</h2>
-          <p className="panel-kartu__ket">
-            {ubahId ? `Menyunting dealer #${ubahId}` : "Showroom rekanan yang menaungi unit"}
-          </p>
+        {galat && <Pesan jenis="galat">{galat}</Pesan>}
+        {pesan && <Pesan jenis="sukses">{pesan}</Pesan>}
 
-          <label className="panel-medan">
-            <span>Nama dealer *</span>
-            <input value={f.nama} onChange={(e) => setF({ ...f, nama: e.target.value })} required placeholder="MARF Showroom Pusat" />
-          </label>
+        <Medan label="Nama dealer" wajib>
+          <input
+            className={INPUT}
+            value={f.nama}
+            onChange={(e) => setF({ ...f, nama: e.target.value })}
+            required
+            placeholder="MARF Showroom Pusat"
+          />
+        </Medan>
 
-          <div className="panel-baris">
-            <label className="panel-medan">
-              <span>Kota</span>
-              <input value={f.kota} onChange={(e) => setF({ ...f, kota: e.target.value })} />
-            </label>
-            <label className="panel-medan">
-              <span>Telepon</span>
-              <input value={f.telepon} onChange={(e) => setF({ ...f, telepon: e.target.value })} placeholder="0822-4109-8298" />
-            </label>
-          </div>
-
-          <label className="panel-medan">
-            <span>Alamat</span>
-            <input value={f.alamat} onChange={(e) => setF({ ...f, alamat: e.target.value })} />
-          </label>
-
-          <div className="panel-baris">
-            <label className="panel-medan">
-              <span>Surel</span>
-              <input type="email" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} />
-            </label>
-            <label className="panel-medan">
-              <span>Jam buka</span>
-              <input value={f.jam_buka} onChange={(e) => setF({ ...f, jam_buka: e.target.value })} />
-            </label>
-          </div>
-
-          <div className="panel-aksi">
-            <button type="submit" className="panel-tombol panel-tombol--utama" disabled={sibuk}>
-              {sibuk ? "Menyimpan…" : ubahId ? "Simpan perubahan" : "Tambah dealer"}
-            </button>
-            {ubahId && (
-              <button type="button" className="panel-tombol" onClick={reset}>
-                Batal
-              </button>
-            )}
-          </div>
-        </form>
-
-        <div className="panel-tabel-bungkus">
-          <table className="panel-tabel">
-            <thead>
-              <tr>
-                <th>Dealer</th>
-                <th>Kota</th>
-                <th>Telepon</th>
-                <th style={{ textAlign: "right" }}>Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              {memuat && baris.length === 0 && (
-                <tr><td colSpan={4} className="panel-kosong">Memuat dealer…</td></tr>
-              )}
-              {!memuat && baris.length === 0 && (
-                <tr><td colSpan={4} className="panel-kosong">Belum ada dealer.</td></tr>
-              )}
-              {baris.map((d) => (
-                <tr key={d.id}>
-                  <td>
-                    <strong>{d.nama}</strong>
-                    {!d.aktif && (
-                      <span className="panel-lencana panel-lencana--batal" style={{ marginLeft: 7 }}>nonaktif</span>
-                    )}
-                    <div style={{ fontSize: 11.5, color: "var(--redup)" }}>{d.slug}</div>
-                  </td>
-                  <td>{d.kota ?? "—"}</td>
-                  <td>{d.telepon ?? "—"}</td>
-                  <td>
-                    <div className="panel-tabel__aksi">
-                      <button className="panel-tombol panel-tombol--kecil" onClick={() => sunting(d)}>
-                        Ubah
-                      </button>
-                      <button
-                        className="panel-tombol panel-tombol--kecil panel-tombol--bahaya"
-                        onClick={() => hapus(d)}
-                      >
-                        Hapus
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className={GRID}>
+          <Medan label="Kota">
+            <input className={INPUT} value={f.kota} onChange={(e) => setF({ ...f, kota: e.target.value })} />
+          </Medan>
+          <Medan label="Telepon">
+            <input
+              className={INPUT}
+              value={f.telepon}
+              onChange={(e) => setF({ ...f, telepon: e.target.value })}
+              placeholder="0822-4109-8298"
+            />
+          </Medan>
         </div>
+
+        <Medan label="Alamat">
+          <input className={INPUT} value={f.alamat} onChange={(e) => setF({ ...f, alamat: e.target.value })} />
+        </Medan>
+
+        <div className={GRID}>
+          <Medan label="Surel">
+            <input
+              className={INPUT}
+              type="email"
+              value={f.email}
+              onChange={(e) => setF({ ...f, email: e.target.value })}
+            />
+          </Medan>
+          <Medan label="Jam buka">
+            <input
+              className={INPUT}
+              value={f.jam_buka}
+              onChange={(e) => setF({ ...f, jam_buka: e.target.value })}
+            />
+          </Medan>
+        </div>
+
+        <div className="mt-2 flex flex-wrap gap-2.5">
+          <button type="submit" className={TOMBOL_UTAMA} disabled={sibuk}>
+            {sibuk ? "Menyimpan…" : ubahId ? "Simpan perubahan" : "Tambah dealer"}
+          </button>
+          {ubahId && (
+            <button type="button" className={TOMBOL} onClick={reset}>
+              Batal
+            </button>
+          )}
+        </div>
+      </form>
+
+      <div className={TABEL_BUNGKUS}>
+        <table className={TABEL}>
+          <thead>
+            <tr>
+              <th className={TH}>Dealer</th>
+              <th className={`${TH} hidden sm:table-cell`}>Kota</th>
+              <th className={`${TH} hidden lg:table-cell`}>Telepon</th>
+              <th className={`${TH} text-right`}>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {memuat && baris.length === 0 && <BarisMemuat kolom={4} apa="dealer" />}
+            {!memuat && baris.length === 0 && <BarisKosong kolom={4}>Belum ada dealer.</BarisKosong>}
+
+            {baris.map((d) => (
+              <tr key={d.id} className="transition hover:bg-[#fcfcfd]">
+                <td className={TD}>
+                  <div className="flex items-center gap-2">
+                    <strong className="font-semibold">{d.nama}</strong>
+                    {!d.aktif && <LencanaKecil />}
+                  </div>
+                  <div className="marf-pecah text-[11.5px] text-redup">{d.slug}</div>
+                </td>
+                <td className={`${TD} hidden sm:table-cell`}>{d.kota ?? "—"}</td>
+                <td className={`${TD} hidden lg:table-cell`}>{d.telepon ?? "—"}</td>
+                <td className={TD}>
+                  <div className="flex flex-wrap justify-end gap-1.5">
+                    <button className={`${TOMBOL} ${TOMBOL_KECIL}`} onClick={() => sunting(d)}>
+                      Ubah
+                    </button>
+                    <button className={`${TOMBOL_BAHAYA} ${TOMBOL_KECIL}`} onClick={() => hapus(d)}>
+                      Hapus
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </>
+    </div>
+  );
+}
+
+function LencanaKecil() {
+  return (
+    <span className="whitespace-nowrap rounded-full bg-[#f0f1f3] px-2 py-[2px] text-[10px] font-bold uppercase tracking-wide text-redup">
+      nonaktif
+    </span>
   );
 }

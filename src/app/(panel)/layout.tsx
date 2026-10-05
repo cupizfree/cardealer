@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { penggunaSekarang } from "@/lib/auth";
 import PanelShell from "@/components/panel/PanelShell";
-import "./panel.css";
+import "@/styles/panel.css";
 
 export const dynamic = "force-dynamic";
 

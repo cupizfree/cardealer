@@ -2,6 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { minta, waktu } from "@/lib/klien";
+import {
+  BarisKosong,
+  BarisMemuat,
+  KARTU,
+  Lencana,
+  Pesan,
+  TABEL,
+  TABEL_BUNGKUS,
+  TD,
+  TH,
+} from "./ui";
 
 type Log = {
   id: number;
@@ -26,50 +37,61 @@ export default function DaftarLog() {
     });
   }, []);
 
-  if (galat) return <p className="panel-galat">{galat}</p>;
-  if (memuat) return <p className="panel-kosong">Memuat jejak aktivitas…</p>;
+  if (galat) return <Pesan jenis="galat">{galat}</Pesan>;
 
   return (
-    <>
-      <p className="panel-kartu__ket" style={{ marginBottom: 14 }}>
+    <div className="space-y-4">
+      <p className="text-[12.5px] leading-relaxed text-redup">
         Delapan catatan terakhir. Setiap perubahan pada unit, dealer, prospek, dan pengguna
         tercatat otomatis di sini.
       </p>
 
-      <div className="panel-tabel-bungkus">
-        <table className="panel-tabel">
+      <div className={TABEL_BUNGKUS}>
+        <table className={TABEL}>
           <thead>
             <tr>
-              <th>Waktu</th>
-              <th>Pelaku</th>
-              <th>Aksi</th>
-              <th>Objek</th>
-              <th>Keterangan</th>
+              <th className={TH}>Waktu</th>
+              <th className={TH}>Pelaku</th>
+              <th className={TH}>Aksi</th>
+              <th className={`${TH} hidden sm:table-cell`}>Objek</th>
+              <th className={`${TH} hidden lg:table-cell`}>Keterangan</th>
             </tr>
           </thead>
           <tbody>
-            {baris.length === 0 && (
-              <tr><td colSpan={5} className="panel-kosong">Belum ada aktivitas tercatat.</td></tr>
+            {memuat && <BarisMemuat kolom={5} apa="jejak aktivitas" />}
+            {!memuat && baris.length === 0 && (
+              <BarisKosong kolom={5}>Belum ada aktivitas tercatat.</BarisKosong>
             )}
+
             {baris.map((l) => (
-              <tr key={l.id}>
-                <td style={{ fontSize: 12.5, whiteSpace: "nowrap" }}>{waktu(l.dibuat_pada)}</td>
-                <td>{l.nama_pengguna ?? <span style={{ color: "var(--redup)" }}>publik</span>}</td>
-                <td>
-                  <span className="panel-lencana panel-lencana--draf" style={{ textTransform: "capitalize" }}>
-                    {l.aksi}
-                  </span>
+              <tr key={l.id} className="transition hover:bg-[#fcfcfd]">
+                <td className={`${TD} whitespace-nowrap text-[12.5px] text-redup`}>
+                  {waktu(l.dibuat_pada)}
                 </td>
-                <td style={{ fontSize: 12.5 }}>
+                <td className={`${TD} font-medium`}>
+                  {l.nama_pengguna ?? <span className="text-redup">publik</span>}
+                </td>
+                <td className={TD}>
+                  <Lencana nilai={l.aksi} />
+                </td>
+                <td className={`${TD} hidden text-[12.5px] sm:table-cell`}>
                   {l.entitas}
                   {l.entitas_id ? ` #${l.entitas_id}` : ""}
                 </td>
-                <td style={{ fontSize: 12.5, color: "var(--redup)" }}>{l.ringkasan ?? "—"}</td>
+                <td className={`${TD} hidden text-[12.5px] text-redup lg:table-cell`}>
+                  {l.ringkasan ?? "—"}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </>
+
+      {!memuat && baris.length > 0 && (
+        <p className="text-[12px] text-redup">
+          Menampilkan {baris.length} catatan terakhir.
+        </p>
+      )}
+    </div>
   );
 }

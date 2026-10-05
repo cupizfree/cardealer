@@ -169,6 +169,7 @@ Berkas `./.data/marf.db` **tidak** ikut ke git (lihat `.gitignore`) karena beris
 | UI | **React 19** | Komponen server untuk halaman berat data, komponen klien hanya untuk yang interaktif |
 | Bahasa | **TypeScript** | Bentuk data unit dan dealer dipastikan saat kompilasi, bukan saat runtime |
 | Gaya | **Sass** + variabel terpusat | Palet ada di satu berkas, bukan tersebar di ratusan komponen |
+| Gaya panel | **Tailwind 4.3** (lewat CLI) | Panel admin/staff ditulis dengan utilitas; situs publik tetap Sass murni |
 | Slider | **Swiper 14** | Galeri unit dan carousel beranda |
 | Animasi | **WOW.js** | Animasi saat gulir, dipakai hemat agar tidak mengganggu |
 | Basis data | **SQLite** (`node:sqlite`) | Bawaan Node — nol dependensi, nol layanan luar untuk panel internal |
@@ -181,14 +182,35 @@ Berkas `./.data/marf.db` **tidak** ikut ke git (lihat `.gitignore`) karena beris
 ## Menjalankan Secara Lokal
 
 ```bash
-npm install     # pasang dependensi
-npm run dev     # mode pengembangan
-npm run build   # build produksi
-npm run start   # jalankan hasil build
-npm run lint    # periksa gaya kode
+npm install       # pasang dependensi
+npm run dev       # mode pengembangan
+npm run build     # build produksi (sekaligus membangun CSS panel)
+npm run start     # jalankan hasil build
+npm run lint      # periksa gaya kode
+npm run css:panel # bangun ulang CSS panel saja
 ```
 
 Buka [http://localhost:3000](http://localhost:3000).
+
+### Catatan gaya panel
+
+Panel admin & staff memakai **Tailwind 4**, tetapi **tidak** lewat `postcss.config`.
+Tailwind di-build terpisah menjadi `src/styles/panel.css` dengan
+`@tailwindcss/cli` (`npm run css:panel`), dan berkas itu diimpor langsung oleh
+layout panel.
+
+Alasannya: menambahkan `postcss.config` akan **menimpa bawaan Next.js**
+(autoprefixer, dll.) dan ikut memproses 32 berkas SCSS situs (19.948 baris) —
+berisiko merusak tampilan situs publik. Dengan jalur CLI, Tailwind hanya
+menyentuh panel, dan halaman situs tidak memuat CSS panel sama sekali.
+
+Dua hal penting kalau mengubah `src/styles/panel.src.css`:
+
+1. **Jangan bungkus utilitas dengan `@layer`.** Situs punya reset universal
+   tanpa layer (`* { margin: 0; padding: 0; color: #1c1c1c }`). Dalam kaskade
+   CSS, deklarasi tanpa layer selalu menang atas yang berlayer — utilitas jadi
+   kalah dan kartu kehilangan padding, jarak menyusut, warna teks tertimpa.
+2. **Jangan tambahkan `postcss.config`.** Cukup `npm run css:panel`.
 
 ### Catatan build
 

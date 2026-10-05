@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { minta } from "@/lib/klien";
+import { INPUT, Medan, Pesan, TOMBOL_UTAMA } from "@/components/panel/ui";
 
 export default function FormMasuk() {
   const router = useRouter();
@@ -33,10 +34,12 @@ export default function FormMasuk() {
   }
 
   return (
-    <form onSubmit={kirim} className="panel-form">
-      <label className="panel-medan">
-        <span>Surel</span>
+    <form onSubmit={kirim}>
+      {galat && <Pesan jenis="galat">{galat}</Pesan>}
+
+      <Medan label="Surel" wajib>
         <input
+          className={INPUT}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -45,12 +48,12 @@ export default function FormMasuk() {
           required
           autoFocus
         />
-      </label>
+      </Medan>
 
-      <label className="panel-medan">
-        <span>Kata sandi</span>
-        <div className="panel-medan__sandi">
+      <Medan label="Kata sandi" wajib>
+        <div className="relative">
           <input
+            className={`${INPUT} pr-20`}
             type={lihat ? "text" : "password"}
             value={sandi}
             onChange={(e) => setSandi(e.target.value)}
@@ -58,15 +61,18 @@ export default function FormMasuk() {
             autoComplete="current-password"
             required
           />
-          <button type="button" onClick={() => setLihat((v) => !v)} aria-label="Tampilkan kata sandi">
+          <button
+            type="button"
+            onClick={() => setLihat((v) => !v)}
+            aria-label={lihat ? "Sembunyikan kata sandi" : "Tampilkan kata sandi"}
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-[12px] font-semibold text-redup transition hover:bg-[#f2f4f7] hover:text-tinta"
+          >
             {lihat ? "Sembunyi" : "Lihat"}
           </button>
         </div>
-      </label>
+      </Medan>
 
-      {galat && <p className="panel-galat">{galat}</p>}
-
-      <button type="submit" className="panel-tombol panel-tombol--utama" disabled={sibuk}>
+      <button type="submit" className={`${TOMBOL_UTAMA} w-full py-2.5 text-sm`} disabled={sibuk}>
         {sibuk ? "Memeriksa…" : "Masuk"}
       </button>
     </form>

@@ -2,6 +2,27 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { minta, waktu } from "@/lib/klien";
+import {
+  BarisKosong,
+  BarisMemuat,
+  INPUT,
+  JudulKartu,
+  KARTU,
+  KisiKartu,
+  Lencana,
+  Medan,
+  Pesan,
+  SELECT,
+  Stat,
+  TABEL,
+  TABEL_BUNGKUS,
+  TD,
+  TH,
+  TOMBOL,
+  TOMBOL_BAHAYA,
+  TOMBOL_KECIL,
+  TOMBOL_UTAMA,
+} from "./ui";
 
 type Prospek = {
   id: number;
@@ -31,6 +52,7 @@ export default function DaftarProspek({ peran }: { peran: "admin" | "staff" }) {
   const [memuat, setMemuat] = useState(true);
   const [galat, setGalat] = useState<string | null>(null);
   const [pesan, setPesan] = useState<string | null>(null);
+  const [sibuk, setSibuk] = useState(false);
 
   const muat = useCallback(async () => {
     setMemuat(true);
@@ -63,10 +85,10 @@ export default function DaftarProspek({ peran }: { peran: "admin" | "staff" }) {
 
   async function simpan(p: Prospek, ubah: Partial<{ status: string; catatan: string }>) {
     setPesan(null);
-    const h = await minta(`/api/prospek/${p.id}`, {
-      method: "PATCH",
-      body: JSON.stringify(ubah),
-    });
+    setGalat(null);
+    setSibuk(true);
+    const h = await minta(`/api/prospek/${p.id}`, { method: "PATCH", body: JSON.stringify(ubah) });
+    setSibuk(false);
     if (!h.ok) {
       setGalat(h.pesan);
       return;
@@ -89,77 +111,92 @@ export default function DaftarProspek({ peran }: { peran: "admin" | "staff" }) {
   }
 
   return (
-    <>
-      {galat && <p className="panel-galat">{galat}</p>}
-      {pesan && <p className="panel-sukses">{pesan}</p>}
+    <div className="space-y-4">
+      {galat && <Pesan jenis="galat">{galat}</Pesan>}
+      {pesan && <Pesan jenis="sukses">{pesan}</Pesan>}
 
-      <div className="panel-kisi panel-kisi--4" style={{ marginBottom: 18 }}>
-        {STATUS.slice(0, 4).map((s) => (
-          <div key={s} className="panel-stat">
-            <p className="panel-stat__label">{s}</p>
-            <p className="panel-stat__angka">{ringkasan[s] ?? 0}</p>
-          </div>
+      <KisiKartu lebar={170}>
+        {STATUS.slice(0, 4).map((s, i) => (
+          <Stat
+            key={s}
+            label={s}
+            angka={ringkasan[s] ?? 0}
+            aksen={(["marf", "biru", "ungu", "hijau"] as const)[i]}
+          />
         ))}
-      </div>
+      </KisiKartu>
 
-      <div className="panel-alat">
+      <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-[minmax(0,2fr)_repeat(2,minmax(0,1fr))]">
         <input
+          className={`${INPUT} sm:col-span-2 lg:col-span-1`}
           placeholder="Cari nama, telepon, surel, pesan…"
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />
-        <select value={fStatus} onChange={(e) => setFStatus(e.target.value)}>
+        <select className={SELECT} value={fStatus} onChange={(e) => setFStatus(e.target.value)}>
           <option value="">Semua status</option>
-          {STATUS.map((s) => <option key={s} value={s}>{s}</option>)}
+          {STATUS.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
         </select>
-        <select value={fSumber} onChange={(e) => setFSumber(e.target.value)}>
+        <select className={SELECT} value={fSumber} onChange={(e) => setFSumber(e.target.value)}>
           <option value="">Semua sumber</option>
-          {SUMBER.map((s) => <option key={s} value={s}>{s}</option>)}
+          {SUMBER.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
         </select>
-        <span className="panel-alat__dorong" style={{ fontSize: 12.5, color: "var(--redup)" }}>
+        <span className="self-center text-[12.5px] font-medium text-redup sm:col-span-2 sm:justify-self-end lg:col-span-3">
           {total} prospek
         </span>
       </div>
 
-      <div className="panel-kisi panel-kisi--2" style={{ alignItems: "start" }}>
-        <div className="panel-tabel-bungkus">
-          <table className="panel-tabel">
+      <div className="grid items-start gap-4 xl:grid-cols-[1.35fr_1fr]">
+        <div className={TABEL_BUNGKUS}>
+          <table className={TABEL}>
             <thead>
               <tr>
-                <th>Nama</th>
-                <th>Kontak</th>
-                <th>Sumber</th>
-                <th>Status</th>
-                <th style={{ textAlign: "right" }}>Aksi</th>
+                <th className={TH}>Nama</th>
+                <th className={`${TH} hidden sm:table-cell`}>Kontak</th>
+                <th className={`${TH} hidden md:table-cell`}>Sumber</th>
+                <th className={TH}>Status</th>
+                <th className={`${TH} text-right`}>Aksi</th>
               </tr>
             </thead>
             <tbody>
-              {memuat && baris.length === 0 && (
-                <tr><td colSpan={5} className="panel-kosong">Memuat prospek…</td></tr>
-              )}
+              {memuat && baris.length === 0 && <BarisMemuat kolom={5} apa="prospek" />}
               {!memuat && baris.length === 0 && (
-                <tr><td colSpan={5} className="panel-kosong">Belum ada prospek dengan filter ini.</td></tr>
+                <BarisKosong kolom={5}>Belum ada prospek dengan filter ini.</BarisKosong>
               )}
+
               {baris.map((p) => (
-                <tr key={p.id} style={pilih?.id === p.id ? { background: "#fdf2f3" } : undefined}>
-                  <td>
-                    <strong>{p.nama}</strong>
-                    <div style={{ fontSize: 11.5, color: "var(--redup)" }}>{waktu(p.dibuat_pada)}</div>
+                <tr
+                  key={p.id}
+                  className={`transition ${
+                    pilih?.id === p.id ? "bg-marf-muda/60" : "hover:bg-[#fcfcfd]"
+                  }`}
+                >
+                  <td className={TD}>
+                    <strong className="font-semibold">{p.nama}</strong>
+                    <div className="text-[11.5px] text-redup">{waktu(p.dibuat_pada)}</div>
                   </td>
-                  <td style={{ fontSize: 12.5 }}>
+                  <td className={`${TD} hidden text-[12.5px] sm:table-cell`}>
                     {p.telepon ?? "—"}
-                    {p.email && <div style={{ color: "var(--redup)" }}>{p.email}</div>}
+                    {p.email && <div className="marf-pecah text-redup">{p.email}</div>}
                   </td>
-                  <td style={{ fontSize: 12.5 }}>{p.sumber}</td>
-                  <td>
-                    <span className={`panel-lencana panel-lencana--${p.status}`}>{p.status}</span>
+                  <td className={`${TD} hidden text-[12.5px] md:table-cell`}>{p.sumber}</td>
+                  <td className={TD}>
+                    <Lencana nilai={p.status} />
                     {p.nama_petugas && (
-                      <div style={{ fontSize: 11, color: "var(--redup)", marginTop: 3 }}>{p.nama_petugas}</div>
+                      <div className="mt-1 text-[11px] text-redup">{p.nama_petugas}</div>
                     )}
                   </td>
-                  <td>
-                    <div className="panel-tabel__aksi">
-                      <button className="panel-tombol panel-tombol--kecil" onClick={() => buka(p)}>
+                  <td className={TD}>
+                    <div className="flex justify-end">
+                      <button className={`${TOMBOL} ${TOMBOL_KECIL}`} onClick={() => buka(p)}>
                         Buka
                       </button>
                     </div>
@@ -170,95 +207,95 @@ export default function DaftarProspek({ peran }: { peran: "admin" | "staff" }) {
           </table>
         </div>
 
-        <div className="panel-kartu">
+        <div className="xl:sticky xl:top-24">
           {!pilih ? (
-            <p className="panel-kosong">Pilih satu prospek di sebelah kiri untuk melihat rinciannya.</p>
+            <div className={`${KARTU} px-5 py-14 text-center text-[13.5px] text-redup`}>
+              Pilih satu prospek di sebelah kiri untuk melihat rinciannya.
+            </div>
           ) : (
-            <>
-              <h2 className="panel-kartu__judul">{pilih.nama}</h2>
-              <p className="panel-kartu__ket">
-                {pilih.sumber} · masuk {waktu(pilih.dibuat_pada)}
-              </p>
+            <section className={KARTU}>
+              <div className="mb-4 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h2 className="truncate text-[16px] font-bold tracking-tight">{pilih.nama}</h2>
+                  <p className="mt-0.5 text-[12.5px] text-redup">
+                    {pilih.sumber} · masuk {waktu(pilih.dibuat_pada)}
+                  </p>
+                </div>
+                <button className={`${TOMBOL} ${TOMBOL_KECIL} shrink-0`} onClick={() => setPilih(null)}>
+                  Tutup
+                </button>
+              </div>
 
-              <dl className="panel-rincian" style={{ marginBottom: 16 }}>
-                <div>
-                  <dt>Telepon</dt>
-                  <dd>{pilih.telepon ?? "—"}</dd>
+              <div className="mb-4 grid gap-2.5 sm:grid-cols-2">
+                <div className="rounded-lg border border-garis bg-[#fbfcfd] px-3.5 py-2.5">
+                  <div className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.07em] text-redup">
+                    Telepon
+                  </div>
+                  <div className="text-[14px] font-semibold">{pilih.telepon ?? "—"}</div>
                 </div>
-                <div>
-                  <dt>Surel</dt>
-                  <dd style={{ fontSize: 12.5, wordBreak: "break-all" }}>{pilih.email ?? "—"}</dd>
+                <div className="rounded-lg border border-garis bg-[#fbfcfd] px-3.5 py-2.5">
+                  <div className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.07em] text-redup">
+                    Surel
+                  </div>
+                  <div className="marf-pecah text-[13px] font-semibold">{pilih.email ?? "—"}</div>
                 </div>
-              </dl>
+              </div>
 
               {pilih.pesan && (
-                <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontSize: 11.5, color: "var(--redup)", fontWeight: 700, marginBottom: 5 }}>
-                    PESAN
-                  </div>
-                  <p
-                    style={{
-                      margin: 0,
-                      fontSize: 13.5,
-                      lineHeight: 1.65,
-                      background: "#fafbfc",
-                      border: "1px solid var(--garis)",
-                      borderRadius: 9,
-                      padding: 12,
-                    }}
-                  >
+                <div className="mb-4">
+                  <div className="mb-1.5 text-[11.5px] font-bold text-redup">PESAN</div>
+                  <p className="rounded-lg border border-garis bg-[#fafbfc] px-3.5 py-3 text-[13.5px] leading-relaxed">
                     {pilih.pesan}
                   </p>
                 </div>
               )}
 
-              <label className="panel-medan">
-                <span>Status</span>
+              <Medan label="Status">
                 <select
+                  className={INPUT}
                   value={pilih.status}
+                  disabled={sibuk}
                   onChange={(e) => {
                     const baru = e.target.value;
                     setPilih({ ...pilih, status: baru });
                     simpan(pilih, { status: baru });
                   }}
                 >
-                  {STATUS.map((s) => <option key={s} value={s}>{s}</option>)}
+                  {STATUS.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
                 </select>
-              </label>
+              </Medan>
 
-              <label className="panel-medan">
-                <span>Catatan internal</span>
+              <Medan label="Catatan internal">
                 <textarea
+                  className={`${INPUT} min-h-24 resize-y leading-relaxed`}
                   value={catatan}
                   onChange={(e) => setCatatan(e.target.value)}
                   placeholder="Hasil telepon, jadwal test drive, penawaran…"
                 />
-              </label>
+              </Medan>
 
-              <div className="panel-aksi">
+              <div className="flex flex-wrap gap-2.5 border-t border-garis pt-4">
                 <button
-                  className="panel-tombol panel-tombol--utama"
+                  className={TOMBOL_UTAMA}
                   onClick={() => simpan(pilih, { catatan })}
+                  disabled={sibuk}
                 >
-                  Simpan catatan
-                </button>
-                <button className="panel-tombol" onClick={() => setPilih(null)}>
-                  Tutup
+                  {sibuk ? "Menyimpan…" : "Simpan catatan"}
                 </button>
                 {peran === "admin" && (
-                  <button
-                    className="panel-tombol panel-tombol--bahaya"
-                    onClick={() => hapus(pilih)}
-                    style={{ marginLeft: "auto" }}
-                  >
+                  <button className={`${TOMBOL_BAHAYA} ml-auto`} onClick={() => hapus(pilih)}>
                     Hapus
                   </button>
                 )}
               </div>
-            </>
+            </section>
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,0 +1,143 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Sumber Tailwind untuk panel MARF.
+
+   Berkas ini DI-BUILD jadi CSS biasa oleh:
+       npm run css:panel
+   Hasilnya: src/styles/panel.css (ikut di-commit, diimpor layout panel).
+
+   KENAPA BUKAN lewat postcss.config?
+   Menambah postcss.config akan MENIMPA bawaan Next (autoprefixer dll) dan
+   ikut memproses 32 berkas SCSS situs (19.948 baris). Jalur CLI ini membuat
+   Tailwind hanya menyentuh panel — pipeline CSS situs tidak berubah sedikit pun.
+
+   KENAPA TANPA PREFLIGHT?
+   Tailwind punya "preflight" yang mereset margin, border, dan font secara
+   global. Kalau ikut dibundel, gaya SCSS situs publik akan rusak. Karena itu
+   hanya `theme` + `utilities` yang diimpor, bukan `@import "tailwindcss"`.
+   KENAPA TANPA `@layer`
+   Situs punya reset universal TANPA layer:
+       * { margin: 0; padding: 0; color: #1c1c1c }
+   Dalam kaskade CSS, deklarasi tanpa layer SELALU menang atas deklarasi
+   berlayer — berapa pun spesifisitasnya. Membungkus utilitas Tailwind dengan
+   `layer(utilities)` membuat reset `*` situs menang atas `.px-5` dan `.gap-4`:
+   kartu jadi tanpa padding, jarak antar kartu jadi 4px, dan warna teks
+   ditimpa jadi #1c1c1c (menu sidebar nyaris tak terbaca di atas latar hitam).
+   Karena itu utilitas diimpor TANPA layer, sehingga spesifisitas dan urutan
+   berkas yang menentukan — dan berkas ini dimuat setelah CSS situs.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css" source(none);
+
+/* Pindai HANYA berkas panel — supaya utilitas Tailwind tidak pernah
+   bertabrakan dengan kelas SCSS situs (mis. `.grid`, `.flex`, `.container`). */
+@source "../components/panel/**/*.tsx";
+@source "../app/masuk/**/*.tsx";
+@source "../app/\(panel\)/**/*.tsx";
+
+@theme {
+  --font-sans: var(--font-manrope), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-marf: #c8171f;
+  --color-marf-tua: #9c1119;
+  --color-marf-muda: #fdeced;
+  --color-marf-garis: #f5c9cc;
+
+  --color-ink: #14161a;
+  --color-ink-2: #1d2129;
+
+  --color-kertas: #f5f6f8;
+  --color-garis: #e4e7ec;
+  --color-garis-2: #f0f2f5;
+
+  --color-redup: #667085;
+  --color-tinta: #191c21;
+
+  --color-hijau: #0f9d58;
+  --color-hijau-muda: #e7f6ee;
+  --color-kuning: #b7791f;
+  --color-kuning-muda: #fdf3e0;
+  --color-biru: #2563eb;
+  --color-biru-muda: #e8effd;
+  --color-ungu: #7c3aed;
+  --color-ungu-muda: #f3e8fd;
+
+  --radius-kartu: 0.75rem;
+}
+
+/* ── Sembunyikan widget melayang situs saat panel terbuka ──────────────────
+   Situs memasang preloader, tombol gulir-ke-atas, dan tombol tema secara
+   global di layout akar. Ketiganya mengganggu di dalam panel. */
+body:has(.marf-panel) .preload,
+body:has(.marf-panel) .progress-wrap,
+body:has(.marf-panel) .switcher-container,
+body:has(.marf-panel) .modal,
+body:has(.marf-panel) .tf-search-modal,
+body:has(.marf-panel) .offcanvas {
+  display: none !important;
+}
+
+/* Panel mengunci gulir halaman sendiri; cegah situs ikut menggulir. */
+body:has(.marf-panel) {
+  overflow-x: hidden;
+}
+
+/* ── Perbaikan kecil yang tidak bisa dijangkau utilitas ───────────────────── */
+
+/* Reset `*` situs memaksa `color: #1c1c1c` ke SEMUA elemen, jadi warna tidak
+   pernah diwarisi — setiap elemen harus punya utilitas warnanya sendiri.
+   JANGAN tambahkan `color: inherit` di sini: selektor `.marf-panel a`
+   berspesifisitas (0,1,1) dan akan MENGALAHKAN utilitas `text-[…]` (0,1,0),
+   sehingga tautan sidebar mewarisi #1c1c1c dan jadi hitam di atas hitam.
+   Hanya dekorasi yang dinetralkan di sini. */
+.marf-panel a {
+  text-decoration: none;
+}
+
+/* Reset `* { color: #1c1c1c }` situs membunuh pewarisan warna: setiap elemen
+   yang tidak punya utilitas warna sendiri jadi hitam. Di panel, itu membuat
+   IKON MENU SIDEBAR dan SUREL PENGGUNA tak terlihat (hitam di atas hitam).
+
+   `:where()` dipakai justru karena spesifisitasnya NOL. Aturan ini jadi
+   setara `*` (0,0,0), tapi dimuat belakangan sehingga menang — sementara
+   utilitas seperti `.text-white` (0,1,0) tetap menang atasnya. Kalau ditulis
+   `.marf-panel span` (0,1,1) justru akan menimpa SEMUA utilitas warna teks. */
+:where(.marf-panel span, .marf-panel div, .marf-panel p, .marf-panel a,
+       .marf-panel strong, .marf-panel b, .marf-panel small, .marf-panel em,
+       .marf-panel i, .marf-panel label, .marf-panel li, .marf-panel td,
+       .marf-panel th, .marf-panel h1, .marf-panel h2, .marf-panel h3) {
+  color: inherit;
+}
+
+/* Titik labuh pewarisan warna untuk seluruh panel. */
+.marf-panel {
+  color: var(--color-tinta);
+}
+
+/* Scrollbar tipis di sidebar supaya tidak memotong label. */
+.marf-panel nav {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.marf-panel nav::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.marf-panel nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+/* Isi tabel panjang di panel prospek tidak boleh melebar melewati kolom. */
+.marf-panel table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Cegah kata panjang (surel, slug) merusak tata letak. */
+.marf-pecah {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

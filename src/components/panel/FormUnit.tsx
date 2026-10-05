@@ -3,6 +3,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { minta } from "@/lib/klien";
+import {
+  INPUT,
+  KARTU,
+  Medan,
+  Pesan,
+  TOMBOL,
+  TOMBOL_BAHAYA,
+  TOMBOL_UTAMA,
+} from "./ui";
 
 type Dealer = { id: number; nama: string; kota: string | null };
 
@@ -46,6 +55,8 @@ const MEREK = [
   "Toyota", "Honda", "Daihatsu", "Suzuki", "Mitsubishi", "Nissan",
   "Mazda", "Hyundai", "Wuling", "Chery", "BMW", "Mercedes-Benz",
 ];
+
+const GRID = "grid gap-x-4 sm:grid-cols-2";
 
 export default function FormUnit({
   awal,
@@ -122,19 +133,28 @@ export default function FormUnit({
     router.refresh();
   }
 
+  const judulBagian = "mb-3 border-b border-garis pb-2 text-[12px] font-bold uppercase tracking-[0.07em] text-redup";
+
   return (
-    <form onSubmit={simpan} className="panel-kartu" style={{ maxWidth: 880 }}>
-      {galat && <p className="panel-galat">{galat}</p>}
+    <form onSubmit={simpan} className={`${KARTU} max-w-3xl`}>
+      {galat && <Pesan jenis="galat">{galat}</Pesan>}
 
-      <div className="panel-baris">
-        <label className="panel-medan">
-          <span>Judul unit *</span>
-          <input value={n.judul} onChange={(e) => set("judul", e.target.value)} placeholder="Toyota Avanza 1.5 G 2021" required />
-        </label>
+      <p className={judulBagian}>Identitas kendaraan</p>
 
-        <label className="panel-medan">
-          <span>Merek *</span>
+      <Medan label="Judul unit" wajib>
+        <input
+          className={INPUT}
+          value={n.judul}
+          onChange={(e) => set("judul", e.target.value)}
+          placeholder="Toyota Avanza 1.5 G 2021"
+          required
+        />
+      </Medan>
+
+      <div className={GRID}>
+        <Medan label="Merek" wajib>
           <input
+            className={INPUT}
             value={n.merek}
             onChange={(e) => set("merek", e.target.value)}
             placeholder="Toyota"
@@ -142,20 +162,26 @@ export default function FormUnit({
             required
           />
           <datalist id="daftar-merek">
-            {MEREK.map((m) => <option key={m} value={m} />)}
+            {MEREK.map((m) => (
+              <option key={m} value={m} />
+            ))}
           </datalist>
-        </label>
+        </Medan>
+
+        <Medan label="Model">
+          <input
+            className={INPUT}
+            value={n.model}
+            onChange={(e) => set("model", e.target.value)}
+            placeholder="Avanza 1.5 G"
+          />
+        </Medan>
       </div>
 
-      <div className="panel-baris">
-        <label className="panel-medan">
-          <span>Model</span>
-          <input value={n.model} onChange={(e) => set("model", e.target.value)} placeholder="Avanza 1.5 G" />
-        </label>
-
-        <label className="panel-medan">
-          <span>Tahun</span>
+      <div className={GRID}>
+        <Medan label="Tahun">
           <input
+            className={INPUT}
             type="number"
             min={1900}
             max={2100}
@@ -163,120 +189,157 @@ export default function FormUnit({
             onChange={(e) => set("tahun", e.target.value)}
             placeholder="2021"
           />
-        </label>
-      </div>
+        </Medan>
 
-      <div className="panel-baris">
-        <label className="panel-medan">
-          <span>Harga (Rp) *</span>
+        <Medan label="Warna">
           <input
-            value={n.harga}
-            onChange={(e) => set("harga", e.target.value)}
-            placeholder="195000000"
-            inputMode="numeric"
-            required
+            className={INPUT}
+            value={n.warna}
+            onChange={(e) => set("warna", e.target.value)}
+            placeholder="Putih"
           />
-        </label>
+        </Medan>
+      </div>
 
-        <label className="panel-medan">
-          <span>Cicilan per bulan</span>
-          <input value={n.harga_cicilan} onChange={(e) => set("harga_cicilan", e.target.value)} placeholder="Rp 3.030.000/bln" />
+      <div className="mt-6">
+        <p className={judulBagian}>Harga & kondisi</p>
+
+        <div className={GRID}>
+          <Medan label="Harga (Rp)" wajib>
+            <input
+              className={INPUT}
+              value={n.harga}
+              onChange={(e) => set("harga", e.target.value)}
+              placeholder="195000000"
+              inputMode="numeric"
+              required
+            />
+          </Medan>
+
+          <Medan label="Cicilan per bulan">
+            <input
+              className={INPUT}
+              value={n.harga_cicilan}
+              onChange={(e) => set("harga_cicilan", e.target.value)}
+              placeholder="Rp 3.030.000/bln"
+            />
+          </Medan>
+        </div>
+
+        <div className={GRID}>
+          <Medan label="Kilometer">
+            <input
+              className={INPUT}
+              value={n.kilometer}
+              onChange={(e) => set("kilometer", e.target.value)}
+              placeholder="32.000 km"
+            />
+          </Medan>
+
+          <Medan label="Transmisi">
+            <select
+              className={INPUT}
+              value={n.transmisi}
+              onChange={(e) => set("transmisi", e.target.value)}
+            >
+              <option value="Otomatis">Otomatis</option>
+              <option value="Manual">Manual</option>
+              <option value="CVT">CVT</option>
+            </select>
+          </Medan>
+        </div>
+
+        <div className={GRID}>
+          <Medan label="Bahan bakar">
+            <select
+              className={INPUT}
+              value={n.bahan_bakar}
+              onChange={(e) => set("bahan_bakar", e.target.value)}
+            >
+              <option value="Bensin">Bensin</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Listrik">Listrik</option>
+            </select>
+          </Medan>
+
+          <Medan label="Lokasi">
+            <input
+              className={INPUT}
+              value={n.lokasi}
+              onChange={(e) => set("lokasi", e.target.value)}
+              placeholder="Purwokerto, Jawa Tengah"
+            />
+          </Medan>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <p className={judulBagian}>Penempatan</p>
+
+        <div className={GRID}>
+          <Medan label="Status">
+            <select
+              className={INPUT}
+              value={n.status}
+              onChange={(e) => set("status", e.target.value)}
+            >
+              <option value="draf">Draf</option>
+              <option value="tersedia">Tersedia</option>
+              <option value="dipesan">Dipesan</option>
+              <option value="terjual">Terjual</option>
+            </select>
+          </Medan>
+
+          <Medan label="Dealer">
+            <select
+              className={INPUT}
+              value={n.dealer_id}
+              onChange={(e) => set("dealer_id", e.target.value)}
+            >
+              <option value="">— tanpa dealer —</option>
+              {dealer.map((d) => (
+                <option key={d.id} value={d.id}>
+                  {d.nama}
+                </option>
+              ))}
+            </select>
+          </Medan>
+        </div>
+
+        <Medan label="Deskripsi">
+          <textarea
+            className={`${INPUT} min-h-24 resize-y leading-relaxed`}
+            value={n.deskripsi}
+            onChange={(e) => set("deskripsi", e.target.value)}
+            placeholder="Kondisi mesin, riwayat servis, kelengkapan dokumen…"
+          />
+        </Medan>
+
+        <label className="mb-4 flex cursor-pointer items-center gap-2.5 text-[13.5px]">
+          <input
+            type="checkbox"
+            checked={n.unggulan}
+            onChange={(e) => set("unggulan", e.target.checked)}
+            className="h-4 w-4 accent-marf"
+          />
+          Tandai sebagai unit unggulan
         </label>
       </div>
 
-      <div className="panel-baris">
-        <label className="panel-medan">
-          <span>Kilometer</span>
-          <input value={n.kilometer} onChange={(e) => set("kilometer", e.target.value)} placeholder="32.000 km" />
-        </label>
-
-        <label className="panel-medan">
-          <span>Transmisi</span>
-          <select value={n.transmisi} onChange={(e) => set("transmisi", e.target.value)}>
-            <option value="Otomatis">Otomatis</option>
-            <option value="Manual">Manual</option>
-            <option value="CVT">CVT</option>
-          </select>
-        </label>
-      </div>
-
-      <div className="panel-baris">
-        <label className="panel-medan">
-          <span>Bahan bakar</span>
-          <select value={n.bahan_bakar} onChange={(e) => set("bahan_bakar", e.target.value)}>
-            <option value="Bensin">Bensin</option>
-            <option value="Diesel">Diesel</option>
-            <option value="Hybrid">Hybrid</option>
-            <option value="Listrik">Listrik</option>
-          </select>
-        </label>
-
-        <label className="panel-medan">
-          <span>Warna</span>
-          <input value={n.warna} onChange={(e) => set("warna", e.target.value)} placeholder="Putih" />
-        </label>
-      </div>
-
-      <div className="panel-baris">
-        <label className="panel-medan">
-          <span>Status</span>
-          <select value={n.status} onChange={(e) => set("status", e.target.value)}>
-            <option value="draf">Draf</option>
-            <option value="tersedia">Tersedia</option>
-            <option value="dipesan">Dipesan</option>
-            <option value="terjual">Terjual</option>
-          </select>
-        </label>
-
-        <label className="panel-medan">
-          <span>Dealer</span>
-          <select value={n.dealer_id} onChange={(e) => set("dealer_id", e.target.value)}>
-            <option value="">— tanpa dealer —</option>
-            {dealer.map((d) => (
-              <option key={d.id} value={d.id}>{d.nama}</option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <label className="panel-medan">
-        <span>Lokasi</span>
-        <input value={n.lokasi} onChange={(e) => set("lokasi", e.target.value)} placeholder="Purwokerto, Jawa Tengah" />
-      </label>
-
-      <label className="panel-medan">
-        <span>Deskripsi</span>
-        <textarea
-          value={n.deskripsi}
-          onChange={(e) => set("deskripsi", e.target.value)}
-          placeholder="Kondisi mesin, riwayat servis, kelengkapan dokumen…"
-        />
-      </label>
-
-      <label style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 18, fontSize: 13.5 }}>
-        <input
-          type="checkbox"
-          checked={n.unggulan}
-          onChange={(e) => set("unggulan", e.target.checked)}
-          style={{ width: "auto" }}
-        />
-        Tandai sebagai unit unggulan
-      </label>
-
-      <div className="panel-aksi">
-        <button type="submit" className="panel-tombol panel-tombol--utama" disabled={sibuk}>
+      <div className="mt-6 flex flex-wrap items-center gap-2.5 border-t border-garis pt-5">
+        <button type="submit" className={TOMBOL_UTAMA} disabled={sibuk}>
           {sibuk ? "Menyimpan…" : id ? "Simpan perubahan" : "Simpan unit"}
         </button>
-        <button type="button" className="panel-tombol" onClick={() => router.push("/admin/unit")}>
+        <button type="button" className={TOMBOL} onClick={() => router.push("/admin/unit")}>
           Batal
         </button>
         {id && (
           <button
             type="button"
-            className="panel-tombol panel-tombol--bahaya"
+            className={`${TOMBOL_BAHAYA} ml-auto`}
             onClick={hapus}
             disabled={hapusSibuk}
-            style={{ marginLeft: "auto" }}
           >
             {hapusSibuk ? "Menghapus…" : "Hapus unit"}
           </button>

@@ -3,6 +3,21 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { minta, rupiah } from "@/lib/klien";
+import {
+  BarisKosong,
+  BarisMemuat,
+  INPUT,
+  Pesan,
+  SELECT,
+  TABEL,
+  TABEL_BUNGKUS,
+  TD,
+  TH,
+  TOMBOL,
+  TOMBOL_BAHAYA,
+  TOMBOL_KECIL,
+  TOMBOL_UTAMA,
+} from "./ui";
 
 type Unit = {
   id: number;
@@ -19,6 +34,18 @@ type Unit = {
 };
 
 const STATUS = ["draf", "tersedia", "dipesan", "terjual"];
+
+// Select status berwarna sesuai nilainya — supaya status langsung terbaca
+// dari tabel tanpa harus membuka apa pun.
+const WARNA_SELECT: Record<string, string> = {
+  tersedia: "border-[#b9e3ce] bg-hijau-muda text-[#0b7a45]",
+  dipesan: "border-[#f0dcb4] bg-kuning-muda text-[#96660f]",
+  terjual: "border-[#d8dce2] bg-[#eceef1] text-[#5b6472]",
+  draf: "border-[#e0e3e8] bg-[#eef0f3] text-redup",
+};
+
+const KECIL =
+  "rounded-lg border px-2.5 py-1.5 text-[11.5px] font-bold tracking-wide outline-none transition focus:ring-[3px] focus:ring-marf/15";
 
 export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
   const [baris, setBaris] = useState<Unit[]>([]);
@@ -59,18 +86,21 @@ export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
 
   async function ubahStatus(id: number, status: string) {
     setPesan(null);
+    setGalat(null);
     const h = await minta(`/api/unit/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
     if (h.ok) {
       setPesan(`Status unit #${id} diubah jadi ${status}.`);
       muat();
     } else {
       setGalat(h.pesan);
+      muat();
     }
   }
 
   async function hapus(id: number, judul: string) {
     if (!confirm(`Hapus unit "${judul}"? Tindakan ini tidak bisa dibatalkan.`)) return;
     setPesan(null);
+    setGalat(null);
     const h = await minta(`/api/unit/${id}`, { method: "DELETE" });
     if (h.ok) {
       setPesan(`Unit "${judul}" dihapus.`);
@@ -83,12 +113,17 @@ export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
   const halamanTotal = Math.max(1, Math.ceil(total / batas));
 
   return (
-    <>
-      {galat && <p className="panel-galat">{galat}</p>}
-      {pesan && <p className="panel-sukses">{pesan}</p>}
+    <div className="space-y-4">
+      {galat && <Pesan jenis="galat">{galat}</Pesan>}
+      {pesan && <Pesan jenis="sukses">{pesan}</Pesan>}
 
-      <div className="panel-alat">
+      {/* Grid, bukan flex: dengan flex, kotak pencarian terbatas `max-w-xs`
+          (320px) sementara ketiga dropdown melebar penuh 1135px — baris filter
+          jadi timpang. Grid memberi pencarian 2 bagian dan tiap dropdown 1
+          bagian, sehingga semuanya sejajar. Di mobile menumpuk satu kolom. */}
+      <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-[minmax(0,2fr)_repeat(3,minmax(0,1fr))]">
         <input
+          className={`${INPUT} sm:col-span-2 lg:col-span-1`}
           placeholder="Cari judul, merek, atau model…"
           value={q}
           onChange={(e) => {
@@ -97,21 +132,46 @@ export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
           }}
         />
 
-        <select value={fMerek} onChange={(e) => { setFMerek(e.target.value); setHalaman(1); }}>
+        <select
+          className={SELECT}
+          value={fMerek}
+          onChange={(e) => {
+            setFMerek(e.target.value);
+            setHalaman(1);
+          }}
+        >
           <option value="">Semua merek</option>
           {merek.map((m) => (
-            <option key={m} value={m}>{m}</option>
+            <option key={m} value={m}>
+              {m}
+            </option>
           ))}
         </select>
 
-        <select value={fStatus} onChange={(e) => { setFStatus(e.target.value); setHalaman(1); }}>
+        <select
+          className={SELECT}
+          value={fStatus}
+          onChange={(e) => {
+            setFStatus(e.target.value);
+            setHalaman(1);
+          }}
+        >
           <option value="">Semua status</option>
           {STATUS.map((s) => (
-            <option key={s} value={s}>{s}</option>
+            <option key={s} value={s}>
+              {s}
+            </option>
           ))}
         </select>
 
-        <select value={urut} onChange={(e) => { setUrut(e.target.value); setHalaman(1); }}>
+        <select
+          className={SELECT}
+          value={urut}
+          onChange={(e) => {
+            setUrut(e.target.value);
+            setHalaman(1);
+          }}
+        >
           <option value="terbaru">Terbaru</option>
           <option value="termurah">Termurah</option>
           <option value="termahal">Termahal</option>
@@ -119,87 +179,78 @@ export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
           <option value="judul">Judul A–Z</option>
         </select>
 
-        <span className="panel-alat__dorong" style={{ fontSize: 12.5, color: "var(--redup)" }}>
-          {total} unit
-        </span>
+        <span className="ml-auto text-[12.5px] font-medium text-redup">{total} unit</span>
 
         {peran === "admin" && (
-          <Link href="/admin/unit/baru" className="panel-tombol panel-tombol--utama panel-tombol--kecil">
+          <Link href="/admin/unit/baru" className={`${TOMBOL_UTAMA} ${TOMBOL_KECIL}`}>
             + Tambah unit
           </Link>
         )}
       </div>
 
-      <div className="panel-tabel-bungkus">
-        <table className="panel-tabel">
+      <div className={TABEL_BUNGKUS}>
+        <table className={TABEL}>
           <thead>
             <tr>
-              <th>Unit</th>
-              <th>Tahun</th>
-              <th>Kilometer</th>
-              <th>Transmisi</th>
-              <th style={{ textAlign: "right" }}>Harga</th>
-              <th>Status</th>
-              <th style={{ textAlign: "right" }}>Aksi</th>
+              <th className={TH}>Unit</th>
+              <th className={TH}>Tahun</th>
+              <th className={`${TH} hidden md:table-cell`}>Kilometer</th>
+              <th className={`${TH} hidden lg:table-cell`}>Transmisi</th>
+              <th className={`${TH} text-right`}>Harga</th>
+              <th className={TH}>Status</th>
+              <th className={`${TH} text-right`}>Aksi</th>
             </tr>
           </thead>
           <tbody>
-            {memuat && baris.length === 0 && (
-              <tr>
-                <td colSpan={7} className="panel-kosong">Memuat unit…</td>
-              </tr>
-            )}
+            {memuat && baris.length === 0 && <BarisMemuat kolom={7} apa="unit" />}
 
             {!memuat && baris.length === 0 && (
-              <tr>
-                <td colSpan={7} className="panel-kosong">
-                  Tidak ada unit yang cocok dengan filter ini.
-                </td>
-              </tr>
+              <BarisKosong kolom={7}>Tidak ada unit yang cocok dengan filter ini.</BarisKosong>
             )}
 
             {baris.map((u) => (
-              <tr key={u.id}>
-                <td>
-                  <strong>{u.judul}</strong>
-                  {u.unggulan && (
-                    <span className="panel-lencana panel-lencana--baru" style={{ marginLeft: 7 }}>
-                      unggulan
-                    </span>
-                  )}
-                  <div style={{ fontSize: 11.5, color: "var(--redup)" }}>{u.slug}</div>
+              <tr key={u.id} className="transition hover:bg-[#fcfcfd]">
+                <td className={TD}>
+                  <div className="flex items-center gap-2">
+                    <strong className="font-semibold">{u.judul}</strong>
+                    {u.unggulan && (
+                      <span className="whitespace-nowrap rounded-full bg-marf-muda px-2 py-[2px] text-[10px] font-bold uppercase tracking-wide text-marf-tua">
+                        unggulan
+                      </span>
+                    )}
+                  </div>
+                  <div className="marf-pecah text-[11.5px] text-redup">{u.slug}</div>
                 </td>
-                <td>{u.tahun ?? "—"}</td>
-                <td>{u.kilometer ?? "—"}</td>
-                <td>{u.transmisi ?? "—"}</td>
-                <td style={{ textAlign: "right", fontWeight: 600, whiteSpace: "nowrap" }}>{rupiah(u.harga)}</td>
-                <td>
+                <td className={`${TD} tabular-nums`}>{u.tahun ?? "—"}</td>
+                <td className={`${TD} hidden md:table-cell`}>{u.kilometer ?? "—"}</td>
+                <td className={`${TD} hidden lg:table-cell`}>{u.transmisi ?? "—"}</td>
+                <td className={`${TD} whitespace-nowrap text-right font-semibold tabular-nums`}>
+                  {rupiah(u.harga)}
+                </td>
+                <td className={TD}>
                   <select
                     value={u.status}
                     onChange={(e) => ubahStatus(u.id, e.target.value)}
-                    className="panel-lencana"
-                    style={{
-                      border: "1px solid var(--garis)",
-                      cursor: "pointer",
-                      padding: "4px 7px",
-                      fontFamily: "inherit",
-                    }}
+                    aria-label={`Status ${u.judul}`}
+                    className={`${KECIL} ${WARNA_SELECT[u.status] ?? WARNA_SELECT.draf} cursor-pointer`}
                   >
                     {STATUS.map((s) => (
-                      <option key={s} value={s}>{s}</option>
+                      <option key={s} value={s}>
+                        {s}
+                      </option>
                     ))}
                   </select>
                 </td>
-                <td>
-                  <div className="panel-tabel__aksi">
+                <td className={TD}>
+                  <div className="flex flex-wrap justify-end gap-1.5">
                     {peran === "admin" && (
-                      <Link href={`/admin/unit/${u.id}`} className="panel-tombol panel-tombol--kecil">
+                      <Link href={`/admin/unit/${u.id}`} className={`${TOMBOL} ${TOMBOL_KECIL}`}>
                         Ubah
                       </Link>
                     )}
                     {peran === "admin" && (
                       <button
-                        className="panel-tombol panel-tombol--kecil panel-tombol--bahaya"
+                        className={`${TOMBOL_BAHAYA} ${TOMBOL_KECIL}`}
                         onClick={() => hapus(u.id, u.judul)}
                       >
                         Hapus
@@ -214,19 +265,19 @@ export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
       </div>
 
       {halamanTotal > 1 && (
-        <div className="panel-aksi" style={{ marginTop: 16, justifyContent: "center" }}>
+        <div className="flex items-center justify-center gap-3">
           <button
-            className="panel-tombol panel-tombol--kecil"
+            className={`${TOMBOL} ${TOMBOL_KECIL}`}
             disabled={halaman <= 1}
             onClick={() => setHalaman((n) => n - 1)}
           >
             ← Sebelumnya
           </button>
-          <span style={{ fontSize: 12.5, color: "var(--redup)" }}>
+          <span className="text-[12.5px] font-medium text-redup">
             Halaman {halaman} dari {halamanTotal}
           </span>
           <button
-            className="panel-tombol panel-tombol--kecil"
+            className={`${TOMBOL} ${TOMBOL_KECIL}`}
             disabled={halaman >= halamanTotal}
             onClick={() => setHalaman((n) => n + 1)}
           >
@@ -234,6 +285,6 @@ export default function DaftarUnit({ peran }: { peran: "admin" | "staff" }) {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }

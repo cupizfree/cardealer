@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { minta } from "@/lib/klien";
+import { TOMBOL, TOMBOL_KECIL } from "./ui";
 
 export type PenggunaPanel = {
   id: number;
@@ -72,58 +73,91 @@ export default function PanelShell({
   }
 
   return (
-    <div className="panel-root">
-      <div className="panel-app">
-        <aside className="panel-sisi">
-          <div className="panel-sisi__merek">
+    <div className="marf-panel min-h-screen bg-kertas font-sans text-tinta antialiased">
+      {/* grid-cols eksplisit untuk mobile: kolom `auto` bawaan `grid` mengambil
+          lebar min-content anaknya, dan nav yang berisi tautan `shrink-0`
+          melebarkan kolom sampai 616px di layar 390px — header dan isi konten
+          ikut terpotong. `minmax(0,1fr)` memaksa kolom menyusut selebar layar. */}
+      <div className="grid min-h-screen grid-cols-[minmax(0,1fr)] lg:grid-cols-[248px_1fr]">
+        <aside className="flex min-w-0 flex-col bg-ink text-[#e8eaee] lg:sticky lg:top-0 lg:h-screen">
+          <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3.5 lg:px-[18px] lg:py-5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/images/logo-white.png" alt="MARF" />
-            <div>
-              <strong>MARF</strong>
-              <span>{pengguna.peran === "admin" ? "Panel Admin" : "Panel Staff"}</span>
+            <img src="/assets/images/logo-white.png" alt="MARF" className="h-8 w-auto shrink-0" />
+            <div className="min-w-0">
+              <strong className="block truncate text-sm font-bold tracking-tight text-white">
+                MARF
+              </strong>
+              <span className="block truncate text-[11px] uppercase tracking-[0.05em] text-[#8b93a1]">
+                {pengguna.peran === "admin" ? "Panel Admin" : "Panel Staff"}
+              </span>
             </div>
+            <button
+              onClick={logout}
+              disabled={keluar}
+              className="ml-auto shrink-0 rounded-lg border border-white/15 px-2.5 py-1.5 text-[12px] font-semibold text-[#c3c9d4] transition hover:bg-white/10 hover:text-white disabled:opacity-50 lg:hidden"
+            >
+              {keluar ? "…" : "Keluar"}
+            </button>
           </div>
 
-          <nav className="panel-sisi__nav">
-            <div className="panel-sisi__judul">Menu</div>
+          <nav className="flex gap-1 overflow-x-auto px-2 py-2 lg:flex-1 lg:flex-col lg:gap-0.5 lg:overflow-y-auto lg:px-2.5 lg:py-3.5">
+            <div className="hidden px-2.5 pb-1.5 pt-3.5 text-[10.5px] font-bold uppercase tracking-[0.09em] text-[#8b93a1] lg:block">
+              Menu
+            </div>
             {nav.map((b) => {
-              const aktif = b.href === "/admin" || b.href === "/staff" ? path === b.href : path.startsWith(b.href);
+              const aktif =
+                b.href === "/admin" || b.href === "/staff"
+                  ? path === b.href
+                  : path.startsWith(b.href);
               return (
                 <Link
                   key={b.href}
                   href={b.href}
-                  className={`panel-sisi__tautan${aktif ? " panel-sisi__tautan--aktif" : ""}`}
+                  className={`flex shrink-0 items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13.5px] font-medium transition ${
+                    aktif
+                      ? "bg-marf font-semibold text-white"
+                      : "text-[#c3c9d4] hover:bg-white/[0.06] hover:text-white"
+                  }`}
                 >
-                  <span className="panel-sisi__ikon">{b.ikon}</span>
+                  <span className="w-4 text-center text-sm opacity-90">{b.ikon}</span>
                   {b.label}
                 </Link>
               );
             })}
           </nav>
 
-          <div className="panel-sisi__kaki">
-            <div className="panel-sisi__aku">
-              <strong>{pengguna.nama}</strong>
-              {pengguna.email}
+          <div className="hidden border-t border-white/10 p-3.5 lg:block">
+            <div className="mb-2.5 text-[12px] leading-relaxed text-[#8b93a1]">
+              <strong className="block truncate text-[13px] text-white">{pengguna.nama}</strong>
+              <span className="block truncate">{pengguna.email}</span>
             </div>
-            <button className="panel-tombol panel-tombol--kecil" onClick={logout} disabled={keluar} style={{ width: "100%" }}>
+            <button onClick={logout} disabled={keluar} className={`${TOMBOL} ${TOMBOL_KECIL} w-full`}>
               {keluar ? "Keluar…" : "Keluar"}
             </button>
           </div>
         </aside>
 
-        <main className="panel-utama">
-          <header className="panel-atas">
-            <div>
-              <h1>{judul}</h1>
-              {ket && <p>{ket}</p>}
+        <main className="flex min-w-0 flex-col">
+          <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-garis bg-white px-4 py-3.5 lg:px-[26px]">
+            <div className="min-w-0">
+              <h1 className="truncate text-[17px] font-bold tracking-tight lg:text-[19px]">
+                {judul}
+              </h1>
+              {ket && (
+                <p className="mt-0.5 hidden truncate text-[12.5px] text-redup sm:block">{ket}</p>
+              )}
             </div>
-            <Link href="/" className="panel-tombol panel-tombol--kecil" target="_blank" rel="noreferrer">
+            <Link
+              href="/"
+              target="_blank"
+              rel="noreferrer"
+              className={`${TOMBOL} ${TOMBOL_KECIL} shrink-0`}
+            >
               Lihat situs ↗
             </Link>
           </header>
 
-          <div className="panel-isi">{children}</div>
+          <div className="flex-1 px-4 pb-14 pt-5 lg:px-[26px] lg:pb-16 lg:pt-6">{children}</div>
         </main>
       </div>
     </div>
