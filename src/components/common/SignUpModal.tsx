@@ -30,7 +30,7 @@ export default function SignUpModal() {
         </label>
 
         <label htmlFor="Password-SignUp" className="mb-24 px-2">
-          <span className="mb-8 flex">Password*</span>
+          <span className="mb-8 flex">Kata Sandi*</span>
           {/* Real show/hide toggle — found missing here while migrating change-password.html, see
               `PasswordInput.tsx`'s own comment. */}
           <PasswordInput
@@ -42,7 +42,7 @@ export default function SignUpModal() {
           />
         </label>
         <label htmlFor="ConfirmPassword-SignUp" className="mb-20 px-2">
-          <span className="mb-8 flex">Confirm password*</span>
+          <span className="mb-8 flex">Ulangi Kata Sandi*</span>
           <PasswordInput
             className="input-large active"
             id="ConfirmPassword-SignUp"
@@ -56,10 +56,10 @@ export default function SignUpModal() {
           <label className="filter-checkbox style-5">
             <input type="checkbox" name="features" value="touch-screen" defaultChecked />
             <span className="text-sm">
-              I agree to the{" "}
+              Saya setuju dengan{" "}
               <a href="/terms" className="text-underline font-bold text-sm pl-4">
                 {" "}
-                Terms of User
+                Syarat Pengguna
               </a>
             </span>
           </label>
@@ -70,7 +70,7 @@ export default function SignUpModal() {
         </button>
 
         <p className="text-sm text-secondary flex gap-8 justify-center mb-20">
-          Already have an account?{" "}
+          Sudah punya akun?{" "}
           <span
             className="text-sm font-weight-600 text-underline cursor-pointer"
             onClick={() => openModal("LoginModal")}

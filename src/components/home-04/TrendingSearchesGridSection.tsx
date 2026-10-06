@@ -27,11 +27,11 @@ const l3 = allListings.find((l) => l.id === 3)!;
 // never more — reproduced via Swiper's `Grid` module.
 const SLIDES: ListingCardData[] = [
   { ...l1, image: "/assets/images/card/card-44.jpg" },
-  { ...l2, image: "/assets/images/card/card-45.jpg", price: "$42.500,00" },
-  { ...l3, image: "/assets/images/card/card-46.jpg", price: "$34.200,00", badge: { text: "Hot Offer", colorClass: "bg-primary" } },
+  { ...l2, image: "/assets/images/card/card-45.jpg", price: "Rp 638.000.000" },
+  { ...l3, image: "/assets/images/card/card-46.jpg", price: "Rp 513.000.000", badge: { text: "Penawaran Spesial", colorClass: "bg-primary" } },
   { ...l1, image: "/assets/images/card/card-44.jpg" },
-  { ...l2, image: "/assets/images/card/card-45.jpg", price: "$42.500,00" },
-  { ...l3, image: "/assets/images/card/card-46.jpg", price: "$34.200,00", badge: { text: "Hot Offer", colorClass: "bg-primary" } },
+  { ...l2, image: "/assets/images/card/card-45.jpg", price: "Rp 638.000.000" },
+  { ...l3, image: "/assets/images/card/card-46.jpg", price: "Rp 513.000.000", badge: { text: "Penawaran Spesial", colorClass: "bg-primary" } },
 ];
 
 export default function TrendingSearchesGridSection() {

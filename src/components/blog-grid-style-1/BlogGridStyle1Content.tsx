@@ -8,7 +8,7 @@ import Pagination from "@/components/common/Pagination";
 // Migrated from ../aurexo/blog-grid-style-1.html lines 483-664. No sidebar on this page (full-width
 // 3-column grid, confirmed via source — genuinely different layout from blog-standard.html/blog-list.html,
 // which both have an `.innerpage__sidebar`). 8 of these 9 titles exactly match existing `allBlogPosts`
-// entries (ids 1-8); only "Electric vs. Internal Combustion Engine (ICE) Cars" is new (id 14). Every
+// entries (ids 1-8); only "Mobil Listrik vs. Mesin Bensin (ICE)" is new (id 14). Every
 // occurrence still carries its own distinct real image/category/excerpt — a 4th real, disclosed instance
 // of the "same conceptual article, inconsistent per-page presentation" pattern already seen on
 // blog-standard.html/blog-list.html, preserved as literal local card data rather than reconciled.
@@ -24,9 +24,9 @@ const POSTS = [
   {
     slug: "compact-suv-vs-full-size-suv",
     image: "/assets/images/blog/post-20.jpg",
-    category: "PERFORMANCE",
+    category: "PERFORMA",
     date: "21 Agu 2025",
-    title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
+    title: "Compact SUV vs. Full-Size SUV: Apa Bedanya?",
     excerpt: "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },
   {
@@ -34,15 +34,15 @@ const POSTS = [
     image: "/assets/images/blog/post-18.jpg",
     category: "MEWAH",
     date: "21 Agu 2025",
-    title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
+    title: "Mobil Sport vs. Mobil Mewah: Menemukan yang Tepat untuk Anda",
     excerpt: "Bandingkan mobil sport dan mobil mewah untuk menemukan yang paling sesuai gaya hidup Anda, dengan mempertimbangkan pengalaman berkendara...",
   },
   {
     slug: "diesel-vs-gasoline-engines",
     image: "/assets/images/blog/post-21.jpg",
-    category: "DESIGN",
+    category: "DESAIN",
     date: "21 Agu 2025",
-    title: "Diesel vs. Gasoline Engines: Pros and Cons Explained",
+    title: "Diesel vs. Bensin: Kelebihan dan Kekurangannya",
     excerpt: "Pahami perbedaan mesin diesel dan bensin, termasuk kelebihan dan kekurangannya, agar bisa mengambil...",
   },
   {
@@ -56,9 +56,9 @@ const POSTS = [
   {
     slug: "electric-vs-ice-cars",
     image: "/assets/images/blog/post-24.jpg",
-    category: "TREND",
+    category: "TREN",
     date: "21 Agu 2025",
-    title: "Electric vs. Internal Combustion Engine (ICE) Cars",
+    title: "Mobil Listrik vs. Mesin Bensin (ICE)",
     excerpt: "Bandingkan mobil listrik (EV) dengan mobil mesin pembakaran biasa (ICE) untuk memahami...",
   },
   {

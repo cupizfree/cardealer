@@ -43,7 +43,7 @@ export default function ReviewsSection({
                   <Image key={i} src="/assets/icons/star-2.svg" alt="star" width={16} height={16} />
                 ))}
               </div>
-              <p className="rating-box__count">({ratingSummary.count.toLocaleString()} Ratings)</p>
+              <p className="rating-box__count">({ratingSummary.count.toLocaleString("id-ID")} Penilaian)</p>
             </div>
           </div>
           <div className="rating-box__distribution">

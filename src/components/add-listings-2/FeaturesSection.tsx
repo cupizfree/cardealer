@@ -1,58 +1,59 @@
 const FEATURE_GROUPS = [
   {
-    label: "Request Price Label",
+    label: "Label Harga Permintaan",
     items: [
-      { id: "Front", label: "A/C: Front", checked: true },
-      { id: "BackupCamera", label: "Backup Camera", checked: true },
-      { id: "CruiseControl", label: "Cruise Control", checked: true },
-      { id: "Navigation", label: "Navigation", checked: false },
-      { id: "PowerLocks", label: "Power Locks", checked: false },
+      { id: "Front", label: "AC: Depan", checked: true },
+      { id: "BackupCamera", label: "Kamera Mundur", checked: true },
+      { id: "CruiseControl", label: "Kontrol Kecepatan", checked: true },
+      { id: "Navigation", label: "Navigasi", checked: false },
+      { id: "PowerLocks", label: "Kunci Elektrik", checked: false },
     ],
   },
   {
-    label: "Entertainment",
+    label: "Hiburan",
     items: [
-      { id: "Audiosystem", label: "Audio system", checked: false },
-      { id: "Touchscreendisplay", label: "Touchscreen display", checked: false },
-      { id: "GPSnavigation", label: "GPS navigation", checked: false },
+      { id: "Audiosystem", label: "Sistem audio", checked: false },
+      { id: "Touchscreendisplay", label: "Layar sentuh", checked: false },
+      { id: "GPSnavigation", label: "Navigasi GPS", checked: false },
       { id: "Phoneconnectivity", label: "Konektivitas ponsel", checked: false },
       { id: "IncarWiFi", label: "Wi-Fi dalam mobil", checked: false },
     ],
   },
   {
-    label: "Safety",
+    label: "Keselamatan",
     items: [
-      { id: "Antilockbrakesystem", label: "Anti-lock brake system", checked: false },
-      { id: "Electronicstability", label: "Electronic stability control", checked: false },
-      { id: "Brakeassist", label: "Brake assist", checked: false },
-      { id: "Airbags", label: "Airbags", checked: false },
-      { id: "monitoringBlind", label: "Blind spot monitoring", checked: false },
+      { id: "Antilockbrakesystem", label: "Sistem rem anti-lock", checked: false },
+      { id: "Electronicstability", label: "Kontrol stabilitas elektronik", checked: false },
+      { id: "Brakeassist", label: "Bantuan rem", checked: false },
+      { id: "Airbags", label: "Airbag", checked: false },
+      { id: "monitoringBlind", label: "Pemantau titik buta", checked: false },
     ],
   },
   {
     label: "Interior",
     items: [
-      { id: "Premiumleather", label: "Premium leather seats", checked: false },
+      { id: "Premiumleather", label: "Kursi kulit premium", checked: false },
       { id: "Woodtrim", label: "Aksen kayu", checked: false },
       { id: "Minibar", label: "Mini bar", checked: false },
-      { id: "ventilation", label: "Rear seat ventilation", checked: false },
-      { id: "Infotainment", label: "Infotainment screen", checked: false },
+      { id: "ventilation", label: "Ventilasi kursi belakang", checked: false },
+      { id: "Infotainment", label: "Layar infotainment", checked: false },
     ],
   },
   {
-    label: "Exterior",
+    label: "Eksterior",
     items: [
-      { id: "Chromeplatedgrill", label: "Chrome-plated grill", checked: false },
-      { id: "Smartheadlight", label: "Smart headlight cluster", checked: false },
-      { id: "Premiumwheels", label: "Premium wheels", checked: false },
-      { id: "characterBody", label: "Body character lines", checked: false },
-      { id: "Highqualitypaint", label: "High-quality paint", checked: false },
+      { id: "Chromeplatedgrill", label: "Grill berlapis krom", checked: false },
+      { id: "Smartheadlight", label: "Lampu utama pintar", checked: false },
+      { id: "Premiumwheels", label: "Velg premium", checked: false },
+      { id: "characterBody", label: "Garis karakter bodi", checked: false },
+      { id: "Highqualitypaint", label: "Cat berkualitas tinggi", checked: false },
     ],
   },
 ];
 
 // Migrated from ../aurexo/add-listings-2.html lines 928-1063. Plain checkboxes, no dropdown/toggle
 // behavior — 3 of the 5 "Request Price Label" items start pre-checked, matching source exactly.
+// Label fitur diterjemahkan ke bahasa Indonesia.
 export default function FeaturesSection() {
   return (
     <div className="dashboard-box bg-white style-3 mb-30">

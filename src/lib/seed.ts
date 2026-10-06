@@ -151,7 +151,7 @@ export function seedJikaKosong(): HasilSeed {
         nama: "Dewi Lestari",
         telepon: "0813-9876-5432",
         email: "dewi@contoh.id",
-        pesan: "Unit Brio Satya masih ada? Sudah pernah test drive.",
+        pesan: "Unit Brio Satya masih ada? Sudah pernah uji coba.",
         sumber: "detail-unit",
         status: "selesai",
       },

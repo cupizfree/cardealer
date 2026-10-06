@@ -20,12 +20,12 @@ import { allListings, withDetailFallback, type Listing, type ListingOverview } f
 // doesn't have — never fabricated fresh data.
 const ROWS: Array<{ icon: string; label: string; key: keyof ListingOverview }> = [
   { icon: "mileage.svg", label: "Jarak Tempuh:", key: "mileage" },
-  { icon: "years.svg", label: "Years:", key: "year" },
+  { icon: "years.svg", label: "Tahun:", key: "year" },
   { icon: "fuel.svg", label: "Bahan Bakar:", key: "fuel" },
   { icon: "color.svg", label: "Warna:", key: "color" },
-  { icon: "location.svg", label: "Location:", key: "location" },
+  { icon: "location.svg", label: "Lokasi:", key: "location" },
   { icon: "interior.svg", label: "Interior:", key: "interior" },
-  { icon: "engine.svg", label: "Engine:", key: "engine" },
+  { icon: "engine.svg", label: "Mesin:", key: "engine" },
   { icon: "transmission.svg", label: "Transmisi:", key: "transmission" },
   { icon: "VIN.svg", label: "VIN:", key: "vin" },
   { icon: "QrCode.svg", label: "Nomor Stok:", key: "stockNumber" },

@@ -7,7 +7,7 @@
 // per-post identifier — the same "no working per-item route in source" situation those two families
 // had — so `id`/`slug` here are synthetic, same convention as `Listing`/`Product`.
 //
-// Only id 1 (this page's own subject, "Compact SUV vs. Full-Size SUV") has real detail-page content.
+// Only id 1 (this page's own subject, "SUV Kompak vs. SUV Besar") has real detail-page content.
 // Ids 2-4 are real card titles/images/dates/excerpts already captured from financing.html's
 // `NewsTipsSection` (all 3 of its cards linked generically to `/blog-details-1` before this dataset
 // existed) — not invented for this task. Notably, 2 of those 3 titles ("Truck vs. Minivan..."/
@@ -59,7 +59,7 @@ export const allBlogPosts: BlogPost[] = [
     id: 1,
     slug: "compact-suv-vs-full-size-suv",
     title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
-    category: "PERFORMANCE",
+    category: "PERFORMA",
     date: "Aug. 8, 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/blog-details.jpg",
@@ -163,7 +163,7 @@ export const allBlogPosts: BlogPost[] = [
   {
     id: 5,
     slug: "sports-cars-vs-luxury-cars",
-    title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
+    title: "Mobil Sport vs. Mobil Mewah: Menemukan yang Tepat untuk Anda",
     category: "MEWAH",
     date: "Aug. 11, 2025",
     author: "Admin",
@@ -185,8 +185,8 @@ export const allBlogPosts: BlogPost[] = [
   {
     id: 7,
     slug: "diesel-vs-gasoline-engines",
-    title: "Diesel vs. Gasoline Engines: Pros and Cons Explained",
-    category: "PERFORMANCE",
+    title: "Diesel vs. Bensin: Kelebihan dan Kekurangannya",
+    category: "PERFORMA",
     date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-22.jpg",
@@ -266,8 +266,8 @@ export const allBlogPosts: BlogPost[] = [
   {
     id: 14,
     slug: "electric-vs-ice-cars",
-    title: "Electric vs. Internal Combustion Engine (ICE) Cars",
-    category: "TREND",
+    title: "Mobil Listrik vs. Mesin Bensin (ICE)",
+    category: "TREN",
     date: "21 Agu 2025",
     author: "Admin",
     cardImage: "/assets/images/blog/post-24.jpg",

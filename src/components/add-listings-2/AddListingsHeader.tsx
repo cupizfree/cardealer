@@ -8,7 +8,7 @@ export default function AddListingsHeader() {
       <p className="h3">Tambah Iklan</p>
       <div className="flex items-center gap-10">
         <a href="#" className="btn btn-line-1 px-24 btn-large font-weight-600" onClick={(event) => event.preventDefault()}>
-          Save &amp; Preview
+          Simpan &amp; Pratinjau
         </a>
         <a href="#" className="btn btn-primary px-24 btn-large font-weight-600" onClick={(event) => event.preventDefault()}>
           Pasang Iklan

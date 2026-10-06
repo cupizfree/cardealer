@@ -18,14 +18,14 @@ import { allListings } from "@/data/listings";
 // section in this migration. "$20.000 - $50.000" is the source's own default-active tab.
 const TABS: { label: string; ids: number[] }[] = [
   { label: "Semua Mobil", ids: [13, 14, 15, 14, 15, 14] },
-  { label: "$20.000 - $50.000", ids: [13, 14, 15, 14, 13, 14] },
-  { label: "$50.000 - $70.000", ids: [13, 14, 15, 14] },
-  { label: "$70.000 - $100.000", ids: [13, 14, 15, 14] },
-  { label: "$100.000 - $150.000", ids: [13, 14, 15, 14] },
+  { label: "Rp 200 jt - Rp 500 jt", ids: [13, 14, 15, 14, 13, 14] },
+  { label: "Rp 500 jt - Rp 700 jt", ids: [13, 14, 15, 14] },
+  { label: "Rp 700 jt - Rp 1 M", ids: [13, 14, 15, 14] },
+  { label: "Rp 1 M - Rp 1,5 M", ids: [13, 14, 15, 14] },
 ];
 
 export default function UsedCarsByBudgetCarouselSection() {
-  const [activeTab, setActiveTab] = useState("$20.000 - $50.000");
+  const [activeTab, setActiveTab] = useState("Rp 200 jt - Rp 500 jt");
   const tab = TABS.find((t) => t.label === activeTab) ?? TABS[1];
   const listings = tab.ids.map((id, index) => ({ listing: allListings.find((l) => l.id === id)!, index }));
 

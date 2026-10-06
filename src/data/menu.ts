@@ -136,7 +136,7 @@ export const pagesMenuColumns: PagesMenuColumn[] = [
       { label: "Produk", href: "/shop" },
       { label: "Detail Produk", href: "/product-details/fog-light-lamp-white-yellow-dual-colors" },
       { label: "Keranjang", href: "/shopping-cart" },
-      { label: "Checkout", href: "/check-out" },
+      { label: "Pembayaran", href: "/check-out" },
     ],
   },
   {

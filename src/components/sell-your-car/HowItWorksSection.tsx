@@ -5,8 +5,8 @@
 const steps = [
   { number: "1", title: "Masukkan Detail Mobil Anda", description: "Masukkan informasi mobil Anda untuk mendapat perkiraan nilai seketika." },
   { number: "2", title: "Sempurnakan Nilai Mobil Anda", description: "Sesuaikan faktor seperti warna dan jarak tempuh untuk melihat pengaruhnya pada nilai mobil Anda.", active: true },
-  { number: "3", title: "Receive Your Offer", description: "Siap jual? Dapatkan penawaran khusus dari showroom terdekat." },
-  { number: "4", title: "Complete the Sale Easily", description: "Finalize the deal with secure transactions & hassle-free paperwork assistance." },
+  { number: "3", title: "Terima Penawaran Anda", description: "Siap jual? Dapatkan penawaran khusus dari showroom terdekat." },
+  { number: "4", title: "Selesaikan Penjualan dengan Mudah", description: "Tuntaskan transaksi dengan aman dan bantuan berkas tanpa ribet." },
 ];
 
 export default function HowItWorksSection() {

@@ -3,11 +3,11 @@
 // Extracted out of `FilterFields.tsx` so other filter UI shells (e.g. `TopSearchFilterBar.tsx`) can
 // reuse the exact same color-swatch dropdown widget instead of redeclaring it.
 export const COLOR_SWATCHES: Record<string, string> = {
-  Black: "#000",
-  White: "#fff",
-  Gray: "#808080",
-  Red: "#FF0000",
-  Blue: "#0000FF",
+  Hitam: "#000",
+  Putih: "#fff",
+  "Abu-abu": "#808080",
+  Merah: "#FF0000",
+  Biru: "#0000FF",
 };
 
 export default function ColorDropdown({

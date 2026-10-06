@@ -23,7 +23,7 @@ export const SORT_LABELS: Record<SortOption, string> = {
   "highest-price": "Harga Tertinggi",
   "lowest-mileage": "Jarak Terendah",
   "highest-mileage": "Jarak Tertinggi",
-  "nearest-location": "Nearest Location",
+  "nearest-location": "Lokasi Terdekat",
   "best-deal": "Penawaran Terbaik",
   "newest-year": "Tahun Terbaru",
   "oldest-year": "Tahun Terlama",
@@ -111,15 +111,15 @@ function buildFilterTags(filters: FilterState, priceMin: number, priceMax: numbe
   arrayTag(filters.cylinders, "cylinders");
   arrayTag(filters.features, "features");
   if (filters.exteriorColor) {
-    tags.push({ key: "exteriorColor", label: `Exterior ${filters.exteriorColor}`, remove: (f) => ({ ...f, exteriorColor: null }) });
+    tags.push({ key: "exteriorColor", label: `Warna Eksterior ${filters.exteriorColor}`, remove: (f) => ({ ...f, exteriorColor: null }) });
   }
   if (filters.interiorColor) {
-    tags.push({ key: "interiorColor", label: `Interior ${filters.interiorColor}`, remove: (f) => ({ ...f, interiorColor: null }) });
+    tags.push({ key: "interiorColor", label: `Warna Interior ${filters.interiorColor}`, remove: (f) => ({ ...f, interiorColor: null }) });
   }
   if (filters.priceRange[0] !== priceMin || filters.priceRange[1] !== priceMax) {
     tags.push({
       key: "price",
-      label: `Price: $${filters.priceRange[0].toLocaleString()} - $${filters.priceRange[1].toLocaleString()}`,
+      label: `Harga: Rp ${filters.priceRange[0].toLocaleString("id-ID")} - Rp ${filters.priceRange[1].toLocaleString("id-ID")}`,
       remove: (f) => ({ ...f, priceRange: [priceMin, priceMax] }),
     });
   }

@@ -23,7 +23,7 @@ const mercedesTitleOverSourceMismatch: ListingCardData = {
   image: "/assets/images/card/card-10.jpg",
   brandLabel: "Porsche",
   badge: undefined,
-  price: "$18.200,00",
+  price: "Rp 273.000.000",
 };
 
 const SLIDES: ListingCardData[] = [l13, l14, l15, mercedesTitleOverSourceMismatch];

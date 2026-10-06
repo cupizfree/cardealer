@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const PURCHASE_STEPS_ANSWER = [
-  "Untuk membeli mobil dari showroom kami, mulai dengan menjelajahi koleksi kami secara online atau datang langsung untuk menemukan kendaraan yang sesuai kebutuhan Anda. Jadwalkan test drive untuk memastikan unitnya cocok, lalu bahas opsi kredit atau sewa dengan tim kami.",
+  "Untuk membeli mobil dari showroom kami, mulai dengan menjelajahi koleksi kami secara online atau datang langsung untuk menemukan kendaraan yang sesuai kebutuhan Anda. Jadwalkan uji coba untuk memastikan unitnya cocok, lalu bahas opsi kredit atau sewa dengan tim kami.",
   "Siapkan dokumen yang diperlukan, seperti KTP, bukti asuransi, dan keterangan penghasilan. Setelah kesepakatan tercapai, selesaikan berkas, periksa mobil, lalu bawa pulang kendaraan baru Anda!",
 ];
 const PURCHASE_STEPS_FIRST_PARAGRAPH = [PURCHASE_STEPS_ANSWER[0]];
@@ -33,8 +33,8 @@ const faqSections: FaqSection[] = [
       { question: "Langkah membeli mobil dari showroom kami?", answer: PURCHASE_STEPS_ANSWER },
       { question: "Dokumen yang diperlukan untuk kredit atau sewa?", answer: PURCHASE_STEPS_FIRST_PARAGRAPH },
       { question: "Pilihan untuk memesan atau inden kendaraan?", answer: AUTO_LOAN_BLURB },
-      { question: "Available payment methods and financing plans?", answer: AUTO_LOAN_BLURB },
-      { question: "Bagaimana menjadwalkan test drive sebelum membeli?", answer: AUTO_LOAN_BLURB },
+      { question: "Metode pembayaran dan skema kredit apa saja yang tersedia?", answer: AUTO_LOAN_BLURB },
+      { question: "Bagaimana menjadwalkan uji coba sebelum membeli?", answer: AUTO_LOAN_BLURB },
     ],
   },
   {

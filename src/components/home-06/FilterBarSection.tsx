@@ -80,7 +80,7 @@ export default function FilterBarSection() {
               label="Pilih Jarak Tempuh"
               toggleId="Home06MilesSelectToggle"
               defaultText="Semua jarak"
-              options={["0-10k", "$10k-$20k"]}
+              options={["Rp 0 - Rp 100 jt", "Rp 100 jt - Rp 200 jt"]}
               isOpen={openDropdown === "miles"}
               onToggleOpen={() => toggleDropdown("miles")}
               layout="bar"
@@ -90,7 +90,7 @@ export default function FilterBarSection() {
               label="Harga Maksimal"
               toggleId="Home06MaxPriceSelectToggle"
               defaultText="Semua Harga"
-              options={["0-10k", "$10k-$20k"]}
+              options={["Rp 0 - Rp 100 jt", "Rp 100 jt - Rp 200 jt"]}
               isOpen={openDropdown === "price"}
               onToggleOpen={() => toggleDropdown("price")}
               layout="bar"

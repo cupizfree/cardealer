@@ -7,21 +7,21 @@ import Link from "next/link";
 // repeats "Used Toyota Highlander / Under $60K" twice (items 4 and 5) — preserved as-is, not
 // deduplicated, same demo-repeat precedent as about-us's testimonial slides.
 const priceRanges = [
-  { label: "Bekas Populer", price: "Under $15k" },
-  { label: "Used Subaru Forester", price: "Under $30K" },
-  { label: "Coupe Bekas", price: "Under $100K" },
-  { label: "Used Toyota Highlander", price: "Under $60K" },
-  { label: "Used Toyota Highlander", price: "Under $60K" },
-  { label: "Honda Bekas", price: "Under $15k" },
-  { label: "SUV Bekas", price: "Under $30K" },
-  { label: "Lexus Bekas", price: "Under $80K" },
-  { label: "Pikap Bekas", price: "Under $40K" },
-  { label: "BMW Bekas", price: "Under $60K" },
-  { label: "Mercedes Bekas", price: "Under $100k" },
-  { label: "Volvo Bekas", price: "Under $70K" },
-  { label: "Sedan Bekas", price: "Under $20K" },
-  { label: "Listrik Bekas", price: "Under $30K" },
-  { label: "Hatchback Bekas", price: "Under $25K" },
+  { label: "Bekas Populer", price: "Di bawah Rp 150 jt" },
+  { label: "Subaru Forester Bekas", price: "Di bawah Rp 300 jt" },
+  { label: "Coupe Bekas", price: "Di bawah Rp 1 M" },
+  { label: "Toyota Highlander Bekas", price: "Di bawah Rp 600 jt" },
+  { label: "Toyota Highlander Bekas", price: "Di bawah Rp 600 jt" },
+  { label: "Honda Bekas", price: "Di bawah Rp 150 jt" },
+  { label: "SUV Bekas", price: "Di bawah Rp 300 jt" },
+  { label: "Lexus Bekas", price: "Di bawah Rp 800 jt" },
+  { label: "Pikap Bekas", price: "Di bawah Rp 400 jt" },
+  { label: "BMW Bekas", price: "Di bawah Rp 600 jt" },
+  { label: "Mercedes Bekas", price: "Di bawah Rp 1 M" },
+  { label: "Volvo Bekas", price: "Di bawah Rp 700 jt" },
+  { label: "Sedan Bekas", price: "Di bawah Rp 200 jt" },
+  { label: "Listrik Bekas", price: "Di bawah Rp 300 jt" },
+  { label: "Hatchback Bekas", price: "Di bawah Rp 250 jt" },
 ];
 
 export default function BrowseByPriceSection() {

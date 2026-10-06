@@ -15,7 +15,7 @@ import { useCart } from "@/components/common/CartProvider";
 // Total/Shipping cost) — a plain native radio group needs no React state to look right.
 export default function OrderSummarySidebar() {
   const { subtotal } = useCart();
-  const subtotalDisplay = `$${subtotal.toFixed(2)}`;
+  const subtotalDisplay = `Rp ${subtotal.toLocaleString("id-ID")}`;
 
   return (
     <div className="innerpage__sidebar">
@@ -32,7 +32,7 @@ export default function OrderSummarySidebar() {
 
           <p className="flex justify-between gap-8 mb-20">
             <span className="font-weight-600">Diskon</span>
-            <span className="font-weight-600">-$8.00</span>
+            <span className="font-weight-600">-Rp 120.000</span>
           </p>
 
           <div className="divider mb-20" />
@@ -44,7 +44,7 @@ export default function OrderSummarySidebar() {
                 <input type="radio" name="payment" value="0" defaultChecked />
                 <span className="label-focus w-full flex">
                   <span className="flex gap-8 w-full justify-between">
-                    <span>Gratis Pengiriman:</span> $0.00
+                    <span>Gratis Pengiriman:</span> Rp 0
                   </span>
                 </span>
               </label>
@@ -52,7 +52,7 @@ export default function OrderSummarySidebar() {
                 <input type="radio" name="payment" value="35" />
                 <span className="label-focus w-full flex">
                   <span className="flex gap-8 w-full justify-between">
-                    <span>Lokal:</span> $35.00
+                    <span>Lokal:</span> Rp 525.000
                   </span>
                 </span>
               </label>
@@ -60,7 +60,7 @@ export default function OrderSummarySidebar() {
                 <input type="radio" name="payment" value="35" />
                 <span className="label-focus w-full flex">
                   <span className="flex gap-8 w-full justify-between">
-                    <span>Tarif Tetap:</span> $35.00
+                    <span>Tarif Tetap:</span> Rp 525.000
                   </span>
                 </span>
               </label>
@@ -71,11 +71,11 @@ export default function OrderSummarySidebar() {
 
           <div className="flex justify-between gap-8 mb-20">
             <p className="h4 font-weight-600">Total</p>
-            <p className="h4 font-weight-600">$186,99</p>
+            <p className="h4 font-weight-600">Rp 2.805.000</p>
           </div>
 
           <Link href="/check-out" className="btn btn-primary btn-large font-weight-600 w-full mb-12">
-            Lanjut ke Checkout
+            Lanjut ke Pembayaran
           </Link>
           <Link href="/check-out" className="text-underline text-center block">
             Atau lanjut belanja

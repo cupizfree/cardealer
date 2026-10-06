@@ -15,7 +15,7 @@ export default function ForgotPasswordModal() {
       <h2 className="mt-20 mb-20 text-center">Lupa Kata Sandi</h2>
       <form action="#">
         <label htmlFor="email-forgot-password" className="mb-20 px-2">
-          <span className="mb-8 flex">Username or email address *</span>
+          <span className="mb-8 flex">Nama pengguna atau email *</span>
           <input
             className="input-large active"
             type="email"

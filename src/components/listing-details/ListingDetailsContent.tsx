@@ -71,14 +71,14 @@ export default function ListingDetailsContent({
             <div className="grid grid-cols-2 md-grid-cols-1 gap-24 mb-40">
               <ul className="flex flex-col gap-16">
                 <OverviewRow icon="icon-gauge.svg" label="Jarak Tempuh:" value={overview.mileage} />
-                <OverviewRow icon="calendar.svg" label="Years:" value={overview.year} />
+                <OverviewRow icon="calendar.svg" label="Tahun:" value={overview.year} />
                 <OverviewRow icon="gaspump.svg" label="Bahan Bakar:" value={overview.fuel} />
                 <OverviewRow icon="palette.svg" label="Warna:" value={overview.color} />
-                <OverviewRow icon="MapPin.svg" label="Location:" value={overview.location} />
+                <OverviewRow icon="MapPin.svg" label="Lokasi:" value={overview.location} />
               </ul>
               <ul className="flex flex-col gap-16">
                 <OverviewRow icon="Seatbelt.svg" label="Interior:" value={overview.interior} />
-                <OverviewRow icon="Frame.svg" label="Engine:" value={overview.engine} />
+                <OverviewRow icon="Frame.svg" label="Mesin:" value={overview.engine} />
                 <OverviewRow icon="transmission-2.svg" label="Transmisi:" value={overview.transmission} />
                 <OverviewRow icon="Barcode.svg" label="VIN:" value={overview.vin} />
                 <OverviewRow icon="QrCode.svg" label="Nomor Stok:" value={overview.stockNumber} />

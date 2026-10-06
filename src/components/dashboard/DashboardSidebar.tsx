@@ -10,7 +10,7 @@ const MENU_ITEMS = [
   { label: "Tambah Iklan", href: "/add-listings-2", icon: "/assets/images/dashboard/AddListing.svg" },
   { label: "Favorit Saya", href: "/my-favorites", icon: "/assets/images/dashboard/MyFavorites.svg" },
   { label: "Ulasan Saya", href: "/reviews", icon: "/assets/images/dashboard/MyReviews.svg" },
-  { label: "Messages", href: "/message", icon: "/assets/images/dashboard/Messages.svg", badge: "2" },
+  { label: "Pesan", href: "/message", icon: "/assets/images/dashboard/Messages.svg", badge: "2" },
   { label: "Profil Saya", href: "/my-profile", icon: "/assets/images/dashboard/MyProfile.svg" },
   { label: "Ubah Kata Sandi", href: "/change-password", icon: "/assets/images/dashboard/ChangePassword.svg" },
   { label: "Keluar", href: "/", icon: "/assets/images/dashboard/Logout.svg" },
@@ -49,7 +49,7 @@ export default function DashboardSidebar({ isOpen }: { isOpen: boolean }) {
         <a className="text-sm text-white" href="https://themeforest.net/user/themesflat" target="_blank" rel="noreferrer">
           MARF
         </a>
-        . All Rights Reserved.
+        . Seluruh Hak Dilindungi.
       </p>
     </div>
   );

@@ -49,13 +49,13 @@ export default function Home05() {
         pairs={[
           {
             images: ["/assets/images/card/card-21.png", "/assets/images/card/card-22.png"],
-            left: { brand: "TESLA", title: "2024 Tesla Model Y", price: "$44.900,00" },
-            right: { brand: "TESLA", title: "2024 Ford Mustang Mach-E", price: "$42.900,00" },
+            left: { brand: "TESLA", title: "2024 Tesla Model Y", price: "Rp 674.000.000" },
+            right: { brand: "TESLA", title: "2024 Ford Mustang Mach-E", price: "Rp 644.000.000" },
           },
           {
             images: ["/assets/images/card/card-35.png", "/assets/images/card/card-36.png"],
-            left: { brand: "Honda", title: "2022 Porsche 911 Carrera", price: "$44.900,00" },
-            right: { brand: "Camry", title: "2022 Ford Mustang GT Premium", price: "$42.900,00" },
+            left: { brand: "Honda", title: "2022 Porsche 911 Carrera", price: "Rp 674.000.000" },
+            right: { brand: "Camry", title: "2022 Ford Mustang GT Premium", price: "Rp 644.000.000" },
           },
         ]}
       />

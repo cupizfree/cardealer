@@ -32,7 +32,7 @@ export default function ShoppingCartModal() {
           <div className="percent" style={{ "--percent": "75%" } as React.CSSProperties} />
           <div className="progress-bar__bg" />
         </div>
-        <p className="text-sm">Congratulations! You&apos;ve got free shipping!</p>
+        <p className="text-sm">Selamat! Anda mendapat pengiriman gratis!</p>
       </div>
 
       <div className="your-order scroll-custom mb-20">
@@ -43,7 +43,7 @@ export default function ShoppingCartModal() {
               <div>
                 <p className="font-weight-600 mb-12 clamp-1 clamp">{item.name}</p>
                 <p className="font-weight-600">
-                  {item.quantity} X ${item.price.toFixed(2)}
+                  {item.quantity} X Rp {item.price.toLocaleString("id-ID")}
                 </p>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function ShoppingCartModal() {
       <div className="bottom-modal">
         <div className="flex items-center justify-between gap-10 mb-20 w-full">
           <p className="h4">Subtotal</p>
-          <p className="h4">${subtotal.toFixed(2)}</p>
+          <p className="h4">Rp {subtotal.toLocaleString("id-ID")}</p>
         </div>
         <div className="flex items-center w-full mb-24">
           <label className="filter-checkbox style-5 mb-18">
@@ -73,7 +73,7 @@ export default function ShoppingCartModal() {
             <span />
           </label>
           <a href="/terms">
-            Saya setuju dengan <span className="text-underline">Terms &amp; Conditions</span>
+            Saya setuju dengan <span className="text-underline">Syarat &amp; Ketentuan</span>
           </a>
         </div>
 
@@ -82,7 +82,7 @@ export default function ShoppingCartModal() {
             Lihat Keranjang
           </Link>
           <Link href="/check-out" className="btn btn-primary btn-large font-weight-600 w-full">
-            Checkout
+            Bayar
           </Link>
         </div>
 

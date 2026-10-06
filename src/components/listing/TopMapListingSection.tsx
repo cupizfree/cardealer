@@ -77,7 +77,7 @@ export default function TopMapListingSection({ listings }: { listings: Listing[]
           <div className="row mb-34">
             <div className="col-xxl-5 col-6 flex items-center">
               <p className="md-hidden">
-                Showing {rangeStart} – {rangeEnd} of {sortedListings.length} Listings
+                Menampilkan {rangeStart} – {rangeEnd} dari {sortedListings.length} Unit
               </p>
             </div>
 

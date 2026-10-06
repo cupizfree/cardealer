@@ -106,7 +106,7 @@ export default function DashboardListingsTable({
                   <div className="cart-item__name">
                     <p className="h4 clamp-1 clamp mb-8">{listing.title}</p>
                     <p className="clamp-1 clamp text-secondary mb-12">Bagaimana akhir petualangannya akan...</p>
-                    <p className="h5">$44.900,00</p>
+                    <p className="h5">Rp 674.000.000</p>
                   </div>
                 </Link>
                 <div className="cart-item__price">
@@ -150,7 +150,7 @@ export default function DashboardListingsTable({
           <div className="flex justify-between items-center flex-wrap gap-12 pagination-bottom">
             {totalPages > 1 && <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />}
             <p className="text-secondary">
-              Showing {(page - 1) * PER_PAGE + 1} to {Math.min(page * PER_PAGE, listings.length)} of {listings.length} entries
+              Menampilkan {(page - 1) * PER_PAGE + 1} sampai {Math.min(page * PER_PAGE, listings.length)} dari {listings.length} data
             </p>
           </div>
         </div>

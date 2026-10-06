@@ -80,7 +80,7 @@ export default function HeroSliderSection() {
             <SwiperSlide key={file}>
               <h1 className="search-cars__title effect-item effect-left delay-3">Toyota Fortuner VRZ 2021</h1>
               <p className="h3 sub-title text-white mb-36 capitalize effect-item effect-left delay-4">
-                $490/Month for 24 mont <span className="h7 font-weight-500 text-white">(0% APR Representativ)</span>
+                Rp 7.350.000/bulan selama 24 bulan <span className="h7 font-weight-500 text-white">(bunga 0%)</span>
               </p>
               <Link
                 href="/listing-grid4-columns"

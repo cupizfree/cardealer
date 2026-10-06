@@ -32,7 +32,7 @@ const DEFAULT_BREAKPOINTS = { 0: { slidesPerView: 1 }, 767: { slidesPerView: 2 }
 
 export default function RelatedArticles({
   centered = false,
-  heading = "Related Articles",
+  heading = "Artikel Terkait",
   viewAllHref,
   slides = DEFAULT_SLIDES,
   bare = false,

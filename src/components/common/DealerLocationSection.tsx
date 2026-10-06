@@ -30,11 +30,11 @@ export default function DealerLocationSection({
 
       <div className="grid grid-cols-2 gap-20 md-grid-cols-1 mb-20">
         <div>
-          <p className="mb-8 font-weight-600">Full Address*</p>
+          <p className="mb-8 font-weight-600">Alamat Lengkap*</p>
           <input className="input-large" type="text" id="FullAddress" name="FullAddress" placeholder={ADDRESS} required />
         </div>
         <div>
-          <p className="mb-8 font-weight-600">Map Location*</p>
+          <p className="mb-8 font-weight-600">Lokasi Peta*</p>
           <FilterSelectDropdown
             name="SelectLocation"
             options={MAP_OPTIONS}

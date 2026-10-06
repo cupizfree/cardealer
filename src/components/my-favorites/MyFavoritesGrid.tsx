@@ -23,7 +23,7 @@ export default function MyFavoritesGrid() {
     return (
       <div className="dashboard-box bg-white style-4">
         <div className="compare-empty-state text-center">
-          <p className="text-muted mb-20">You haven’t favorited any listings yet</p>
+          <p className="text-muted mb-20">Anda belum memfavoritkan unit apa pun</p>
           <Link href="/listing-grid4-columns" className="btn btn-primary btn-large font-weight-600">
             Lihat Katalog
           </Link>

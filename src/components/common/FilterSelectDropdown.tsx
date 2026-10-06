@@ -35,7 +35,7 @@ export default function FilterSelectDropdown({
   }
 
   const selectedLabels = options.filter((option) => selected.includes(option.value)).map((option) => option.label);
-  const text = selectedLabels.length === 0 ? "Select" : selectedLabels.length === 1 ? selectedLabels[0] : `${selectedLabels.length} selected`;
+  const text = selectedLabels.length === 0 ? "Pilih" : selectedLabels.length === 1 ? selectedLabels[0] : `${selectedLabels.length} dipilih`;
 
   return (
     <div className={`bg-white filter-select-dropdown style2${isOpen ? " active" : ""}`} data-name={name}>

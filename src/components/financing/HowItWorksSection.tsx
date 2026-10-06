@@ -9,7 +9,7 @@
 const steps = [
   {
     number: "1",
-    title: "Start with getting prequalified",
+    title: "Mulai dengan pengajuan awal",
     description:
       "Isi formulir sederhana dalam beberapa menit, tanpa mempengaruhi kredit Anda, dan lihat hasilnya seketika dari mitra pembiayaan terpercaya.",
   },

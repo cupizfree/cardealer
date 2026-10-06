@@ -48,7 +48,7 @@ export default function TeamModal() {
           <div className="grid grid-cols-2 gap-20 md-grid-cols-1">
             <div>
               <p className="text-sm uppercase text-secondary">USIA:</p>
-              <p className="h5 capitalize">48 years old</p>
+              <p className="h5 capitalize">48 tahun</p>
             </div>
 
             <div>

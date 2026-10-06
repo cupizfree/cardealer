@@ -3,8 +3,8 @@
 import CustomSelect from "@/components/common/CustomSelect";
 
 const COUNTRY_OPTIONS = [
-  { value: "1", label: "Canada" },
-  { value: "2", label: "Viet Nam" },
+  { value: "1", label: "Kanada" },
+  { value: "2", label: "Vietnam" },
 ];
 
 // Source's own State select reuses the exact same "Canada"/"Viet Nam" option list as the Country
@@ -23,18 +23,18 @@ export default function BillingDetailsForm() {
         <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Nama Depan*" name="first-name" id="first-name" required />
         <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Nama Belakang*" name="last-name" id="last-name" required />
         <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Alamat Email*" name="EmailAddress" id="EmailAddress" required />
-        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Phone Number*" name="PhoneNumber" id="PhoneNumber" required />
+        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Nomor Telepon*" name="PhoneNumber" id="PhoneNumber" required />
 
         <div className="mb-6 col-span-2 padding-0">
-          <CustomSelect options={COUNTRY_OPTIONS} placeholder="Choose Country/Region" name="country" />
+          <CustomSelect options={COUNTRY_OPTIONS} placeholder="Pilih Negara/Wilayah" name="country" />
         </div>
-        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Town/City*" name="TownCity" id="TownCity" required />
-        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Street,..." name="Street" id="Street" />
+        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Kota/Kabupaten*" name="TownCity" id="TownCity" required />
+        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Jalan,..." name="Street" id="Street" />
 
         <div className="mb-6 padding-0">
-          <CustomSelect options={STATE_OPTIONS} placeholder="Choose State" name="state" />
+          <CustomSelect options={STATE_OPTIONS} placeholder="Pilih Provinsi" name="state" />
         </div>
-        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Postal Code*" name="Postal" id="Postal" required />
+        <input className="input-large mb-6 md-col-span-2" type="text" placeholder="Kode Pos*" name="Postal" id="Postal" required />
         <div className="col-span-2 padding-0">
           <textarea placeholder="Tulis catatan..." rows={3} tabIndex={5} name="Writenote" className="message" id="Writenote" />
         </div>

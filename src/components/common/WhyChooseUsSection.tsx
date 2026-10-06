@@ -11,7 +11,7 @@ import CountUpNumber from "./CountUpNumber";
 // `CountUpNumber.tsx`).
 const stats: Array<{ dataTo: number; decimals?: number; suffix: string; label: string }> = [
   { dataTo: 18, suffix: "K+", label: "Mobil Dijual" },
-  { dataTo: 8, suffix: "k+", label: "Visitors per day" },
+  { dataTo: 8, suffix: "k+", label: "Pengunjung per hari" },
   { dataTo: 4.5, decimals: 1, suffix: "k+", label: "Ulasan Showroom" },
   { dataTo: 3.5, decimals: 1, suffix: "k+", label: "Showroom Terverifikasi" },
 ];

@@ -15,7 +15,7 @@ export default function NewsTipsSection() {
     <section className="bg-white py-100">
       <div className="container wow fadeIn" data-wow-delay="0.1s">
         <div className="mb-40">
-          <h2 className="capitalize mb-12">News &amp; tips when financing a car</h2>
+          <h2 className="capitalize mb-12">Berita &amp; tips seputar kredit mobil</h2>
           <p className="text-secondary h7 line-height-28">
             Dapatkan wawasan terbaru, tips ahli, dan kabar terkini agar tetap update.
           </p>

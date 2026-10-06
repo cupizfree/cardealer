@@ -43,7 +43,7 @@ export default function ShopSidebarSection({ products }: { products: Product[] }
     "Harga Tertinggi",
     "Jarak Terendah",
     "Jarak Tertinggi",
-    "Nearest Location",
+    "Lokasi Terdekat",
     "Penawaran Terbaik",
     "Tahun Terbaru",
     "Tahun Terlama",
@@ -62,7 +62,7 @@ export default function ShopSidebarSection({ products }: { products: Product[] }
                 Filter
               </button>
               <p>
-                Showing {rangeStart} – {rangeEnd} of {filteredProducts.length} Products
+                Menampilkan {rangeStart} – {rangeEnd} dari {filteredProducts.length} Produk
               </p>
             </div>
           </div>

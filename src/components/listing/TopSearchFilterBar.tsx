@@ -97,7 +97,7 @@ export default function TopSearchFilterBar({
           label="Pilih Jarak Tempuh"
           toggleId="topmapMilesToggle"
           defaultText="Semua jarak"
-          options={["0-10k", "$10k-$20k"]}
+          options={["Rp 0 - Rp 100 jt", "Rp 100 jt - Rp 200 jt"]}
           selected={miles}
           onToggle={(value) => setMiles((prev) => toggleValue(prev, value))}
           isOpen={openDropdown === "miles"}
@@ -110,7 +110,7 @@ export default function TopSearchFilterBar({
           label="Harga Maksimal"
           toggleId="topmapMaxPriceToggle"
           defaultText="Semua Harga"
-          options={["0-10k", "$10k-$20k"]}
+          options={["Rp 0 - Rp 100 jt", "Rp 100 jt - Rp 200 jt"]}
           selected={maxPrice}
           onToggle={(value) => setMaxPrice((prev) => toggleValue(prev, value))}
           isOpen={openDropdown === "maxPrice"}
@@ -124,7 +124,7 @@ export default function TopSearchFilterBar({
 
         <button type="button" className="search-cars__search flex items-center gap-8 justify-center md-w-full">
           <Image src="/assets/icons/search.svg" alt="search" width={16} height={16} />
-          Show {matchCount.toLocaleString()} Matches
+          Tampilkan {matchCount.toLocaleString("id-ID")} Hasil
         </button>
       </div>
 
@@ -139,7 +139,7 @@ export default function TopSearchFilterBar({
                 name="Bahan Bakar"
                 label="Bahan Bakar"
                 toggleId="topmapFuelTypeToggle"
-                defaultText="All Fuel Type"
+                defaultText="Semua Bahan Bakar"
                 options={["Bensin", "Solar", "Listrik"]}
                 selected={filters.fuelType}
                 onToggle={(value) => onFilterChange({ fuelType: toggleValue(filters.fuelType, value) })}
@@ -151,7 +151,7 @@ export default function TopSearchFilterBar({
                 name="Transmisi"
                 label="Transmisi"
                 toggleId="topmapTransmissionToggle"
-                defaultText="All Transmission"
+                defaultText="Semua Transmisi"
                 options={["Manual", "Matic"]}
                 selected={filters.transmission}
                 onToggle={(value) => onFilterChange({ transmission: toggleValue(filters.transmission, value) })}
@@ -163,7 +163,7 @@ export default function TopSearchFilterBar({
                 name="DriveType"
                 label="Penggerak"
                 toggleId="topmapDriveTypeToggle"
-                defaultText="All Drive Type"
+                defaultText="Semua Penggerak"
                 options={["FWD", "RWD", "AWD"]}
                 selected={driveType}
                 onToggle={(value) => setDriveType((prev) => toggleValue(prev, value))}
@@ -185,7 +185,7 @@ export default function TopSearchFilterBar({
                 name="Silinder"
                 label="Silinder"
                 toggleId="topmapCylindersToggle"
-                defaultText="All Cylinders"
+                defaultText="Semua Silinder"
                 options={["4", "3", "2"]}
                 selected={cylinders}
                 onToggle={(value) => setCylinders((prev) => toggleValue(prev, value))}

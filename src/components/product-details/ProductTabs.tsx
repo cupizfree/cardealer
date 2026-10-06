@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { ProductWithDetail } from "@/data/products";
 import ProductReviews from "./ProductReviews";
 
-const TABS = ["Deskripsi", "Ulasan Pelanggan", "Shipping & Returns"] as const;
+const TABS = ["Deskripsi", "Ulasan Pelanggan", "Pengiriman & Pengembalian"] as const;
 type Tab = (typeof TABS)[number];
 
 // Migrated from ../aurexo/product-details.html lines 709-1030. Source itself defaults to the
@@ -66,7 +66,7 @@ export default function ProductTabs({ product }: { product: ProductWithDetail })
           <ProductReviews ratingSummary={product.ratingSummary} reviews={product.reviews} />
         </div>
 
-        <div className={`content-inner${active === "Shipping & Returns" ? " active" : ""}`}>
+        <div className={`content-inner${active === "Pengiriman & Pengembalian" ? " active" : ""}`}>
           <p className="font-weight-500 h5 mb-15">{product.shippingTab.heading}</p>
           {product.shippingTab.paragraphs.map((paragraph, index, arr) => (
             <p className={`text-secondary${index < arr.length - 1 ? " mb-15" : ""}`} key={index}>

@@ -51,7 +51,7 @@ export default function FilterFields({
         label="Pilih Merek"
         toggleId="BrandSelectToggle"
         defaultText="Semua Merek"
-        options={["ALL", "BMW", "SUV", "Mercedes", "Audi", "Honda", "Toyota", "Volvo"]}
+        options={["SEMUA", "BMW", "SUV", "Mercedes", "Audi", "Honda", "Toyota", "Volvo"]}
         selected={filters.brand}
         onToggle={(value) => onFilterChange({ brand: toggleValue(filters.brand, value) })}
         isOpen={openDropdown === "brand"}
@@ -72,7 +72,7 @@ export default function FilterFields({
       />
 
       <div className="filter-group filter-range mb-18">
-        <div className="filter-label">Price &amp; Payment</div>
+        <div className="filter-label">Harga &amp; Pembayaran</div>
         <div className="filter-radio-group">
           <label className="filter-radio">
             <input type="radio" name="payment2" value="full" defaultChecked />
@@ -96,10 +96,10 @@ export default function FilterFields({
           </div>
           <div className="filter-price-range-label">
             <p className="text-xs text-secondary">
-              Harga minimal <span className="flex">$<span id="yearMin" className="block">{filters.priceRange[0].toLocaleString()}</span></span>
+              Harga minimal <span className="flex">Rp&nbsp;<span id="yearMin" className="block">{filters.priceRange[0].toLocaleString("id-ID")}</span></span>
             </p>
             <p className="text-xs text-secondary">
-              Harga maksimal <span className="flex">$<span id="yearMax" className="block">{filters.priceRange[1].toLocaleString()}</span></span>
+              Harga maksimal <span className="flex">Rp&nbsp;<span id="yearMax" className="block">{filters.priceRange[1].toLocaleString("id-ID")}</span></span>
             </p>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function FilterFields({
 
       <CheckboxDropdown
         name="bodystyle"
-        label="Body Style"
+        label="Bentuk Bodi"
         toggleId="BodyStyleSelectToggle"
         defaultText="Sedan"
         options={["Sedan", "SUV", "Hatchback"]}
@@ -121,8 +121,8 @@ export default function FilterFields({
         name="Bahan Bakar"
         label="Bahan Bakar"
         toggleId="FuelStyleSelectToggle"
-        defaultText="Electrical"
-        options={["Electrical", "Bensin", "Solar"]}
+        defaultText="Listrik"
+        options={["Listrik", "Bensin", "Solar"]}
         selected={filters.fuelType}
         onToggle={(value) => onFilterChange({ fuelType: toggleValue(filters.fuelType, value) })}
         isOpen={openDropdown === "Bahan Bakar"}
@@ -143,10 +143,10 @@ export default function FilterFields({
 
       <CheckboxDropdown
         name="Doorcount"
-        label="Door count"
+        label="Jumlah Pintu"
         toggleId="DriveTypeSelectToggle"
-        defaultText="4 doors"
-        options={["4 doors", "3 doors"]}
+        defaultText="4 pintu"
+        options={["4 pintu", "3 pintu"]}
         selected={filters.doorCount}
         onToggle={(value) => onFilterChange({ doorCount: toggleValue(filters.doorCount, value) })}
         isOpen={openDropdown === "Doorcount"}
@@ -157,8 +157,8 @@ export default function FilterFields({
         name="Silinder"
         label="Silinder"
         toggleId="CylindersSelectToggle"
-        defaultText="4 cylinders"
-        options={["4 cylinders", "6 cylinders", "8 cylinders"]}
+        defaultText="4 silinder"
+        options={["4 silinder", "6 silinder", "8 silinder"]}
         selected={filters.cylinders}
         onToggle={(value) => onFilterChange({ cylinders: toggleValue(filters.cylinders, value) })}
         isOpen={openDropdown === "Silinder"}
@@ -167,7 +167,7 @@ export default function FilterFields({
 
       <ColorDropdown
         name="exteriorColor"
-        label="Exterior color"
+        label="Warna Eksterior"
         toggleId="exteriorColorToggle"
         selected={filters.exteriorColor}
         onSelect={(color) => onFilterChange({ exteriorColor: color })}
@@ -176,7 +176,7 @@ export default function FilterFields({
       />
       <ColorDropdown
         name="interiorColor"
-        label="Interior color"
+        label="Warna Interior"
         toggleId="InteriorColorToggle"
         selected={filters.interiorColor}
         onSelect={(color) => onFilterChange({ interiorColor: color })}
@@ -192,14 +192,14 @@ export default function FilterFields({
           </summary>
           <div className="filter-features scroll-custom">
             {[
-              ["Adaptive", "Adaptive Control"],
+              ["Adaptive", "Kontrol Adaptif"],
               ["AppleCarPlay", "Apple CarPlay"],
-              ["AlloyWheels", "Alloy Wheels"],
-              ["BrakeAssist", "Brake Assist"],
-              ["TowHitch", "Tow Hitch"],
+              ["AlloyWheels", "Velg Alloy"],
+              ["BrakeAssist", "Bantuan Rem"],
+              ["TowHitch", "Kait Derek"],
               ["Autopilot", "Autopilot"],
               ["AndroidAuto", "Android Auto"],
-              ["Moonroof", "Moonroof"],
+              ["Moonroof", "Atap Kaca"],
             ].map(([value, label]) => (
               <label className="filter-checkbox style-2" key={value}>
                 <input

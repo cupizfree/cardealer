@@ -68,12 +68,12 @@ export default function ListingDetailsSidebar({
           <p className="h5 mb-4 capitalize">Ringkasan Mobil</p>
           <ul className="car-overview-list-style2">
             <SidebarOverviewRow icon="icon-gauge.svg" label="Jarak Tempuh:" value={overview.mileage} />
-            <SidebarOverviewRow icon="calendar.svg" label="Years:" value={overview.year} />
+            <SidebarOverviewRow icon="calendar.svg" label="Tahun:" value={overview.year} />
             <SidebarOverviewRow icon="gaspump.svg" label="Bahan Bakar:" value={overview.fuel} />
             <SidebarOverviewRow icon="palette.svg" label="Warna:" value={overview.color} />
-            <SidebarOverviewRow icon="MapPin.svg" label="Location:" value={overview.location} />
+            <SidebarOverviewRow icon="MapPin.svg" label="Lokasi:" value={overview.location} />
             <SidebarOverviewRow icon="Seatbelt.svg" label="Interior:" value={overview.interior} />
-            <SidebarOverviewRow icon="Frame.svg" label="Engine:" value={overview.engine} />
+            <SidebarOverviewRow icon="Frame.svg" label="Mesin:" value={overview.engine} />
             <SidebarOverviewRow icon="transmission-2.svg" label="Transmisi:" value={overview.transmission} />
             <SidebarOverviewRow icon="Barcode.svg" label="VIN:" value={overview.vin} />
             <SidebarOverviewRow icon="QrCode.svg" label="Nomor Stok:" value={overview.stockNumber} />

@@ -15,7 +15,7 @@ import StarRatingInput from "@/components/listing-details/StarRatingInput";
 // the 3 options are source's own literal "Terbaru"/"Most Recent 2"/"Most Recent 3" placeholders —
 // clicking one only updates the displayed label (confirmed no script ever reorders `.comments`), so no
 // real sort is implemented here either, matching source's own limitation exactly.
-const SORT_OPTIONS = ["Terbaru", "Most Recent 2", "Most Recent 3"];
+const SORT_OPTIONS = ["Terbaru", "Terbaru 2", "Terbaru 3"];
 
 export default function ProductReviews({
   ratingSummary,
@@ -49,7 +49,7 @@ export default function ProductReviews({
                 <Image key={i} src="/assets/icons/star-2.svg" alt="star" width={16} height={16} />
               ))}
             </div>
-            <p className="rating-box__count">({ratingSummary.count.toLocaleString()} Ratings)</p>
+            <p className="rating-box__count">({ratingSummary.count.toLocaleString("id-ID")} Penilaian)</p>
           </div>
         </div>
         <div className="rating-box__distribution">
@@ -76,7 +76,7 @@ export default function ProductReviews({
       <div className="grid gap-30 grid-cols-2 lg-grid-cols-1 mb-24">
         <div className="flex items-center">
           <div className="flex items-center gap-16">
-            <p className="h3">{reviews.length.toString().padStart(2, "0")} Comments</p>
+            <p className="h3">{reviews.length.toString().padStart(2, "0")} Komentar</p>
           </div>
         </div>
         <div className="flex items-center justify-end">

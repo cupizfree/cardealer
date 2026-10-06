@@ -51,7 +51,7 @@ function ShoppingCartTable({
       </p>
 
       <p className="mb-4">
-        Beli <span className="font-weight-600">$70.00</span> lagi untuk dapat <span className="font-weight-600">Gratis kirim</span>
+        Beli <span className="font-weight-600">Rp 1.050.000</span> lagi untuk dapat <span className="font-weight-600">Gratis kirim</span>
       </p>
 
       <div className="progress-bar mb-30">
@@ -80,7 +80,7 @@ function ShoppingCartTable({
                 </div>
               </div>
               <div className="cart-item__price">
-                <span className="price">${item.price.toFixed(2)}</span>
+                <span className="price">Rp {item.price.toLocaleString("id-ID")}</span>
               </div>
               <div className="cart-item__quantity">
                 <div className="quantity-selector">
@@ -114,7 +114,7 @@ function ShoppingCartTable({
               </div>
               <div className="cart-item__total">
                 <span className="total-price">
-                  {item.quantity} X ${(item.price * item.quantity).toFixed(2)}
+                  {item.quantity} X Rp {(item.price * item.quantity).toLocaleString("id-ID")}
                 </span>
               </div>
               <div className="cart-item__action">

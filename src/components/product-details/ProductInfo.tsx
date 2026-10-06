@@ -112,7 +112,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
           className="btn btn-primary btn-large w-full capitalize"
           onClick={handleAddToCart}
         >
-          Add to cart{product.addToCartLabel ? ` - ${product.addToCartLabel}` : ""}
+          Masukkan Keranjang{product.addToCartLabel ? ` - ${product.addToCartLabel}` : ""}
         </button>
         <a className="bth-heart" href="#" onClick={(event) => event.preventDefault()}>
           <svg className="svg-themes" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -131,11 +131,11 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
       </Link>
 
       <p className="mb-8">
-        Pickup available at{" "}
+        Bisa diambil di{" "}
         <Link href="/contact-us" className="text-underline">
-          Lokasi toko
+          lokasi toko
         </Link>
-        . Usually ready in 24 hours
+        . Biasanya siap dalam 24 jam
       </p>
 
       <ul className="flex flex-col gap-12 mb-12 list-item">
@@ -160,9 +160,9 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
               />
             </svg>
             <p>
-              <span className="text-secondary">Perkiraan Pengiriman:</span> 12-26 days{" "}
-              <span className="text-secondary">(International)</span>, 3-6 days{" "}
-              <span className="text-secondary">(United States)</span>
+              <span className="text-secondary">Perkiraan Pengiriman:</span> 12-26 hari{" "}
+              <span className="text-secondary">(Luar Negeri)</span>, 3-6 hari{" "}
+              <span className="text-secondary">(Dalam Negeri)</span>
             </p>
           </a>
         </li>
@@ -176,8 +176,8 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
               />
             </svg>
             <p>
-              Pengembalian dalam <span className="text-secondary">45 days</span> of purchase. Duties &amp; taxes are
-              non-refundable.
+              Pengembalian dalam <span className="text-secondary">45 hari</span> sejak pembelian. Bea &amp; pajak tidak
+              dapat dikembalikan.
             </p>
           </a>
         </li>
@@ -192,7 +192,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
                 fill="#1C1C1C"
               />
             </svg>
-            <span>Delivery &amp; Return</span>
+            <span>Pengiriman &amp; Pengembalian</span>
           </a>
         </li>
 
@@ -244,7 +244,7 @@ export default function ProductInfo({ product }: { product: ProductWithDetail })
       <div className="divider mb-20" />
 
       <div className="flex items-center flex-wrap gap-16">
-        Checkout aman terjamin:
+        Pembayaran aman terjamin:
         <div className="checkouts flex gap-12 flex-wrap">
           {[1, 2, 3, 4, 5, 6].map((n) => (
             <Image key={n} src={`/assets/images/shop/checkout-${n}.png`} alt="" width={40} height={26} />

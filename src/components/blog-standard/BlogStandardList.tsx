@@ -17,7 +17,7 @@ import Pagination from "@/components/common/Pagination";
 const FEATURED = {
   slug: "sports-cars-vs-luxury-cars",
   image: "/assets/images/blog/post-18.jpg",
-  title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
+  title: "Mobil Sport vs. Mobil Mewah: Menemukan yang Tepat untuk Anda",
   category: "MEWAH",
   date: "Aug. 11, 2025",
 };
@@ -35,9 +35,9 @@ const GRID_POSTS = [
   {
     slug: "compact-suv-vs-full-size-suv",
     image: "/assets/images/blog/post-20.jpg",
-    category: "PERFORMANCE",
+    category: "PERFORMA",
     date: "21 Agu 2025",
-    title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
+    title: "Compact SUV vs. Full-Size SUV: Apa Bedanya?",
     excerpt:
       "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },
@@ -46,16 +46,16 @@ const GRID_POSTS = [
     image: "/assets/images/blog/post-21.jpg",
     category: "ULASAN AHLI",
     date: "21 Agu 2025",
-    title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
+    title: "Mobil Sport vs. Mobil Mewah: Menemukan yang Tepat untuk Anda",
     excerpt:
       "Bandingkan kelebihan dan kekurangan mobil hibrida dan listrik untuk membantu Anda menentukan pilihan yang tepat...",
   },
   {
     slug: "diesel-vs-gasoline-engines",
     image: "/assets/images/blog/post-22.jpg",
-    category: "PERFORMANCE",
+    category: "PERFORMA",
     date: "21 Agu 2025",
-    title: "Diesel vs. Gasoline Engines: Pros and Cons Explained",
+    title: "Diesel vs. Bensin: Kelebihan dan Kekurangannya",
     excerpt:
       "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },
@@ -71,9 +71,9 @@ const GRID_POSTS = [
   {
     slug: "compact-suv-vs-full-size-suv",
     image: "/assets/images/blog/post-24.jpg",
-    category: "PERFORMANCE",
+    category: "PERFORMA",
     date: "21 Agu 2025",
-    title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
+    title: "Compact SUV vs. Full-Size SUV: Apa Bedanya?",
     excerpt:
       "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur...",
   },

@@ -21,11 +21,11 @@ const LISTINGS: DashboardListing[] = [
 export default function DashboardPage() {
   return (
     <>
-      <p className="h3 mb-30">Dashboard</p>
+      <p className="h3 mb-30">Dasbor</p>
 
       <DashboardStats />
       <CarViewsChart />
-      <DashboardListingsTable title="All Listing" initialListings={LISTINGS} />
+      <DashboardListingsTable title="Semua Iklan" initialListings={LISTINGS} />
       <RecentReviews />
     </>
   );

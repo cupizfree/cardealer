@@ -96,7 +96,7 @@ export default function ListingSidebarSection({
                   Filter
                 </button>
                 <p className="md-hidden">
-                  Showing {rangeStart} – {rangeEnd} of {sortedListings.length} Listings
+                  Menampilkan {rangeStart} – {rangeEnd} dari {sortedListings.length} Unit
                 </p>
               </div>
             </div>

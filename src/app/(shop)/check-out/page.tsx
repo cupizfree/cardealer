@@ -9,7 +9,7 @@ import PaymentAccordion from "@/components/checkout/PaymentAccordion";
 import CheckoutOrderSummary from "@/components/checkout/CheckoutOrderSummary";
 
 export const metadata: Metadata = {
-  title: "Checkout",
+  title: "Pembayaran",
   description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
@@ -32,7 +32,7 @@ export default function CheckOutPage() {
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span>Checkout</span>
+              <span>Pembayaran</span>
             </li>
           </ul>
         </div>
@@ -43,7 +43,7 @@ export default function CheckOutPage() {
           <CheckoutForm>
             <div className="checkout-container">
               <div className="left">
-                <h2>Checkout</h2>
+                <h2>Pembayaran</h2>
                 <div className="tf-spacing-style3" />
 
                 <BillingDetailsForm />

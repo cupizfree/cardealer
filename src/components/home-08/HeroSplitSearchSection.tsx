@@ -88,7 +88,7 @@ export default function HeroSplitSearchSection() {
                   label="Pilih Jarak Tempuh"
                   toggleId="Hero08MilesSelectToggle"
                   defaultText="Semua jarak"
-                  options={["0-10k", "$10k-$20k"]}
+                  options={["Rp 0 - Rp 100 jt", "Rp 100 jt - Rp 200 jt"]}
                   isOpen={openDropdown === "miles"}
                   onToggleOpen={() => toggleDropdown("miles")}
                   layout="bar"
@@ -98,7 +98,7 @@ export default function HeroSplitSearchSection() {
                   label="Harga Maksimal"
                   toggleId="Hero08MaxPriceSelectToggle"
                   defaultText="Semua Harga"
-                  options={["0-10k", "$10k-$20k"]}
+                  options={["Rp 0 - Rp 100 jt", "Rp 100 jt - Rp 200 jt"]}
                   isOpen={openDropdown === "price"}
                   onToggleOpen={() => toggleDropdown("price")}
                   layout="bar"

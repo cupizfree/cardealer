@@ -38,7 +38,7 @@ export default function CheckoutOrderSummary() {
               <p className="font-weight-600">{item.name}</p>
             </div>
             <p className="font-weight-600">
-              {item.quantity} X ${(item.price * item.quantity).toFixed(2)}
+              {item.quantity} X Rp {(item.price * item.quantity).toLocaleString("id-ID")}
             </p>
           </div>
         ))}
@@ -64,14 +64,14 @@ export default function CheckoutOrderSummary() {
 
       <div className="flex justify-between gap-8 mb-20">
         <p className="font-weight-600">Diskon</p>
-        <p className="text-secondary">-$80.00</p>
+        <p className="text-secondary">-Rp 1.200.000</p>
       </div>
 
       <div className="divider mb-20" />
 
       <div className="flex justify-between gap-8 mb-20">
         <p className="h4 font-weight-600">Total</p>
-        <p className="h4 text-secondary">$186,99</p>
+        <p className="h4 text-secondary">Rp 2.805.000</p>
       </div>
     </div>
   );

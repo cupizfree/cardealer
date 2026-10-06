@@ -138,7 +138,7 @@ export default function QuickViewModal() {
                   className="btn btn-primary btn-large font-weight-600 capitalize w-full"
                   onClick={handleAddToCart}
                 >
-                  Add to cart{hasClickedProduct ? ` - $${(quantity * clickedPrice).toFixed(2)}` : ""}
+                  Masukkan Keranjang{hasClickedProduct ? ` - Rp ${(quantity * clickedPrice).toLocaleString("id-ID")}` : ""}
                 </button>
                 <a className="bth-heart" href="#" onClick={(event) => event.preventDefault()}>
                   <svg className="svg-themes" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

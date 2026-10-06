@@ -27,9 +27,9 @@ const POSTS = [
   {
     slug: "compact-suv-vs-full-size-suv",
     image: "/assets/images/blog/post-20.jpg",
-    category: "PERFORMANCE",
+    category: "PERFORMA",
     date: "21 Agu 2025",
-    title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
+    title: "Compact SUV vs. Full-Size SUV: Apa Bedanya?",
     excerpt: "Ketahui perbedaan SUV kompak dan SUV besar, termasuk ruang, efisiensi bahan bakar, dan fitur untuk memilih...",
   },
   {
@@ -37,15 +37,15 @@ const POSTS = [
     image: "/assets/images/blog/post-23.jpg",
     category: "MEWAH",
     date: "21 Agu 2025",
-    title: "Sports Cars vs. Luxury Cars: Finding Your Perfect Match",
+    title: "Mobil Sport vs. Mobil Mewah: Menemukan yang Tepat untuk Anda",
     excerpt: "Bandingkan mobil sport dan mobil mewah untuk menemukan yang paling sesuai gaya hidup Anda, dengan mempertimbangkan pengalaman berkendara, teknologi...",
   },
   {
     slug: "diesel-vs-gasoline-engines",
     image: "/assets/images/blog/post-21.jpg",
-    category: "DESIGN",
+    category: "DESAIN",
     date: "21 Agu 2025",
-    title: "Diesel vs. Gasoline Engines: Pros and Cons Explained",
+    title: "Diesel vs. Bensin: Kelebihan dan Kekurangannya",
     excerpt: "Pahami perbedaan mesin diesel dan bensin, termasuk kelebihan dan kekurangannya, agar bisa mengambil pilihan yang tepat...",
   },
   {

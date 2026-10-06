@@ -5,8 +5,8 @@ export default function CarPriceSection() {
       <p className="h4 mb-20">Harga Mobil</p>
       <div className="grid grid-cols-4 gap-20 md-grid-cols-2 sm-grid-cols-1">
         <div className="padding-0 col-span-4">
-          <p className="mb-8 font-weight-600">Price ($)*</p>
-          <input className="input-large" type="text" id="PriceListing2" name="PriceListing" placeholder="e.g.1000" required />
+          <p className="mb-8 font-weight-600">Harga (Rp)*</p>
+          <input className="input-large" type="text" id="PriceListing2" name="PriceListing" placeholder="mis. 195000000" required />
         </div>
       </div>
     </div>
