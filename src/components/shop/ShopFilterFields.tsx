@@ -4,13 +4,13 @@ import RangeSlider from "@/components/listing/RangeSlider";
 import type { ShopFilterState } from "./useShopFilters";
 
 const CATEGORIES = [
-  { value: "breake-system", label: "Breake System", count: 12 },
-  { value: "engine-oil", label: "Engine Oil", count: 43 },
-  { value: "cleaning-system", label: "Cleaning System", count: 21 },
+  { value: "breake-system", label: "Sistem Rem", count: 12 },
+  { value: "engine-oil", label: "Oli Mesin", count: 43 },
+  { value: "cleaning-system", label: "Sistem Pembersih", count: 21 },
   { value: "car-battery", label: "Aki Mobil", count: 5 },
   { value: "car-accessories", label: "Aksesori Mobil", count: 17 },
-  { value: "care-care", label: "Care Care", count: 27 },
-  { value: "tools", label: "Tools", count: 17 },
+  { value: "care-care", label: "Perawatan Mobil", count: 27 },
+  { value: "tools", label: "Perkakas", count: 17 },
 ];
 
 const BRANDING = [
@@ -93,18 +93,16 @@ export default function ShopFilterFields({
                 <p className="text-sm mb-4">Harga minimal</p>
                 <span className="value flex">
                   <span id="yearMin" className="block">
-                    {filters.priceRange[0].toLocaleString()}
+                    Rp {filters.priceRange[0].toLocaleString("id-ID")}
                   </span>
-                  $
                 </span>
               </div>
               <div>
                 <p className="text-sm mb-4">Harga maksimal</p>
                 <span className="value flex">
                   <span id="yearMax" className="block">
-                    {filters.priceRange[1].toLocaleString()}
+                    Rp {filters.priceRange[1].toLocaleString("id-ID")}
                   </span>
-                  $
                 </span>
               </div>
             </div>

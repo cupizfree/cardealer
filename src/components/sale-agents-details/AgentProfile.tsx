@@ -54,22 +54,22 @@ export default function AgentProfile({ agent }: { agent: SaleAgent }) {
       </div>
 
       <p className="text-secondary mb-4">
-        {agent.name} is a dedicated automotive professional with over 15 years of experience in the car
-        dealership industry. Known for their customer-first approach and in-depth knowledge of the
-        market, {firstName} has helped countless clients find their perfect vehicle while ensuring a
-        seamless and enjoyable buying experience.
+        {agent.name} sudah lebih dari 15 tahun menekuni industri jual-beli kendaraan. Dikenal
+        karena mengutamakan kepentingan pembeli dan pemahaman mendalam soal pasar, {firstName}
+        telah membantu banyak pelanggan menemukan mobil yang tepat dengan proses yang mudah dan
+        menyenangkan.
       </p>
 
       <p className="text-secondary mb-40">
-        Their passion for automobiles began at a young age, driving them to excel in understanding
-        every aspect of car sales, from customer service to financing solutions. {firstName} is
-        committed to building lasting relationships with their clients, always prioritizing trust and
-        transparency.
+        Kecintaan pada dunia otomotif tumbuh sejak muda, mendorong mereka menguasai setiap sisi
+        penjualan mobil — dari pelayanan pelanggan sampai solusi pembiayaan. {firstName}
+        berkomitmen membangun hubungan jangka panjang dengan pelanggan, selalu mengutamakan
+        kepercayaan dan keterbukaan.
       </p>
 
       <div className="divider mb-40 w-full" />
 
-      <p className="h4 mb-16">Dealer Inventory ({dealerInventory.length})</p>
+      <p className="h4 mb-16">Stok Dealer ({dealerInventory.length})</p>
 
       <div className="grid grid-cols-1 gap-20 mb-40">
         {dealerInventory.map((listing) => (

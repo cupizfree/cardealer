@@ -103,13 +103,13 @@ export default function ListingDetailsContent({
 
           {overviewLayout === "cards" && (
             <ul className="gap-20 car-overview-list-style3 mb-32">
-              <CardOverviewRow icon="icon-gauge.svg" label="Mileage" value={overview.mileage} />
-              <CardOverviewRow icon="calendar.svg" label="Years" value={overview.year} />
-              <CardOverviewRow icon="gaspump.svg" label="Fuel" value={overview.fuel} />
+              <CardOverviewRow icon="icon-gauge.svg" label="Jarak Tempuh" value={overview.mileage} />
+              <CardOverviewRow icon="calendar.svg" label="Tahun" value={overview.year} />
+              <CardOverviewRow icon="gaspump.svg" label="Bahan Bakar" value={overview.fuel} />
               <CardOverviewRow icon="palette.svg" label="Warna" value={overview.color} />
               <CardOverviewRow icon="MapPin.svg" label="Lokasi" value={overview.location} />
               <CardOverviewRow icon="Seatbelt.svg" label="Interior" value={overview.interior} />
-              <CardOverviewRow icon="Frame.svg" label="Engine" value={overview.engine} />
+              <CardOverviewRow icon="Frame.svg" label="Mesin" value={overview.engine} />
               <CardOverviewRow icon="transmission-2.svg" label="Transmisi" value={overview.transmission} />
               <CardOverviewRow icon="Barcode.svg" label="VIN" value={overview.vin} />
               <CardOverviewRow icon="QrCode.svg" label="Nomor Stok" value={overview.stockNumber} />
@@ -118,13 +118,13 @@ export default function ListingDetailsContent({
 
           {overviewLayout === "cardsRow" && (
             <ul className="gap-20 car-overview-list-style4 mb-30">
-              <CardRowOverviewRow icon="icon-gauge.svg" label="Mileage" value={overview.mileage} />
-              <CardRowOverviewRow icon="calendar.svg" label="Years" value={overview.year} />
-              <CardRowOverviewRow icon="gaspump.svg" label="Fuel" value={overview.fuel} />
+              <CardRowOverviewRow icon="icon-gauge.svg" label="Jarak Tempuh" value={overview.mileage} />
+              <CardRowOverviewRow icon="calendar.svg" label="Tahun" value={overview.year} />
+              <CardRowOverviewRow icon="gaspump.svg" label="Bahan Bakar" value={overview.fuel} />
               <CardRowOverviewRow icon="palette.svg" label="Warna" value={overview.color} />
               <CardRowOverviewRow icon="MapPin.svg" label="Lokasi" value={overview.location} />
               <CardRowOverviewRow icon="Seatbelt.svg" label="Interior" value={overview.interior} />
-              <CardRowOverviewRow icon="Frame.svg" label="Engine" value={overview.engine} />
+              <CardRowOverviewRow icon="Frame.svg" label="Mesin" value={overview.engine} />
               <CardRowOverviewRow icon="transmission-2.svg" label="Transmisi" value={overview.transmission} />
               <CardRowOverviewRow icon="Barcode.svg" label="VIN" value={overview.vin} />
               <CardRowOverviewRow icon="QrCode.svg" label="Nomor Stok" value={overview.stockNumber} />

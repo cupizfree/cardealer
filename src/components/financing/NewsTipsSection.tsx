@@ -17,7 +17,7 @@ export default function NewsTipsSection() {
         <div className="mb-40">
           <h2 className="capitalize mb-12">Berita &amp; tips seputar kredit mobil</h2>
           <p className="text-secondary h7 line-height-28">
-            Dapatkan wawasan terbaru, tips ahli, dan kabar terkini agar tetap update.
+            Dapatkan wawasan terbaru, tips ahli, dan kabar terkini seputar dunia otomotif.
           </p>
         </div>
 

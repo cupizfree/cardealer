@@ -58,7 +58,7 @@ export default function DealersListSection() {
                       />
                     ))}
                   </div>
-                  <p className="text-secondary text-sm">(1,968 Ratings)</p>
+                  <p className="text-secondary text-sm">(1.968 Ulasan)</p>
                 </div>
               </div>
 

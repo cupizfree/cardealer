@@ -34,7 +34,7 @@ export default function TermsPage() {
               <Image src="/assets/icons/right.svg" alt="chevron-right" width={16} height={16} />
             </li>
             <li>
-              <span className="capitalize">Terms of use</span>
+              <span className="capitalize">Syarat &amp; Ketentuan</span>
             </li>
           </ul>
         </div>

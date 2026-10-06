@@ -69,9 +69,9 @@ function AirConditioningIcon() {
 const services = [
   { title: "Oil Change", icon: OilChangeIcon, description: "Jaga mesin tetap halus dengan ganti oli dan filter secara rutin.", href: "#" },
   { title: "Tire Rotation & Balancing", icon: TireRotationIcon, description: "Perpanjang umur ban dan tingkatkan performa dengan rotasi dan balancing yang tepat.", href: "#" },
-  { title: "Brake Inspection & Repair", icon: BrakeInspectionIcon, description: "Ensure safety with comprehensive brake inspections, repairs, and replacements.", href: "#" },
-  { title: "Battery Testing & Replacement", icon: BatteryTestingIcon, description: "Jaga kendaraan Anda tetap bertenaga dengan tes aki dan penggantian tepat waktu.", href: "#" },
-  { title: "Engine Diagnostics & Repair", icon: EngineDiagnosticsIcon, description: "Deteksi dan perbaiki masalah mesin dengan alat diagnosa canggih dan teknisi ahli.", href: "/contact-us" },
+  { title: "Servis & Perbaikan Rem", icon: BrakeInspectionIcon, description: "Pastikan keamanan dengan pemeriksaan, perbaikan, dan penggantian rem secara menyeluruh.", href: "#" },
+  { title: "Tes & Ganti Aki", icon: BatteryTestingIcon, description: "Jaga kendaraan Anda tetap bertenaga dengan tes aki dan penggantian tepat waktu.", href: "#" },
+  { title: "Diagnosa & Perbaikan Mesin", icon: EngineDiagnosticsIcon, description: "Deteksi dan perbaiki masalah mesin dengan alat diagnosa canggih dan teknisi ahli.", href: "/contact-us" },
   { title: "Air Conditioning & Heating", icon: AirConditioningIcon, description: "Tetap nyaman sepanjang tahun dengan pemeriksaan dan perbaikan sistem AC menyeluruh.", href: "/contact-us" },
 ];
 

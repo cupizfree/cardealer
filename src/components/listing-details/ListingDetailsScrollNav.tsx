@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 const LINKS = [
-  { id: "Overview", label: "Overview" },
+  { id: "Overview", label: "Ringkasan" },
   { id: "Deskripsi", label: "Deskripsi" },
   { id: "Informasi", label: "Informasi" },
-  { id: "Inquiry", label: "Inquiry" },
+  { id: "Inquiry", label: "Tanya" },
   { id: "Lokasi", label: "Lokasi" },
   { id: "Ulasan", label: "Ulasan" },
 ] as const;

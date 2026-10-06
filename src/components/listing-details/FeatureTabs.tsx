@@ -4,7 +4,19 @@ import { useState } from "react";
 import Image from "next/image";
 import type { FeatureCategory, ListingFeatures } from "@/data/listings";
 
-const CATEGORIES: FeatureCategory[] = ["Exterior", "Interior", "Safety", "Mechanical", "Technology", "Other"];
+// Kunci internal (`kunci`) sengaja tetap bahasa Inggris: kunci itu dipakai sebagai
+// nama kolom di JSON `fitur` pada basis data dan dibandingkan di
+// `active === kunci`. Menerjemahkan kuncinya akan membuat data yang sudah
+// tersimpan tidak lagi cocok — persis jebakan `ProductTabs.tsx` dulu (tab yang
+// tidak akan pernah aktif). Jadi yang diterjemahkan hanya `label` yang terlihat.
+const KATEGORI: Array<{ kunci: FeatureCategory; label: string }> = [
+  { kunci: "Exterior", label: "Eksterior" },
+  { kunci: "Interior", label: "Interior" },
+  { kunci: "Safety", label: "Keselamatan" },
+  { kunci: "Mechanical", label: "Mekanis" },
+  { kunci: "Technology", label: "Teknologi" },
+  { kunci: "Other", label: "Lainnya" },
+];
 
 // Source repeats the identical 12-item checklist under all 6 tabs (see LISTING_DATA_MAP.md) — the
 // tab *structure* is real, the per-category content differentiation simply doesn't exist yet.
@@ -25,10 +37,10 @@ export default function FeatureTabs({
     <div className="flat-tabs mb-40">
       <div className="overflow-x-auto mb-16">
         <ul className="menu-tab menu-tab-style4">
-          {CATEGORIES.map((category) => (
-            <li key={category} className={active === category ? "active" : undefined}>
-              <span className="text-secondary font-weight-600" onClick={() => setActive(category)}>
-                {category}
+          {KATEGORI.map(({ kunci, label }) => (
+            <li key={kunci} className={active === kunci ? "active" : undefined}>
+              <span className="text-secondary font-weight-600" onClick={() => setActive(kunci)}>
+                {label}
               </span>
             </li>
           ))}
@@ -38,7 +50,7 @@ export default function FeatureTabs({
       <div className="content-tab">
         <div className="content-inner active">
           <ul className="grid grid-cols-3 xl-grid-cols-2 md-grid-cols-1 gap-8 gap-x-30">
-            {features[active].map((item) => (
+            {(features[active] ?? []).map((item) => (
               <li className="flex items-center gap-8" key={item}>
                 <Image src="/assets/icons/check.svg" alt="check" width={16} height={16} />
                 {item}

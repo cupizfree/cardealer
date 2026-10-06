@@ -10,7 +10,8 @@ export default function DownloadAppSection() {
           <div className="flex flex-col justify-center pr-40 wow fadeInUp">
             <h2 className="mb-12">Temukan Mobil Bekas Impian Anda, Kapan Saja!</h2>
             <p className="mb-32">
-              Experience hassle-free car shopping with our app. Browse, compare, and buy used cars{" "}
+              Nikmati kemudahan mencari mobil bekas lewat aplikasi kami. Jelajahi, bandingkan, dan
+              beli mobil bekas{" "}
               <br className="lg-hidden" /> dari mana saja - cepat, simpel, dan praktis.
             </p>
             <div className="flex items-center gap-12">

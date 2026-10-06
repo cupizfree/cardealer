@@ -13,7 +13,7 @@ const rows: Array<{ icon: string; label: string; left: string; right: string }> 
   { icon: "years.svg", label: "Tahun:", left: "2022", right: "2021" },
   { icon: "fuel.svg", label: "Bahan Bakar:", left: "Benzin + Plin", right: "Benzin + Plin" },
   { icon: "color.svg", label: "Warna:", left: "Putih", right: "Emas" },
-  { icon: "location.svg", label: "Lokasi:", left: "Tampa, FL", right: "Tampa, FL" },
+  { icon: "location.svg", label: "Lokasi:", left: "Purwokerto", right: "Purwokerto" },
   { icon: "interior.svg", label: "Interior:", left: "Hitam Jet", right: "Cokelat Jet" },
   { icon: "engine.svg", label: "Mesin:", left: "1.5L Inline", right: "2.5L Inline" },
   { icon: "transmission.svg", label: "Transmisi:", left: "Matic", right: "Matic" },

@@ -21,13 +21,13 @@ export default function ForgotPasswordModal() {
             type="email"
             id="email-forgot-password"
             name="email-forgot-password"
-            placeholder="Username or email address *"
+            placeholder="Nama pengguna atau email *"
             required
           />
         </label>
 
         <button type="submit" className="btn btn-primary btn-large w-full mb-12 font-weight-600">
-          Minta Kode Reset
+          Minta Kode Setel Ulang
         </button>
 
         <p

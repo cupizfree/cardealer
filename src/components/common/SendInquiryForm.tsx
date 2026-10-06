@@ -28,9 +28,9 @@ export default function SendInquiryForm({ id }: { id?: string }) {
           <div>
             <p className="mb-8">Subjek</p>
             <select>
-              <option>This Vehicle&apos;s Availability</option>
-              <option>This Vehicle&apos;s Availability 2</option>
-              <option>This Vehicle&apos;s Availability 3</option>
+              <option>Ketersediaan Mobil Ini</option>
+              <option>Ketersediaan Mobil Ini 2</option>
+              <option>Ketersediaan Mobil Ini 3</option>
             </select>
           </div>
 
@@ -50,7 +50,7 @@ export default function SendInquiryForm({ id }: { id?: string }) {
         </label>
 
         <p className="text-xs text-secondary">
-          By using this service, you accept our{" "}
+          Dengan menggunakan layanan ini, Anda menyetujui{" "}
           <a href="#" className="text-xs text-underline text-highlight">
             Perjanjian Pengguna.
           </a>

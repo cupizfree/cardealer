@@ -58,7 +58,7 @@ export const allBlogPosts: BlogPost[] = [
   {
     id: 1,
     slug: "compact-suv-vs-full-size-suv",
-    title: "Compact SUV vs. Full-Size SUV: What’s the Difference?",
+    title: "SUV Kompak vs. SUV Besar: Apa Bedanya?",
     category: "PERFORMA",
     date: "Aug. 8, 2025",
     author: "Admin",
@@ -66,57 +66,57 @@ export const allBlogPosts: BlogPost[] = [
     bannerImage: "/assets/images/blog/blog-details.jpg",
     bodyImage: "/assets/images/blog/post-40.jpg",
     intro:
-      "When choosing between a compact SUV and a full-size SUV, there are several key factors to consider. Understanding the differences between these two vehicle types can significantly impact your decision-making process, helping you find the one that best aligns with your lifestyle, driving habits, and needs.",
+      "Saat memilih antara SUV kompak dan SUV besar, ada beberapa faktor utama yang perlu dipertimbangkan. Memahami perbedaan kedua jenis kendaraan ini bisa sangat memengaruhi keputusan Anda — membantu menemukan yang paling sesuai dengan gaya hidup, kebiasaan berkendara, dan kebutuhan Anda.",
     quote: {
       text: "“Memilih SUV yang tepat bukan sekadar soal ukuran—tapi soal menemukan yang paling sesuai dengan gaya hidup, kebutuhan, dan petualangan Anda.”",
       author: "Nelson Mandela",
     },
     introContinued:
-      "From the size and space they offer to their fuel efficiency, performance capabilities, and overall cost of ownership, each type of SUV caters to different priorities and preferences. By carefully weighing these aspects, you can make a more informed choice that not only meets your immediate requirements but also supports your long-term goals and lifestyle.",
+      "Dari ukuran dan ruang yang ditawarkan sampai efisiensi bahan bakar, kemampuan performa, dan total biaya kepemilikan, setiap jenis SUV menjawab prioritas dan preferensi yang berbeda. Dengan menimbang semua aspek ini secara cermat, Anda bisa membuat pilihan yang lebih matang — yang tidak hanya memenuhi kebutuhan saat ini, tetapi juga mendukung tujuan jangka panjang dan gaya hidup Anda.",
     sideImages: ["/assets/images/blog/post-41.jpg", "/assets/images/blog/post-42.jpg"],
     sections: [
       {
-        heading: "1. Size and Space",
-        body: "Full-size SUVs offer more interior space, making them ideal for larger families or those who need more cargo capacity. On the other hand, compact SUVs are more maneuverable and easier to park, making them a great choice for urban driving.",
+        heading: "1. Ukuran dan Ruang",
+        body: "SUV besar menawarkan ruang kabin lebih lega, sehingga cocok untuk keluarga besar atau yang butuh kapasitas bagasi lebih banyak. Sebaliknya, SUV kompak lebih lincah dan mudah diparkir, jadi pilihan tepat untuk berkendara di dalam kota.",
       },
       {
         heading: "2. Efisiensi Bahan Bakar",
-        body: "Generally, compact SUVs tend to be more fuel-efficient compared to their full-size counterparts. If fuel economy is a priority for you, a compact SUV could save you money on gas over time.",
+        body: "Umumnya, SUV kompak lebih hemat bahan bakar dibandingkan versi besarnya. Kalau efisiensi bahan bakar jadi prioritas Anda, SUV kompak bisa menghemat pengeluaran bensin seiring waktu.",
       },
       {
-        heading: "3. Performance and Capability",
-        body: "Full-size SUVs often come with more powerful engines and greater towing capacity, making them suitable for off-road adventures and heavy-duty hauling. Compact SUVs, while still capable, might not offer the same level of performance and capability as full-size models.",
+        heading: "3. Performa dan Kemampuan",
+        body: "SUV besar sering dibekali mesin lebih bertenaga dan kemampuan menarik beban lebih besar, sehingga cocok untuk petualangan off-road dan angkutan berat. SUV kompak, meski tetap mumpuni, mungkin tidak menawarkan tingkat performa dan kemampuan yang sama dengan model besar.",
       },
       {
-        heading: "4. Cost",
-        body: "Cost is another key differentiator. Full-size SUVs typically come with a higher price tag, both in terms of the purchase price and ongoing maintenance costs. Compact SUVs are generally more affordable, making them a budget-friendly option for many buyers.",
+        heading: "4. Biaya",
+        body: "Biaya jadi pembeda penting lainnya. SUV besar biasanya lebih mahal, baik dari harga beli maupun biaya perawatan rutinnya. SUV kompak umumnya lebih terjangkau, sehingga jadi pilihan ramah kantong bagi banyak pembeli.",
       },
     ],
     conclusion: {
-      heading: "Conclusion",
-      body: "Choosing between a compact SUV and a full-size SUV depends on your specific needs, whether that’s maximizing fuel efficiency, interior space, or performance. Understanding these differences can help you make a more informed decision that aligns with your lifestyle and budget.",
+      heading: "Kesimpulan",
+      body: "Memilih antara SUV kompak dan SUV besar bergantung pada kebutuhan spesifik Anda — apakah mengutamakan efisiensi bahan bakar, ruang kabin, atau performa. Memahami perbedaan ini membantu Anda mengambil keputusan yang lebih matang sesuai gaya hidup dan anggaran.",
     },
-    tags: ["Performance", "Mewah"],
+    tags: ["Performa", "Mewah"],
     comments: [
       {
         id: 1,
         authorName: "Guy Hawkins",
         avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 days ago",
+        timeAgo: "1 hari lalu",
         text: "Artikel bagus! Penjelasan perbedaan SUV kompak dan SUV besar sangat membantu keputusan saya.",
       },
       {
         id: 2,
         authorName: "Tony Nguyen",
         avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 days ago",
+        timeAgo: "2 hari lalu",
         text: "Menarik! Saya sedang mencari saran memilih SUV yang tepat. Ada rekomendasi?",
       },
       {
         id: 3,
         authorName: "Andi Wijaya",
         avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 days ago",
+        timeAgo: "3 hari lalu",
         text: "Senang artikelnya membantu! Memilih antara SUV kompak dan SUV besar berpengaruh pada kenyamanan.",
       },
     ],
@@ -241,7 +241,7 @@ export const allBlogPosts: BlogPost[] = [
   {
     id: 12,
     slug: "hidden-costs-luxury-car",
-    title: "Hidden Costs of Owning a Luxury Car",
+    title: "Biaya Tersembunyi Memiliki Mobil Mewah",
     category: "TIPS",
     date: "Aug. 25, 2025",
     author: "Admin",

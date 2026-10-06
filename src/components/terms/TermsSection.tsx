@@ -5,64 +5,61 @@ import { useEffect, useRef, useState } from "react";
 const sections = [
   {
     id: "section1",
-    navLabel: "1. Terms",
-    heading: "1. Terms",
+    navLabel: "1. Ketentuan Umum",
+    heading: "1. Ketentuan Umum",
     paragraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed euismod justo, sit amet efficitur dui. Aliquam sodales vestibulum velit, eget sollicitudin quam. Donec non aliquam eros. Etiam sit amet lectus vel justo dignissim condimentum.",
-      "In malesuada neque quis libero laoreet posuere. In consequat vitae ligula quis rutrum. Morbi dolor orci, maximus a pulvinar sed, bibendum ac lacus. Suspendisse in consectetur lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam elementum, est sed interdum cursus, felis ex pharetra nisi, ut elementum tortor urna eu nulla. Donec rhoncus in purus quis blandit.",
-      "Etiam eleifend metus at nunc ultricies facilisis. Morbi finibus tristique interdum. Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie",
+      "Selamat datang di situs MARF Showroom. Dengan mengakses dan menggunakan situs ini, Anda dianggap telah membaca, memahami, dan menyetujui seluruh syarat dan ketentuan yang tercantum di halaman ini.",
+      "Situs ini dikelola oleh MARF Showroom yang berkedudukan di Purwokerto, Jawa Tengah, dan disediakan untuk memudahkan Anda melihat katalog unit, membandingkan pilihan, serta menghubungi kami. Seluruh informasi mengenai unit, harga, spesifikasi, dan ketersediaan bersifat indikatif dan tidak merupakan penawaran yang mengikat sebelum ada kesepakatan tertulis antara kedua belah pihak.",
     ],
     list: null,
   },
   {
     id: "section2",
-    navLabel: "2. Limitations",
-    heading: "2. Limitations",
+    navLabel: "2. Pembatasan Tanggung Jawab",
+    heading: "2. Pembatasan Tanggung Jawab",
     paragraphs: [
-      "Etiam eleifend metus at nunc ultricies facilisis. Morbi finibus tristique interdum. Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie a, finibus nec ex.",
+      "Kami berupaya menyajikan informasi yang akurat, namun harga dan ketersediaan unit dapat berubah sewaktu-waktu tanpa pemberitahuan terlebih dahulu.",
     ],
     list: [
-      "Aliquam elementum, est sed interdum cursus, felis ex pharetra nisi, ut elementum tortor urna eu nulla. Donec rhoncus in purus quis blandit.",
-      "Etiam eleifend metus at nunc ultricies facilisis.",
-      "Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie a, finibus nec ex.",
+      "Foto dan video unit adalah dokumentasi pada saat pengambilan gambar. Kondisi fisik, warna, dan kelengkapan dapat berbeda karena usia maupun perawatan sebelumnya.",
+      "Simulasi kredit pada situs ini bersifat estimasi. Angka cicilan, bunga, dan biaya yang mengikat hanya yang tertulis pada perjanjian pembiayaan yang disetujui lembaga pembiayaan.",
+      "MARF Showroom tidak bertanggung jawab atas kerugian yang timbul akibat penggunaan informasi di situs ini tanpa didahului pemeriksaan langsung terhadap unit yang bersangkutan.",
     ],
     trailingParagraph:
-      "Etiam eleifend metus at nunc ultricies facilisis. Morbi finibus tristique interdum. Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie",
+      "Segala keputusan pembelian sebaiknya diambil setelah Anda memeriksa unit secara langsung atau melalui pemeriksaan pihak ketiga yang Anda tunjuk sendiri.",
   },
   {
     id: "section3",
-    navLabel: "3. Revisions And Errata",
-    heading: "3. Revisions and errata",
+    navLabel: "3. Perubahan dan Koreksi",
+    heading: "3. Perubahan dan koreksi",
     paragraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed euismod justo, sit amet efficitur dui. Aliquam sodales vestibulum velit, eget sollicitudin quam. Donec non aliquam eros. Etiam sit amet lectus vel justo dignissim condimentum.",
-      "In malesuada neque quis libero laoreet posuere. In consequat vitae ligula quis rutrum. Morbi dolor orci, maximus a pulvinar sed, bibendum ac lacus. Suspendisse in consectetur lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam elementum, est sed interdum cursus, felis ex pharetra nisi, ut elementum tortor urna eu nulla. Donec rhoncus in purus quis",
-      "Etiam eleifend metus at nunc ultricies facilisis. Morbi finibus tristique interdum. Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie a, finibus nec ex.",
+      "Kami berusaha menampilkan setiap unit seakurat mungkin. Meski demikian, kekeliruan penulisan harga, tahun, kilometer, atau spesifikasi dapat terjadi.",
+      "Apabila ditemukan kekeliruan tersebut, kami berhak melakukan koreksi pada halaman yang bersangkutan tanpa pemberitahuan terlebih dahulu. Koreksi tidak membatalkan transaksi yang telah disepakati secara sah oleh kedua belah pihak.",
     ],
     list: null,
   },
   {
     id: "section4",
-    navLabel: "4. Site Terms Of Use Modifications",
-    heading: "4. Site terms of use modifications",
+    navLabel: "4. Perubahan Ketentuan Situs",
+    heading: "4. Perubahan ketentuan situs",
     paragraphs: [
-      "Etiam eleifend metus at nunc ultricies facilisis. Morbi finibus tristique interdum. Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie",
+      "MARF Showroom dapat memperbarui syarat dan ketentuan ini dari waktu ke waktu, menyesuaikan perubahan layanan maupun ketentuan yang berlaku.",
     ],
     list: [
-      "Aliquam elementum, est sed interdum cursus, felis ex pharetra nisi, ut elementum tortor urna eu nulla. Donec rhoncus in purus quis blandit.",
-      "Etiam eleifend metus at nunc ultricies facilisis.",
-      "Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie a, finibus nec ex.",
+      "Versi terbaru berlaku sejak dipublikasikan di halaman ini dan menggantikan versi sebelumnya.",
+      "Anda disarankan meninjau halaman ini secara berkala agar mengetahui ketentuan yang sedang berlaku.",
+      "Dengan tetap menggunakan situs ini setelah pembaruan, Anda dianggap menyetujui ketentuan yang telah diperbarui.",
     ],
     trailingParagraph:
-      "Etiam eleifend metus at nunc ultricies facilisis. Morbi finibus tristique interdum. Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie",
+      "Apabila ada bagian dari ketentuan ini yang tidak lagi sesuai dengan peraturan yang berlaku, bagian tersebut akan disesuaikan tanpa memengaruhi keabsahan bagian lainnya.",
   },
   {
     id: "section5",
-    navLabel: "5. Risks",
-    heading: "5. Risks",
+    navLabel: "5. Risiko",
+    heading: "5. Risiko",
     paragraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed euismod justo, sit amet efficitur dui. Aliquam sodales vestibulum velit, eget sollicitudin quam. Donec non aliquam eros. Etiam sit amet lectus vel justo dignissim condimentum.",
-      "In malesuada neque quis libero laoreet posuere. In consequat vitae ligula quis rutrum. Morbi dolor orci, maximus a pulvinar sed, bibendum ac lacus. Suspendisse in consectetur lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam elementum, est sed interdum cursus, felis ex pharetra nisi, ut elementum tortor urna eu nulla. Donec rhoncus in purus quis",
-      "Etiam eleifend metus at nunc ultricies facilisis. Morbi finibus tristique interdum. Nullam vel eleifend est, eu posuere risus. Vestibulum ligula ex, ullamcorper sit amet molestie a, finibus nec ex.",
+      "Jual beli kendaraan bekas selalu mengandung risiko yang hanya dapat dinilai dengan memeriksa unit secara langsung. Kami menyarankan Anda melihat, menyalakan, dan menguji kendaraan sebelum mengambil keputusan.",
+      "Penggunaan situs ini sepenuhnya menjadi tanggung jawab pengguna. MARF Showroom tidak menjamin situs selalu tersedia tanpa gangguan, dan tidak bertanggung jawab atas kerusakan perangkat maupun kehilangan data yang timbul dari penggunaan situs ini.",
     ],
     list: null,
   },
@@ -136,7 +133,7 @@ export default function TermsSection() {
   return (
     <section className="bg-white pb-100">
       <div className="container">
-        <h2 className="capitalize">Terms of use</h2>
+        <h2 className="capitalize">Syarat &amp; Ketentuan</h2>
         <div className="tf-spacing-style3" />
 
         <div className="term-page" id="scrollContainer" ref={containerRef}>

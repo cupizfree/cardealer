@@ -26,10 +26,10 @@ const RECENT_POSTS = [
   { slug: "top-5-tips-car-resale-value", image: "/assets/images/blog/post-25.jpg", date: "5 Agu 2025", category: "BERITA", title: "5 Tips Menjaga Nilai Jual Mobil Anda" },
   { slug: "rise-of-autonomous-vehicles", image: "/assets/images/blog/post-26.jpg", date: "21 Agu 2025", category: "ULASAN AHLI", title: "Bangkitnya Kendaraan Otonom: Apa yang Bisa Diharapkan" },
   { slug: "how-to-choose-best-tires", image: "/assets/images/blog/post-27.jpg", date: "Aug. 24, 2025", category: "TIPS", title: "Cara Memilih Ban Terbaik untuk Mobil Anda" },
-  { slug: "hidden-costs-luxury-car", image: "/assets/images/blog/post-28.jpg", date: "Aug. 25, 2025", category: "TIPS", title: "Hidden Costs of Owning a Luxury Car" },
+  { slug: "hidden-costs-luxury-car", image: "/assets/images/blog/post-28.jpg", date: "Aug. 25, 2025", category: "TIPS", title: "Biaya Tersembunyi Memiliki Mobil Mewah" },
 ];
 
-const TAGS = ["Performance", "Mewah", "Safety", "Technology", "Maintenance", "Fuel Efficiency", "Design", "Ulasan", "Trends"];
+const TAGS = ["Performa", "Mewah", "Keselamatan", "Teknologi", "Perawatan", "Efisiensi Bahan Bakar", "Desain", "Ulasan", "Tren"];
 
 // Migrated from ../aurexo/blog-details-1.html lines 719-1036. Search input, Categories/Type Car/Tags
 // links (all dead `blog-standard.html`, not yet migrated), and the newsletter subscribe form are all

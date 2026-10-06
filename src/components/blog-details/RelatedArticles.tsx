@@ -75,7 +75,7 @@ export default function RelatedArticles({
           <>
             <h2 className={centered ? "mb-12 text-center" : "mb-12"}>{heading}</h2>
             <p className={centered ? "h7 text-secondary mb-40 text-center" : "h7 text-secondary mb-40"}>
-              Dapatkan wawasan terbaru, tips ahli, dan kabar terkini agar tetap update.
+              Dapatkan wawasan terbaru, tips ahli, dan kabar terkini seputar dunia otomotif.
             </p>
           </>
         )}

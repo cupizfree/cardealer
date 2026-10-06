@@ -66,7 +66,7 @@ export default function DealerProfile({ dealer }: { dealer: Dealer }) {
             <div className="flex gap-4">
               <Image src="/assets/icons/star-2.svg" alt="star" width={16} height={16} />
               <p className="font-weight-600">4.8</p>
-              <p className="text-secondary">(751 review)</p>
+              <p className="text-secondary">(751 ulasan)</p>
             </div>
           </div>
         </div>
@@ -75,22 +75,22 @@ export default function DealerProfile({ dealer }: { dealer: Dealer }) {
       <div className="divider mb-40 w-full" />
 
       <p className="text-secondary mb-4">
-        {dealer.name} is a dedicated automotive professional with over 15 years of experience in the
-        car dealership industry. Known for their customer-first approach and in-depth knowledge of the
-        market, {dealer.name} has helped countless clients find their perfect vehicle while ensuring a
-        seamless and enjoyable buying experience.
+        {dealer.name} adalah showroom mobil yang sudah lebih dari 15 tahun menekuni industri
+        jual-beli kendaraan. Dikenal karena mengutamakan kepentingan pembeli dan pemahaman
+        mendalam soal pasar, {dealer.name} telah membantu banyak pelanggan menemukan mobil yang
+        tepat dengan proses yang mudah dan menyenangkan.
       </p>
 
       <p className="text-secondary mb-40">
-        Their passion for automobiles began at a young age, driving them to excel in understanding
-        every aspect of car sales, from customer service to financing solutions. {dealer.name} is
-        committed to building lasting relationships with their clients, always prioritizing trust and
-        transparency.
+        Kecintaan pada dunia otomotif tumbuh sejak muda, mendorong mereka menguasai setiap sisi
+        penjualan mobil — dari pelayanan pelanggan sampai solusi pembiayaan. {dealer.name}
+        berkomitmen membangun hubungan jangka panjang dengan pelanggan, selalu mengutamakan
+        kepercayaan dan keterbukaan.
       </p>
 
       <div className="divider mb-40 w-full" />
 
-      <p className="h4 mb-16">Dealer Inventory ({dealerInventory.length})</p>
+      <p className="h4 mb-16">Stok Dealer ({dealerInventory.length})</p>
 
       <div className="grid grid-cols-1 gap-20 mb-40">
         {dealerInventory.map((listing) => (
