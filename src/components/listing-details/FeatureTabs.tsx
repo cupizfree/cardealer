@@ -31,13 +31,28 @@ export default function FeatureTabs({
   features: ListingFeatures;
   defaultActive?: FeatureCategory;
 }) {
-  const [active, setActive] = useState<FeatureCategory>(defaultActive);
+  // Hanya tampilkan kategori yang benar-benar punya isi. Dulu keenam tab selalu
+  // tampil meski isinya sama persis (satu daftar 12 item diulang enam kali),
+  // jadi tab kosong tidak pernah kelihatan. Sekarang tiap unit punya isinya
+  // sendiri per kategori, dan kategori yang belum diisi akan jadi panel kosong
+  // kalau tidak disaring di sini.
+  const tampil = KATEGORI.filter(({ kunci }) => (features[kunci] ?? []).length > 0);
+
+  const awal = tampil.some((k) => k.kunci === defaultActive)
+    ? defaultActive
+    : (tampil[0]?.kunci ?? defaultActive);
+
+  const [active, setActive] = useState<FeatureCategory>(awal);
+
+  // Unit yang belum diisi sama sekali tidak menampilkan blok fitur — lebih baik
+  // tidak ada bagian daripada bagian yang kosong melompong.
+  if (tampil.length === 0) return null;
 
   return (
     <div className="flat-tabs mb-40">
       <div className="overflow-x-auto mb-16">
         <ul className="menu-tab menu-tab-style4">
-          {KATEGORI.map(({ kunci, label }) => (
+          {tampil.map(({ kunci, label }) => (
             <li key={kunci} className={active === kunci ? "active" : undefined}>
               <span className="text-secondary font-weight-600" onClick={() => setActive(kunci)}>
                 {label}
@@ -48,16 +63,21 @@ export default function FeatureTabs({
       </div>
 
       <div className="content-tab">
-        <div className="content-inner active">
-          <ul className="grid grid-cols-3 xl-grid-cols-2 md-grid-cols-1 gap-8 gap-x-30">
-            {(features[active] ?? []).map((item) => (
-              <li className="flex items-center gap-8" key={item}>
-                <Image src="/assets/icons/check.svg" alt="check" width={16} height={16} />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {tampil.map(({ kunci }) => (
+          <div
+            key={kunci}
+            className={`content-inner ${active === kunci ? "active" : ""}`}
+          >
+            <ul className="grid grid-cols-3 xl-grid-cols-2 md-grid-cols-1 gap-8 gap-x-30">
+              {(features[kunci] ?? []).map((item) => (
+                <li className="flex items-center gap-8" key={item}>
+                  <Image src="/assets/icons/check.svg" alt="check" width={16} height={16} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   );

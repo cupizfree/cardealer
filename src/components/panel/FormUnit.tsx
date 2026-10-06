@@ -33,6 +33,15 @@ export type NilaiUnit = {
   dealer_id: string;
   /** Daftar alamat gambar. Yang pertama dipakai sebagai gambar utama. */
   galeri: string[];
+  /**
+   * Fitur per kategori. Kuncinya WAJIB tetap bahasa Inggris (`Exterior`,
+   * `Interior`, `Safety`, `Mechanical`, `Technology`, `Other`) karena kunci itu
+   * dipakai sebagai nama kolom di JSON `fitur` pada basis data dan
+   * dibandingkan di `active === kunci` oleh `FeatureTabs`. Menerjemahkan
+   * kuncinya membuat data yang sudah tersimpan tidak lagi cocok — persis
+   * jebakan `ProductTabs.tsx` dulu. Yang diterjemahkan hanya labelnya.
+   */
+  fitur: Record<string, string[]>;
 };
 
 const KOSONG: NilaiUnit = {
@@ -52,7 +61,21 @@ const KOSONG: NilaiUnit = {
   unggulan: false,
   dealer_id: "",
   galeri: [],
+  fitur: {},
 };
+
+/**
+ * Kunci di sini HARUS sama persis dengan `KATEGORI_FITUR` di `src/lib/katalog.ts`
+ * dan `KATEGORI` di `FeatureTabs.tsx`. Label boleh berubah; kunci tidak.
+ */
+const KATEGORI_FITUR: Array<{ kunci: string; label: string; contoh: string }> = [
+  { kunci: "Exterior", label: "Eksterior", contoh: "Lampu depan LED\nVelg alloy 16 inci" },
+  { kunci: "Interior", label: "Interior", contoh: "Kursi 7 penumpang\nAC double blower" },
+  { kunci: "Safety", label: "Keselamatan", contoh: "Dual SRS airbag\nABS + EBD" },
+  { kunci: "Mechanical", label: "Mekanis", contoh: "Mesin 1.5L Dual VVT-i\nTransmisi CVT" },
+  { kunci: "Technology", label: "Teknologi", contoh: "Layar sentuh 9 inci\nApple CarPlay" },
+  { kunci: "Other", label: "Lainnya", contoh: "Buku servis lengkap\nBan cadangan" },
+];
 
 const MEREK = [
   "Toyota", "Honda", "Daihatsu", "Suzuki", "Mitsubishi", "Nissan",
@@ -172,6 +195,7 @@ export default function FormUnit({
       unggulan: n.unggulan,
       dealer_id: n.dealer_id ? Number(n.dealer_id) : null,
       galeri: n.galeri,
+      fitur: n.fitur,
     };
 
     const h = id
@@ -462,6 +486,39 @@ export default function FormUnit({
           <button type="button" className={TOMBOL} onClick={tambahGambar}>
             Tambah
           </button>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <p className={judulBagian}>Fitur</p>
+        <p className="mb-4 text-[12.5px] leading-relaxed text-redup">
+          Satu fitur per baris. Kategori yang dibiarkan kosong tidak akan tampil
+          di halaman unit — lebih baik kosong daripada diisi fitur yang bukan
+          milik mobil ini.
+        </p>
+
+        <div className="grid gap-x-4 sm:grid-cols-2">
+          {KATEGORI_FITUR.map(({ kunci, label, contoh }) => (
+            <Medan key={kunci} label={label}>
+              <textarea
+                className={`${INPUT} min-h-20 resize-y leading-relaxed`}
+                value={(n.fitur[kunci] ?? []).join("\n")}
+                onChange={(e) =>
+                  setN((l) => ({
+                    ...l,
+                    fitur: {
+                      ...l.fitur,
+                      [kunci]: e.target.value
+                        .split("\n")
+                        .map((s) => s.trim())
+                        .filter(Boolean),
+                    },
+                  }))
+                }
+                placeholder={contoh}
+              />
+            </Medan>
+          ))}
         </div>
       </div>
 

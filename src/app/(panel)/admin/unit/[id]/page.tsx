@@ -37,6 +37,7 @@ export default async function HalamanUbahUnit({
         unggulan: u.unggulan,
         dealer_id: u.dealer_id ? String(u.dealer_id) : "",
         galeri: alamatGambar(u.galeri),
+        fitur: u.fitur,
       }}
     />
   );

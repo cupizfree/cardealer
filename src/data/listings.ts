@@ -160,8 +160,11 @@ export const allListings: Listing[] = [
       "tidak ada bekas tabrakan maupun banjir. Kelengkapan: STNK, BPKB, faktur, dan kunci ganda. " +
       "Unit siap pakai, bisa dicek langsung di showroom Purwokerto atau dibawa ke bengkel pilihan Anda.",
     features: {
-      // Source repeats the identical 12-item checklist under all 6 tabs — preserved as-is, not
-      // differentiated per category, since that repetition is what the source actually contains.
+      // Nilai di sini hanya jaring pengaman terakhir. `FITUR_UNIT` di bawah
+      // menggantikannya dengan fitur sungguhan per model, dan unit yang dibuat
+      // lewat panel membawa fiturnya sendiri di kolom `fitur` basis data.
+      // Daftar ini berasal dari templat sumber: 12 item yang sama diulang di
+      // keenam tab, termasuk "Spion elektrik" di bawah Keselamatan.
       Exterior: [
         "Spion elektrik",
         "Ban depan all-season",
@@ -494,6 +497,824 @@ export function getRelatedListings(listing: Listing, count = 4): Listing[] {
 }
 
 /**
+ * Fitur tiap unit, dipisah per kategori.
+ *
+ * Sebelumnya hanya `allListings[0]` yang punya `features`, dan 14 listing lain
+ * mewarisinya lewat `listing.features ?? template.features!` di
+ * `withDetailFallback`. Akibatnya setiap unit menampilkan daftar 12 item yang
+ * sama persis di keenam tab: Honda Brio menampilkan velg 16 inci milik Avanza,
+ * dan "Spion elektrik" muncul di bawah tab Keselamatan maupun Mekanis.
+ *
+ * Peta ini menggantinya dengan fitur yang benar-benar dimiliki tiap model.
+ * Kuncinya harus sama dengan `slug` listing. Unit yang ditambahkan lewat panel
+ * tidak ada di sini — fiturnya tersimpan langsung di kolom `fitur` basis data
+ * dan diisi dari form panel.
+ */
+export const FITUR_UNIT: Record<string, ListingFeatures> = {
+  "toyota-avanza-1-5-g-2022": {
+    Exterior: [
+      "Lampu depan LED dengan auto light",
+      "Lampu kabut depan",
+      "Velg alloy 15 inci",
+      "Spion elektrik dengan lampu sein terintegrasi",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Lis krom jendela samping",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower dengan ventilasi baris kedua",
+      "Setir tilt adjust",
+      "Konsol tengah dengan penutup",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "Vehicle Stability Control",
+      "Hill Start Assist",
+      "ISOFIX baris kedua",
+      "Sensor parkir belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.5L 2NR-VE Dual VVT-i 105 PS",
+      "Transmisi CVT",
+      "Penggerak roda belakang",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang torsion beam",
+      "Kapasitas tangki 43 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 9 inci",
+      "Apple CarPlay dan Android Auto",
+      "Kamera belakang",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID layar TFT",
+      "Charger USB baris kedua",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "honda-brio-satya-e-2023": {
+    Exterior: [
+      "Lampu depan halogen",
+      "Gril depan dengan aksen krom",
+      "Velg alloy 14 inci",
+      "Spion elektrik",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Handle pintu warna bodi",
+    ],
+    Interior: [
+      "Kursi 5 penumpang",
+      "Jok baris kedua 60:40 split",
+      "Power window depan dan belakang",
+      "AC manual",
+      "Setir tilt adjust",
+      "Audio 4 speaker",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Alarm pengaman",
+      "Sabuk pengaman pretensioner",
+    ],
+    Mechanical: [
+      "Mesin 1.2L i-VTEC 90 PS",
+      "Transmisi CVT",
+      "Penggerak roda depan",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang torsion beam",
+      "Kapasitas tangki 35 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 7 inci",
+      "Bluetooth dan USB",
+      "Kamera belakang",
+      "MID",
+      "Keyless entry dengan tombol start",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "daihatsu-xenia-r-2021": {
+    Exterior: [
+      "Lampu depan halogen projector",
+      "Lampu kabut depan",
+      "Velg alloy 15 inci",
+      "Spion elektrik",
+      "Wiper kaca belakang",
+      "Spoiler belakang dengan lampu rem",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower",
+      "Setir tilt adjust",
+      "Konsol tengah",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "Vehicle Stability Control",
+      "Hill Start Assist",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.3L 1NR-VE Dual VVT-i 97 PS",
+      "Transmisi manual 5 percepatan",
+      "Penggerak roda belakang",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Kapasitas tangki 43 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 7 inci",
+      "Bluetooth dan USB",
+      "Kamera belakang",
+      "Keyless entry",
+      "MID",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "suzuki-ertiga-gx-2022": {
+    Exterior: [
+      "Lampu depan halogen projector",
+      "Lampu kabut depan",
+      "Velg alloy 15 inci",
+      "Spion elektrik dengan lampu sein",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower",
+      "Setir tilt adjust",
+      "Konsol tengah dengan penutup",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "Electronic Stability Program",
+      "Hill Start Assist",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.5L K15B 105 PS",
+      "Transmisi otomatis 4 percepatan",
+      "Penggerak roda depan",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Kapasitas tangki 45 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 8 inci",
+      "Apple CarPlay dan Android Auto",
+      "Kamera belakang",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "mitsubishi-xpander-ultimate-2023": {
+    Exterior: [
+      "Lampu depan LED",
+      "Lampu kabut LED",
+      "Velg alloy 16 inci dua warna",
+      "Spion elektrik lipat otomatis",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Roof rail",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 60:40 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower digital",
+      "Setir tilt dan telescopic",
+      "Konsol tengah dengan penutup",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "Active Stability Control",
+      "Hill Start Assist",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Kamera belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.5L MIVEC 105 PS",
+      "Transmisi CVT",
+      "Penggerak roda depan",
+      "Rem depan dan belakang cakram",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang torsion beam",
+      "Kapasitas tangki 45 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 9 inci",
+      "Apple CarPlay dan Android Auto",
+      "Kamera belakang",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID TFT berwarna",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "toyota-rush-s-gr-sport-2022": {
+    Exterior: [
+      "Lampu depan LED dengan auto light",
+      "Lampu kabut depan",
+      "Velg alloy 17 inci",
+      "Spion elektrik lipat",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Roof rail",
+      "Lis bodi GR Sport",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower",
+      "Setir tilt adjust",
+      "Jok kulit sintetis",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "Vehicle Stability Control",
+      "Hill Start Assist",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Kamera belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.5L 2NR-VE Dual VVT-i 105 PS",
+      "Transmisi otomatis 4 percepatan",
+      "Penggerak roda belakang",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang multilink",
+      "Ground clearance 220 mm",
+    ],
+    Technology: [
+      "Head unit layar sentuh 9 inci",
+      "Apple CarPlay dan Android Auto",
+      "Kamera belakang",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "honda-mobilio-rs-2021": {
+    Exterior: [
+      "Lampu depan halogen",
+      "Lampu kabut depan",
+      "Velg alloy 15 inci",
+      "Spion elektrik lipat",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Body kit RS",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower",
+      "Setir tilt adjust",
+      "Konsol tengah",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Alarm pengaman dengan immobilizer",
+      "Sabuk pengaman pretensioner",
+    ],
+    Mechanical: [
+      "Mesin 1.5L i-VTEC 120 PS",
+      "Transmisi CVT",
+      "Penggerak roda depan",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang torsion beam",
+      "Kapasitas tangki 42 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 7 inci",
+      "Bluetooth dan USB",
+      "Kamera belakang",
+      "Keyless entry dengan tombol start",
+      "MID",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "toyota-calya-g-2020": {
+    Exterior: [
+      "Lampu depan halogen",
+      "Velg alloy 14 inci",
+      "Spion elektrik",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Handle pintu warna bodi",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower",
+      "Setir tilt adjust",
+      "Konsol tengah",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Immobilizer",
+      "Sabuk pengaman semua baris",
+    ],
+    Mechanical: [
+      "Mesin 1.2L 3NR-VE Dual VVT-i 88 PS",
+      "Transmisi manual 5 percepatan",
+      "Penggerak roda depan",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Kapasitas tangki 36 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 7 inci",
+      "Bluetooth dan USB",
+      "Kamera belakang",
+      "MID",
+      "Power outlet 12V",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "suzuki-ignis-gx-2021": {
+    Exterior: [
+      "Lampu depan halogen dengan LED position light",
+      "Lampu kabut depan",
+      "Velg alloy 15 inci",
+      "Spion elektrik",
+      "Roof rail",
+      "Spoiler belakang",
+      "Lis bodi bawah",
+    ],
+    Interior: [
+      "Kursi 5 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Power window depan dan belakang",
+      "AC manual",
+      "Setir tilt adjust",
+      "Audio 4 speaker",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Alarm pengaman dengan immobilizer",
+      "Kamera belakang",
+    ],
+    Mechanical: [
+      "Mesin 1.2L K12M Dualjet 83 PS",
+      "Transmisi AGS",
+      "Penggerak roda depan",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Ground clearance 180 mm",
+    ],
+    Technology: [
+      "Head unit layar sentuh 7 inci",
+      "Apple CarPlay dan Android Auto",
+      "Bluetooth dan USB",
+      "Kamera belakang",
+      "MID",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "honda-hr-v-1-5-se-2022": {
+    Exterior: [
+      "Lampu depan LED",
+      "Lampu kabut depan LED",
+      "Velg alloy 17 inci",
+      "Spion elektrik lipat otomatis",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Gril dengan aksen krom",
+    ],
+    Interior: [
+      "Kursi 5 penumpang",
+      "Jok baris kedua 60:40 split dengan mode tumpang",
+      "Power window semua baris",
+      "AC otomatis",
+      "Setir tilt dan telescopic",
+      "Jok kulit sintetis",
+      "Konsol tengah dengan penutup",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "Vehicle Stability Assist",
+      "Hill Start Assist",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Kamera belakang tiga mode",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.5L i-VTEC 121 PS",
+      "Transmisi CVT",
+      "Penggerak roda depan",
+      "Rem depan dan belakang cakram",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang torsion beam",
+    ],
+    Technology: [
+      "Head unit layar sentuh 8 inci",
+      "Apple CarPlay dan Android Auto",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID",
+      "Cruise control",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "toyota-fortuner-vrz-2021": {
+    Exterior: [
+      "Lampu depan LED dengan auto light",
+      "Lampu kabut depan LED",
+      "Velg alloy 18 inci",
+      "Spion elektrik lipat otomatis",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Roof rail",
+      "Running board",
+    ],
+    Interior: [
+      "Kursi 7 penumpang berbalut kulit",
+      "Jok baris kedua 60:40 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC tiga baris",
+      "Setir tilt dan telescopic",
+      "Kursi pengemudi elektrik",
+      "Konsol tengah dengan pendingin",
+    ],
+    Safety: [
+      "Tujuh SRS airbag",
+      "ABS + EBD",
+      "Vehicle Stability Control",
+      "Traction Control",
+      "Hill Start Assist",
+      "Downhill Assist Control",
+      "ISOFIX",
+      "Sensor parkir depan dan belakang",
+      "Kamera belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 2.4L 2GD-FTV turbo diesel 150 PS",
+      "Transmisi otomatis 6 percepatan",
+      "Penggerak roda belakang",
+      "Rem depan dan belakang cakram",
+      "Suspensi depan double wishbone",
+      "Suspensi belakang multilink",
+      "Ground clearance 279 mm",
+    ],
+    Technology: [
+      "Head unit layar sentuh 9 inci",
+      "Apple CarPlay dan Android Auto",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID TFT berwarna",
+      "Cruise control",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan dengan remote",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "mitsubishi-pajero-sport-dakar-2020": {
+    Exterior: [
+      "Lampu depan LED dengan auto light",
+      "Lampu kabut depan",
+      "Velg alloy 18 inci",
+      "Spion elektrik lipat otomatis",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Roof rail",
+      "Running board",
+    ],
+    Interior: [
+      "Kursi 7 penumpang berbalut kulit",
+      "Jok baris kedua 60:40 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC tiga zona",
+      "Setir tilt dan telescopic",
+      "Kursi pengemudi elektrik",
+      "Konsol tengah dengan pendingin",
+    ],
+    Safety: [
+      "Tujuh SRS airbag",
+      "ABS + EBD",
+      "Active Stability Control",
+      "Traction Control",
+      "Hill Start Assist",
+      "Hill Descent Control",
+      "ISOFIX",
+      "Sensor parkir depan dan belakang",
+      "Kamera belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 2.4L 4N15 MIVEC turbo diesel 181 PS",
+      "Transmisi otomatis 8 percepatan",
+      "Penggerak empat roda Super Select 4WD",
+      "Rem depan dan belakang cakram",
+      "Suspensi depan double wishbone",
+      "Suspensi belakang multilink",
+      "Ground clearance 218 mm",
+    ],
+    Technology: [
+      "Head unit layar sentuh 8 inci",
+      "Apple CarPlay dan Android Auto",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID berwarna",
+      "Cruise control",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan dengan remote",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "toyota-agya-g-2019": {
+    Exterior: [
+      "Lampu depan halogen",
+      "Velg alloy 14 inci",
+      "Spion elektrik",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Handle pintu warna bodi",
+    ],
+    Interior: [
+      "Kursi 5 penumpang",
+      "Jok baris kedua 50:50 split",
+      "Power window depan",
+      "AC manual",
+      "Setir tilt adjust",
+      "Audio 4 speaker",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "ISOFIX",
+      "Sabuk pengaman semua baris",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.0L 1KR-VE VVT-i 67 PS",
+      "Transmisi manual 5 percepatan",
+      "Penggerak roda depan",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Kapasitas tangki 33 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 7 inci dengan Bluetooth",
+      "Koneksi USB dan AUX",
+      "Kamera belakang",
+      "MID",
+      "Power outlet 12V",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "honda-city-hatchback-rs-2022": {
+    Exterior: [
+      "Lampu depan LED",
+      "Lampu kabut depan LED",
+      "Velg alloy 16 inci",
+      "Spion elektrik lipat otomatis",
+      "Wiper kaca belakang",
+      "Spoiler belakang RS",
+      "Gril krom gelap",
+    ],
+    Interior: [
+      "Kursi 5 penumpang berbalut kulit sintetis",
+      "Jok baris kedua 60:40 split",
+      "Power window semua baris",
+      "AC otomatis",
+      "Setir tilt dan telescopic",
+      "Konsol tengah dengan penutup",
+    ],
+    Safety: [
+      "Enam SRS airbag",
+      "ABS + EBD",
+      "Vehicle Stability Assist",
+      "Hill Start Assist",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Kamera belakang tiga mode",
+      "Immobilizer",
+      "Honda LaneWatch",
+    ],
+    Mechanical: [
+      "Mesin 1.5L i-VTEC 121 PS",
+      "Transmisi CVT",
+      "Penggerak roda depan",
+      "Rem depan dan belakang cakram",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang torsion beam",
+      "Paddle shift",
+    ],
+    Technology: [
+      "Head unit layar sentuh 8 inci",
+      "Apple CarPlay dan Android Auto",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID TFT",
+      "Cruise control",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+
+  "nissan-livina-vl-2021": {
+    Exterior: [
+      "Lampu depan halogen",
+      "Lampu kabut depan",
+      "Velg alloy 16 inci",
+      "Spion elektrik lipat otomatis",
+      "Wiper kaca belakang",
+      "Spoiler belakang",
+      "Roof rail",
+    ],
+    Interior: [
+      "Kursi 7 penumpang",
+      "Jok baris kedua 60:40 split",
+      "Jok baris ketiga 50:50 tumble",
+      "Power window semua baris",
+      "AC double blower",
+      "Setir tilt dan telescopic",
+      "Konsol tengah dengan penutup",
+    ],
+    Safety: [
+      "Dual SRS airbag",
+      "ABS + EBD",
+      "Vehicle Dynamic Control",
+      "Hill Start Assist",
+      "ISOFIX",
+      "Sensor parkir belakang",
+      "Kamera belakang",
+      "Immobilizer",
+    ],
+    Mechanical: [
+      "Mesin 1.5L 104 PS",
+      "Transmisi CVT",
+      "Penggerak roda depan",
+      "Rem depan cakram, belakang tromol",
+      "Suspensi depan MacPherson",
+      "Suspensi belakang torsion beam",
+      "Kapasitas tangki 45 liter",
+    ],
+    Technology: [
+      "Head unit layar sentuh 9 inci",
+      "Apple CarPlay dan Android Auto",
+      "Bluetooth dan USB",
+      "Keyless entry dengan tombol start",
+      "MID",
+      "Kamera belakang",
+    ],
+    Other: [
+      "Buku servis lengkap",
+      "Kunci cadangan",
+      "Ban cadangan",
+      "Dongkrak dan kunci roda",
+      "Dokumen lengkap BPKB dan STNK",
+    ],
+  },
+};
+
+/**
  * Fills every optional detail-page field a listing is missing (11 of 12 — see
  * LISTING_DATA_MAP.md "Data gaps") with `allListings[0]`'s (the only fully-analyzed detail page)
  * real, source-derived content, so `/listing-details/[slug]` always renders the source's full
@@ -503,12 +1324,25 @@ export function getRelatedListings(listing: Listing, count = 4): Listing[] {
  * every property. Only `overview`'s 4 fields that double as `spec` (mileage/year/fuel/transmission)
  * stay genuinely per-listing here; its other 6 fields and every other section below reuse the
  * template's real analyzed values — never invented, just shared, exactly like Luminor's approach.
+ *
+ * `features` is the one exception now: `FITUR_UNIT` above supplies real per-model features, and the
+ * template is only a last resort for a listing that has neither.
  */
 export type ListingWithDetail = Listing &
   Required<Pick<Listing, "overview" | "description" | "features" | "location" | "ratingSummary" | "reviews" | "dealer">>;
 
 export function withDetailFallback(listing: Listing): ListingWithDetail {
   const template = allListings[0];
+
+  // `fiturDari` di `src/lib/katalog.ts` selalu mengembalikan keenam kunci —
+  // walau isinya array kosong. Objek kosong tetap "truthy", jadi tanpa
+  // pemeriksaan ini unit yang belum diisi fiturnya akan lolos dengan enam tab
+  // kosong dan tidak pernah jatuh ke `FITUR_UNIT`.
+  const fiturTerisi =
+    listing.features && Object.values(listing.features).some((a) => a.length > 0)
+      ? listing.features
+      : undefined;
+
   return {
     ...listing,
     overview: listing.overview ?? {
@@ -523,7 +1357,7 @@ export function withDetailFallback(listing: Listing): ListingWithDetail {
     // Non-null assertions: `template` (allListings[0]) is documented as the one fully-analyzed
     // detail record and is guaranteed to carry every optional field — see LISTING_DATA_MAP.md.
     description: listing.description ?? template.description!,
-    features: listing.features ?? template.features!,
+    features: fiturTerisi ?? FITUR_UNIT[listing.slug] ?? template.features!,
     location: listing.location ?? template.location!,
     ratingSummary: listing.ratingSummary ?? template.ratingSummary!,
     reviews: listing.reviews ?? template.reviews!,

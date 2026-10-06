@@ -4,7 +4,7 @@
 
 import { jalankan, satu, transaksi } from "./db";
 import { hashSandi } from "./sandi";
-import { allListings } from "@/data/listings";
+import { allListings, FITUR_UNIT } from "@/data/listings";
 import { allDealers } from "@/data/dealers";
 
 /** "Rp 195.000.000" -> 195000000 */
@@ -115,7 +115,7 @@ export function seedJikaKosong(): HasilSeed {
         dealerUtama,
         adminId || null,
         JSON.stringify(l.gallery ?? []),
-        JSON.stringify(l.features ?? {}),
+        JSON.stringify(l.features ?? FITUR_UNIT[l.slug] ?? {}),
         JSON.stringify(ov),
       );
       nUnit++;

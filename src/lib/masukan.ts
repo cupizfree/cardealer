@@ -61,10 +61,54 @@ export function bacaUnit(b: Record<string, unknown>, mode: "baru" | "ubah"): Par
   }
   if (ada(b, "dealer_id")) o.dealer_id = angkaOpsional(b.dealer_id, "dealer_id", 1, 1_000_000_000);
   if (ada(b, "galeri")) o.galeri = Array.isArray(b.galeri) ? b.galeri : [];
-  if (ada(b, "fitur")) o.fitur = objek(b.fitur) as Record<string, string[]>;
+  if (ada(b, "fitur")) o.fitur = bacaFitur(b.fitur);
   if (ada(b, "spesifikasi")) o.spesifikasi = objek(b.spesifikasi);
 
   return o;
+}
+
+// ── Fitur unit ─────────────────────────────────────────────────────────────
+
+/**
+ * Kunci yang dikenali. Kunci lain tetap diterima apa adanya supaya data lama
+ * tidak hilang hanya karena ada kategori tambahan, tetapi isinya tetap disaring
+ * supaya yang tersimpan di basis data selalu `string[]` — bukan angka, bukan
+ * objek, bukan array bersarang.
+ */
+const KATEGORI_FITUR = ["Exterior", "Interior", "Safety", "Mechanical", "Technology", "Other"] as const;
+
+const MAKS_FITUR_PER_KATEGORI = 40;
+const MAKS_PANJANG_FITUR = 120;
+
+function bacaFitur(v: unknown): Record<string, string[]> {
+  const mentah = objek(v);
+  const hasil: Record<string, string[]> = {};
+
+  for (const kunci of KATEGORI_FITUR) {
+    hasil[kunci] = bersihkanFitur(mentah[kunci]);
+  }
+
+  // Kategori tak dikenal — dipertahankan, tapi tetap disaring bentuknya.
+  for (const [kunci, isi] of Object.entries(mentah)) {
+    if ((KATEGORI_FITUR as readonly string[]).includes(kunci)) continue;
+    if (kunci.length > 40) continue;
+    const bersih = bersihkanFitur(isi);
+    if (bersih.length) hasil[kunci] = bersih;
+  }
+
+  return hasil;
+}
+
+function bersihkanFitur(v: unknown): string[] {
+  if (!Array.isArray(v)) return [];
+  const bersih = v
+    .filter((x): x is string => typeof x === "string")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((s) => (s.length > MAKS_PANJANG_FITUR ? s.slice(0, MAKS_PANJANG_FITUR) : s));
+
+  // Buang duplikat, pertahankan urutan asli.
+  return [...new Set(bersih)].slice(0, MAKS_FITUR_PER_KATEGORI);
 }
 
 // ── Dealer ─────────────────────────────────────────────────────────────────
