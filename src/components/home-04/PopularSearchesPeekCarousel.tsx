@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import ListingCard from "@/components/listing/ListingCard";
-import { allListings } from "@/data/listings";
+import { useListings } from "@/components/common/KatalogProvider";
 
 // Migrated from ../aurexo/home-04.html lines 668-1092 ("Pencarian Populer", `.swiper-card-wrapper
 // .swiper-card-5`). Same `.card-box.card-box-style-1` shape as `ListingCard` — reused directly. 5
@@ -26,7 +26,7 @@ export default function PopularSearchesPeekCarousel({
   heading?: string;
   sectionClassName?: string;
 }) {
-  const listings = SLIDE_IDS.map((id) => allListings.find((l) => l.id === id)!);
+  const listings = useListings(SLIDE_IDS);
 
   return (
     <section className={sectionClassName}>

@@ -82,6 +82,8 @@ export default function FormUnit({
   const [sibuk, setSibuk] = useState(false);
   const [hapusSibuk, setHapusSibuk] = useState(false);
   const [urlBaru, setUrlBaru] = useState("");
+  const [unggahSibuk, setUnggahSibuk] = useState(false);
+  const [unggahGalat, setUnggahGalat] = useState<string | null>(null);
 
   useEffect(() => {
     minta<Dealer[]>("/api/dealer").then((h) => {
@@ -94,15 +96,44 @@ export default function FormUnit({
   }
 
   // ── Galeri gambar ─────────────────────────────────────────────────────────
-  // Gambar disimpan sebagai daftar alamat di kolom `galeri` (JSON), bukan
-  // diunggah: tidak perlu penyimpanan berkas baru, dan berkas di dalam situs
-  // (/assets/images/…) sudah disajikan apa adanya.
+  // Gambar disimpan sebagai daftar alamat di kolom `galeri` (JSON). Alamatnya
+  // bisa berupa berkas di dalam situs (/assets/images/…) atau gambar yang
+  // diunggah dari ponsel lewat /api/unggah, yang disajikan kembali sebagai
+  // /api/gambar/<nama>.
 
   function tambahGambar() {
     const u = urlBaru.trim();
     if (!u) return;
     setN((l) => ({ ...l, galeri: [...l.galeri, u] }));
     setUrlBaru("");
+  }
+
+  // Unggah berkas. `fetch` dipakai langsung, bukan pembungkus `minta`, karena
+  // `minta` memaksa Content-Type: application/json — itu merusak multipart
+  // (peramban harus menuliskan sendiri batas/boundary-nya).
+  async function unggahBerkas(daftar: FileList | null) {
+    if (!daftar || daftar.length === 0) return;
+    setUnggahGalat(null);
+    setUnggahSibuk(true);
+
+    const berhasil: string[] = [];
+    for (const berkas of Array.from(daftar)) {
+      const badan = new FormData();
+      badan.append("berkas", berkas);
+      try {
+        const r = await fetch("/api/unggah", { method: "POST", body: badan, credentials: "same-origin" });
+        const j = (await r.json().catch(() => null)) as
+          | { ok?: boolean; data?: { alamat?: string }; error?: { pesan?: string } }
+          | null;
+        if (j?.ok && j.data?.alamat) berhasil.push(j.data.alamat);
+        else setUnggahGalat(j?.error?.pesan ?? `Gagal mengunggah ${berkas.name} (HTTP ${r.status}).`);
+      } catch {
+        setUnggahGalat(`Tidak bisa mengunggah ${berkas.name}.`);
+      }
+    }
+
+    if (berhasil.length) setN((l) => ({ ...l, galeri: [...l.galeri, ...berhasil] }));
+    setUnggahSibuk(false);
   }
 
   function buangGambar(i: number) {
@@ -315,10 +346,50 @@ export default function FormUnit({
       <div className="mt-6">
         <p className={judulBagian}>Gambar unit</p>
         <p className="mb-3 text-[12.5px] leading-relaxed text-redup">
-          Gambar pertama dipakai sebagai gambar utama. Isi dengan alamat gambar — alamat penuh
-          (<span className="marf-pecah">https://…</span>) atau berkas di dalam situs
-          (<span className="marf-pecah">/assets/images/card/card-1.jpg</span>).
+          Gambar pertama dipakai sebagai gambar utama. Unggah langsung dari ponsel (JPEG, PNG, WebP,
+          GIF — maksimal 8 MB), atau tempel alamat gambar.
         </p>
+
+        <div className="mb-3 flex flex-wrap gap-2">
+          <label
+            className={`${TOMBOL} ${unggahSibuk ? "pointer-events-none opacity-60" : "cursor-pointer"}`}
+          >
+            {unggahSibuk ? "Mengunggah…" : "Unggah gambar"}
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              className="hidden"
+              onChange={(e) => {
+                unggahBerkas(e.target.files);
+                e.target.value = "";
+              }}
+            />
+          </label>
+
+          {/* Di ponsel, `capture` membuka kamera langsung, bukan galeri. */}
+          <label
+            className={`${TOMBOL_GALERI} px-3 py-2 text-[13px] ${unggahSibuk ? "pointer-events-none opacity-60" : "cursor-pointer"}`}
+          >
+            Ambil foto
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              className="hidden"
+              onChange={(e) => {
+                unggahBerkas(e.target.files);
+                e.target.value = "";
+              }}
+            />
+          </label>
+        </div>
+
+        {unggahGalat && (
+          <p className="mb-3 rounded-lg border border-marf bg-marf-muda px-3 py-2 text-[12.5px] text-marf-tua">
+            {unggahGalat}
+          </p>
+        )}
 
         {n.galeri.length === 0 ? (
           <p className="mb-3 rounded-lg border border-dashed border-garis px-3 py-4 text-center text-[12.5px] text-redup">

@@ -4,37 +4,26 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
 import type { ListingCardData } from "@/data/listings";
-import { allListings } from "@/data/listings";
+import { useKatalog } from "@/components/common/KatalogProvider";
 import TrendingSearchesGridCard from "./TrendingSearchesGridCard";
 
-const l1 = allListings.find((l) => l.id === 1)!;
-const l2 = allListings.find((l) => l.id === 2)!;
-const l3 = allListings.find((l) => l.id === 3)!;
-
 // Migrated from ../aurexo/home-04.html lines 1301-2063 ("Trending Searches Near You",
-// `.swiper-card-4`). Source's 6 slides are really only 3 distinct cards repeated twice (confirmed via
-// full source read: card-44/45/46.jpg each appear exactly twice) — collapsed here rather than
-// rendered 6 times, same pattern already used for `home/TrendingSearchesSection.tsx`. Each distinct
-// card also carries its own real, disclosed price/badge discrepancy against the canonical listing:
-// id1's price/badge already agree with source; id2's real price here is $42.500,00 (canonical:
-// $42.800,00) with the same "Harga Bagus" badge; id3 shows a brand-new "Hot Offer" (`bg-primary`)
-// badge and $34.200,00 (canonical: no badge at all, $45.500,00) — none invented into `allListings`,
-// applied here as literal per-card overrides matching source exactly.
+// `.swiper-card-4`). Source's 6 slides are really only 3 distinct cards repeated twice, collapsed here
+// rather than rendered 6 times.
+//
+// Kartu kini diambil dari katalog hidup (basis data yang ditulis panel). Harga dan lencana yang dulu
+// ditimpa di sini berasal dari bug templat — dua harga berbeda untuk unit yang sama — jadi tidak lagi
+// dipakai: setiap unit tampil dengan harga dan lencananya sendiri.
 //
 // Real config (`assets/js/swiper.js`'s `.swiper-card-4`): `slidesPerColumn: 2`/`slidesPerColumnFill:
 // "row"` (a real 2-row grid, NOT a single-row carousel) with breakpoints `0/400/767/991` → `1/1/1/2`
 // `slidesPerView` — i.e. it only ever reaches 2 columns (4 cards visible at once in the 2x2 grid),
 // never more — reproduced via Swiper's `Grid` module.
-const SLIDES: ListingCardData[] = [
-  { ...l1, image: "/assets/images/card/card-44.jpg" },
-  { ...l2, image: "/assets/images/card/card-45.jpg", price: "Rp 638.000.000" },
-  { ...l3, image: "/assets/images/card/card-46.jpg", price: "Rp 513.000.000", badge: { text: "Penawaran Spesial", colorClass: "bg-primary" } },
-  { ...l1, image: "/assets/images/card/card-44.jpg" },
-  { ...l2, image: "/assets/images/card/card-45.jpg", price: "Rp 638.000.000" },
-  { ...l3, image: "/assets/images/card/card-46.jpg", price: "Rp 513.000.000", badge: { text: "Penawaran Spesial", colorClass: "bg-primary" } },
-];
-
 export default function TrendingSearchesGridSection() {
+  const katalog = useKatalog();
+  const tiga = katalog.slice(0, 3) as ListingCardData[];
+  const SLIDES: ListingCardData[] = [...tiga, ...tiga];
+
   return (
     <section className="py-100 background-light">
       <div className="container wow fadeIn" data-wow-delay="0.1s">

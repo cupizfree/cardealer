@@ -9,7 +9,8 @@ import ListingDetailsTitleBar from "@/components/listing-details/ListingDetailsT
 import ListingDetailsContent from "@/components/listing-details/ListingDetailsContent";
 import ListingDetailsSidebar from "@/components/listing-details/ListingDetailsSidebar";
 import RelatedListings from "@/components/listing-details/RelatedListings";
-import { allListings, getRelatedListings, withDetailFallback, type ListingGalleryImage } from "@/data/listings";
+import { getRelatedListings, withDetailFallback, type ListingGalleryImage } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 // Same "reuse the generic filler stills" precedent as the other listing-details routes — the
 // accordion gallery needs 6 total images (source's own 6 panels), so 5 filler entries plus the
@@ -23,7 +24,7 @@ const GALLERY_FILLER: ListingGalleryImage[] = [
 ];
 
 export function generateStaticParams() {
-  return allListings.map((listing) => ({ slug: listing.slug }));
+  return muatKatalog().map((listing) => ({ slug: listing.slug }));
 }
 
 export async function generateMetadata({
@@ -32,7 +33,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const listing = allListings.find((l) => l.slug === slug);
+  const listing = muatKatalog().find((l) => l.slug === slug);
   return {
     title: listing ? `${listing.title}` : "Detail Unit",
     description: listing ? `${listing.title} — ${listing.price}` : undefined,
@@ -62,7 +63,7 @@ export default async function ListingDetails4Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const listing = allListings.find((l) => l.slug === slug);
+  const listing = muatKatalog().find((l) => l.slug === slug);
   if (!listing) notFound();
 
   const related = getRelatedListings(listing, 4);

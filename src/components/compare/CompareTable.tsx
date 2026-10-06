@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCompare } from "@/components/common/CompareProvider";
-import { allListings, withDetailFallback, type Listing, type ListingOverview } from "@/data/listings";
+import { withDetailFallback, type Listing, type ListingOverview } from "@/data/listings";
+import { useKatalog } from "@/components/common/KatalogProvider";
 
 // Migrated from ../aurexo/compare.html lines 483-658. Source hardcodes exactly 4 comparison columns
 // (with "2024 Hyundai Elantra" literally repeated 3 times across different card images — a genuine
@@ -44,6 +45,7 @@ const removeButtonStyle: React.CSSProperties = {
 
 export default function CompareTable() {
   const { compareItems, removeFromCompare } = useCompare();
+  const katalog = useKatalog();
 
   if (compareItems.length === 0) {
     return (
@@ -56,10 +58,10 @@ export default function CompareTable() {
     );
   }
 
-  // `compareItems` always comes from a card built off `allListings`, so the canonical record with the
-  // same id is guaranteed present — falling back to the card data itself only as a defensive measure.
+  // `compareItems` selalu berasal dari kartu yang dibangun dari katalog hidup, jadi
+  // catatan kanonik dengan id yang sama pasti ada — sisanya hanya jaring pengaman.
   const detailed = compareItems.map((item) =>
-    withDetailFallback(allListings.find((listing) => listing.id === item.id) ?? (item as Listing))
+    withDetailFallback(katalog.find((listing) => listing.id === item.id) ?? (item as Listing))
   );
 
   return (

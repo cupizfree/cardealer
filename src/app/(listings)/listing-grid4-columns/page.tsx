@@ -4,7 +4,7 @@ import Image from "next/image";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ListingGridSection from "@/components/listing/ListingGridSection";
-import { allListings } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -39,7 +39,7 @@ export default function ListingGrid4ColumnsPage() {
         </div>
         <div className="tf-spacing-style3" />
 
-        <ListingGridSection listings={allListings} />
+        <ListingGridSection listings={muatKatalog()} />
       </section>
 
       <Footer />

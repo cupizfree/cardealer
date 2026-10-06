@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { allListings, withDetailFallback } from "@/data/listings";
+import { withDetailFallback } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 import type { Dealer } from "@/data/dealers";
 import HalfMapListingCard from "@/components/listing/HalfMapListingCard";
 import ReviewsSection from "@/components/common/ReviewsSection";
@@ -28,10 +29,13 @@ import ReviewsSection from "@/components/common/ReviewsSection";
 // (same 3 listing titles/images with the same per-page drift, same 4.8/3-reviewer review data) — reused
 // via the same `HalfMapListingCard`/`ReviewsSection` components and the same canonical `allListings`
 // data, not a second transcription.
-const dealerInventory = allListings.slice(0, 3);
-const canonicalDetail = withDetailFallback(allListings[0]);
-
 export default function DealerProfile({ dealer }: { dealer: Dealer }) {
+  // Inventaris diambil dari katalog hidup (basis data yang ditulis panel). Bagian yang
+  // memang tidak punya data per-dealer tetap memakai pengisi dari data statis.
+  const katalog = muatKatalog();
+  const dealerInventory = katalog.slice(0, 3);
+  const canonicalDetail = withDetailFallback(katalog[0]);
+
   return (
     <div className="innerpage__content md-mb-30">
       <div className="flex gap-28 mb-40">

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ListingCard from "@/components/listing/ListingCard";
 import type { ListingCardData } from "@/data/listings";
-import { allListings } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 // Migrated from ../aurexo/home-03.html lines 1919-2182 ("Trending Searches Near You"). Genuinely
 // different from `home/TrendingSearchesSection.tsx` (confirmed via source diff): a static 3-card grid
@@ -17,22 +17,29 @@ import { allListings } from "@/data/listings";
 // `ListingCardData` object (not spread from `allListings`) since so much of each record is overridden —
 // `slug`/`brandLabel`/`spec` are copied from the matching canonical id for routing/consistency, nothing
 // invented.
-const l1 = allListings.find((l) => l.id === 1)!;
-const l2 = allListings.find((l) => l.id === 2)!;
-const l3 = allListings.find((l) => l.id === 3)!;
+export default function TrendingSearchesGrid() {
+  // Kartu diambil dari katalog hidup (basis data yang ditulis panel) — 3 unit pertama.
+  // Harga, lencana, dan simulasi yang dulu ditimpa di sini adalah bug templat (harga
+  // berbeda untuk unit yang sama), jadi tidak lagi dipakai. Gambar tetap berganti
+  // mengikuti susunan sumber — itu pilihan tata letak, bukan data.
+  const katalog = muatKatalog();
+  const l1 = katalog[0];
+  const l2 = katalog[1];
+  const l3 = katalog[2];
+  if (!l1 || !l2 || !l3) return null;
 
-const SLIDES: ListingCardData[] = [
+  const SLIDES: ListingCardData[] = [
   {
     id: l1.id,
     slug: l1.slug,
     title: l1.title,
     image: "/assets/images/card/card-4.jpg",
     brandLabel: l1.brandLabel,
-    badge: { text: "Spesial", colorClass: "bg-primary-2" },
+    badge: l1.badge,
     photoCount: 8,
     videoCount: 1,
-    price: "Rp 674.000.000",
-    financing: { monthlyPrice: "Rp 8.820.000/bln", detailsLabel: "Lihat Kredit" },
+    price: l1.price,
+    financing: l1.financing,
     spec: l1.spec,
   },
   {
@@ -41,10 +48,10 @@ const SLIDES: ListingCardData[] = [
     title: l2.title,
     image: "/assets/images/card/card-7.jpg",
     brandLabel: l2.brandLabel,
-    badge: { text: "Penawaran Spesial", colorClass: "bg-primary" },
+    badge: l2.badge,
     photoCount: 8,
     videoCount: 1,
-    price: "Rp 528.000.000",
+    price: l2.price,
     spec: l2.spec,
   },
   {
@@ -53,15 +60,14 @@ const SLIDES: ListingCardData[] = [
     title: l3.title,
     image: "/assets/images/card/card-6.jpg",
     brandLabel: l3.brandLabel,
-    badge: { text: "Harga Bagus", colorClass: "bg-green" },
+    badge: l3.badge,
     photoCount: 8,
     videoCount: 1,
-    price: "Rp 342.000.000",
+    price: l3.price,
     spec: l3.spec,
   },
 ];
 
-export default function TrendingSearchesGrid() {
   return (
     <section className="py-100">
       <div className="container relative">

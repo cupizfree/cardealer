@@ -7,6 +7,7 @@
     "build": "npm run css:panel && next build",
     "start": "next start",
     "lint": "next lint",
+    "uji": "bash scripts/uji.sh",
     "css:panel": "tailwindcss -i src/styles/panel.src.css -o src/styles/panel.css --minify"
   },
   "dependencies": {

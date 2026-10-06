@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import ListingCardDark from "@/components/listing/ListingCardDark";
-import { allListings } from "@/data/listings";
+import { useKatalog } from "@/components/common/KatalogProvider";
 
 // Migrated from ../aurexo/home-08.html lines 2071-4127 ("Mobil Bekas Sesuai Anggaran", 2055 lines — the
 // largest single section on this page). Genuinely different DOM from home-05.html's own "Used Cars by
@@ -27,7 +27,8 @@ const TABS: { label: string; ids: number[] }[] = [
 export default function UsedCarsByBudgetCarouselSection() {
   const [activeTab, setActiveTab] = useState("Rp 200 jt - Rp 500 jt");
   const tab = TABS.find((t) => t.label === activeTab) ?? TABS[1];
-  const listings = tab.ids.map((id, index) => ({ listing: allListings.find((l) => l.id === id)!, index }));
+  const katalog = useKatalog();
+  const listings = tab.ids.map((id, index) => ({ listing: katalog.find((l) => l.id === id)!, index }));
 
   return (
     <section className="py-100 bg-primary flat-tabs">

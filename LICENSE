@@ -1,0 +1,39 @@
+MIT License
+
+Copyright (c) 2026 Abir
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+──────────────────────────────────────────────────────────────────────────────
+
+CATATAN CAKUPAN — BACA SEBELUM MENGGUNAKAN
+
+Lisensi MIT di atas berlaku untuk karya asli dalam repositori ini: lapisan
+backend (SQLite, autentikasi, API), panel admin/staff, skema basis data, skrip,
+serta seluruh isi dan terjemahan berbahasa Indonesia.
+
+Antarmuka situs publik dibangun di atas templat komersial **Aurexo** milik
+[Themesflat](https://github.com/themesflatdev/aurexo-nextjs). Repositori templat
+tersebut tidak menyertakan berkas lisensi apa pun, sehingga secara hukum hak
+ciptanya tetap pada pemiliknya ("all rights reserved"). Bagian antarmuka yang
+berasal dari templat itu **tidak** dicakup oleh hibah MIT di atas dan tetap
+tunduk pada ketentuan lisensi templat dari pembuatnya.
+
+Dengan kata lain: kode milik proyek ini bebas dipakai dengan syarat MIT; aset
+dan struktur antarmuka dari templat Aurexo tidak.

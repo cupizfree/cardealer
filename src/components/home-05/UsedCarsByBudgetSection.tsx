@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ListingCard from "@/components/listing/ListingCard";
-import { allListings } from "@/data/listings";
+import { useListings } from "@/components/common/KatalogProvider";
 
 // Migrated from ../aurexo/home-05.html lines 1847-3538 ("Mobil Bekas Sesuai Anggaran"). A genuinely new
 // section — 5 price-range tabs (`.menu-tab-style2 .car-box`) each with its own static
@@ -27,7 +27,7 @@ const TABS: { label: string; ids: number[] }[] = [
 export default function UsedCarsByBudgetSection() {
   const [activeTab, setActiveTab] = useState("Rp 200 jt - Rp 500 jt");
   const tab = TABS.find((t) => t.label === activeTab) ?? TABS[1];
-  const listings = tab.ids.map((id) => allListings.find((l) => l.id === id)!);
+  const listings = useListings(tab.ids);
 
   return (
     <section className="py-100 flat-tabs">

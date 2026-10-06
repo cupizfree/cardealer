@@ -17,6 +17,8 @@ import "../../public/assets/scss/app.scss";
 import type { Metadata } from "next";
 import { Manrope, Albert_Sans } from "next/font/google";
 import { ModalProvider } from "@/components/common/ModalProvider";
+import { KatalogProvider } from "@/components/common/KatalogProvider";
+import { muatKatalog } from "@/lib/katalog";
 import { CompareProvider } from "@/components/common/CompareProvider";
 import { WishlistProvider } from "@/components/common/WishlistProvider";
 import { CartProvider } from "@/components/common/CartProvider";
@@ -82,14 +84,24 @@ export const metadata: Metadata = {
   },
 };
 
+// Katalog dibaca dari basis data saat permintaan datang, bukan dibekukan saat build.
+// Tanpa ini, unit yang ditambah di panel baru muncul setelah situs di-build ulang —
+// persis masalah yang sedang diperbaiki.
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Katalog dibaca dari basis data (yang ditulis panel), bukan dari data statis.
+  // Hasilnya diserahkan ke KatalogProvider supaya komponen klien ikut memakainya.
+  const katalog = muatKatalog();
+
   return (
     <html lang="id" className={`${manrope.variable} ${albertSans.variable}`}>
       <body>
+        <KatalogProvider listings={katalog}>
         <CompareProvider>
           <WishlistProvider>
             <CartProvider>
@@ -117,6 +129,7 @@ export default function RootLayout({
             </CartProvider>
           </WishlistProvider>
         </CompareProvider>
+        </KatalogProvider>
       </body>
     </html>
   );

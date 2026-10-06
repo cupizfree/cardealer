@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import ListingCard from "@/components/listing/ListingCard";
-import { allListings } from "@/data/listings";
+import { useKatalog } from "@/components/common/KatalogProvider";
 
 // Migrated from ../aurexo/home-03.html lines 1117-1645 ("Pencarian Populer"). Unlike home-02.html's own
 // 7-type-tab version (`home-02/PopularSearchesSection.tsx`), this is a single un-tabbed
@@ -38,7 +38,8 @@ export default function PopularSearchesCarousel({
    *  trivial 1px nudge, threaded through to `ListingCard`. */
   cardTitleExtraClassName?: string;
 }) {
-  const listings = slideIds.map((id, index) => ({ listing: allListings.find((l) => l.id === id)!, index }));
+  const katalog = useKatalog();
+  const listings = slideIds.map((id, index) => ({ listing: katalog.find((l) => l.id === id)!, index }));
 
   return (
     <section className="py-100">

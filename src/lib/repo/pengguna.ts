@@ -179,3 +179,23 @@ export function bersihkanSesiKedaluwarsa(): number {
   const r = jalankan("DELETE FROM sesi WHERE kedaluwarsa < datetime('now')");
   return Number(r.changes ?? 0);
 }
+
+/**
+ * Cabut SEMUA sesi milik satu pengguna.
+ * Dipanggil setelah sandi diubah, supaya perangkat yang masih masuk dengan
+ * sandi lama langsung terlempar keluar.
+ */
+export function cabutSemuaSesi(penggunaId: number): number {
+  const r = jalankan("DELETE FROM sesi WHERE pengguna_id = ?", penggunaId);
+  return Number(r.changes ?? 0);
+}
+
+/** Ubah hanya kata sandi. Mengembalikan false kalau pengguna tidak ada. */
+export function ubahSandi(penggunaId: number, sandiTersandi: string): boolean {
+  const r = jalankan(
+    "UPDATE pengguna SET kata_sandi = ? WHERE id = ?",
+    sandiTersandi,
+    penggunaId,
+  );
+  return Number(r.changes ?? 0) > 0;
+}

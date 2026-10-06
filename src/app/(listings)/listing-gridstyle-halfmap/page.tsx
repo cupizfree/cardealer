@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/header/Header";
 import HalfMapListingSection from "@/components/listing/HalfMapListingSection";
-import { allListings } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -18,7 +18,7 @@ export default function ListingGridstyleHalfmapPage() {
   return (
     <>
       <Header variant="style-1" activePath="/listing-gridstyle-halfmap" />
-      <HalfMapListingSection listings={allListings} />
+      <HalfMapListingSection listings={muatKatalog()} />
     </>
   );
 }

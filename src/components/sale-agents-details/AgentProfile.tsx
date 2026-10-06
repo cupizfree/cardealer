@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { allListings, withDetailFallback } from "@/data/listings";
+import { withDetailFallback } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 import type { SaleAgent } from "@/data/saleAgents";
 import HalfMapListingCard from "@/components/listing/HalfMapListingCard";
 import ReviewsSection from "@/components/common/ReviewsSection";
@@ -31,11 +32,14 @@ import ReviewsSection from "@/components/common/ReviewsSection";
 // pattern used throughout `LISTING_DATA_MAP.md`. Same for Customer Reviews (byte-identical to the
 // canonical detail dataset already used by every `/listing-details*` route) — neither of these varies
 // per agent in source, so both stay the one shared block every agent's page shows.
-const dealerInventory = allListings.slice(0, 3);
-const canonicalDetail = withDetailFallback(allListings[0]);
-
 export default function AgentProfile({ agent }: { agent: SaleAgent }) {
   const firstName = agent.name.split(" ")[0];
+
+  // Inventaris diambil dari katalog hidup (basis data yang ditulis panel). Bagian yang
+  // memang tidak punya data per-agen tetap memakai pengisi dari data statis.
+  const katalog = muatKatalog();
+  const dealerInventory = katalog.slice(0, 3);
+  const canonicalDetail = withDetailFallback(katalog[0]);
 
   return (
     <div className="innerpage__content md-mb-30">

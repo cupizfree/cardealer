@@ -4,12 +4,8 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import ListingCardDark from "@/components/listing/ListingCardDark";
-import { allListings } from "@/data/listings";
+import { useKatalog } from "@/components/common/KatalogProvider";
 import type { ListingCardData } from "@/data/listings";
-
-const l13 = allListings.find((l) => l.id === 13)!;
-const l14 = allListings.find((l) => l.id === 14)!;
-const l15 = allListings.find((l) => l.id === 15)!;
 
 // Migrated from ../aurexo/index.html lines 2576-3095 (`.swiper-card`, `.card-box-style-2`). Source's
 // 6 slides are really only 4 distinct cards: slides 1/5 both repeat id 13, slides 2/6 both repeat id
@@ -18,16 +14,12 @@ const l15 = allListings.find((l) => l.id === 15)!;
 // title text ("Mercedes-AMG C-Class") over a different image/brand/price (card-10.jpg/Porsche/
 // $18.200,00) that matches no real canonical record — rendered as its own literal `ListingCardData`
 // override rather than invented into `allListings` as a 4th record.
-const mercedesTitleOverSourceMismatch: ListingCardData = {
-  ...l14,
-  image: "/assets/images/card/card-10.jpg",
-  brandLabel: "Porsche",
-  badge: undefined,
-  price: "Rp 273.000.000",
-};
-
-const SLIDES: ListingCardData[] = [l13, l14, l15, mercedesTitleOverSourceMismatch];
-
+//
+// Kartu bawaan kini diambil dari katalog hidup (basis data yang ditulis panel) — 4 unit
+// pertama. Slide ke-4 yang dulu dipakai adalah bug konten templat: judul unit 14 ditempel
+// di atas gambar/merek/harga yang tidak cocok dengan catatan mana pun, jadi tidak
+// diteruskan. Halaman yang butuh susunan sendiri tetap bisa mengirim prop `slides`.
+//
 // home-09.html reuses this exact same section with its own 5-slide sequence (l13, l14, l15, l14, l14 —
 // confirmed via title read, no 4th "Mercedes over mismatch" content-bug slide here), a lowercase
 // heading ("Pencarian populer di sekitar Anda", not "Trending Searches Near You"), and its own real `radius-40`
@@ -59,7 +51,7 @@ const VIEW_ALL_ICON = (
 
 export default function TrendingSearchesSection({
   heading = "Pencarian Populer di Sekitar Anda",
-  slides = SLIDES,
+  slides,
   sectionExtraClassName,
   cardDividerClassName,
 }: {
@@ -68,6 +60,9 @@ export default function TrendingSearchesSection({
   sectionExtraClassName?: string;
   cardDividerClassName?: string;
 }) {
+  const katalog = useKatalog();
+  const daftar = slides ?? (katalog.slice(0, 4) as ListingCardData[]);
+
   return (
     <section className={`py-100 bg-primary${sectionExtraClassName ? ` ${sectionExtraClassName}` : ""}`}>
       <div className="container wow fadeIn" data-wow-delay="0.3s">
@@ -92,7 +87,7 @@ export default function TrendingSearchesSection({
               1280: { slidesPerView: 4, slidesPerGroup: 4 },
             }}
           >
-            {slides.map((listing, index) => (
+            {daftar.map((listing, index) => (
               <SwiperSlide key={index}>
                 <ListingCardDark listing={listing} dividerClassName={cardDividerClassName} />
               </SwiperSlide>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ListingSidebarSection from "@/components/listing/ListingSidebarSection";
-import { allListings } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -41,7 +41,7 @@ export default function ListingListstyleSidebarPage() {
         </div>
         <div className="tf-spacing-style3 md-hidden" />
 
-        <ListingSidebarSection listings={allListings} initialView="list" />
+        <ListingSidebarSection listings={muatKatalog()} initialView="list" />
       </section>
 
       <Footer />

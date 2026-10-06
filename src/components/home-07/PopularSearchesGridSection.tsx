@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ListingCard from "@/components/listing/ListingCard";
-import { allListings } from "@/data/listings";
+import { useKatalog } from "@/components/common/KatalogProvider";
 import { DARK_CAR_TYPE_ICONS } from "@/components/home/carTypeIcons";
 
 const TABS: { label: string; ids: number[] }[] = [
@@ -36,7 +36,8 @@ const TABS: { label: string; ids: number[] }[] = [
 export default function PopularSearchesGridSection() {
   const [activeTab, setActiveTab] = useState("Sedan");
   const tab = TABS.find((t) => t.label === activeTab) ?? TABS[1];
-  const listings = tab.ids.map((id, index) => ({ listing: allListings.find((l) => l.id === id)!, index }));
+  const katalog = useKatalog();
+  const listings = tab.ids.map((id, index) => ({ listing: katalog.find((l) => l.id === id)!, index }));
 
   return (
     <section className="py-100 flat-tabs background-light">

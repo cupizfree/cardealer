@@ -1,85 +1,106 @@
-# aurexo-nextjs
+# MARF Showroom — panduan proyek
 
-## Project Purpose
+Situs showroom mobil MARF (Purwokerto): katalog publik plus panel internal untuk
+admin dan staff. Panduan ini untuk agen AI maupun pengembang yang bekerja di
+repositori ini.
 
-Migrate the static Aurexo HTML/SCSS/jQuery car-dealer/listing template into this Next.js project,
-page by page, preserving Aurexo's exact visual result and behavior while following the Next.js
-architecture patterns demonstrated by a separate reference project.
+## Tumpukan
 
-## Project Roles
+- **Next.js 15** (App Router) + **React 19**, TypeScript
+- **Sass/SCSS** untuk antarmuka situs publik
+- **Tailwind 4** khusus panel, di-build lewat `@tailwindcss/cli`
+- **SQLite** lewat `node:sqlite` (bawaan Node 22.5+) — tanpa dependensi npm
+- Node **24+** (dikembangkan di Node 26)
 
-Three projects, one writable:
+## Perintah
 
-- **`../aurexo`** — the original static site. READ-ONLY. Source of truth for content, visuals, and behavior.
-- **`../luminor-nextjs`** — an unrelated existing Next.js project. READ-ONLY. Source of truth for HOW to
-  build things in Next.js (architecture/patterns only — never its visual design or content).
-- **`aurexo-nextjs`** (this project) — the only read/write target. Everything gets built here.
-
-## Read / Write Boundaries
-
-| Path | Access |
-|---|---|
-| `../aurexo/**` | READ-ONLY |
-| `../luminor-nextjs/**` | READ-ONLY |
-| `aurexo-nextjs/**` | READ + WRITE |
-
-Full detail and conflict-resolution rules: `.claude/rules/source-priority.md`.
-
-## Source of Truth
-
-```
-Aurexo UI / Content / Behavior  +  Luminor Next.js Architecture/Logic  →  aurexo-nextjs
+```bash
+npm run dev              # server pengembangan
+npm run build            # build CSS panel, lalu next build
+npm run start            # server produksi (bawaan port 3000)
+npm run css:panel        # build ulang CSS panel saja
+npm run uji              # uji lengkap di basis data TERPISAH (port 3101)
 ```
 
-Aurexo answers "what must the user see and how must it behave." Luminor answers "how should that be
-structured in Next.js." Never let Luminor's visual design leak in; never let Aurexo's HTML/jQuery get
-pasted in verbatim.
+## Basis data
 
-## Core Migration Rules
+- Berkas: `.data/marf.db` — **tidak ikut git** (`.gitignore`), 404 di GitHub
+- Jalur bisa diubah lewat `MARF_DB_PATH`; skema dibuat otomatis saat koneksi pertama
+- Enam tabel: `pengguna`, `sesi`, `dealer`, `unit`, `prospek`, `log_aktivitas`
+- SQL terpusat di `src/lib/repo/` — jangan menulis SQL di komponen
+- Sandi disimpan dengan scrypt + garam (`src/lib/sandi.ts`)
 
-See `.claude/rules/`:
+### Basis data uji terpisah — WAJIB
 
-- `source-priority.md` — the rule above, in full, plus conflict resolution.
-- `nextjs-architecture.md` — concrete Luminor-derived conventions (routing, components, data/types,
-  styling, client/server boundaries, dependencies) adapted to Aurexo's actual page inventory.
-- `html-fidelity.md` — fidelity requirements; migration is not redesign; heading-semantics-vs-typography-class rule.
-- `migration-quality.md` — completion criteria, search-before-create order, Package Principle.
+`npm run uji` menyalakan server uji di port **3101** dengan
+`MARF_DB_PATH=./.data/marf-uji.db`, mengisi data awal, menjalankan
+`scripts/uji-produksi.sh`, lalu memeriksa kebocoran.
 
-## Architecture Reference
+Jangan pernah menjalankan uji tulis-menulis terhadap basis data produksi. Versi
+lama melakukannya dan meninggalkan dua unit sampah setiap kali dijalankan.
 
-Read before migrating anything unfamiliar:
+Setiap unit yang dibuat oleh uji **harus** dihapus di akhir. `uji-produksi.sh`
+mencatat setiap ID yang dibuat ke larik `DIBUAT` dan menghapusnya lewat `trap`
+saat keluar — termasuk masuk ulang, karena bagian akhir uji mengetes `logout`
+dan cookie admin sudah mati saat pembersihan berjalan.
 
-- `docs/migration/LUMINOR_ARCHITECTURE.md` — actual Luminor conventions, with file paths.
-- `docs/migration/AUREXO_SOURCE.md` — actual Aurexo page inventory, SCSS/JS architecture, with file paths.
-- `docs/migration/COMPONENT_MAP.md` — Aurexo → target component/route → Luminor reference mapping, plus the
-  open ambiguities list. **Check this before creating any component.**
-- `docs/migration/MIGRATION_STATUS.md` — per-page status table (`TODO`/`ANALYZED`/`IN_PROGRESS`/`MIGRATED`/`VERIFIED`/`BLOCKED`).
+## Katalog publik membaca basis data
 
-## Component Reuse
+Situs publik membaca katalog dari basis data, bukan dari data statis:
 
-Search order, every time, before creating anything: (1) this codebase (`src/components`), (2)
-`docs/migration/COMPONENT_MAP.md`, (3) an already-migrated related Aurexo page, (4) `../luminor-nextjs` for
-architectural pattern. Never create numbered components (`Hero2`, `Header3`) just because another Aurexo
-HTML variant exists — see the variant classification rule in `nextjs-architecture.md`.
+- `src/lib/katalog.ts` — jembatan. `muatKatalog()` mengubah baris tabel `unit`
+  menjadi bentuk `Listing` yang dipakai seluruh komponen
+- Hanya unit berstatus `tersedia` atau `dipesan` yang terbit
+- Kalau basis data kosong, `muatKatalog()` jatuh ke `src/data/listings.ts`
+- `src/components/common/KatalogProvider.tsx` menyalurkan katalog ke komponen
+  klien lewat konteks; komponen klien memakai `useKatalog()` / `useListings()`
 
-## Workflow
+`src/data/listings.ts` **hanya** cadangan dan sumber data awal. Jangan
+menjadikannya sumber utama di tempat baru.
 
-Use Skills for migration work instead of improvising a procedure:
+`layout.tsx` menetapkan `dynamic = "force-dynamic"` supaya perubahan dari panel
+langsung terlihat tanpa build ulang.
 
-- `/analyze-base` — re-analyze `../luminor-nextjs` when an architecture pattern is unfamiliar or undocumented.
-- `/analyze-html <file>.html` — analyze one Aurexo page before implementing it.
-- `/migrate-page <file>.html` — the full page-migration workflow (manual invocation only).
-- `/migrate-section <file>.html "<section>"` — scoped single-section work.
-- `/verify-migration <route>` — post-migration audit against both Aurexo and Luminor (manual invocation only).
+## Aturan yang sudah memakan korban
 
-No Aurexo page has been migrated yet. Recommended first page: `about-us.html` (see
-`docs/migration/COMPONENT_MAP.md` and `MIGRATION_STATUS.md` for rationale) — it exercises the header
-(one skin), footer, root layout, ported SCSS, and typography conventions needed by nearly every other page,
-without `index.html`'s stacked complexity (6 modals, 4 carousel types, inline calculator, parallax).
+- **Jangan ganti teks massal di seluruh pohon sumber.** Penggantian literal ikut
+  mengubah nama identifier dan jalur impor (`sortListings` → `sortUnit`,
+  `INITIAL_GALLERY` → `INITIAL_GSEMUAERY`). Pakai tambalan presisi per berkas.
+- **Kalau menerjemahkan nama yang dibandingkan di tempat lain, ubah
+  pembandingnya juga.** `ProductTabs.tsx` pernah menampilkan tab yang tidak akan
+  pernah aktif karena nama tab diterjemahkan tetapi `active === "..."` tidak.
+- **Build harus jalan sendirian.** Matikan server lain, `tsserver`, dan peramban
+  tanpa kepala dulu, lalu batasi heap:
+  `NODE_OPTIONS="--max-old-space-size=896"`. Kalau tidak, kena SIGKILL karena
+  kehabisan memori.
+- **`ss -lptn -p` tidak bisa melihat pemilik soket di lingkungan ini.** Untuk
+  mematikan proses, cari lewat `/proc/*/environ` (lihat `scripts/uji.sh`).
+- **Cookie sesi ber-flag `Secure`.** Uji API lewat HTTPS/tunnel, bukan HTTP polos,
+  atau login akan gagal tanpa pesan.
+- **Tailwind dipasang tanpa `postcss.config` dan tanpa `@layer`.** Reset
+  universal situs (`* { margin:0; padding:0; color:#1c1c1c }`) selalu menang.
+- **Harga dalam Rupiah**, bilangan bulat, tanpa desimal.
 
-## Verification
+## Tata letak
 
-Available checks: `npm run lint`, `npm run build` (runs TypeScript checking as part of the production
-build). A migrated unit is not `MIGRATED` in `docs/migration/MIGRATION_STATUS.md` until these pass and the
-criteria in `migration-quality.md` are met; not `VERIFIED` until an explicit `/verify-migration` pass finds
-no outstanding CRITICAL/HIGH issues.
+```
+src/app/            rute App Router (publik, (dashboard), (panel), api/)
+src/components/     komponen antarmuka
+src/lib/            backend: db, skema, auth, repo/, katalog.ts, kredit.ts
+src/data/           data statis (cadangan katalog, konten pemasaran)
+src/styles/         sumber dan hasil build CSS panel
+scripts/            skrip sekali-jalan dan harness uji
+```
+
+## Dokumen lama
+
+`docs/migration/` dan `.claude/rules/` adalah catatan dari pekerjaan awal
+memindahkan templat Aurexo ke Next.js. Keduanya masih merujuk proyek tetangga
+(`../aurexo`, `../luminor-nextjs`) yang **sudah tidak ada**. Jangan dijadikan
+acuan; simpan sebagai catatan sejarah saja.
+
+## Kredit
+
+Antarmuka dibangun di atas templat **Aurexo** oleh
+[Themesflat](https://github.com/themesflatdev/aurexo-nextjs), lalu diubah
+menyeluruh. Lihat `LICENSE` untuk catatan cakupan lisensi.

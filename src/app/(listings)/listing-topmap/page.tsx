@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import TopMapListingSection from "@/components/listing/TopMapListingSection";
-import { allListings } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -17,7 +17,7 @@ export default function ListingTopmapPage() {
   return (
     <>
       <Header variant="style-1" activePath="/listing-topmap" />
-      <TopMapListingSection listings={allListings} />
+      <TopMapListingSection listings={muatKatalog()} />
       <Footer />
     </>
   );

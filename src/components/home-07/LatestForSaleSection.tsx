@@ -1,7 +1,7 @@
 import Link from "next/link";
 import HalfMapListingCard from "@/components/listing/HalfMapListingCard";
 import SellBuyPromoBanner from "@/components/common/SellBuyPromoBanner";
-import { allListings } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 const CARD_IDS = [1, 2, 3, 1];
 
@@ -15,7 +15,10 @@ const CARD_IDS = [1, 2, 3, 1];
 // via its new `layout="stack"` prop, since this page stacks them vertically in a sidebar column instead
 // of the `row`/`col-lg-6` layout every other caller uses (confirmed via source diff).
 export default function LatestForSaleSection() {
-  const listings = CARD_IDS.map((id) => allListings.find((l) => l.id === id)!);
+  const katalog = muatKatalog();
+  const listings = CARD_IDS.map((id) => katalog.find((l) => l.id === id)).filter(
+    (l): l is NonNullable<typeof l> => Boolean(l),
+  );
 
   return (
     <section className="bg-white py-100">

@@ -13,16 +13,17 @@ import FinancingCalculatorSection from "@/components/home/FinancingCalculatorSec
 import ClientsReviewsCarousel from "@/components/common/ClientsReviewsCarousel";
 import DownloadAppCtaSection from "@/components/home-07/DownloadAppCtaSection";
 import { home09ClientTestimonials } from "@/data/clientTestimonials";
-import { allListings } from "@/data/listings";
+import { muatKatalog } from "@/lib/katalog";
 
 export const metadata: Metadata = {
   title: "Beranda Varian 9",
   description: "MARF Showroom Mobil Purwokerto — jual beli mobil bekas berkualitas di Banyumas. Unit terawat, harga jujur, dokumen lengkap. Hubungi WhatsApp 0822-4109-8298.",
 };
 
-const l13 = allListings.find((l) => l.id === 13)!;
-const l14 = allListings.find((l) => l.id === 14)!;
-const l15 = allListings.find((l) => l.id === 15)!;
+// Unit populer diambil dari katalog hidup (basis data yang ditulis panel), bukan
+// dari data statis. Empat slide pertama dipakai; urutan sumber (1,2,3,2,2)
+// dipertahankan apa adanya.
+const populer = muatKatalog().slice(0, 4);
 
 // Migrated from ../aurexo/home-09.html (4582 lines). `<body class="home-style-9">` — a real, distinct
 // page-wide `radius-40` (rounded corners) visual signature carried by nearly every section on this
@@ -274,7 +275,7 @@ export default function Home09() {
 
       <TrendingSearchesSection
         heading="Pencarian populer di sekitar Anda"
-        slides={[l13, l14, l15, l14, l14]}
+        slides={[populer[0], populer[1], populer[2], populer[1], populer[1]].filter(Boolean)}
         sectionExtraClassName="radius-40"
         cardDividerClassName="divider-blur mb-14"
       />

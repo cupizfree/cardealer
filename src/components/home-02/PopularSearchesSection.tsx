@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import ListingCard from "@/components/listing/ListingCard";
-import { allListings } from "@/data/listings";
+import { useKatalog } from "@/components/common/KatalogProvider";
 import { DARK_CAR_TYPE_ICONS } from "@/components/home/carTypeIcons";
 
 // Migrated from ../aurexo/home-02.html lines 1381-3409 (`.flat-tabs`, "Pencarian Populer"). 7 type tabs,
@@ -47,7 +47,8 @@ export default function PopularSearchesSection({
 }) {
   const [activeTab, setActiveTab] = useState("Sedan");
   const tab = tabs.find((t) => t.label === activeTab) ?? tabs[1];
-  const listings = tab.ids.map((id, index) => ({ listing: allListings.find((l) => l.id === id)!, index }));
+  const katalog = useKatalog();
+  const listings = tab.ids.map((id, index) => ({ listing: katalog.find((l) => l.id === id)!, index }));
 
   return (
     <section className={sectionClassName}>

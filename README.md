@@ -297,3 +297,26 @@ Purwokerto, Kabupaten Banyumas, Jawa Tengah
 Antarmuka dibangun di atas templat **Aurexo** oleh [Themesflat](https://github.com/themesflatdev/aurexo-nextjs), lalu diubah menyeluruh: palet warna diganti ke identitas MARF, seluruh teks diterjemahkan ke bahasa Indonesia, logo dan favicon diganti, serta data contoh ditukar dengan unit dan dealer sungguhan.
 
 Struktur, rute, dan komponen mengikuti templat asalnya; isi dan tampilannya milik MARF.
+
+---
+
+## Lisensi
+
+Kode proyek ini (backend SQLite, autentikasi, API, panel admin/staff, skema basis data, skrip, serta seluruh isi dan terjemahan bahasa Indonesia) dirilis dengan **lisensi MIT** — lihat [`LICENSE`](LICENSE).
+
+Antarmuka situs publik dibangun di atas templat komersial **Aurexo** milik Themesflat. Repositori templat itu tidak menyertakan berkas lisensi apa pun, sehingga hak ciptanya tetap pada pemiliknya. Bagian antarmuka yang berasal dari templat tersebut **tidak** dicakup hibah MIT di atas dan tetap tunduk pada ketentuan lisensi templat dari pembuatnya.
+
+---
+
+## Pengembangan
+
+```bash
+npm install
+npm run dev            # server pengembangan
+npm run build          # build produksi
+npm run uji            # uji lengkap di basis data terpisah
+```
+
+Panduan lengkap untuk kontributor dan agen AI ada di [`CLAUDE.md`](CLAUDE.md).
+
+Uji berjalan di basis data terpisah (`.data/marf-uji.db`, port 3101) sehingga tidak pernah menyentuh data produksi.

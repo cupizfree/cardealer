@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { penggunaSekarang } from "@/lib/auth";
 import FormMasuk from "./FormMasuk";
@@ -30,7 +31,10 @@ export default async function HalamanMasuk() {
         <FormMasuk />
 
         <p className="mt-5 border-t border-garis pt-4 text-center text-[11.5px] leading-relaxed text-redup">
-          Hanya untuk pegawai MARF. Hubungi admin kalau lupa kata sandi.
+          Hanya untuk pegawai MARF.{" "}
+          <Link href="/lupa-sandi" className="font-semibold text-marf hover:underline">
+            Lupa kata sandi?
+          </Link>
         </p>
       </div>
     </div>

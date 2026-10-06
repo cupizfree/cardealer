@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
 import ListingCard from "@/components/listing/ListingCard";
-import { allListings } from "@/data/listings";
+import { useListings } from "@/components/common/KatalogProvider";
 
 // Migrated from ../aurexo/index.html lines 1107-2307 (`.flat-tabs`). Both tabs' card sets exactly
 // match existing canonical listings (ids 1-8, confirmed via full source title/spec/price read — the
@@ -18,7 +18,7 @@ const USED_CAR_IDS = [1, 2, 3, 4, 5, 6];
 export default function NewCarsSection() {
   const [activeTab, setActiveTab] = useState<"new" | "used">("new");
   const ids = activeTab === "new" ? NEW_CAR_IDS : USED_CAR_IDS;
-  const listings = ids.map((id) => allListings.find((l) => l.id === id)!);
+  const listings = useListings(ids);
 
   return (
     <section className="container py-100 flat-tabs">

@@ -26,6 +26,19 @@ CREATE TABLE IF NOT EXISTS sesi (
 );
 CREATE INDEX IF NOT EXISTS idx_sesi_pengguna ON sesi(pengguna_id);
 
+-- Tautan reset sandi sekali pakai.
+-- Yang disimpan hanya SIDIK (hash) token, bukan tokennya — kalau basis data
+-- bocor, tautannya tidak bisa dipakai ulang.
+CREATE TABLE IF NOT EXISTS reset_sandi (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  pengguna_id INTEGER NOT NULL REFERENCES pengguna(id) ON DELETE CASCADE,
+  token_hash  TEXT    NOT NULL UNIQUE,
+  kedaluwarsa TEXT    NOT NULL,
+  dipakai     INTEGER NOT NULL DEFAULT 0,
+  dibuat_pada TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_reset_pengguna ON reset_sandi(pengguna_id);
+
 CREATE TABLE IF NOT EXISTS dealer (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   slug        TEXT    NOT NULL UNIQUE,
