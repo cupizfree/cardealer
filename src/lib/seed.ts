@@ -6,6 +6,7 @@ import { jalankan, satu, transaksi } from "./db";
 import { hashSandi } from "./sandi";
 import { allListings, FITUR_UNIT } from "@/data/listings";
 import { allDealers } from "@/data/dealers";
+import { bodiDariTeks } from "./bodi";
 
 /** "Rp 195.000.000" -> 195000000 */
 function angkaDariHarga(teks: string | undefined): number {
@@ -93,14 +94,15 @@ export function seedJikaKosong(): HasilSeed {
 
       jalankan(
         `INSERT INTO unit
-          (slug, judul, merek, model, tahun, harga, harga_cicilan, kilometer, transmisi,
+          (slug, judul, merek, model, tipe, tahun, harga, harga_cicilan, kilometer, transmisi,
            bahan_bakar, warna, lokasi, deskripsi, status, unggulan, dealer_id, dibuat_oleh,
            galeri, fitur, spesifikasi)
-         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
         l.slug,
         l.title,
         l.brandLabel,
         l.title.replace(l.brandLabel, "").trim() || null,
+        l.bodyStyle ?? bodiDariTeks(l.slug, l.title),
         Number(spec.year) || null,
         angkaDariHarga(l.price),
         l.financing?.monthlyPrice ?? null,

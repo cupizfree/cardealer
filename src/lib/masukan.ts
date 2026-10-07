@@ -13,6 +13,7 @@ import {
   wajibTeks,
 } from "./api";
 import { STATUS_UNIT, type MasukanUnit, type StatusUnit } from "./repo/unit";
+import { JENIS_BODI } from "./bodi";
 import {
   SUMBER_PROSPEK,
   STATUS_PROSPEK,
@@ -47,6 +48,7 @@ export function bacaUnit(b: Record<string, unknown>, mode: "baru" | "ubah"): Par
   }
 
   if (ada(b, "model")) o.model = teksOpsional(b.model, 120);
+  if (ada(b, "tipe")) o.tipe = bacaTipe(b.tipe);
   if (ada(b, "tahun")) o.tahun = angkaOpsional(b.tahun, "tahun", 1900, 2100);
   if (ada(b, "harga_cicilan")) o.harga_cicilan = teksOpsional(b.harga_cicilan, 60);
   if (ada(b, "kilometer")) o.kilometer = teksOpsional(b.kilometer, 40);
@@ -65,6 +67,22 @@ export function bacaUnit(b: Record<string, unknown>, mode: "baru" | "ubah"): Par
   if (ada(b, "spesifikasi")) o.spesifikasi = objek(b.spesifikasi);
 
   return o;
+}
+
+// ── Jenis bodi ─────────────────────────────────────────────────────────────
+
+/**
+ * Hanya slug yang dikenal yang diterima.
+ *
+ * Slug ini dipakai di URL (`?tipe=suv`) dan dibandingkan langsung oleh
+ * penyaring, jadi nilai bebas berarti unit itu tidak akan pernah muncul di
+ * kategori mana pun — lebih baik ditolak daripada tersimpan tapi tak terpakai.
+ */
+function bacaTipe(v: unknown): string | null {
+  const s = teksOpsional(v, 40);
+  if (!s) return null;
+  const k = s.toLowerCase();
+  return (JENIS_BODI as readonly string[]).includes(k) ? k : null;
 }
 
 // ── Fitur unit ─────────────────────────────────────────────────────────────

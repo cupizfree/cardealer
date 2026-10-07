@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Listing } from "@/data/listings";
 import type { FilterState } from "./FilterSidebar";
+import { keQuery } from "@/lib/saring";
 
 export type SortOption =
   | "best-match"
@@ -41,7 +42,7 @@ const UNSUPPORTED_SORTS = new Set<SortOption>(["best-match", "nearest-location",
 const PAGE_SIZE = 8;
 
 function parsePrice(price: string): number {
-  // "$44.900,00" -> 44900.00 (source uses "." as thousands separator, "," as decimal)
+  // "Rp 315.000.000" -> 315000000 (Rupiah: "." ribuan, tanpa desimal)
   const numeric = price.replace(/[^0-9.,]/g, "").replace(/\./g, "").replace(",", ".");
   return Number.parseFloat(numeric) || 0;
 }
@@ -140,6 +141,13 @@ function applyFilters(listings: Listing[], filters: FilterState): Listing[] {
     if (filters.transmission.length > 0 && !filters.transmission.some((v) => fuzzyMatch(listing.spec.transmission, v))) {
       return false;
     }
+    // Jenis bodi dibandingkan PERSIS (slug), bukan `fuzzyMatch`: himpunannya
+    // tertutup, dan `fuzzyMatch("", "suv")` bernilai true karena
+    // "suv".includes("") — unit tanpa jenis bodi akan lolos ke semua kategori.
+    if (filters.bodyStyle.length > 0) {
+      const b = (listing.bodyStyle ?? "").toLowerCase();
+      if (!b || !filters.bodyStyle.some((v) => v.toLowerCase() === b)) return false;
+    }
     const price = parsePrice(listing.price);
     if (price > 0 && (price < filters.priceRange[0] || price > filters.priceRange[1])) {
       return false;
@@ -151,7 +159,11 @@ function applyFilters(listings: Listing[], filters: FilterState): Listing[] {
 // Shared filter/sort/pagination state for every listing-browse page (grid2/3/4-columns,
 // gridstyle-halfmap, liststyle-*, topmap, ...) — extracted once a second consumer needed the exact
 // same ~150 lines of stateful logic, rather than duplicating it per page.
-export function useListingFilters(listings: Listing[]) {
+//
+// `awal` adalah keadaan awal yang datang dari kueri URL (`?tipe=`, `?merek=`, `?harga=`). Sebelum
+// ini tidak ada satu pun halaman listing yang membaca `searchParams`, jadi 26 tautan navigasi
+// merender halaman yang sama persis — kelihatan berfungsi, tidak menyaring apa pun.
+export function useListingFilters(listings: Listing[], awal?: Partial<FilterState>) {
   const [sort, setSort] = useState<SortOption>("lowest-price");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [page, setPage] = useState(1);
@@ -162,33 +174,8 @@ export function useListingFilters(listings: Listing[]) {
     return [Math.floor(Math.min(...prices) / 500) * 500, Math.ceil(Math.max(...prices) / 500) * 500];
   }, [listings]);
 
-  const [filters, setFilters] = useState<FilterState>({
-    brand: [],
-    model: [],
-    fuelType: [],
-    transmission: [],
-    priceRange: [priceMin, priceMax],
-    bodyStyle: [],
-    doorCount: [],
-    cylinders: [],
-    exteriorColor: null,
-    interiorColor: null,
-    features: [],
-  });
-
-  // Re-anchor the default range once the real min/max is known (listings are static per-page, so
-  // this effectively only runs once, but stays correct if the section is ever reused with a
-  // different listings array).
-  useEffect(() => {
-    setFilters((prev) => ({ ...prev, priceRange: [priceMin, priceMax] }));
-  }, [priceMin, priceMax]);
-
-  const filteredListings = useMemo(() => applyFilters(listings, filters), [listings, filters]);
-  const sortedListings = useMemo(() => sortListings(filteredListings, sort), [filteredListings, sort]);
-  const filterTags = useMemo(() => buildFilterTags(filters, priceMin, priceMax), [filters, priceMin, priceMax]);
-
-  function clearAllFilters() {
-    setFilters({
+  const kosong = useCallback(
+    (): FilterState => ({
       brand: [],
       model: [],
       fuelType: [],
@@ -200,7 +187,55 @@ export function useListingFilters(listings: Listing[]) {
       exteriorColor: null,
       interiorColor: null,
       features: [],
-    });
+    }),
+    [priceMin, priceMax],
+  );
+
+  const [filters, setFilters] = useState<FilterState>(() => ({ ...kosong(), ...awal }));
+
+  // `awal` datang sebagai objek baru setiap render dari komponen server, jadi
+  // identitasnya tidak bisa jadi dependensi. Yang stabil adalah bentuknya.
+  const kunciAwal = JSON.stringify(awal ?? {});
+  const awalRef = useRef(awal);
+  awalRef.current = awal;
+  const kunciSebelum = useRef(kunciAwal);
+
+  // Navigasi ke rute yang SAMA dengan kueri berbeda (klik "SUV" lalu "MPV" di
+  // navigasi) tidak me-remount komponen ini, jadi nilai awal `useState` di atas
+  // hanya terpakai sekali. Tanpa efek ini, tautan kedua tidak terasa apa-apa.
+  useEffect(() => {
+    if (kunciSebelum.current === kunciAwal) return;
+    kunciSebelum.current = kunciAwal;
+    setFilters({ ...kosong(), ...awalRef.current });
+    setPage(1);
+  }, [kunciAwal, kosong]);
+
+  // Rentang harga dari kueri tidak boleh ditimpa saat harga min/maks katalog
+  // diketahui — efek lama selalu menimpa, sehingga `?harga=` tidak akan pernah
+  // berpengaruh. Hanya di-anchor ulang kalau kueri memang tidak menyebut harga.
+  const adaRentangUrl = useMemo(() => !!awal?.priceRange, [kunciAwal]);
+  useEffect(() => {
+    if (adaRentangUrl) return;
+    setFilters((prev) => ({ ...prev, priceRange: [priceMin, priceMax] }));
+  }, [priceMin, priceMax, adaRentangUrl]);
+
+  const filteredListings = useMemo(() => applyFilters(listings, filters), [listings, filters]);
+  const sortedListings = useMemo(() => sortListings(filteredListings, sort), [filteredListings, sort]);
+  const filterTags = useMemo(() => buildFilterTags(filters, priceMin, priceMax), [filters, priceMin, priceMax]);
+
+  // Tulis keadaan filter kembali ke URL supaya tautannya bisa dibagikan dan
+  // tombol kembali bekerja seperti yang diharapkan.
+  //
+  // `history.replaceState`, bukan `router.replace`: yang terakhir memicu render
+  // ulang komponen server dan menghapus keadaan yang baru saja diubah pengguna.
+  useEffect(() => {
+    const q = keQuery(filters, priceMin, priceMax);
+    const url = q ? `${window.location.pathname}?${q}` : window.location.pathname;
+    window.history.replaceState(null, "", url);
+  }, [filters, priceMin, priceMax]);
+
+  function clearAllFilters() {
+    setFilters(kosong());
   }
 
   const totalPages = Math.max(1, Math.ceil(sortedListings.length / PAGE_SIZE));

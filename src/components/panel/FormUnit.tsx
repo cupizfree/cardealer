@@ -12,6 +12,7 @@ import {
   TOMBOL_BAHAYA,
   TOMBOL_UTAMA,
 } from "./ui";
+import { JENIS_BODI, labelBodi } from "@/lib/bodi";
 
 type Dealer = { id: number; nama: string; kota: string | null };
 
@@ -19,6 +20,8 @@ export type NilaiUnit = {
   judul: string;
   merek: string;
   model: string;
+  /** Slug jenis bodi (`suv`, `mpv`, …) — dipakai penyaring di situs publik. */
+  tipe: string;
   tahun: string;
   harga: string;
   harga_cicilan: string;
@@ -48,6 +51,7 @@ const KOSONG: NilaiUnit = {
   judul: "",
   merek: "",
   model: "",
+  tipe: "",
   tahun: "",
   harga: "",
   harga_cicilan: "",
@@ -182,6 +186,7 @@ export default function FormUnit({
       judul: n.judul,
       merek: n.merek,
       model: n.model || null,
+      tipe: n.tipe || null,
       tahun: n.tahun ? Number(n.tahun) : null,
       harga: Number(String(n.harga).replace(/[^0-9]/g, "")) || 0,
       harga_cicilan: n.harga_cicilan || null,
@@ -268,6 +273,17 @@ export default function FormUnit({
             onChange={(e) => set("model", e.target.value)}
             placeholder="Avanza 1.5 G"
           />
+        </Medan>
+
+        <Medan label="Jenis bodi">
+          <select className={INPUT} value={n.tipe} onChange={(e) => set("tipe", e.target.value)}>
+            <option value="">— belum diisi —</option>
+            {JENIS_BODI.map((t) => (
+              <option key={t} value={t}>
+                {labelBodi(t)}
+              </option>
+            ))}
+          </select>
         </Medan>
       </div>
 

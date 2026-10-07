@@ -13,6 +13,8 @@ export type Unit = {
   judul: string;
   merek: string;
   model: string | null;
+  /** Slug jenis bodi (`suv`, `mpv`, …) — lihat `src/lib/bodi.ts`. */
+  tipe: string | null;
   tahun: number | null;
   harga: number;
   harga_cicilan: string | null;
@@ -54,6 +56,7 @@ export function dariBaris(r: Baris): Unit {
     judul: String(r.judul),
     merek: String(r.merek),
     model: teks(r.model),
+    tipe: teks(r.tipe),
     tahun: r.tahun === null || r.tahun === undefined ? null : Number(r.tahun),
     harga: Number(r.harga),
     harga_cicilan: teks(r.harga_cicilan),
@@ -143,6 +146,7 @@ export type MasukanUnit = {
   judul: string;
   merek: string;
   model?: string | null;
+  tipe?: string | null;
   tahun?: number | null;
   harga: number;
   harga_cicilan?: string | null;
@@ -170,14 +174,15 @@ export function slugTerpakai(slug: string, kecualiId?: number): boolean {
 export function buatUnit(m: MasukanUnit, penggunaId: number | null): Unit {
   jalankan(
     `INSERT INTO unit
-      (slug, judul, merek, model, tahun, harga, harga_cicilan, kilometer, transmisi,
+      (slug, judul, merek, model, tipe, tahun, harga, harga_cicilan, kilometer, transmisi,
        bahan_bakar, warna, lokasi, deskripsi, status, unggulan, dealer_id, dibuat_oleh,
        galeri, fitur, spesifikasi)
-     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
     m.slug ?? "",
     m.judul,
     m.merek,
     m.model ?? null,
+    m.tipe ?? null,
     m.tahun ?? null,
     m.harga,
     m.harga_cicilan ?? null,
@@ -214,6 +219,7 @@ export function ubahUnit(id: number, m: Partial<MasukanUnit>): Unit | null {
   if (m.judul !== undefined) set("judul", m.judul);
   if (m.merek !== undefined) set("merek", m.merek);
   if (m.model !== undefined) set("model", m.model);
+  if (m.tipe !== undefined) set("tipe", m.tipe);
   if (m.tahun !== undefined) set("tahun", m.tahun);
   if (m.harga !== undefined) set("harga", m.harga);
   if (m.harga_cicilan !== undefined) set("harga_cicilan", m.harga_cicilan);

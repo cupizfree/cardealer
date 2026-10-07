@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS unit (
   judul         TEXT    NOT NULL,
   merek         TEXT    NOT NULL,
   model         TEXT,
+  tipe          TEXT,
   tahun         INTEGER,
   harga         INTEGER NOT NULL,
   harga_cicilan TEXT,

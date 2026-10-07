@@ -1,21 +1,45 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo } from "react";
 import {
-  listingMenuColumns,
+  informasiMenuColumns,
+  kolomHarga,
+  layananMenuColumns,
   listingPromo,
-  newsMenuLinks,
-  pagesMenuColumns,
+  type ListingMenuColumn,
 } from "@/data/menu";
 import { ChevronDownIcon } from "@/components/common/icons";
+import { useKatalog } from "@/components/common/KatalogProvider";
+import { fasetJenis, fasetMerek } from "@/lib/faset";
 
-// Menu utama MARF Showroom Mobil Purwokerto — satu arah: showroom mobil.
+/**
+ * Tautan katalog penuh. Semua tautan di kolom Katalog memakai kueri penyaring,
+ * jadi tanpa ini tidak ada jalan dari navigasi ke seluruh stok — dan mengklik
+ * "Katalog" sendiri harus membawa ke katalog, bukan diam.
+ */
+const KATALOG_SEMUA = "/listing-grid3-columns";
+
+// Menu utama MARF Showroom Mobil Purwokerto.
 // Dropdown desktop murni CSS (`.menu-item-has-children:hover .sub-menu`), tanpa state klien;
-// JS hanya dipakai untuk nav mobile (lihat MobileMenu.tsx). `current-menu-item`/`current-item`
-// menandai halaman aktif lewat `activePath`.
+// JS hanya dipakai untuk nav mobile (lihat MobileMenu.tsx). `current-menu-item` menandai halaman
+// aktif lewat `activePath`.
 //
-// Perubahan dari template asal: kisi "Homepage 01-10" dibuang (tidak relevan untuk showroom
-// sungguhan) dan diganti tautan "Beranda" biasa — kategorinya sudah ada di kolom
-// "Jenis Mobil" pada menu Katalog. Label seluruhnya bahasa Indonesia.
+// Isi menu ini sengaja dibatasi pada apa yang dicari pembeli showroom: unit apa yang ada,
+// dan layanan apa yang tersedia. Yang dibuang dari templat asal:
+//
+//   - Kisi "Homepage 01-10" (sisa demo).
+//   - Kolom "Tampilan Daftar" (Grid 4 Kolom / Daftar + Sidebar / Dengan Peta / Peta Penuh) —
+//     pengunjung tidak datang untuk memilih tata letak halaman.
+//   - Lima dari enam tautan blog (semuanya satu blog yang sama dengan gaya berbeda).
+//   - Menu "Halaman" templat: Halaman 404, Segera Hadir, Dasbor, dan halaman internal toko.
+//   - "Jual Mobil" yang muncul tiga kali (menu atas, menu Halaman, kartu promo) — kini satu,
+//     di dalam Layanan.
+//
+// Kolom "Jenis Mobil" dan "Merek" tidak ditulis di `src/data/menu.ts`: keduanya dihitung dari
+// stok yang sedang tayang (`src/lib/faset.ts`), jadi tidak akan pernah ada kategori yang
+// mengarah ke halaman kosong.
 export default function Nav({
   activePath,
   listClassName,
@@ -29,6 +53,32 @@ export default function Nav({
   /** `index.html` asal memakai `mr-18` (default); varian lain `margin-right-auto` / `mr-50`. */
   wrapperClassName?: string;
 }) {
+  const katalog = useKatalog();
+
+  const kolom = useMemo<ListingMenuColumn[]>(() => {
+    const daftar: ListingMenuColumn[] = [];
+
+    const jenis = fasetJenis(katalog);
+    if (jenis.length) {
+      daftar.push({
+        title: "Jenis Mobil",
+        links: jenis.map((f) => ({ label: `${f.label} (${f.jumlah})`, href: f.href })),
+      });
+    }
+
+    daftar.push(kolomHarga);
+
+    const merek = fasetMerek(katalog);
+    if (merek.length) {
+      daftar.push({
+        title: "Merek",
+        links: merek.map((f) => ({ label: `${f.label} (${f.jumlah})`, href: f.href })),
+      });
+    }
+
+    return daftar;
+  }, [katalog]);
+
   return (
     <nav id="main-nav" className={`main-nav ${wrapperClassName}`}>
       <ul id="menu-primary-menu" className={`menu${listClassName ? ` ${listClassName}` : ""}`}>
@@ -41,32 +91,21 @@ export default function Nav({
             activePath?.startsWith("/listing") ? " current-menu-item" : ""
           }`}
         >
-          <a>
+          <Link href={KATALOG_SEMUA}>
             Katalog <ChevronDownIcon className="chevron-down" stroke={topLevelChevronColor} />
-          </a>
+          </Link>
           <div className="sub-menu sub-menu--full sub-menu--listing">
             <div className="sub-menu--listing-nav">
-              {listingMenuColumns.map((column) => (
-                <div className="sub-menu-item-listing" key={column.title}>
+              {kolom.map((kolomItem) => (
+                <div className="sub-menu-item-listing" key={kolomItem.title}>
                   <p className="h5 mb-16 menu-item-inner-title">
-                    {column.title}
+                    {kolomItem.title}
                     <ChevronDownIcon className="chevron-down hidden lg-show" />
                   </p>
                   <ul className="flex flex-col gap-16 sub-menu-item-inner">
-                    {column.links.map((link) => (
+                    {kolomItem.links.map((link) => (
                       <li key={link.href}>
-                        <Link
-                          // Hanya kolom pertama yang menandai entri aktif, meniru perilaku
-                          // sumber asal (dulu "Listing Layout").
-                          className={
-                            column.title === "Jenis Mobil" && activePath === link.href
-                              ? "current-item"
-                              : undefined
-                          }
-                          href={link.href}
-                        >
-                          {link.label}
-                        </Link>
+                        <Link href={link.href}>{link.label}</Link>
                       </li>
                     ))}
                   </ul>
@@ -84,7 +123,7 @@ export default function Nav({
                 />
                 <div className="content">
                   <p className="h3">
-                    <Link href="#" className="card--title h3 text-white font-weight-600 mb-8">
+                    <Link href={listingPromo.ctaHref} className="card--title h3 text-white font-weight-600 mb-8">
                       {listingPromo.title}
                     </Link>
                   </p>
@@ -108,57 +147,41 @@ export default function Nav({
           </div>
         </li>
 
-        <li className={`menu-item${activePath === "/sell-your-car" ? " current-menu-item" : ""}`}>
-          <Link href="/sell-your-car">Jual Mobil</Link>
-        </li>
-
-        <li className="menu-item menu-item-has-children">
-          <a href="#">
-            Artikel <ChevronDownIcon className="chevron-down" stroke={topLevelChevronColor} />
-          </a>
-          <ul className="sub-menu sub-menu--container">
-            <li>
-              {newsMenuLinks.map((link) => (
-                <Link className="menu-item" href={link.href} key={link.href}>
-                  {link.label}
-                </Link>
-              ))}
-            </li>
-          </ul>
-        </li>
-
         <li className="menu-item menu-item-has-children">
           <a href="#">
             Layanan <ChevronDownIcon className="chevron-down" stroke={topLevelChevronColor} />
           </a>
           <ul className="sub-menu sub-menu--container">
-            {pagesMenuColumns.map((column, index) =>
-              column.title ? (
-                <li className="menu-item menu-item-inner cursor-pointer py-10" key={column.title}>
-                  <p className="menu-item-inner-title flex items-center gap-8 justify-between">
-                    {column.title}
-                    <ChevronDownIcon />
-                  </p>
-                  <ul className="sub-menu-item-inner">
-                    <li>
-                      {column.links.map((link) => (
-                        <Link className="menu-item" href={link.href} key={link.href}>
-                          {link.label}
-                        </Link>
-                      ))}
-                    </li>
-                  </ul>
-                </li>
-              ) : (
-                <li key={`pages-group-${index}`}>
-                  {column.links.map((link) => (
-                    <Link className="menu-item" href={link.href} key={link.href}>
-                      {link.label}
-                    </Link>
-                  ))}
-                </li>
-              )
-            )}
+            {layananMenuColumns.map((column, index) => (
+              <li key={`layanan-${index}`}>
+                {column.links.map((link) => (
+                  <Link className="menu-item" href={link.href} key={link.href}>
+                    {link.label}
+                  </Link>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </li>
+
+        <li className={`menu-item${activePath === "/sale-agents" ? " current-menu-item" : ""}`}>
+          <Link href="/sale-agents">Tim Sales</Link>
+        </li>
+
+        <li className="menu-item menu-item-has-children">
+          <a href="#">
+            Informasi <ChevronDownIcon className="chevron-down" stroke={topLevelChevronColor} />
+          </a>
+          <ul className="sub-menu sub-menu--container">
+            {informasiMenuColumns.map((column, index) => (
+              <li key={`informasi-${index}`}>
+                {column.links.map((link) => (
+                  <Link className="menu-item" href={link.href} key={link.href}>
+                    {link.label}
+                  </Link>
+                ))}
+              </li>
+            ))}
           </ul>
         </li>
 

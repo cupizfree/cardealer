@@ -27,9 +27,25 @@ export function db(): DatabaseSync {
   d.exec("PRAGMA busy_timeout = 5000;");
   d.exec("PRAGMA synchronous = NORMAL;");
   d.exec(SKEMA);
+  tambahKolomBaru(d);
 
   _db = d;
   return d;
+}
+
+/**
+ * Kolom yang ditambahkan setelah rilis pertama.
+ *
+ * `CREATE TABLE IF NOT EXISTS` tidak menyentuh tabel yang sudah ada, jadi
+ * menambah kolom ke `SKEMA` saja tidak akan muncul di basis data lama — dan
+ * `SELECT tipe FROM unit` akan gagal di basis data produksi yang sudah terisi.
+ * Tambahkan di sini, idempoten.
+ */
+function tambahKolomBaru(d: DatabaseSync) {
+  const kolom = new Set(
+    (d.prepare("PRAGMA table_info(unit)").all() as { name: string }[]).map((k) => k.name),
+  );
+  if (!kolom.has("tipe")) d.exec("ALTER TABLE unit ADD COLUMN tipe TEXT");
 }
 
 /** Jalankan fungsi dalam transaksi. Batal kalau melempar. */

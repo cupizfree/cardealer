@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import FormUnit from "@/components/panel/FormUnit";
 import { alamatGambar } from "@/lib/galeri";
 import { ambilUnit } from "@/lib/repo/unit";
+import { bodiDariTeks } from "@/lib/bodi";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +25,10 @@ export default async function HalamanUbahUnit({
         judul: u.judul,
         merek: u.merek,
         model: u.model ?? "",
+        // Tampilkan nilai yang benar-benar dipakai situs publik: kalau kolom
+        // `tipe` masih kosong, yang berlaku adalah hasil turunan dari nama
+        // model. Menyimpannya sekaligus mengisi kolomnya.
+        tipe: u.tipe ?? bodiDariTeks(u.slug, u.judul, u.model) ?? "",
         tahun: u.tahun ? String(u.tahun) : "",
         harga: String(u.harga),
         harga_cicilan: u.harga_cicilan ?? "",

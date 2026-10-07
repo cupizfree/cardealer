@@ -5,6 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ListingGridSection from "@/components/listing/ListingGridSection";
 import { muatKatalog } from "@/lib/katalog";
+import { dariParams, judulDariParams, type Params } from "@/lib/saring";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -12,7 +13,13 @@ export const metadata: Metadata = {
 };
 
 // Migrated from ../aurexo/listing-grid4-columns.html — see docs/migration/MIGRATION_STATUS.md.
-export default function ListingGrid4ColumnsPage() {
+export default async function ListingGrid4ColumnsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Params>;
+}) {
+  const sp = await searchParams;
+  const awal = dariParams(sp);
   return (
     <>
       <Header variant="style-1" activePath="/listing-grid4-columns" />
@@ -35,11 +42,11 @@ export default function ListingGrid4ColumnsPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Katalog Mobil</h2>
+          <h2>{judulDariParams(sp) ?? "Katalog Mobil"}</h2>
         </div>
         <div className="tf-spacing-style3" />
 
-        <ListingGridSection listings={muatKatalog()} />
+        <ListingGridSection listings={muatKatalog()} initialFilters={awal} />
       </section>
 
       <Footer />

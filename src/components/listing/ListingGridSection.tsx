@@ -2,7 +2,7 @@
 
 import type { Listing } from "@/data/listings";
 import ListingCard from "./ListingCard";
-import FilterSidebar from "./FilterSidebar";
+import FilterSidebar, { type FilterState } from "./FilterSidebar";
 import SortDropdown from "./SortDropdown";
 import FilterTagsRow from "./FilterTagsRow";
 import Pagination from "@/components/common/Pagination";
@@ -26,12 +26,15 @@ const GRID_CLASS: Record<ColumnCount, string> = {
 export default function ListingGridSection({
   listings,
   initialColumns = 4,
+  initialFilters,
 }: {
   listings: Listing[];
   // listing-grid2/3/4-columns.html are the same page/component with a different default
   // `.item-menu`/`.content-inner` marked `active` in source — not separate implementations. See
   // docs/migration/COMPONENT_MAP.md.
   initialColumns?: ColumnCount;
+  /** Keadaan awal dari kueri URL (`?tipe=`, `?merek=`, `?harga=`). */
+  initialFilters?: Partial<FilterState>;
 }) {
   const [columns, setColumns] = useState<ColumnCount>(initialColumns);
   const {
@@ -52,7 +55,7 @@ export default function ListingGridSection({
     totalPages,
     rangeStart,
     rangeEnd,
-  } = useListingFilters(listings);
+  } = useListingFilters(listings, initialFilters);
 
   return (
     <>
@@ -121,11 +124,17 @@ export default function ListingGridSection({
 
         <div className="content-tab mb-40">
           <div className="content-inner active">
-            <div className={GRID_CLASS[columns]}>
-              {pagedListings.map((listing) => (
-                <ListingCard key={listing.id} listing={listing} />
-              ))}
-            </div>
+            {pagedListings.length === 0 ? (
+              <p className="text-center" style={{ padding: "80px 0" }}>
+                Belum ada unit yang cocok dengan pilihan ini. Coba longgarkan penyaringnya.
+              </p>
+            ) : (
+              <div className={GRID_CLASS[columns]}>
+                {pagedListings.map((listing) => (
+                  <ListingCard key={listing.id} listing={listing} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

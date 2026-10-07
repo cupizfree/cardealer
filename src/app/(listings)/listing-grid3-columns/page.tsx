@@ -5,6 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ListingGridSection from "@/components/listing/ListingGridSection";
 import { muatKatalog } from "@/lib/katalog";
+import { dariParams, judulDariParams, type Params } from "@/lib/saring";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -15,7 +16,13 @@ export const metadata: Metadata = {
 // Identical page to listing-grid4-columns.html except its default active column-view is 3 (source's
 // own `.item-menu`/`.content-inner` "active" marker sits on the 3-column pane here, not the 4-column
 // one) — same shared `ListingGridSection`, just a different `initialColumns`.
-export default function ListingGrid3ColumnsPage() {
+export default async function ListingGrid3ColumnsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Params>;
+}) {
+  const sp = await searchParams;
+  const awal = dariParams(sp);
   return (
     <>
       <Header variant="style-1" activePath="/listing-grid3-columns" />
@@ -38,11 +45,11 @@ export default function ListingGrid3ColumnsPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Katalog Mobil</h2>
+          <h2>{judulDariParams(sp) ?? "Katalog Mobil"}</h2>
         </div>
         <div className="tf-spacing-style3" />
 
-        <ListingGridSection listings={muatKatalog()} initialColumns={3} />
+        <ListingGridSection listings={muatKatalog()} initialColumns={3} initialFilters={awal} />
       </section>
 
       <Footer />

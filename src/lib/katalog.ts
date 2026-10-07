@@ -15,6 +15,7 @@ import { dariBaris, type Unit } from "./repo/unit";
 import { ambilDealer } from "./repo/dealer";
 import { alamatGambar } from "./galeri";
 import { hitungKredit, rupiah } from "./kredit";
+import { bodiDariTeks } from "./bodi";
 import {
   allListings,
   type DealerInfo,
@@ -138,6 +139,7 @@ export function unitKeListing(u: Unit): Listing {
     title: u.judul,
     image: utama,
     brandLabel: u.merek,
+    bodyStyle: teks(u.tipe) ?? bodiDariTeks(u.slug, u.judul, u.model) ?? undefined,
     badge: u.unggulan ? { text: "Istimewa", colorClass: "bg-primary-2" } : undefined,
     photoCount: galeri.length,
     videoCount: 0,
@@ -170,7 +172,14 @@ function barisTerbit(): Unit[] {
  */
 export function muatKatalog(): Listing[] {
   const baris = barisTerbit();
-  if (baris.length === 0) return allListings;
+  if (baris.length === 0) {
+    // Cadangan statis belum punya kolom `tipe`; turunkan dari judulnya supaya
+    // penyaring jenis bodi tetap berfungsi di basis data kosong.
+    return allListings.map((l) => ({
+      ...l,
+      bodyStyle: l.bodyStyle ?? bodiDariTeks(l.slug, l.title) ?? undefined,
+    }));
+  }
   return baris.map(unitKeListing);
 }
 

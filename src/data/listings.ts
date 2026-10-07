@@ -88,6 +88,8 @@ export type Listing = {
   title: string;
   image: string;
   brandLabel: string;
+  /** Slug jenis bodi (`suv`, `mpv`, `hatchback`, `city-car`, …) — lihat `src/lib/bodi.ts`. */
+  bodyStyle?: string;
   brandHref?: string;
   badge?: ListingBadge;
   photoCount: number;

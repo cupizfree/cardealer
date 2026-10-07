@@ -5,6 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ListingGridSection from "@/components/listing/ListingGridSection";
 import { muatKatalog } from "@/lib/katalog";
+import { dariParams, judulDariParams, type Params } from "@/lib/saring";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -16,7 +17,13 @@ export const metadata: Metadata = {
 // column-view is 2 (confirmed via diff — same structure, just which `.item-menu`/`.content-inner` is
 // marked "active" by source, plus the `<h2>` text) — same shared `ListingGridSection`, just a
 // different `initialColumns`. See COMPONENT_MAP.md #22.
-export default function ListingGrid2ColumnsPage() {
+export default async function ListingGrid2ColumnsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Params>;
+}) {
+  const sp = await searchParams;
+  const awal = dariParams(sp);
   return (
     <>
       <Header variant="style-1" activePath="/listing-grid2-columns" />
@@ -39,11 +46,11 @@ export default function ListingGrid2ColumnsPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Katalog Mobil</h2>
+          <h2>{judulDariParams(sp) ?? "Katalog Mobil"}</h2>
         </div>
         <div className="tf-spacing-style3" />
 
-        <ListingGridSection listings={muatKatalog()} initialColumns={2} />
+        <ListingGridSection listings={muatKatalog()} initialColumns={2} initialFilters={awal} />
       </section>
 
       <Footer />
