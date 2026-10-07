@@ -55,7 +55,6 @@ export default function Home03Page() {
         showNavArrows
         bannerOrder={["banner-3.jpg", "banner-1.jpg", "banner-2.jpg", "banner-5.jpg"]}
         showCategoryList={false}
-        tabsWowDelay="0.5s"
         filtersWowDelay="0.7s"
       />
       <PopularSearchesCarousel />

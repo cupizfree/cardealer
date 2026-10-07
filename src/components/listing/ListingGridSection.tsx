@@ -46,6 +46,8 @@ export default function ListingGridSection({
     setPage,
     priceMin,
     priceMax,
+    jarakMin,
+    jarakMaks,
     filters,
     setFilters,
     sortedListings,
@@ -150,6 +152,8 @@ export default function ListingGridSection({
         onFilterChange={(patch) => setFilters((prev) => ({ ...prev, ...patch }))}
         priceMin={priceMin}
         priceMax={priceMax}
+        jarakMin={jarakMin}
+        jarakMaks={jarakMaks}
       />
     </>
   );

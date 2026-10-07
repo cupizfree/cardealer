@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Listing } from "@/data/listings";
+import type { FilterState } from "./FilterSidebar";
 import ListingCard from "./ListingCard";
 import HalfMapListingCard from "./HalfMapListingCard";
 import FilterSidebar from "./FilterSidebar";
@@ -27,12 +28,15 @@ const MAP_EMBED_URL =
 export default function HalfMapListingSection({
   listings,
   initialView = "grid",
+  initialFilters,
 }: {
   listings: Listing[];
   // listing-gridstyle-halfmap.html / listing-liststyle-halfmap.html are the same page/component with
   // a different default `.item-menu`/`.content-inner` marked `active` in source (confirmed via
   // diff) — not separate implementations. See docs/migration/COMPONENT_MAP.md.
   initialView?: View;
+  /** Keadaan awal dari kueri URL (`?tipe=`, `?merek=`, `?harga=`, `?model=`, `?jarak=`). */
+  initialFilters?: Partial<FilterState>;
 }) {
   const [view, setView] = useState<View>(initialView);
   const {
@@ -44,6 +48,8 @@ export default function HalfMapListingSection({
     setPage,
     priceMin,
     priceMax,
+    jarakMin,
+    jarakMaks,
     filters,
     setFilters,
     sortedListings,
@@ -53,7 +59,7 @@ export default function HalfMapListingSection({
     totalPages,
     rangeStart,
     rangeEnd,
-  } = useListingFilters(listings);
+  } = useListingFilters(listings, initialFilters);
 
   return (
     <section className="max-w-1920 mx-auto">
@@ -152,6 +158,8 @@ export default function HalfMapListingSection({
         onFilterChange={(patch) => setFilters((prev) => ({ ...prev, ...patch }))}
         priceMin={priceMin}
         priceMax={priceMax}
+        jarakMin={jarakMin}
+        jarakMaks={jarakMaks}
       />
     </section>
   );

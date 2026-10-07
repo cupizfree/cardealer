@@ -130,7 +130,6 @@ export default function Home07() {
         staticImageSrc="/assets/images/page-title/page-title-7.png"
         showCategoryList={false}
         showMobileSpacer
-        tabTextColorClass="text-primary"
       />
 
       <WhyChooseUsCarousel

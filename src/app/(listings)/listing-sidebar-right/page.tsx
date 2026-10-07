@@ -5,6 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ListingSidebarSection, { SIDEBAR_LR_GRID_CLASS } from "@/components/listing/ListingSidebarSection";
 import { muatKatalog } from "@/lib/katalog";
+import { dariParams, judulDariParams, type Params } from "@/lib/saring";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -20,7 +21,12 @@ export const metadata: Metadata = {
 // controls this. (b) default view is Grid3 here vs. Grid2 on listing-sidebar-left.html — same Grid3
 // breakpoint pair though, reused via `SIDEBAR_LR_GRID_CLASS`. See docs/migration/MIGRATION_STATUS.md
 // and COMPONENT_MAP.md for the scope decisions (3 decorative filter fields not reproduced).
-export default function ListingSidebarRightPage() {
+export default async function ListingSidebarRightPage({
+  searchParams,
+}: {
+  searchParams: Promise<Params>;
+}) {
+  const sp = await searchParams;
   return (
     <>
       <Header variant="style-1" activePath="/listing-sidebar-right" />
@@ -43,7 +49,7 @@ export default function ListingSidebarRightPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Katalog Mobil</h2>
+          <h2>{judulDariParams(sp) ?? "Katalog Mobil"}</h2>
         </div>
         <div className="tf-spacing-style3" />
 
@@ -52,6 +58,7 @@ export default function ListingSidebarRightPage() {
           initialView="grid3"
           gridClass={SIDEBAR_LR_GRID_CLASS}
           sidebarPosition="right"
+          initialFilters={dariParams(sp)}
         />
       </section>
 

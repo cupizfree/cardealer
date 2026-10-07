@@ -92,6 +92,14 @@ export type Listing = {
   bodyStyle?: string;
   brandHref?: string;
   badge?: ListingBadge;
+  /**
+   * Unit unggulan (kolom `unggulan` di tabel unit).
+   *
+   * Dipakai seksi beranda untuk memisahkan unit pilihan dari sisanya. Sebelumnya
+   * tidak ada kolom ini di `Listing`, jadi satu-satunya cara menebaknya adalah
+   * membaca teks lencana — rapuh dan salah di jalur cadangan statis.
+   */
+  featured?: boolean;
   photoCount: number;
   videoCount: number;
   price: string;

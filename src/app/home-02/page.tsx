@@ -41,8 +41,6 @@ export default function Home02Page() {
         sectionModifierClass="page-title-style-2 effect-content-slide effect-2"
         heightClass=""
         showNavArrows
-        categoryHref="/dealer-details"
-        tabsWowDelay="0.5s"
         filtersWowDelay="0.7s"
       />
       <BrowseByTypeCardsSection />

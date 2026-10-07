@@ -4,35 +4,32 @@ import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { useKatalog } from "@/components/common/KatalogProvider";
+import { KATALOG_SEMUA, merekDiStok } from "@/lib/faset";
 
-const BRANDS = [
-  { name: "BMW", image: "/assets/images/brand/brand-1.png", vehicles: 18 },
-  { name: "Mercedes", image: "/assets/images/brand/brand-2.png", vehicles: 22 },
-  { name: "Audi", image: "/assets/images/brand/brand-3.png", vehicles: 38 },
-  { name: "Honda", image: "/assets/images/brand/brand-4.png", vehicles: 29 },
-  { name: "Toyota", image: "/assets/images/brand/brand-5.png", vehicles: 23 },
-  { name: "Volvo", image: "/assets/images/brand/brand-6.png", vehicles: 32 },
-];
+// Migrated from ../aurexo/index.html lines 3298-3371 (`.swiper-outbrand`).
+//
+// SEBELUMNYA DAFTAR MEREK KARANGAN. Isinya BMW, Mercedes, Audi, Honda, Toyota,
+// Volvo dengan jumlah unit 18/22/38/29/23/32 — showroom ini tidak punya satu pun
+// BMW, Mercedes, Audi, atau Volvo, dan angka-angkanya tidak berasal dari mana
+// pun. Tiap kartu juga menuju alamat yang sama persis, jadi menekan "Toyota" atau
+// "BMW" memberi halaman yang identik.
+//
+// Sekarang daftarnya dihitung dari stok (`merekDiStok`): hanya merek yang benar-
+// benar ada, jumlahnya jumlah sungguhan, dan tiap kartu menuju penyaring merek
+// yang berlaku.
+//
+// Logo: hanya dipasang kalau berkas logonya memang sudah terverifikasi milik
+// merek itu. Untuk merek yang belum punya berkas logo, kotak gambarnya diisi
+// namanya — kotak kosong akan terbaca sebagai gambar rusak, sedangkan memasang
+// logo merek lain jelas lebih buruk lagi.
+const LOGO: Record<string, string> = {
+  Honda: "/assets/images/brand/brand-4.png",
+  Toyota: "/assets/images/brand/brand-5.png",
+  Hyundai: "/assets/images/brand/brand-8.png",
+  Mazda: "/assets/images/brand/brand-10.png",
+};
 
-// Migrated from ../aurexo/index.html lines 3298-3371 (`.swiper-outbrand`). Same brand list/images and
-// Swiper config as `about-us/Brands.tsx`, but a genuinely different DOM: source wraps each slide in a
-// real `<a class="out-brand">` link (not `.out-brand-4`) and adds a per-brand vehicle count — kept as
-// its own component rather than a shared one for that reason (variant classification rule).
-//
-// Retroactive fix: the Swiper breakpoints/`spaceBetween` were wrong — real `.swiper-outbrand` config
-// (`assets/js/swiper.js`) is `spaceBetween: 30` with breakpoints `375/575/767/991/1280` → `2/2/4/5/6`;
-// this had `spaceBetween: 16` and `575: 3` (should stay 2 until 767), same copy-paste error already
-// found and fixed for `.swiper-card`/`.swiper-card-5`/etc. (COMPONENT_MAP.md #81).
-//
-// Retroactive fix: the "Lihat Semua Merek" button was missing its real icon (a circular-arrow SVG,
-// confirmed present in index.html's own source) — added back as the default `viewAllIcon`, same class
-// of bug already found and fixed on `BrowseByTypeCardsSection`'s "Lihat Semua Tipe" button and
-// `TrendingSearchesSection`'s "Lihat Semua" button.
-//
-// home-10.html reuses this exact same 6-brand dataset byte-for-byte (confirmed via source diff), just
-// with its own `bg-white` section (no `py-100`, this whole page uses `tf-spacing` divider divs between
-// sections instead), `title-section mb-42` (not `mb-40`), and its own real `out-brand-2` card class (not
-// `out-brand`) — exposed via `sectionClassName`/`titleSectionClassName`/`cardClassName` props.
 const VIEW_ALL_ICON = (
   <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -42,6 +39,13 @@ const VIEW_ALL_ICON = (
   </svg>
 );
 
+// Retroactive fix: the Swiper breakpoints/`spaceBetween` were wrong — real `.swiper-outbrand` config
+// (`assets/js/swiper.js`) is `spaceBetween: 30` with breakpoints `375/575/767/991/1280` → `2/2/4/5/6`;
+// this had `spaceBetween: 16` and `575: 3` (should stay 2 until 767), same copy-paste error already
+// found and fixed for `.swiper-card`/`.swiper-card-5`/etc. (COMPONENT_MAP.md #81).
+//
+// home-10.html reuses this exact same dataset via 3 props (`sectionClassName`/`titleSectionClassName`/
+// `cardClassName`) rather than a separate component.
 export default function BrandsSection({
   sectionClassName = "background-light py-100",
   titleSectionClassName = "mb-40",
@@ -51,12 +55,16 @@ export default function BrandsSection({
   titleSectionClassName?: string;
   cardClassName?: string;
 }) {
+  const merek = merekDiStok(useKatalog());
+
+  if (merek.length === 0) return null;
+
   return (
     <section className={sectionClassName}>
       <div className="container wow fadeIn" data-wow-delay="0.3s">
         <div className={`title-section ${titleSectionClassName}`}>
           <h2 className="">Jelajahi Merek Kami</h2>
-          <Link href="/listing-grid4-columns" className="btn btn-line-style-2 effect-line-primary hover-fill-white btn-large">
+          <Link href={KATALOG_SEMUA} className="btn btn-line-style-2 effect-line-primary hover-fill-white btn-large">
             Lihat Semua Merek
             {VIEW_ALL_ICON}
           </Link>
@@ -75,15 +83,24 @@ export default function BrandsSection({
           }}
           className="swiper-container swiper-outbrand"
         >
-          {BRANDS.map((brand) => (
-            <SwiperSlide key={brand.name}>
-              <Link href="/listing-grid4-columns" className={cardClassName}>
-                <Image className="out-brand--img mb-8" src={brand.image} alt="brand" width={160} height={160} />
-                <p className="h5">{brand.name}</p>
-                <p className="text-muted text-sm">{brand.vehicles} Vehicles</p>
-              </Link>
-            </SwiperSlide>
-          ))}
+          {merek.map((m) => {
+            const logo = LOGO[m.label];
+            return (
+              <SwiperSlide key={m.label}>
+                <Link href={`${KATALOG_SEMUA}?merek=${encodeURIComponent(m.label)}`} className={cardClassName}>
+                  {logo ? (
+                    <Image className="out-brand--img mb-8" src={logo} alt={m.label} width={160} height={160} />
+                  ) : (
+                    <span className="out-brand--img mb-8 flex items-center justify-center">
+                      <span className="h4">{m.label}</span>
+                    </span>
+                  )}
+                  <p className="h5">{m.label}</p>
+                  <p className="text-muted text-sm">{m.jumlah} Unit</p>
+                </Link>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
         <div className="swiper-pagination pagination-dark pagination-style pagination-swiper-outbrand mt-38" />
       </div>

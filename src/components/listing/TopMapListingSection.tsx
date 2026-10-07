@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Listing } from "@/data/listings";
+import type { FilterState } from "./FilterSidebar";
 import ListingCard from "./ListingCard";
 import SortDropdown from "./SortDropdown";
 import Pagination from "@/components/common/Pagination";
@@ -29,7 +30,14 @@ const MAP_EMBED_URL = "https://www.google.com/maps?q=40.706243,-74.000303&z=13&o
 // `ListingGridSection`, source has no "Filter" button or filter-tags row on this page (filtering
 // lives entirely in the hero bar above) — a genuine DOM difference, not a trimmed-down reuse of
 // that component.
-export default function TopMapListingSection({ listings }: { listings: Listing[] }) {
+export default function TopMapListingSection({
+  listings,
+  initialFilters,
+}: {
+  listings: Listing[];
+  /** Keadaan awal dari kueri URL (`?tipe=`, `?merek=`, `?harga=`, `?model=`, `?jarak=`). */
+  initialFilters?: Partial<FilterState>;
+}) {
   const [columns, setColumns] = useState<ColumnCount>(4);
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
   const {
@@ -44,7 +52,7 @@ export default function TopMapListingSection({ listings }: { listings: Listing[]
     totalPages,
     rangeStart,
     rangeEnd,
-  } = useListingFilters(listings);
+  } = useListingFilters(listings, initialFilters);
 
   const onFilterChange = (patch: Partial<typeof filters>) => setFilters((prev) => ({ ...prev, ...patch }));
 

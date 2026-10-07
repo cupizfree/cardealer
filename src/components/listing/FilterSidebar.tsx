@@ -9,6 +9,8 @@ export type FilterState = {
   fuelType: string[];
   transmission: string[];
   priceRange: [number, number];
+  /** Jarak tempuh dalam km. Rentang penuh katalog = tidak menyaring. */
+  mileageRange: [number, number];
   bodyStyle: string[];
   doorCount: string[];
   cylinders: string[];
@@ -29,6 +31,8 @@ export default function FilterSidebar({
   onFilterChange,
   priceMin,
   priceMax,
+  jarakMin,
+  jarakMaks,
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -36,6 +40,8 @@ export default function FilterSidebar({
   onFilterChange: (patch: Partial<FilterState>) => void;
   priceMin: number;
   priceMax: number;
+  jarakMin: number;
+  jarakMaks: number;
 }) {
   return (
     <div className={`filter-sidebar filter-sidebar-popup${isOpen ? " active" : ""}`} id="filterSidebar">
@@ -49,7 +55,14 @@ export default function FilterSidebar({
         </div>
 
         <form action="#" onSubmit={(event) => event.preventDefault()}>
-          <FilterFields filters={filters} onFilterChange={onFilterChange} priceMin={priceMin} priceMax={priceMax} />
+          <FilterFields
+            filters={filters}
+            onFilterChange={onFilterChange}
+            priceMin={priceMin}
+            priceMax={priceMax}
+            jarakMin={jarakMin}
+            jarakMaks={jarakMaks}
+          />
         </form>
       </div>
     </div>

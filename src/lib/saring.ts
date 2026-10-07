@@ -15,6 +15,11 @@ import { JENIS_BODI, labelBodi } from "./bodi";
 /** `searchParams` Next.js: satu nilai, berulang, atau tidak ada. */
 export type Params = Record<string, string | string[] | undefined>;
 
+/**
+ * Satu kotak rentang. Dipakai harga maupun jarak tempuh — bentuknya sama, jadi
+ * tipenya satu. Nama lamanya dipertahankan supaya `src/data/menu.ts` tidak perlu
+ * ikut berubah.
+ */
 export type RentangHarga = {
   slug: string;
   label: string;
@@ -45,6 +50,23 @@ export const RENTANG_HARGA: RentangHarga[] = [
   },
 ];
 
+/**
+ * Rentang jarak tempuh, dalam kilometer. Batas setengah-terbuka, sama seperti
+ * harga — dan itu bukan pilihan gaya: stok sekarang berkisar 18.300–61.500 km,
+ * jadi satu unit yang jaraknya pas 50.000 km harus masuk SATU kotak saja.
+ */
+export const RENTANG_JARAK: RentangHarga[] = [
+  { slug: "0-25", label: "Di bawah 25 rb km", min: 0, maks: 24_999 },
+  { slug: "25-50", label: "25 – 50 rb km", min: 25_000, maks: 49_999 },
+  { slug: "50-100", label: "50 – 100 rb km", min: 50_000, maks: 99_999 },
+  {
+    slug: "100-plus",
+    label: "Di atas 100 rb km",
+    min: 100_000,
+    maks: Number.MAX_SAFE_INTEGER,
+  },
+];
+
 /** Terima `?x=a`, `?x=a&x=b`, dan `?x=a,b` — ketiganya jadi daftar. */
 export function bacaDaftar(v: string | string[] | undefined): string[] {
   if (v === undefined) return [];
@@ -66,6 +88,28 @@ function kapitalAwal(s: string): string {
 }
 
 /**
+ * Cocokkan slug rentang, lalu jatuh ke batas bebas (`harga_min`/`harga_maks`).
+ *
+ * Rentang bebas datang dari penggeser di sidebar. Ditulis terpisah supaya URL
+ * tetap jujur meski rentangnya tidak sama dengan kotak mana pun.
+ */
+function bacaRentang(
+  p: Params,
+  kunciSlug: string,
+  kunciMin: string,
+  kunciMaks: string,
+  kotak: RentangHarga[],
+): [number, number] | null {
+  const cocok = kotak.find((r) => r.slug === bacaDaftar(p[kunciSlug])[0]);
+  if (cocok) return [cocok.min, cocok.maks];
+
+  const lo = Number(bacaDaftar(p[kunciMin])[0]);
+  const hi = Number(bacaDaftar(p[kunciMaks])[0]);
+  if (Number.isFinite(lo) && Number.isFinite(hi) && hi > lo) return [lo, hi];
+  return null;
+}
+
+/**
  * Ubah `searchParams` menjadi sebagian keadaan filter.
  *
  * Nilai yang tidak dikenal dibuang diam-diam: `?tipe=pesawat` tidak boleh
@@ -78,6 +122,12 @@ export function dariParams(p: Params): Partial<FilterState> {
   const merek = bacaDaftar(p.merek);
   if (merek.length) hasil.brand = merek.map(kapitalAwal);
 
+  // Model sengaja TIDAK diubah kapitalisasinya: `fuzzyMatch` sudah membandingkan
+  // tanpa peduli huruf besar-kecil, dan mengubahnya bisa merusak label seperti
+  // "Mazda 2" yang huruf pertamanya memang sudah kapital.
+  const model = bacaDaftar(p.model);
+  if (model.length) hasil.model = model;
+
   const tipe = bacaDaftar(p.tipe)
     .map((s) => s.toLowerCase())
     .filter((s): s is (typeof JENIS_BODI)[number] =>
@@ -85,16 +135,11 @@ export function dariParams(p: Params): Partial<FilterState> {
     );
   if (tipe.length) hasil.bodyStyle = tipe;
 
-  const rentang = RENTANG_HARGA.find((r) => r.slug === bacaDaftar(p.harga)[0]);
-  if (rentang) {
-    hasil.priceRange = [rentang.min, rentang.maks];
-  } else {
-    // Rentang bebas (penggeser harga di sidebar). Ditulis terpisah supaya URL
-    // tetap jujur meski rentangnya tidak sama dengan kotak mana pun.
-    const lo = Number(bacaDaftar(p.harga_min)[0]);
-    const hi = Number(bacaDaftar(p.harga_maks)[0]);
-    if (Number.isFinite(lo) && Number.isFinite(hi) && hi > lo) hasil.priceRange = [lo, hi];
-  }
+  const harga = bacaRentang(p, "harga", "harga_min", "harga_maks", RENTANG_HARGA);
+  if (harga) hasil.priceRange = harga;
+
+  const jarak = bacaRentang(p, "jarak", "jarak_min", "jarak_maks", RENTANG_JARAK);
+  if (jarak) hasil.mileageRange = jarak;
 
   const bahanBakar = bacaDaftar(p.bahan_bakar);
   if (bahanBakar.length) hasil.fuelType = bahanBakar.map(kapitalAwal);
@@ -106,8 +151,8 @@ export function dariParams(p: Params): Partial<FilterState> {
 }
 
 /** Rentang default dianggap "tidak menyaring" — jangan ikut ditulis ke URL. */
-function rentangDefault(f: FilterState, min: number, maks: number): boolean {
-  return f.priceRange[0] === min && f.priceRange[1] === maks;
+function rentangDefault(f: [number, number], min: number, maks: number): boolean {
+  return f[0] === min && f[1] === maks;
 }
 
 /**
@@ -119,8 +164,11 @@ export function judulDariParams(p: Params): string | null {
   const bagian: string[] = [];
   if (f.bodyStyle?.length) bagian.push(f.bodyStyle.map(labelBodi).join(", "));
   if (f.brand?.length) bagian.push(f.brand.join(", "));
-  const rentang = RENTANG_HARGA.find((r) => r.slug === bacaDaftar(p.harga)[0]);
-  if (rentang) bagian.push(rentang.label);
+  if (f.model?.length) bagian.push(f.model.join(", "));
+  const harga = RENTANG_HARGA.find((r) => r.slug === bacaDaftar(p.harga)[0]);
+  if (harga) bagian.push(harga.label);
+  const jarak = RENTANG_JARAK.find((r) => r.slug === bacaDaftar(p.jarak)[0]);
+  if (jarak) bagian.push(jarak.label);
   return bagian.length ? bagian.join(" · ") : null;
 }
 
@@ -130,21 +178,40 @@ export function slugRentang(
   min: number,
   maks: number,
 ): RentangHarga | null {
-  if (rentangDefault(f, min, maks)) return null;
+  if (rentangDefault(f.priceRange, min, maks)) return null;
   return (
     RENTANG_HARGA.find((r) => r.min === f.priceRange[0] && r.maks === f.priceRange[1]) ?? null
   );
 }
 
+/** Padanan `slugRentang` untuk jarak tempuh. */
+export function slugJarak(
+  f: FilterState,
+  min: number,
+  maks: number,
+): RentangHarga | null {
+  if (rentangDefault(f.mileageRange, min, maks)) return null;
+  return (
+    RENTANG_JARAK.find((r) => r.min === f.mileageRange[0] && r.maks === f.mileageRange[1]) ?? null
+  );
+}
+
 /** Apakah ada satu pun filter yang benar-benar menyaring. */
-export function adaFilterAktif(f: FilterState, min: number, maks: number): boolean {
+export function adaFilterAktif(
+  f: FilterState,
+  min: number,
+  maks: number,
+  jarakMin: number,
+  jarakMaks: number,
+): boolean {
   return (
     f.brand.length > 0 ||
     f.bodyStyle.length > 0 ||
     f.fuelType.length > 0 ||
     f.transmission.length > 0 ||
     f.model.length > 0 ||
-    !rentangDefault(f, min, maks)
+    !rentangDefault(f.priceRange, min, maks) ||
+    !rentangDefault(f.mileageRange, jarakMin, jarakMaks)
   );
 }
 
@@ -153,28 +220,54 @@ export function adaFilterAktif(f: FilterState, min: number, maks: number): boole
  * "Rp 150 – 200 juta". `null` kalau tidak ada filter, supaya pemanggil bisa
  * memakai judul bawaannya sendiri.
  */
-export function judulFilter(f: FilterState, min: number, maks: number): string | null {
+export function judulFilter(
+  f: FilterState,
+  min: number,
+  maks: number,
+  jarakMin: number,
+  jarakMaks: number,
+): string | null {
   const bagian: string[] = [];
   if (f.bodyStyle.length) bagian.push(f.bodyStyle.map(labelBodi).join(", "));
   if (f.brand.length) bagian.push(f.brand.join(", "));
-  const rentang = slugRentang(f, min, maks);
-  if (rentang) bagian.push(rentang.label);
+  if (f.model.length) bagian.push(f.model.join(", "));
+  const harga = slugRentang(f, min, maks);
+  if (harga) bagian.push(harga.label);
+  const jarak = slugJarak(f, jarakMin, jarakMaks);
+  if (jarak) bagian.push(jarak.label);
   return bagian.length ? bagian.join(" · ") : null;
 }
 
 /** Keadaan filter -> kueri URL. Hanya yang menyaring yang ditulis. */
-export function keQuery(f: FilterState, min: number, maks: number): string {
+export function keQuery(
+  f: FilterState,
+  min: number,
+  maks: number,
+  jarakMin: number,
+  jarakMaks: number,
+): string {
   const q = new URLSearchParams();
   if (f.bodyStyle.length) q.set("tipe", f.bodyStyle.join(","));
   if (f.brand.length) q.set("merek", f.brand.join(","));
-  const rentang = slugRentang(f, min, maks);
-  if (rentang) {
-    q.set("harga", rentang.slug);
-  } else if (!rentangDefault(f, min, maks)) {
+  if (f.model.length) q.set("model", f.model.join(","));
+
+  const harga = slugRentang(f, min, maks);
+  if (harga) {
+    q.set("harga", harga.slug);
+  } else if (!rentangDefault(f.priceRange, min, maks)) {
     // Rentang bebas — tidak ada kotak yang cocok, jadi tulis batasnya apa adanya.
     q.set("harga_min", String(f.priceRange[0]));
     q.set("harga_maks", String(f.priceRange[1]));
   }
+
+  const jarak = slugJarak(f, jarakMin, jarakMaks);
+  if (jarak) {
+    q.set("jarak", jarak.slug);
+  } else if (!rentangDefault(f.mileageRange, jarakMin, jarakMaks)) {
+    q.set("jarak_min", String(f.mileageRange[0]));
+    q.set("jarak_maks", String(f.mileageRange[1]));
+  }
+
   if (f.fuelType.length) q.set("bahan_bakar", f.fuelType.join(","));
   if (f.transmission.length) q.set("transmisi", f.transmission.join(","));
   return q.toString();

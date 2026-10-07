@@ -3,39 +3,60 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, Parallax } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper/types";
 import CheckboxDropdown from "@/components/listing/CheckboxDropdown";
-import FilterSelectDropdown from "@/components/common/FilterSelectDropdown";
-import RangeSlider from "@/components/listing/RangeSlider";
+import { useKatalog } from "@/components/common/KatalogProvider";
+import {
+  KATALOG_SEMUA,
+  bahanBakarDiStok,
+  jenisDiStok,
+  merekDiStok,
+  modelDiStok,
+  transmisiDiStok,
+} from "@/lib/faset";
+import { RENTANG_HARGA, RENTANG_JARAK } from "@/lib/saring";
 import { CAR_TYPE_ICONS } from "./carTypeIcons";
 
-// Hero's own `.category-list` stops at 9 types and omits Wagon/Minivan (added only in
-// `BrowseByTypeSection`'s 10-item list) — confirmed via direct source read.
-const CAR_TYPES = [
-  "Listrik",
-  "Sedan",
-  "SUV",
-  "Pikap",
-  "Mewah",
-  "Hatchback",
-  "Crossover",
-  "Konvertibel",
-  "Coupe",
-];
+/**
+ * Ikon untuk tiap slug jenis bodi.
+ *
+ * `CAR_TYPE_ICONS` memakai nama kategori versi templat (SUV, Minivan, Pickup
+ * Truck, …) sedangkan katalog memakai slug Indonesia (`suv`, `mpv`, `pikap`, …).
+ * Peta ini yang menjembatani keduanya, dan sengaja tidak mengubah nama kunci di
+ * `carTypeIcons.tsx` karena berkas itu dipakai lima komponen lain.
+ */
+const IKON_JENIS: Record<string, string> = {
+  suv: "SUV",
+  mpv: "Minivan",
+  hatchback: "Hatchback",
+  "city-car": "Hatchback",
+  sedan: "Sedan",
+  pikap: "Pickup Truck",
+  "double-cabin": "Pickup Truck",
+  minibus: "Minivan",
+};
 
-// Migrated from ../aurexo/index.html lines 458-1105 (`.page-title`). Everything under this section —
-// tab pills, all filter fields, "Tampilkan 1.029 Unit", and the year range — is UI_ONLY: the homepage
-// has no real listing grid to filter, so every field is local, decorative-only state, same scope
-// decision already made for `TopSearchFilterBar.tsx`'s own Miles/Price/DriveType/Color/Cylinders/Year
-// fields (see that file's header comment). The source's ~40-checkbox "Fitur" collapse under
-// Advanced Filters is deliberately NOT reproduced, per the same precedent (COMPONENT_MAP.md #28):
-// purely decorative filler riddled with copy-paste id/label mismatches, no functional payoff.
-// Fuel Type/Transmission/Drive Type/Color/Cylinders reuse `common/FilterSelectDropdown` (no
-// `search-cars__select-wrapper`/label wrapper in source, unlike the primary Brand/Model/Miles/Price
-// row, which uses `listing/CheckboxDropdown` instead — a real, confirmed DOM difference between the
-// two rows, not an inconsistency on our part).
+// Migrated from ../aurexo/index.html lines 458-1105 (`.page-title`).
+//
+// SEBELUMNYA SELURUH BAGIAN INI HIASAN, dan itu dilaporkan apa adanya: tombolnya
+// berbunyi "Tampilkan 1.029 Unit" padahal stok showroom ini 18 unit, tombol
+// carinya `action="#"` dengan `onSubmit` yang cuma `preventDefault` (ditekan,
+// tidak terjadi apa-apa), daftar mereknya ditulis tangan (Toyota…Nissan — tidak
+// ikut stok), dan sembilan ikon jenis mobil semuanya menuju SATU alamat yang
+// sama sehingga memilih SUV atau Sedan memberi hasil identik.
+//
+// Sekarang seluruhnya membaca stok sungguhan lewat `useKatalog()` dan menyerahkan
+// hasilnya ke halaman katalog lewat kueri URL yang sama dengan yang dibaca
+// `src/lib/saring.ts`. Jadi tidak ada jalur kedua yang bisa melenceng dari
+// penyaring di halaman listing.
+//
+// Yang dibuang karena tidak punya data pendukung sama sekali: tab "Semua Mobil /
+// Mobil Baru / Mobil Bekas" (tidak ada kolom kondisi di `Listing` — semua unit
+// memang bekas) dan isian Penggerak/Warna/Silinder/Tahun di panel lanjutan.
+// Menampilkannya berarti menawarkan saringan yang tidak menyaring apa pun.
 const DEFAULT_SUBTITLE_CLASS = "h7 text-white font-weight-500 mb-36 text-center wow fadeInUp";
 const DEFAULT_BANNER_ORDER = ["banner-1.jpg", "banner-2.jpg", "banner-3.jpg", "banner-5.jpg"];
 
@@ -48,7 +69,6 @@ export default function HeroSearchSection({
   heightClass = "h-706",
   showNavArrows = false,
   bannerOrder = DEFAULT_BANNER_ORDER,
-  categoryHref = "/listing-grid4-columns",
   showCategoryList = true,
   showSlider = true,
   staticImageSrc,
@@ -60,9 +80,7 @@ export default function HeroSearchSection({
   searchCarsClassName = "margin-top-auto margin-bottom-auto",
   searchCarsWowDelay,
   showMobileSpacer = false,
-  tabTextColorClass = "text-white",
   titleWowDelay = "0.1s",
-  tabsWowDelay = "0.3s",
   filtersWowDelay = "0.5s",
 }: {
   /** A plain string for most pages; home-03.html's own h1 has a literal mid-string `<br>`
@@ -88,9 +106,6 @@ export default function HeroSearchSection({
   /** home-03.html's own slide sequence is banner-3,1,2,5 (same 4 images, different order) —
    *  confirmed via source diff against index.html/home-02.html's shared banner-1,2,3,5 order. */
   bannerOrder?: string[];
-  /** index.html's `.category-list` links to `/listing-grid4-columns`; home-02.html's own links to
-   *  `/dealer-details` instead — a real, disclosed per-page href difference. */
-  categoryHref?: string;
   /** home-03.html's hero has NO `.category-list` at all (confirmed via grep — genuinely absent, not
    *  an oversight) — index.html/home-02.html both have one. */
   showCategoryList?: boolean;
@@ -140,30 +155,20 @@ export default function HeroSearchSection({
    *  large-screen-hidden spacer) right after the `.page-title` section, inside the same `<form>`
    *  (confirmed via source diff — no other `HeroSearchSection` caller has this). */
   showMobileSpacer?: boolean;
-  /** RETROACTIVE FIX: the "Semua Mobil"/"Mobil Baru"/"Mobil Bekas" tab labels always hardcoded `text-white`, but
-   *  home-07.html's own real source uses `text-primary` (dark) on these specific `<span>`s (confirmed
-   *  via source diff — every other caller genuinely is `text-white`) — because home-07's own hero sits
-   *  on a pale `background-blue` (`#D8E2EA`) rather than a photo/dark background, white text there would
-   *  render almost invisibly. The outer `<ul>` itself keeps `text-white` unconditionally on every page
-   *  (including home-07's own source), only the inner label spans differ. Defaults to `text-white` so
-   *  every other existing caller is unaffected. */
-  tabTextColorClass?: string;
-  /** RETROACTIVE FIX: the title/tab-bar/filters-row `wow fadeInUp` stagger delays were hardcoded to
+  /** RETROACTIVE FIX: the title/filters-row `wow fadeInUp` stagger delays were hardcoded to
    *  index.html's own sequence (`0.1s`/`0.3s`/`0.5s`). home-02.html's/home-03.html's own real sequence is
    *  `0.1s`/`0.5s`/`0.7s` (confirmed via source diff) — a natural consequence of their own subtitle
-   *  `<p>` occupying the `0.3s` slot, shifting everything after it by 0.2s, which the previous hardcoded
-   *  values never accounted for. home-09.html's own hero has NO `wow` animation on the title/tabs/filters
-   *  at all (confirmed via source diff — only the outer `.search-cars` wrapper itself animates as one
-   *  block); pass `null` to omit the `wow`/`data-wow-delay` on that element entirely. Defaults match
-   *  index.html's/home-07.html's own real sequence. */
+   *  `<p>` occupying the `0.3s` slot, shifting everything after it by 0.2s. home-09.html's own hero has
+   *  NO `wow` animation at all (confirmed via source diff); pass `null` to omit it entirely.
+   *  `tabsWowDelay` dihapus bersama tabnya — baris isian kini memakai `filtersWowDelay`. */
   titleWowDelay?: string | null;
-  tabsWowDelay?: string | null;
   filtersWowDelay?: string | null;
 }) {
-  const [activeTab, setActiveTab] = useState<"all" | "new" | "used">("all");
+  const router = useRouter();
+  const katalog = useKatalog();
+
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
-  const [yearRange, setYearRange] = useState<[number, number]>([2015, 2026]);
   const swiperRef = useRef<SwiperClass | null>(null);
   const prevRef = useRef<HTMLParagraphElement>(null);
   const nextRef = useRef<HTMLParagraphElement>(null);
@@ -173,14 +178,66 @@ export default function HeroSearchSection({
   // only calls `swiper.update()`, never recomputes this value either).
   const [parallaxValue, setParallaxValue] = useState<number | null>(null);
 
+  const [merek, setMerek] = useState<string[]>([]);
+  const [model, setModel] = useState<string[]>([]);
+  const [bahanBakar, setBahanBakar] = useState<string[]>([]);
+  const [transmisi, setTransmisi] = useState<string[]>([]);
+  // Harga dan jarak satu pilihan: keduanya bermuara ke SATU pasangan batas di
+  // `FilterState`, jadi dua kotak sekaligus tidak bisa diwakili.
+  const [harga, setHarga] = useState<string[]>([]);
+  const [jarak, setJarak] = useState<string[]>([]);
+
+  const opsiMerek = merekDiStok(katalog).map((m) => m.label);
+  const opsiModel = modelDiStok(katalog).map((m) => m.label);
+  const opsiBahanBakar = bahanBakarDiStok(katalog).map((b) => b.label);
+  const opsiTransmisi = transmisiDiStok(katalog).map((t) => t.label);
+  const jenis = jenisDiStok(katalog);
+
   function toggleDropdown(name: string) {
     setOpenDropdown((prev) => (prev === name ? null : name));
   }
 
+  function toggle(list: string[], set: (v: string[]) => void, value: string) {
+    set(list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
+  }
+
+  /** Satu pilihan saja: klik kedua membatalkan. */
+  function toggleTunggal(list: string[], set: (v: string[]) => void, value: string) {
+    set(list.includes(value) ? [] : [value]);
+  }
+
+  function teksTombol(dipilih: string[], kosong: string, label?: (v: string) => string): string {
+    if (dipilih.length === 0) return kosong;
+    const tampil = dipilih.map((v) => label?.(v) ?? v);
+    return tampil.length === 1 ? tampil[0] : `${tampil.length} dipilih`;
+  }
+
+  /**
+   * Serahkan pilihan ke halaman katalog sebagai kueri URL.
+   *
+   * Sengaja `router.push` ke halaman listing, bukan menyaring di tempat: beranda
+   * tidak punya grid unit untuk disaring, dan menyalin logika penyaring ke sini
+   * berarti dua tempat yang bisa saling melenceng. Kunci kuerinya sama persis
+   * dengan yang dibaca `src/lib/saring.ts`.
+   */
+  function cari(event: React.FormEvent) {
+    event.preventDefault();
+    const q = new URLSearchParams();
+    if (merek.length) q.set("merek", merek.join(","));
+    if (model.length) q.set("model", model.join(","));
+    if (harga.length) q.set("harga", harga[0]);
+    if (jarak.length) q.set("jarak", jarak[0]);
+    if (bahanBakar.length) q.set("bahan_bakar", bahanBakar.join(","));
+    if (transmisi.length) q.set("transmisi", transmisi.join(","));
+    const s = q.toString();
+    router.push(s ? `${KATALOG_SEMUA}?${s}` : KATALOG_SEMUA);
+  }
+
   return (
     <form
-      action="#"
-      onSubmit={(event) => event.preventDefault()}
+      action={KATALOG_SEMUA}
+      method="get"
+      onSubmit={cari}
       className="relative"
       onClick={(event) => {
         if (!(event.target as HTMLElement).closest(".filter-select-dropdown")) {
@@ -260,34 +317,19 @@ export default function HeroSearchSection({
           )}
 
           <div
-            className={`flat-tabs mb-16${tabsWowDelay ? " wow fadeInUp" : ""}`}
-            data-wow-delay={tabsWowDelay ?? undefined}
-          >
-            <div className="overflow-x-auto">
-              <ul className={`menu-tab menu-tab-style1 text-white${titleCentered ? " margin-auto" : ""}`}>
-                <li className={activeTab === "all" ? "active" : ""} onClick={() => setActiveTab("all")}>
-                  <span className={`${tabTextColorClass} font-weight-600`}>Semua Mobil</span>
-                </li>
-                <li className={activeTab === "new" ? "active" : ""} onClick={() => setActiveTab("new")}>
-                  <span className={`${tabTextColorClass} font-weight-600`}>Mobil Baru</span>
-                </li>
-                <li className={activeTab === "used" ? "active" : ""} onClick={() => setActiveTab("used")}>
-                  <span className={`${tabTextColorClass} font-weight-600`}>Mobil Bekas</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div
-            className={`search-cars__filters${filtersWowDelay ? " wow fadeInUp" : ""}`}
+            className={`search-cars__filters${filtersWowDelay ? " wow fadeInUp" : ""}${
+              titleCentered ? " justify-center" : ""
+            }`}
             data-wow-delay={filtersWowDelay ?? undefined}
           >
             <CheckboxDropdown
-              name="brand"
+              name="merek"
               label="Pilih Merek"
               toggleId="HeroBrandSelectToggle"
-              defaultText="Semua Merek"
-              options={["Toyota", "Honda", "Daihatsu", "Suzuki", "Mitsubishi", "Nissan"]}
+              defaultText={teksTombol(merek, "Semua Merek")}
+              options={opsiMerek}
+              selected={merek}
+              onToggle={(value) => toggle(merek, setMerek, value)}
               isOpen={openDropdown === "brand"}
               onToggleOpen={() => toggleDropdown("brand")}
               layout="bar"
@@ -296,28 +338,34 @@ export default function HeroSearchSection({
               name="model"
               label="Pilih Model"
               toggleId="HeroModelSelectToggle"
-              defaultText="Semua Model"
-              options={["Avanza", "Brio", "Xenia", "Ertiga", "Rush", "Mobilio"]}
+              defaultText={teksTombol(model, "Semua Model")}
+              options={opsiModel}
+              selected={model}
+              onToggle={(value) => toggle(model, setModel, value)}
               isOpen={openDropdown === "model"}
               onToggleOpen={() => toggleDropdown("model")}
               layout="bar"
             />
             <CheckboxDropdown
-              name="miles"
+              name="jarak"
               label="Jarak Tempuh"
               toggleId="HeroMilesSelectToggle"
-              defaultText="Semua jarak"
-              options={["0-50rb km", "50-100rb km"]}
+              defaultText={teksTombol(jarak, "Semua jarak", (v) => RENTANG_JARAK.find((r) => r.slug === v)?.label ?? v)}
+              options={RENTANG_JARAK.map((r) => ({ value: r.slug, label: r.label }))}
+              selected={jarak}
+              onToggle={(value) => toggleTunggal(jarak, setJarak, value)}
               isOpen={openDropdown === "miles"}
               onToggleOpen={() => toggleDropdown("miles")}
               layout="bar"
             />
             <CheckboxDropdown
-              name="price"
+              name="harga"
               label="Harga Maksimal"
               toggleId="HeroMaxPriceSelectToggle"
-              defaultText="Semua Harga"
-              options={["Rp 0-100 jt", "Rp 100-200 jt"]}
+              defaultText={teksTombol(harga, "Semua Harga", (v) => RENTANG_HARGA.find((r) => r.slug === v)?.label ?? v)}
+              options={RENTANG_HARGA.map((r) => ({ value: r.slug, label: r.label }))}
+              selected={harga}
+              onToggle={(value) => toggleTunggal(harga, setHarga, value)}
               isOpen={openDropdown === "price"}
               onToggleOpen={() => toggleDropdown("price")}
               layout="bar"
@@ -335,7 +383,7 @@ export default function HeroSearchSection({
 
             <button type="submit" className="search-cars__search flex items-center gap-8 justify-center md-w-full">
               <Image src="/assets/icons/search.svg" alt="search" width={16} height={16} />
-              Tampilkan 1.029 Unit
+              Tampilkan {katalog.length} Unit
             </button>
           </div>
 
@@ -344,84 +392,45 @@ export default function HeroSearchSection({
               <div className="search-cars__advanced-content">
                 <div className="search-cars__advanced-row">
                   <div className="search-cars__select-wrapper">
-                    <FilterSelectDropdown
-                      name="fuel-type"
-                      options={[
-                        { value: "Bensin", label: "Bensin" },
-                        { value: "Solar", label: "Solar" },
-                        { value: "Listrik", label: "Listrik" },
-                      ]}
+                    <CheckboxDropdown
+                      name="bahan_bakar"
+                      label="Bahan Bakar"
+                      toggleId="HeroFuelSelectToggle"
+                      defaultText={teksTombol(bahanBakar, "Semua Bahan Bakar")}
+                      options={opsiBahanBakar}
+                      selected={bahanBakar}
+                      onToggle={(value) => toggle(bahanBakar, setBahanBakar, value)}
                       isOpen={openDropdown === "fuel-type"}
                       onToggleOpen={() => toggleDropdown("fuel-type")}
+                      layout="bar"
                     />
                   </div>
                   <div className="search-cars__select-wrapper">
-                    <FilterSelectDropdown
-                      name="Transmisi"
-                      options={[
-                        { value: "Manual", label: "Manual" },
-                        { value: "Matic", label: "Matic" },
-                      ]}
+                    <CheckboxDropdown
+                      name="transmisi"
+                      label="Transmisi"
+                      toggleId="HeroTransmissionSelectToggle"
+                      defaultText={teksTombol(transmisi, "Semua Transmisi")}
+                      options={opsiTransmisi}
+                      selected={transmisi}
+                      onToggle={(value) => toggle(transmisi, setTransmisi, value)}
                       isOpen={openDropdown === "Transmisi"}
                       onToggleOpen={() => toggleDropdown("Transmisi")}
+                      layout="bar"
                     />
-                  </div>
-                  <div className="search-cars__select-wrapper">
-                    <FilterSelectDropdown
-                      name="DriveType"
-                      options={[
-                        { value: "FWD", label: "FWD" },
-                        { value: "RWD", label: "RWD" },
-                        { value: "AWD", label: "AWD" },
-                      ]}
-                      isOpen={openDropdown === "DriveType"}
-                      onToggleOpen={() => toggleDropdown("DriveType")}
-                    />
-                  </div>
-                  <div className="search-cars__select-wrapper">
-                    <FilterSelectDropdown
-                      name="colorTyle"
-                      options={[
-                        { value: "Red", label: "Merah" },
-                        { value: "Biru", label: "Biru" },
-                        { value: "Hitam", label: "Hitam" },
-                      ]}
-                      isOpen={openDropdown === "colorTyle"}
-                      onToggleOpen={() => toggleDropdown("colorTyle")}
-                    />
-                  </div>
-                  <div className="search-cars__select-wrapper">
-                    <FilterSelectDropdown
-                      name="Silinder"
-                      options={[
-                        { value: "4", label: "4" },
-                        { value: "3", label: "3" },
-                        { value: "2", label: "2" },
-                      ]}
-                      isOpen={openDropdown === "Silinder"}
-                      onToggleOpen={() => toggleDropdown("Silinder")}
-                    />
-                  </div>
-                  <div className="search-cars__range">
-                    <p className="search-cars__range-label">
-                      Tahun: <span>{yearRange[0]}</span> - <span>{yearRange[1]}</span>
-                    </p>
-                    <div className="search-cars__range-wrapper" id="yearRangeWrapper">
-                      <RangeSlider min={2015} max={2026} step={1} value={yearRange} onChange={setYearRange} />
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           )}
 
-          {showCategoryList && (
+          {showCategoryList && jenis.length > 0 && (
             <div className="wow fadeInUp" data-wow-delay="0.7s">
               <div className="category-list flex-wrap mt-32">
-                {CAR_TYPES.map((type) => (
-                  <Link className="brand-item-small" href={categoryHref} key={type}>
-                    {CAR_TYPE_ICONS[type]}
-                    {type}
+                {jenis.map((j) => (
+                  <Link className="brand-item-small" href={`${KATALOG_SEMUA}?tipe=${j.slug}`} key={j.slug}>
+                    {CAR_TYPE_ICONS[IKON_JENIS[j.slug] ?? ""] ?? null}
+                    {j.label}
                   </Link>
                 ))}
               </div>

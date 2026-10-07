@@ -5,34 +5,48 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
 import ListingCard from "@/components/listing/ListingCard";
-import { useListings } from "@/components/common/KatalogProvider";
+import { useKatalog } from "@/components/common/KatalogProvider";
+import { KATALOG_SEMUA } from "@/lib/faset";
 
-// Migrated from ../aurexo/index.html lines 1107-2307 (`.flat-tabs`). Both tabs' card sets exactly
-// match existing canonical listings (ids 1-8, confirmed via full source title/spec/price read — the
-// "Mobil Bekas" tab is a literal repeat of the first 6 "Mobil Baru" entries), so this reuses
-// `ListingCard`/`allListings` directly rather than any page-local data. Real tab switch — same
-// `content-tab > content-inner.active` pattern already used by `BlogGridStyle2Content.tsx`.
-const NEW_CAR_IDS = [1, 2, 3, 4, 5, 6, 7, 8];
-const USED_CAR_IDS = [1, 2, 3, 4, 5, 6];
+// Migrated from ../aurexo/index.html lines 1107-2307 (`.flat-tabs`).
+//
+// SEBELUMNYA DUA TAB HIASAN. Labelnya "Mobil Baru" dan "Mobil Bekas", tapi
+// keduanya menampilkan mobil yang sama: daftar unit di sini diambil dari ID tetap
+// 1-8 untuk tab pertama dan 1-6 untuk tab kedua — enam mobil pertama diulang
+// persis, dan tidak ada satu pun mobil baru di showroom ini karena seluruh 18
+// unitnya bekas. Ditambah lagi ID tetap itu tidak cocok dengan basis data
+// sungguhan, jadi begitu katalognya berubah, tabnya menampilkan unit yang salah.
+//
+// Sekarang tabnya memakai data yang benar-benar ada: kolom `unggulan` di tabel
+// unit. Tab pertama menampilkan unit yang ditandai unggulan, tab kedua seluruh
+// stok. Keduanya dibaca dari `useKatalog()`, jadi tidak ada daftar ID yang bisa
+// melenceng dari basis data lagi.
+//
+// Tata letak, kelas, dan konfigurasi Swiper-nya tidak diubah: `.swiper-card-7`
+// tetap grid dua baris (`slidesPerColumn: 2` / `slidesPerColumnFill: "row"` versi
+// swiper.js lama, padanan modernnya `grid: { rows: 2, fill: "row" }`).
+type Tab = "unggulan" | "semua";
 
 export default function NewCarsSection() {
-  const [activeTab, setActiveTab] = useState<"new" | "used">("new");
-  const ids = activeTab === "new" ? NEW_CAR_IDS : USED_CAR_IDS;
-  const listings = useListings(ids);
+  const [activeTab, setActiveTab] = useState<Tab>("unggulan");
+  const katalog = useKatalog();
+
+  const unggulan = katalog.filter((l) => l.featured);
+  const listings = activeTab === "unggulan" ? unggulan : katalog;
 
   return (
     <section className="container py-100 flat-tabs">
       <div className="title-section mb-30 gap-8 wow fadeInUp" data-wow-delay="0.1s">
         <ul className="menu-tab menu-tab-style2 text-white gap-40 md-gap-12">
-          <li className={activeTab === "new" ? "active" : ""} onClick={() => setActiveTab("new")}>
-            <h2 className="text">Mobil Baru</h2>
+          <li className={activeTab === "unggulan" ? "active" : ""} onClick={() => setActiveTab("unggulan")}>
+            <h2 className="text">Unit Unggulan</h2>
           </li>
-          <li className={activeTab === "used" ? "active" : ""} onClick={() => setActiveTab("used")}>
-            <h2 className="text">Mobil Bekas</h2>
+          <li className={activeTab === "semua" ? "active" : ""} onClick={() => setActiveTab("semua")}>
+            <h2 className="text">Semua Unit</h2>
           </li>
         </ul>
         <Link
-          href="/listing-grid4-columns"
+          href={KATALOG_SEMUA}
           className="btn btn-line-style-2 effect-line-primary hover-fill-white effect-line-primary btn-large"
         >
           Lihat Semua
@@ -42,12 +56,6 @@ export default function NewCarsSection() {
       <div className="content-tab">
         <div className="content-inner active">
           <div className="swiper-container swiper-card-7">
-            {/* Reproduces `swiper.js`'s own `.swiper-card-7` config verbatim: a real 2-row grid per
-                page (legacy `slidesPerColumn: 2`/`slidesPerColumnFill: "row"`, Swiper's modern `Grid`
-                module equivalent — `rows: 2, fill: "row"`), NOT a single-row carousel. Found and fixed
-                after a direct source/swiper.js re-check — the previous version only varied
-                `slidesPerView` per breakpoint with no row-grouping at all, so New Cars' 8 cards and
-                Used Cars' 6 cards rendered as one flat row instead of the real 2-row grid. */}
             <Swiper
               key={activeTab}
               modules={[Grid, Pagination]}

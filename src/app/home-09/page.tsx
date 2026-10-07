@@ -178,7 +178,6 @@ export default function Home09() {
         searchCarsClassName="margin-top-auto wow fadeInUp"
         searchCarsWowDelay="0.1s"
         titleWowDelay={null}
-        tabsWowDelay={null}
         filtersWowDelay={null}
       />
 

@@ -141,6 +141,7 @@ export function unitKeListing(u: Unit): Listing {
     brandLabel: u.merek,
     bodyStyle: teks(u.tipe) ?? bodiDariTeks(u.slug, u.judul, u.model) ?? undefined,
     badge: u.unggulan ? { text: "Istimewa", colorClass: "bg-primary-2" } : undefined,
+    featured: u.unggulan ? true : undefined,
     photoCount: galeri.length,
     videoCount: 0,
     price: rupiah(u.harga),
@@ -178,6 +179,7 @@ export function muatKatalog(): Listing[] {
     return allListings.map((l) => ({
       ...l,
       bodyStyle: l.bodyStyle ?? bodiDariTeks(l.slug, l.title) ?? undefined,
+      featured: l.featured ?? l.badge?.text === "Istimewa",
     }));
   }
   return baris.map(unitKeListing);

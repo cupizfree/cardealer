@@ -5,6 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ListingSidebarSection from "@/components/listing/ListingSidebarSection";
 import { muatKatalog } from "@/lib/katalog";
+import { dariParams, judulDariParams, type Params } from "@/lib/saring";
 
 export const metadata: Metadata = {
   title: "Katalog Mobil",
@@ -14,7 +15,12 @@ export const metadata: Metadata = {
 // Migrated from ../aurexo/listing-liststyle-sidebar.html — see docs/migration/MIGRATION_STATUS.md and
 // COMPONENT_MAP.md for the scope decisions (3 decorative filter fields not reproduced; see
 // ListingSidebarSection.tsx's comment).
-export default function ListingListstyleSidebarPage() {
+export default async function ListingListstyleSidebarPage({
+  searchParams,
+}: {
+  searchParams: Promise<Params>;
+}) {
+  const sp = await searchParams;
   return (
     <>
       <Header variant="style-1" activePath="/listing-liststyle-sidebar" />
@@ -37,11 +43,15 @@ export default function ListingListstyleSidebarPage() {
 
       <section className="pb-100">
         <div className="container">
-          <h2>Katalog Mobil</h2>
+          <h2>{judulDariParams(sp) ?? "Katalog Mobil"}</h2>
         </div>
         <div className="tf-spacing-style3 md-hidden" />
 
-        <ListingSidebarSection listings={muatKatalog()} initialView="list" />
+        <ListingSidebarSection
+          listings={muatKatalog()}
+          initialView="list"
+          initialFilters={dariParams(sp)}
+        />
       </section>
 
       <Footer />

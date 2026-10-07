@@ -6,29 +6,68 @@ import RangeSlider from "./RangeSlider";
 import CheckboxDropdown from "./CheckboxDropdown";
 import ColorDropdown from "./ColorDropdown";
 import type { FilterState } from "./FilterSidebar";
+import { useKatalog } from "@/components/common/KatalogProvider";
+import { labelBodi } from "@/lib/bodi";
+import {
+  bahanBakarDiStok,
+  jenisDiStok,
+  merekDiStok,
+  modelDiStok,
+  transmisiDiStok,
+} from "@/lib/faset";
 
 // The actual filter form fields (Brand/Model/Price/Body Style/Fuel Type/Transmission/Door
 // count/Cylinders/Colors/Features) — extracted out of `FilterSidebar` (the slide-out popup shell)
 // so `listing-liststyle-sidebar.html`'s *permanent* inline sidebar can reuse the exact same fields
 // and filtering behavior without the popup/overlay markup wrapped around them. See that file's
-// header comment for the full filtering-scope rationale (which fields are real vs. decorative) —
-// unchanged here, this is a pure structural extraction, not a behavior change.
+// header comment for the full filtering-scope rationale (which fields are real vs. decorative).
+//
+// Daftar isian Merek/Model/Jenis Bodi/Bahan Bakar/Transmisi sekarang dihitung dari stok
+// (`useKatalog()`), bukan ditulis tangan di sini. Versi lama menawarkan BMW, Mercedes, Audi, dan
+// Volvo — showroom ini tidak punya satu pun unitnya — plus "SEMUA" dan "SUV" di dalam daftar
+// merek. Pilihan yang tidak ada isinya bukan sekadar tidak berguna: pengunjung mengira katalognya
+// rusak. Menghitungnya dari stok berarti pilihan baru muncul sendiri begitu ada unitnya.
+//
+// Sisa yang masih hiasan dan sengaja dibiarkan apa adanya: Jumlah Pintu, Silinder, Warna, dan
+// Fitur. Tidak ada satu pun kolom di `Listing` yang menyokongnya, jadi menampilkannya sebagai
+// penyaring sungguhan berarti mengarang data. Sudah tercatat begitu sejak migrasi awal.
 export default function FilterFields({
   filters,
   onFilterChange,
   priceMin,
   priceMax,
+  jarakMin,
+  jarakMaks,
 }: {
   filters: FilterState;
   onFilterChange: (patch: Partial<FilterState>) => void;
   priceMin: number;
   priceMax: number;
+  jarakMin: number;
+  jarakMaks: number;
 }) {
   function toggleValue(list: string[], value: string): string[] {
     return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
   }
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const katalog = useKatalog();
+
+  const merek = merekDiStok(katalog).map((m) => m.label);
+  const model = modelDiStok(katalog).map((m) => m.label);
+  const jenis = jenisDiStok(katalog).map((j) => ({
+    value: j.slug,
+    label: `${j.label} (${j.jumlah})`,
+  }));
+  const bahanBakar = bahanBakarDiStok(katalog).map((b) => b.label);
+  const transmisi = transmisiDiStok(katalog).map((t) => t.label);
+
+  /** Teks pada tombol dropdown: jangan tampilkan satu nama seolah itu pilihan aktif. */
+  function teksTombol(dipilih: string[], kosong: string, label?: (v: string) => string): string {
+    if (dipilih.length === 0) return kosong;
+    const tampil = dipilih.map((v) => label?.(v) ?? v);
+    return tampil.length === 1 ? tampil[0] : `${tampil.length} dipilih`;
+  }
 
   useEffect(() => {
     function handleOutsideClick(event: MouseEvent) {
@@ -50,8 +89,8 @@ export default function FilterFields({
         name="brand"
         label="Pilih Merek"
         toggleId="BrandSelectToggle"
-        defaultText="Semua Merek"
-        options={["SEMUA", "BMW", "SUV", "Mercedes", "Audi", "Honda", "Toyota", "Volvo"]}
+        defaultText={teksTombol(filters.brand, "Semua Merek")}
+        options={merek}
         selected={filters.brand}
         onToggle={(value) => onFilterChange({ brand: toggleValue(filters.brand, value) })}
         isOpen={openDropdown === "brand"}
@@ -62,8 +101,8 @@ export default function FilterFields({
         name="model"
         label="Pilih Model"
         toggleId="modelSelectToggle"
-        defaultText="Semua Model"
-        options={["Semua Model", "A3", "A4", "A6", "A8"]}
+        defaultText={teksTombol(filters.model, "Semua Model")}
+        options={model}
         searchable
         selected={filters.model}
         onToggle={(value) => onFilterChange({ model: toggleValue(filters.model, value) })}
@@ -85,7 +124,7 @@ export default function FilterFields({
         </div>
 
         <div className="search-cars__range">
-          <div className="search-cars__range-wrapper mb-14" id="yearRangeWrapper">
+          <div className="search-cars__range-wrapper mb-14">
             <RangeSlider
               min={priceMin}
               max={priceMax}
@@ -96,10 +135,31 @@ export default function FilterFields({
           </div>
           <div className="filter-price-range-label">
             <p className="text-xs text-secondary">
-              Harga minimal <span className="flex">Rp&nbsp;<span id="yearMin" className="block">{filters.priceRange[0].toLocaleString("id-ID")}</span></span>
+              Harga minimal <span className="flex">Rp&nbsp;<span className="block">{filters.priceRange[0].toLocaleString("id-ID")}</span></span>
             </p>
             <p className="text-xs text-secondary">
-              Harga maksimal <span className="flex">Rp&nbsp;<span id="yearMax" className="block">{filters.priceRange[1].toLocaleString("id-ID")}</span></span>
+              Harga maksimal <span className="flex">Rp&nbsp;<span className="block">{filters.priceRange[1].toLocaleString("id-ID")}</span></span>
+            </p>
+          </div>
+        </div>
+
+        <div className="search-cars__range">
+          <div className="filter-label">Jarak Tempuh</div>
+          <div className="search-cars__range-wrapper mb-14">
+            <RangeSlider
+              min={jarakMin}
+              max={jarakMaks}
+              step={1000}
+              value={filters.mileageRange}
+              onChange={(mileageRange) => onFilterChange({ mileageRange })}
+            />
+          </div>
+          <div className="filter-price-range-label">
+            <p className="text-xs text-secondary">
+              Minimal <span className="block">{filters.mileageRange[0].toLocaleString("id-ID")} km</span>
+            </p>
+            <p className="text-xs text-secondary">
+              Maksimal <span className="block">{filters.mileageRange[1].toLocaleString("id-ID")} km</span>
             </p>
           </div>
         </div>
@@ -107,10 +167,10 @@ export default function FilterFields({
 
       <CheckboxDropdown
         name="bodystyle"
-        label="Bentuk Bodi"
+        label="Jenis Bodi"
         toggleId="BodyStyleSelectToggle"
-        defaultText="Sedan"
-        options={["Sedan", "SUV", "Hatchback"]}
+        defaultText={teksTombol(filters.bodyStyle, "Semua Jenis", labelBodi)}
+        options={jenis}
         selected={filters.bodyStyle}
         onToggle={(value) => onFilterChange({ bodyStyle: toggleValue(filters.bodyStyle, value) })}
         isOpen={openDropdown === "bodystyle"}
@@ -121,8 +181,8 @@ export default function FilterFields({
         name="Bahan Bakar"
         label="Bahan Bakar"
         toggleId="FuelStyleSelectToggle"
-        defaultText="Listrik"
-        options={["Listrik", "Bensin", "Solar"]}
+        defaultText={teksTombol(filters.fuelType, "Semua Bahan Bakar")}
+        options={bahanBakar}
         selected={filters.fuelType}
         onToggle={(value) => onFilterChange({ fuelType: toggleValue(filters.fuelType, value) })}
         isOpen={openDropdown === "Bahan Bakar"}
@@ -133,8 +193,8 @@ export default function FilterFields({
         name="Transmisi"
         label="Transmisi"
         toggleId="TransmissionSelectToggle"
-        defaultText="Matic"
-        options={["Matic", "Manual"]}
+        defaultText={teksTombol(filters.transmission, "Semua Transmisi")}
+        options={transmisi}
         selected={filters.transmission}
         onToggle={(value) => onFilterChange({ transmission: toggleValue(filters.transmission, value) })}
         isOpen={openDropdown === "Transmisi"}

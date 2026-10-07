@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Listing } from "@/data/listings";
+import type { FilterState } from "./FilterSidebar";
 import ListingCard from "./ListingCard";
 import HalfMapListingCard from "./HalfMapListingCard";
 import FilterSidebar from "./FilterSidebar";
@@ -46,11 +47,14 @@ export default function ListingSidebarSection({
   initialView = "list",
   gridClass = DEFAULT_GRID_CLASS,
   sidebarPosition = "left",
+  initialFilters,
 }: {
   listings: Listing[];
   initialView?: View;
   gridClass?: GridClassMap;
   sidebarPosition?: "left" | "right";
+  /** Keadaan awal dari kueri URL (`?tipe=`, `?merek=`, `?harga=`, `?model=`, `?jarak=`). */
+  initialFilters?: Partial<FilterState>;
 }) {
   const [view, setView] = useState<View>(initialView);
   const {
@@ -62,6 +66,8 @@ export default function ListingSidebarSection({
     setPage,
     priceMin,
     priceMax,
+    jarakMin,
+    jarakMaks,
     filters,
     setFilters,
     sortedListings,
@@ -71,7 +77,7 @@ export default function ListingSidebarSection({
     totalPages,
     rangeStart,
     rangeEnd,
-  } = useListingFilters(listings);
+  } = useListingFilters(listings, initialFilters);
 
   const onFilterChange = (patch: Partial<typeof filters>) => setFilters((prev) => ({ ...prev, ...patch }));
 
@@ -79,7 +85,14 @@ export default function ListingSidebarSection({
     <div className="listing-sidebar-right__filter md-mb-30">
       <div className="filter-sidebar-popup filter-sidebar-desktop md-hidden">
         <form action="#" onSubmit={(event) => event.preventDefault()}>
-          <FilterFields filters={filters} onFilterChange={onFilterChange} priceMin={priceMin} priceMax={priceMax} />
+          <FilterFields
+            filters={filters}
+            onFilterChange={onFilterChange}
+            priceMin={priceMin}
+            priceMax={priceMax}
+            jarakMin={jarakMin}
+            jarakMaks={jarakMaks}
+          />
         </form>
       </div>
     </div>
@@ -194,6 +207,8 @@ export default function ListingSidebarSection({
         onFilterChange={onFilterChange}
         priceMin={priceMin}
         priceMax={priceMax}
+        jarakMin={jarakMin}
+        jarakMaks={jarakMaks}
       />
     </div>
   );

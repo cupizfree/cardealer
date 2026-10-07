@@ -2,6 +2,19 @@
 
 import Image from "next/image";
 
+/**
+ * Satu pilihan dropdown: teks polos, atau pasangan nilai/label.
+ *
+ * Pasangan dipakai kalau yang dibandingkan penyaring berbeda dari yang dibaca
+ * pengunjung — jenis bodi disaring sebagai slug (`suv`), tapi ditampilkan
+ * sebagai label (`SUV (7)`). Sama seperti kunci fitur unit.
+ */
+export type OpsiDropdown = string | { value: string; label: string };
+
+function normalisasi(o: OpsiDropdown): { value: string; label: string } {
+  return typeof o === "string" ? { value: o, label: o } : o;
+}
+
 // Extracted out of `FilterFields.tsx` so other filter UI shells (e.g. `TopSearchFilterBar.tsx`) can
 // reuse the exact same checkbox-hack dropdown widget instead of redeclaring it. `FilterFields.tsx`'s own
 // vertical sidebar context (`listing-sidebar-left.html` etc., confirmed via source read) really has
@@ -30,7 +43,7 @@ export default function CheckboxDropdown({
   label: string;
   toggleId: string;
   defaultText: string;
-  options: string[];
+  options: OpsiDropdown[];
   searchable?: boolean;
   selected?: string[];
   onToggle?: (value: string) => void;
@@ -65,25 +78,26 @@ export default function CheckboxDropdown({
             </div>
           )}
           <div className="filter-select-dropdown__list">
-            {options.map((option) =>
-              onToggle ? (
-                <label className="filter-checkbox" key={option}>
+            {options.map((mentah) => {
+              const { value, label: teks } = normalisasi(mentah);
+              return onToggle ? (
+                <label className="filter-checkbox" key={value}>
                   <input
                     type="checkbox"
                     name={name}
-                    value={option}
-                    checked={selected?.includes(option) ?? false}
-                    onChange={() => onToggle(option)}
+                    value={value}
+                    checked={selected?.includes(value) ?? false}
+                    onChange={() => onToggle(value)}
                   />
-                  <span>{option}</span>
+                  <span>{teks}</span>
                 </label>
               ) : (
-                <label className="filter-checkbox" key={option}>
-                  <input type="checkbox" name={name} value={option} />
-                  <span>{option}</span>
+                <label className="filter-checkbox" key={value}>
+                  <input type="checkbox" name={name} value={value} />
+                  <span>{teks}</span>
                 </label>
-              )
-            )}
+              );
+            })}
           </div>
         </div>
       </div>

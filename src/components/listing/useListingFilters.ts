@@ -92,7 +92,13 @@ export type FilterTag = { key: string; label: string; remove: (filters: FilterSt
 // correspond to any real field — those are deliberately NOT reproduced (no `Listing` field backs
 // them; inventing one would violate the no-data-invention rule), so this list only ever contains
 // tags a user actually created by interacting with the sidebar.
-function buildFilterTags(filters: FilterState, priceMin: number, priceMax: number): FilterTag[] {
+function buildFilterTags(
+  filters: FilterState,
+  priceMin: number,
+  priceMax: number,
+  jarakMin: number,
+  jarakMaks: number,
+): FilterTag[] {
   const tags: FilterTag[] = [];
   const arrayTag = (values: string[], key: keyof FilterState) => {
     for (const v of values) {
@@ -124,6 +130,13 @@ function buildFilterTags(filters: FilterState, priceMin: number, priceMax: numbe
       remove: (f) => ({ ...f, priceRange: [priceMin, priceMax] }),
     });
   }
+  if (filters.mileageRange[0] !== jarakMin || filters.mileageRange[1] !== jarakMaks) {
+    tags.push({
+      key: "mileage",
+      label: `Jarak: ${filters.mileageRange[0].toLocaleString("id-ID")} - ${filters.mileageRange[1].toLocaleString("id-ID")} km`,
+      remove: (f) => ({ ...f, mileageRange: [jarakMin, jarakMaks] }),
+    });
+  }
   return tags;
 }
 
@@ -152,6 +165,12 @@ function applyFilters(listings: Listing[], filters: FilterState): Listing[] {
     if (price > 0 && (price < filters.priceRange[0] || price > filters.priceRange[1])) {
       return false;
     }
+    // Jarak tempuh mengikuti aturan yang sama: unit tanpa angka jarak tidak
+    // dibuang oleh penyaring jarak, karena tidak ada datanya untuk dinilai.
+    const jarak = parseMileage(listing.spec.mileage);
+    if (jarak > 0 && (jarak < filters.mileageRange[0] || jarak > filters.mileageRange[1])) {
+      return false;
+    }
     return true;
   });
 }
@@ -160,9 +179,10 @@ function applyFilters(listings: Listing[], filters: FilterState): Listing[] {
 // gridstyle-halfmap, liststyle-*, topmap, ...) — extracted once a second consumer needed the exact
 // same ~150 lines of stateful logic, rather than duplicating it per page.
 //
-// `awal` adalah keadaan awal yang datang dari kueri URL (`?tipe=`, `?merek=`, `?harga=`). Sebelum
-// ini tidak ada satu pun halaman listing yang membaca `searchParams`, jadi 26 tautan navigasi
-// merender halaman yang sama persis — kelihatan berfungsi, tidak menyaring apa pun.
+// `awal` adalah keadaan awal yang datang dari kueri URL (`?tipe=`, `?merek=`, `?harga=`,
+// `?model=`, `?jarak=`). Sebelum ini tidak ada satu pun halaman listing yang membaca
+// `searchParams`, jadi 26 tautan navigasi merender halaman yang sama persis — kelihatan
+// berfungsi, tidak menyaring apa pun.
 export function useListingFilters(listings: Listing[], awal?: Partial<FilterState>) {
   const [sort, setSort] = useState<SortOption>("lowest-price");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -174,6 +194,12 @@ export function useListingFilters(listings: Listing[], awal?: Partial<FilterStat
     return [Math.floor(Math.min(...prices) / 500) * 500, Math.ceil(Math.max(...prices) / 500) * 500];
   }, [listings]);
 
+  const [jarakMin, jarakMaks] = useMemo(() => {
+    const jarak = listings.map((l) => parseMileage(l.spec.mileage)).filter((m) => m > 0);
+    if (jarak.length === 0) return [0, 0];
+    return [Math.floor(Math.min(...jarak) / 1000) * 1000, Math.ceil(Math.max(...jarak) / 1000) * 1000];
+  }, [listings]);
+
   const kosong = useCallback(
     (): FilterState => ({
       brand: [],
@@ -181,6 +207,7 @@ export function useListingFilters(listings: Listing[], awal?: Partial<FilterStat
       fuelType: [],
       transmission: [],
       priceRange: [priceMin, priceMax],
+      mileageRange: [jarakMin, jarakMaks],
       bodyStyle: [],
       doorCount: [],
       cylinders: [],
@@ -188,7 +215,7 @@ export function useListingFilters(listings: Listing[], awal?: Partial<FilterStat
       interiorColor: null,
       features: [],
     }),
-    [priceMin, priceMax],
+    [priceMin, priceMax, jarakMin, jarakMaks],
   );
 
   const [filters, setFilters] = useState<FilterState>(() => ({ ...kosong(), ...awal }));
@@ -210,18 +237,27 @@ export function useListingFilters(listings: Listing[], awal?: Partial<FilterStat
     setPage(1);
   }, [kunciAwal, kosong]);
 
-  // Rentang harga dari kueri tidak boleh ditimpa saat harga min/maks katalog
-  // diketahui — efek lama selalu menimpa, sehingga `?harga=` tidak akan pernah
-  // berpengaruh. Hanya di-anchor ulang kalau kueri memang tidak menyebut harga.
+  // Rentang dari kueri tidak boleh ditimpa saat batas katalog diketahui — efek
+  // lama selalu menimpa, sehingga `?harga=` tidak akan pernah berpengaruh.
+  // Hanya di-anchor ulang kalau kueri memang tidak menyebut rentang itu.
   const adaRentangUrl = useMemo(() => !!awal?.priceRange, [kunciAwal]);
   useEffect(() => {
     if (adaRentangUrl) return;
     setFilters((prev) => ({ ...prev, priceRange: [priceMin, priceMax] }));
   }, [priceMin, priceMax, adaRentangUrl]);
 
+  const adaJarakUrl = useMemo(() => !!awal?.mileageRange, [kunciAwal]);
+  useEffect(() => {
+    if (adaJarakUrl) return;
+    setFilters((prev) => ({ ...prev, mileageRange: [jarakMin, jarakMaks] }));
+  }, [jarakMin, jarakMaks, adaJarakUrl]);
+
   const filteredListings = useMemo(() => applyFilters(listings, filters), [listings, filters]);
   const sortedListings = useMemo(() => sortListings(filteredListings, sort), [filteredListings, sort]);
-  const filterTags = useMemo(() => buildFilterTags(filters, priceMin, priceMax), [filters, priceMin, priceMax]);
+  const filterTags = useMemo(
+    () => buildFilterTags(filters, priceMin, priceMax, jarakMin, jarakMaks),
+    [filters, priceMin, priceMax, jarakMin, jarakMaks],
+  );
 
   // Tulis keadaan filter kembali ke URL supaya tautannya bisa dibagikan dan
   // tombol kembali bekerja seperti yang diharapkan.
@@ -229,10 +265,10 @@ export function useListingFilters(listings: Listing[], awal?: Partial<FilterStat
   // `history.replaceState`, bukan `router.replace`: yang terakhir memicu render
   // ulang komponen server dan menghapus keadaan yang baru saja diubah pengguna.
   useEffect(() => {
-    const q = keQuery(filters, priceMin, priceMax);
+    const q = keQuery(filters, priceMin, priceMax, jarakMin, jarakMaks);
     const url = q ? `${window.location.pathname}?${q}` : window.location.pathname;
     window.history.replaceState(null, "", url);
-  }, [filters, priceMin, priceMax]);
+  }, [filters, priceMin, priceMax, jarakMin, jarakMaks]);
 
   function clearAllFilters() {
     setFilters(kosong());
@@ -260,6 +296,8 @@ export function useListingFilters(listings: Listing[], awal?: Partial<FilterStat
     setPage,
     priceMin,
     priceMax,
+    jarakMin,
+    jarakMaks,
     filters,
     setFilters,
     sortedListings,
