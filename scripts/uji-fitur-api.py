@@ -13,6 +13,7 @@ aturan Secure, bukan server.
 
 Pakai:  python3 scripts/uji-fitur-api.py [basis-url] [surel] [sandi]
         (bawaan http://127.0.0.1:3101, admin@marf.id)
+        Kata sandi diambil dari SEED_ADMIN_SANDI atau .env — lihat scripts/_akun.py.
 """
 
 from __future__ import annotations
@@ -21,10 +22,14 @@ import json
 import sys
 import urllib.error
 import urllib.request
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _akun import sandi_uji, surel_uji  # noqa: E402
 
 BASIS = (sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:3101").rstrip("/")
-SUREL = sys.argv[2] if len(sys.argv) > 2 else "admin@marf.id"
-SANDI = sys.argv[3] if len(sys.argv) > 3 else "MarfAdmin#2026"
+SUREL = sys.argv[2] if len(sys.argv) > 2 else surel_uji("admin")
+SANDI = sys.argv[3] if len(sys.argv) > 3 else sandi_uji("admin")
 
 KATEGORI = ["Exterior", "Interior", "Safety", "Mechanical", "Technology", "Other"]
 cookie: str = ""

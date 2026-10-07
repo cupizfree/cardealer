@@ -18,6 +18,9 @@ import sys
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+from _akun import sandi_uji, surel_uji  # noqa: E402
+
 DASAR = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:3100"
 
 HALAMAN_PUBLIK = [
@@ -37,8 +40,8 @@ HALAMAN_PUBLIK = [
 # kalau hanya halaman publik yang diuji, sisa di dasbor akan lolos.
 HALAMAN_SESI = ["/dashboard", "/my-listings", "/my-profile", "/message", "/add-listings-2"]
 
-SUREL = "admin@marf.id"
-SANDI = "MarfAdmin#2026"
+SUREL = surel_uji("admin")
+SANDI = sandi_uji("admin")
 
 
 def teks_tampil(html: str) -> str:

@@ -18,7 +18,15 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+#
+# `.env*.local` saja TIDAK cukup: berkas yang benar-benar dipakai Next.js
+# namanya `.env`, dan pola lama itu tidak menangkapnya. Satu `git add -A` sudah
+# cukup untuk mendorong sandi basis data dan kunci API ke repositori publik.
+# `.env.example` dikecualikan karena memang hanya berisi nama variabel, bukan
+# nilainya.
+.env
+.env.*
+!.env.example
 
 # typescript
 *.tsbuildinfo

@@ -143,14 +143,16 @@ Rute: `/staff/*` — peran `staff` dan `admin`.
 
 ## 7. Akun Awal
 
-Dibuat saat seed pertama. **Kata sandi harus diganti setelah masuk pertama.**
+Dibuat saat seed pertama. **Kata sandinya tidak lagi ditulis di mana pun di repositori ini.**
 
-| Peran | Email | Sandi awal |
+| Peran | Email bawaan | Variabel sandi |
 |---|---|---|
-| admin | `admin@marf.id` | `MarfAdmin#2026` |
-| staff | `staff@marf.id` | `MarfStaff#2026` |
+| admin | `admin@marf.id` | `SEED_ADMIN_SANDI` |
+| staff | `staff@marf.id` | `SEED_STAFF_SANDI` |
 
-Akun ini dibuat otomatis oleh `src/lib/seed.ts` saat basis data masih kosong. **Ganti sebelum dipakai sungguhan** — nilainya tertulis di README publik.
+Akun ini dibuat otomatis oleh `src/lib/seed.ts` saat basis data masih kosong. Sandinya dibaca dari lingkungan (`.env`, lihat `.env.example`); kalau kosong, server membuat sandi acak dan mencetaknya sekali ke konsol.
+
+> **Jangan tulis sandi ke berkas apa pun di repositori ini.** Repositori ini publik, dan sandi yang pernah ter-commit tetap bisa dibaca dari riwayat git meski barisnya dihapus kemudian. Kalau itu sudah terjadi, satu-satunya perbaikan yang sungguhan adalah mengganti sandinya — bukan menghapus barisnya.
 
 ---
 

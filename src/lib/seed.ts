@@ -2,6 +2,7 @@
 // IDEMPOTEN — kalau tabel pengguna sudah berisi, tidak melakukan apa pun.
 // Dipanggil dari route login supaya basis data menyala sendiri saat pertama dipakai.
 
+import { randomBytes } from "node:crypto";
 import { jalankan, satu, transaksi } from "./db";
 import { hashSandi } from "./sandi";
 import { allListings, FITUR_UNIT } from "@/data/listings";
@@ -15,9 +16,46 @@ function angkaDariHarga(teks: string | undefined): number {
   return Number.isFinite(n) ? n : 0;
 }
 
+/**
+ * Kata sandi akun awal — dibaca dari lingkungan, TIDAK ditulis di berkas ini.
+ *
+ * Sebelumnya baris di bawah menulis sandi admin dan staff sebagai literal.
+ * Berkas ini ada di repositori PUBLIK, jadi sandi itu sama dengan diumumkan —
+ * dan karena pernah ter-commit, sandi tersebut ikut selamanya di riwayat git
+ * meski barisnya dihapus kemudian. Menghapusnya dari berkas tidak mengembalikan
+ * apa pun; satu-satunya perbaikan yang sungguhan adalah menggantinya, dan itu
+ * yang sudah dilakukan (lihat `scripts/ganti-sandi.ts`).
+ *
+ * Kalau variabelnya kosong, sandi dibuat acak dan dicetak SEKALI ke konsol
+ * server. Operator membacanya dari log, bukan dari repo. Cara ini yang dipakai
+ * WordPress, Django, dan Grafana — dan alasannya sama: berkas yang bisa dibaca
+ * siapa saja bukan tempat menyimpan rahasia.
+ */
+function sandiAwal(nama: string, peran: string): string {
+  const dariEnv = process.env[nama]?.trim();
+  if (dariEnv) return dariEnv;
+
+  const acak = `Marf-${peran}-${randomBytes(12).toString("base64url")}`;
+  console.warn(`[seed] ${nama} tidak diset — kata sandi acak dibuat untuk akun ${peran}:`);
+  console.warn(`[seed]     ${acak}`);
+  console.warn(`[seed] Catat sekarang; nilainya tidak ditampilkan lagi.`);
+  console.warn(`[seed] Set ${nama} di .env supaya tetap sama saat basis data dibuat ulang.`);
+  return acak;
+}
+
 export const AKUN_AWAL = [
-  { email: "admin@marf.id", nama: "Admin MARF", peran: "admin" as const, sandi: "MarfAdmin#2026" },
-  { email: "staff@marf.id", nama: "Staff MARF", peran: "staff" as const, sandi: "MarfStaff#2026" },
+  {
+    email: process.env.SEED_ADMIN_EMAIL?.trim() || "admin@marf.id",
+    nama: "Admin MARF",
+    peran: "admin" as const,
+    sandi: sandiAwal("SEED_ADMIN_SANDI", "admin"),
+  },
+  {
+    email: process.env.SEED_STAFF_EMAIL?.trim() || "staff@marf.id",
+    nama: "Staff MARF",
+    peran: "staff" as const,
+    sandi: sandiAwal("SEED_STAFF_SANDI", "staff"),
+  },
 ];
 
 export type HasilSeed = {

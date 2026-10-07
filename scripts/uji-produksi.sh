@@ -5,8 +5,9 @@
 # Default:    http://127.0.0.1:3101  (server uji, basis data terpisah)
 #
 # Lewat scripts/uji.sh, server uji dinyalakan dan basis data uji disiapkan dulu.
-# Sandi TIDAK ditulis di berkas ini — dibaca saat jalan dari src/lib/seed.ts,
-# satu-satunya tempat sandi awal didefinisikan.
+# Sandi TIDAK ditulis di berkas ini — dibaca dari SEED_ADMIN_SANDI /
+# SEED_STAFF_SANDI (diisi scripts/uji.sh untuk server uji, atau .env untuk
+# produksi). Berkas ini ada di repositori publik.
 #
 # Setiap unit yang dibuat di sini WAJIB dihapus di akhir. Versi lama tidak
 # menangkap ID dua unit, sehingga keduanya bocor ke basis data setiap kali uji
@@ -50,25 +51,21 @@ cek() { # cek <label> <harapan> <dapat>
 kode() { curl -s -o /dev/null -w "%{http_code}" -m 30 "$@"; }
 ambil_id() { python3 -c "import json,sys;print(json.load(sys.stdin)['data']['id'])" 2>/dev/null; }
 
-# ── kredensial dibaca dari sumbernya, tidak ditulis di sini ─────────────────
-# `node --experimental-strip-types` tidak bisa mengimpor seed.ts (impor tanpa
-# ekstensi + alias "@/"), jadi baris AKUN_AWAL dibaca langsung dari berkasnya.
-AKUN=$(python3 - "$AKAR/src/lib/seed.ts" <<'PY'
-import re, sys
-s = open(sys.argv[1], encoding="utf-8").read()
-blok = re.search(r"AKUN_AWAL\s*=\s*\[(.*?)\]", s, re.S)
-if blok:
-    for m in re.finditer(r'email:\s*"([^"]+)".*?sandi:\s*"([^"]+)"', blok.group(1), re.S):
-        print(f"{m.group(1)}\t{m.group(2)}")
-PY
-)
-ADMIN_EMAIL=$(echo "$AKUN" | awk -F'\t' '$1 ~ /admin/ {print $1}')
-ADMIN_SANDI=$(echo "$AKUN" | awk -F'\t' '$1 ~ /admin/ {print $2}')
-STAFF_EMAIL=$(echo "$AKUN" | awk -F'\t' '$1 ~ /staff/ {print $1}')
-STAFF_SANDI=$(echo "$AKUN" | awk -F'\t' '$1 ~ /staff/ {print $2}')
+# ── kredensial dibaca dari lingkungan, tidak ditulis di sini ────────────────
+# Sebelumnya blok ini membaca baris AKUN_AWAL dari src/lib/seed.ts dengan regex.
+# Itu tidak bisa lagi: seed.ts sekarang membaca sandinya dari lingkungan, jadi
+# tidak ada sandi di berkas itu untuk dibaca — dan itu memang tujuannya.
+# Sandi datang dari SEED_ADMIN_SANDI/SEED_STAFF_SANDI (diisi scripts/uji.sh untuk
+# server uji, atau .env untuk produksi). Lihat scripts/_akun.py.
+ADMIN_EMAIL="${SEED_ADMIN_EMAIL:-admin@marf.id}"
+STAFF_EMAIL="${SEED_STAFF_EMAIL:-staff@marf.id}"
+ADMIN_SANDI="${SEED_ADMIN_SANDI:-}"
+STAFF_SANDI="${SEED_STAFF_SANDI:-}"
 
-if [ -z "$ADMIN_EMAIL" ] || [ -z "$STAFF_EMAIL" ]; then
-  echo "GAGAL: tidak bisa membaca akun awal dari src/lib/seed.ts" >&2
+if [ -z "$ADMIN_SANDI" ] || [ -z "$STAFF_SANDI" ]; then
+  echo "GAGAL: SEED_ADMIN_SANDI / SEED_STAFF_SANDI belum diset." >&2
+  echo "  Lewat scripts/uji.sh keduanya diisi otomatis." >&2
+  echo "  Untuk menjalankan langsung, setel keduanya atau tulis di .env." >&2
   exit 1
 fi
 
@@ -91,7 +88,28 @@ PID=$(echo "$R" | ambil_id)
 printf "\n\033[1m── C. MASUK ──\033[0m\n"
 cek "login admin"   200 "$(kode -c "$JAR"  -X POST "$B/api/auth/login" -H 'Content-Type: application/json' -d "{\"email\":\"$ADMIN_EMAIL\",\"kata_sandi\":\"$ADMIN_SANDI\"}")"
 cek "login staff"   200 "$(kode -c "$JAR2" -X POST "$B/api/auth/login" -H 'Content-Type: application/json' -d "{\"email\":\"$STAFF_EMAIL\",\"kata_sandi\":\"$STAFF_SANDI\"}")"
-cek "login salah"   401 "$(kode -X POST "$B/api/auth/login" -H 'Content-Type: application/json' -d "{\"email\":\"$ADMIN_EMAIL\",\"kata_sandi\":\"sandi-yang-salah\"}")"
+
+# Percobaan gagal memakai surel SEKALI-PAKAI, bukan surel admin.
+#
+# Pembatas percobaan mengunci per (surel + alamat IP). Kalau uji ini gagal-login
+# dengan surel admin, menjalankan rangkaian uji lima kali dalam 15 menit akan
+# mengunci akun admin sungguhan — dan uji berikutnya gagal karena 429, bukan
+# karena ada yang rusak. Surel sekali-pakai menguji hal yang sama (401 untuk
+# kredensial salah) tanpa menyentuh penghitung milik akun sungguhan.
+SEKALI="uji-sekali-$RANDOM$RANDOM@contoh.id"
+cek "login salah"   401 "$(kode -X POST "$B/api/auth/login" -H 'Content-Type: application/json' -d "{\"email\":\"$SEKALI\",\"kata_sandi\":\"sandi-yang-salah\"}")"
+cek "surel tak dikenal" 401 "$(kode -X POST "$B/api/auth/login" -H 'Content-Type: application/json' -d '{"email":"tidak-ada-sama-sekali@contoh.id","kata_sandi":"apa-saja"}')"
+
+# Pembatasan percobaan: yang kelima memulai blokir, yang keenam harus 429.
+BATAS="uji-batas-$RANDOM$RANDOM@contoh.id"
+gagal_batas() {
+  kode -X POST "$B/api/auth/login" -H 'Content-Type: application/json' \
+    -d "{\"email\":\"$BATAS\",\"kata_sandi\":\"salah\"}"
+}
+for _ in 1 2 3 4; do gagal_batas >/dev/null; done
+cek "percobaan ke-5 (401)"    401 "$(gagal_batas)"
+cek "percobaan ke-6 (429)"    429 "$(gagal_batas)"
+cek "surel lain tetap bisa"   200 "$(kode -X POST "$B/api/auth/login" -H 'Content-Type: application/json' -d "{\"email\":\"$STAFF_EMAIL\",\"kata_sandi\":\"$STAFF_SANDI\"}")"
 
 printf "\n\033[1m── D. CRUD UNIT ──\033[0m\n"
 UNIK="Uji-$RANDOM$RANDOM"

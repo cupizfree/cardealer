@@ -79,14 +79,29 @@ Staff **tidak** bisa mengelola pengguna. Admin tidak bisa menghapus akunnya send
 
 ### Akun awal
 
-Dibuat otomatis saat basis data masih kosong:
+Akun dibuat otomatis saat basis data masih kosong. Surelnya bawaan, **kata sandinya tidak** — sandi dibaca dari lingkungan, tidak pernah ditulis di repositori ini.
 
-| Peran | Surel | Kata sandi |
+| Peran | Surel bawaan | Variabel sandi |
 |---|---|---|
-| Admin | `admin@marf.id` | `MarfAdmin#2026` |
-| Staff | `staff@marf.id` | `MarfStaff#2026` |
+| Admin | `admin@marf.id` | `SEED_ADMIN_SANDI` |
+| Staff | `staff@marf.id` | `SEED_STAFF_SANDI` |
 
-> **Ganti kata sandi ini sebelum dipakai sungguhan.** Keduanya tertulis di dokumentasi publik.
+Setel keduanya di `.env` sebelum menjalankan pertama kali (lihat `.env.example`):
+
+```bash
+SEED_ADMIN_SANDI="kata-sandi-panjang-yang-anda-pilih"
+SEED_STAFF_SANDI="kata-sandi-lain-yang-berbeda"
+```
+
+Kalau variabelnya kosong, server membuat sandi acak dan **mencetaknya sekali ke konsol**. Catat dari log saat itu — nilainya tidak ditampilkan lagi. Cara ini disengaja: berkas di repositori publik bukan tempat menyimpan rahasia, dan sandi yang pernah ter-commit tetap bisa dibaca dari riwayat git meski barisnya dihapus kemudian.
+
+> **Jangan pernah menulis kata sandi ke berkas apa pun di repositori ini** — termasuk README, `docs/`, dan skrip uji. Skrip uji membacanya dari `.env` atau dari variabel lingkungan.
+
+### Pembatasan percobaan masuk
+
+`/api/auth/login` menolak setelah **5 percobaan gagal** dari kombinasi surel + alamat IP yang sama, selama 15 menit (`429` `TERLALU_BANYAK_PERCOBAAN`). Percobaan yang berhasil menghapus catatannya.
+
+Catatan ini hidup di memori proses, jadi hilang saat server dimulai ulang dan tidak berlaku lintas proses. Untuk satu proses Next.js ini memadai; kalau nanti dijalankan di beberapa proses, pindahkan ke basis data atau Redis — lihat `src/lib/pembatasan.ts`.
 
 ---
 
@@ -137,6 +152,7 @@ Semua balasan berbentuk `{ ok, data }` atau `{ ok: false, error: { kode, pesan }
 | `404` | Tidak ditemukan — atau tidak berhak melihat |
 | `409` | Bentrok: slug/surel sudah dipakai, atau aturan penjagaan |
 | `422` | Validasi gagal |
+| `429` | Terlalu banyak percobaan masuk — tunggu 15 menit |
 
 ### Form situs kini benar-benar mengirim
 

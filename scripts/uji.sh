@@ -81,8 +81,19 @@ rm -f "$DB_UJI" "$DB_UJI-wal" "$DB_UJI-shm"
 echo "  port $PORT_UJI bebas; basis data uji dihapus: ${DB_UJI#$AKAR/}"
 
 cd "$AKAR"
+
+# Kata sandi untuk basis data UJI saja.
+#
+# Server uji menyemai akunnya sendiri dari variabel ini, jadi tidak ada sandi
+# sungguhan yang perlu ada di skrip — dan tidak ada sandi di repositori publik.
+# Nilainya sengaja tetap: uji harus bisa diulang dan hasilnya sama.
+export SEED_ADMIN_SANDI="uji-admin-sandi-tetap"
+export SEED_STAFF_SANDI="uji-staff-sandi-tetap"
+
+# `npx next start -p PORT` TIDAK jalan: npx menafsirkan `-p` sebagai `--package`
+# miliknya sendiri dan mencari paket bernama "3101". Pakai binernya langsung.
 MARF_DB_PATH="./.data/marf-uji.db" NODE_OPTIONS="--max-old-space-size=384" \
-  npx next start -p "$PORT_UJI" >"$LOG" 2>&1 &
+  ./node_modules/.bin/next start -p "$PORT_UJI" >"$LOG" 2>&1 &
 echo $! > "$PIDFILE"
 echo "  server uji dinyalakan (pid $(cat "$PIDFILE"), port $PORT_UJI)"
 
