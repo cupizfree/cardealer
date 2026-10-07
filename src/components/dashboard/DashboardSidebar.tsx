@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 const MENU_ITEMS = [
   { label: "Dasbor", href: "/dashboard", icon: "/assets/images/dashboard/Dashboard.svg" },
   { label: "Iklan Saya", href: "/my-listings", icon: "/assets/images/dashboard/MyListing.svg" },
-  { label: "Tambah Iklan", href: "/add-listings-2", icon: "/assets/images/dashboard/AddListing.svg" },
   { label: "Favorit Saya", href: "/my-favorites", icon: "/assets/images/dashboard/MyFavorites.svg" },
   { label: "Ulasan Saya", href: "/reviews", icon: "/assets/images/dashboard/MyReviews.svg" },
   { label: "Pesan", href: "/message", icon: "/assets/images/dashboard/Messages.svg", badge: "2" },

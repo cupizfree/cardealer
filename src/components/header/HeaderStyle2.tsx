@@ -10,7 +10,7 @@ import BodyClass from "@/components/common/BodyClass";
 import { useModal } from "@/components/common/ModalProvider";
 import { useCompare } from "@/components/common/CompareProvider";
 import { useWishlist } from "@/components/common/WishlistProvider";
-import { SearchIcon, SignInIcon, AddListingIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
+import { SearchIcon, SignInIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
 import { useHeaderScrollFixed } from "./useHeaderScrollFixed";
 
 const LANGUAGES = ["English", "Viet Nam", "Chinese", "Japanese"];
@@ -301,10 +301,6 @@ export default function HeaderStyle2({
                   Masuk
                 </button>
 
-                <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-                  <AddListingIcon />
-                  Tambah Iklan
-                </Link>
               </div>
             </div>
           </div>
@@ -372,10 +368,6 @@ export default function HeaderStyle2({
               <SignInIcon />
               Masuk
             </button>
-            <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-              <AddListingIcon />
-              Tambah Iklan
-            </Link>
           </div>
         </div>
       </header>
@@ -403,10 +395,6 @@ export default function HeaderStyle2({
             <SignInIcon />
             Masuk
           </button>
-          <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-            <AddListingIcon />
-            Tambah Iklan
-          </Link>
         </div>
       </Offcanvas>
     </div>

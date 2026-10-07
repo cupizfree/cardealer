@@ -10,7 +10,7 @@ import Offcanvas from "@/components/common/Offcanvas";
 import BodyClass from "@/components/common/BodyClass";
 import DashboardAdminDropdown from "./DashboardAdminDropdown";
 import { useModal } from "@/components/common/ModalProvider";
-import { SignInIcon, AddListingIcon } from "@/components/common/icons";
+import { SignInIcon } from "@/components/common/icons";
 
 // Migrated from ../aurexo/dashboard.html lines 93-567. Genuinely different from `header/Header.tsx`, not
 // a variant: no `.header-actions` block at all (no search/compare/wishlist icons, confirmed via source —
@@ -64,10 +64,6 @@ export default function DashboardHeader() {
             </div>
 
             <div className="header-button mobile-hidden-header-button items-center gap-4">
-              <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-                <AddListingIcon />
-                Tambah Iklan
-              </Link>
             </div>
 
             <div
@@ -85,10 +81,6 @@ export default function DashboardHeader() {
             <SignInIcon />
             Masuk
           </button>
-          <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-            <AddListingIcon />
-            Tambah Iklan
-          </Link>
         </div>
       </div>
 
@@ -112,10 +104,6 @@ export default function DashboardHeader() {
             <SignInIcon />
             Masuk
           </button>
-          <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-            <AddListingIcon />
-            Tambah Iklan
-          </Link>
         </div>
       </Offcanvas>
     </header>

@@ -59,8 +59,8 @@ const populer = muatKatalog().slice(0, 4);
 // home-05.html reuse. (3) `Header.tsx` always called `Nav` with no props, silently using `Nav.tsx`'s own
 // defaults (`mr-18`/no `listClassName`/`#9FA1A4` chevrons) even though home-04.html's own real source is
 // `margin-right-auto`/`menu menu style-2`/white chevrons (confirmed via source diff). All 3 fixed via 6
-// new props (`logoSrc`, `actionIconStroke`, `addListingIconColor`, `signInButtonClassName`,
-// `addListingButtonClassName`, `navWrapperClassName`/`navListClassName`/`navChevronColor`), each
+// new props (`logoSrc`, `actionIconStroke`, `signInButtonClassName`,
+// `navWrapperClassName`/`navListClassName`/`navChevronColor`), each
 // defaulting to the pre-existing value so index.html's own usage is unaffected; home-04.html's own
 // `page.tsx` now passes every one of these explicitly.
 //
@@ -161,9 +161,7 @@ export default function Home09() {
         logoSrc="/assets/images/logo-white.png"
         containerClassName="max-w-1840 relative"
         actionIconStroke="white"
-        addListingIconColor="#1C1C1C"
         signInButtonClassName="btn btn-line-white btn-large font-weight-600 bg-sign-in"
-        addListingButtonClassName="btn btn-white btn-large font-weight-600"
         navWrapperClassName="margin-right-auto"
         navListClassName="style-2"
         navChevronColor="white"

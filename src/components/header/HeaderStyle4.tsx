@@ -10,7 +10,7 @@ import BodyClass from "@/components/common/BodyClass";
 import { useModal } from "@/components/common/ModalProvider";
 import { useCompare } from "@/components/common/CompareProvider";
 import { useWishlist } from "@/components/common/WishlistProvider";
-import { SearchIcon, SignInIcon, AddListingIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
+import { SearchIcon, SignInIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
 import { useHeaderScrollFixed } from "./useHeaderScrollFixed";
 
 const LANGUAGES = ["English", "Viet Nam", "Chinese", "Japanese"];
@@ -29,17 +29,14 @@ const LANGUAGES = ["English", "Viet Nam", "Chinese", "Japanese"];
 //
 // home-06.html reuses this exact header with `header-style-4 bg-white` instead of `header-blur`
 // (confirmed via source diff, ../aurexo/home-06.html lines 24-568): dark logo, dark nav chevrons/action
-// icons (since the bg is now white, not a dark blurred hero), a `btn-primary` (not `btn-white`) Add
-// Listing button with a white icon, and its own distinct wrapper/container classes
+// icons (since the bg is now white, not a dark blurred hero), and its own distinct wrapper/container
+// classes
 // (`header-wrapper-style-5`, `max-w-1440 px-15` instead of `max-w-1920 header-spacing`).
 //
 // Retroactive fix: the desktop Sign In/Search/Compare/Wishlist icons and the `.divider-vertical`
 // breakpoint class were left at `icons.tsx`'s shared dark default (`#1C1C1C`) even though home-05's own
-// real source has them as `white` — confirmed via direct source diff. The desktop Add Listing icon had
-// the OPPOSITE bug: `AddListingIcon`'s own shared default is `"white"` (correct for `Header.tsx`'s own
-// `btn-primary` usage), but home-05's own desktop Add Listing button is real `btn-white` with a real
-// `#1C1C1C` icon — a white icon on a white button was rendering invisibly. Both fixed by making every
-// color an explicit prop here (defaulting to home-05's own real colors) rather than relying on
+// real source has them as `white` — confirmed via direct source diff. Fixed by making each color an
+// explicit prop here (defaulting to home-05's own real colors) rather than relying on
 // `icons.tsx`'s shared defaults, which are tuned for `Header.tsx`'s own different context.
 //
 // Sticky-on-scroll behavior (`is-fixed`/`is-custom`/`is-visible`, mirroring `app.js`'s `headerFixed()`)
@@ -63,8 +60,6 @@ export default function HeaderStyle4({
   logoSrc = "/assets/images/logo-white.png",
   topLevelChevronColor = "white",
   actionIconStroke = "white",
-  addListingButtonClassName = "btn btn-white btn-large font-weight-600",
-  addListingIconColor = "#1C1C1C",
   navListClassName = "style-2",
   navWrapperClassName = "margin-right-auto",
 }: {
@@ -77,8 +72,6 @@ export default function HeaderStyle4({
   logoSrc?: string;
   topLevelChevronColor?: string;
   actionIconStroke?: string;
-  addListingButtonClassName?: string;
-  addListingIconColor?: string;
   /** home-06.html's own nav list is a real `class="menu menu"` (a source copy-paste typo, no `style-2`
    *  modifier at all) — confirmed via source diff against home-05.html's own `menu style-2`. */
   navListClassName?: string;
@@ -305,10 +298,6 @@ export default function HeaderStyle4({
                   Masuk
                 </button>
 
-                <Link href="/add-listings-2" className={addListingButtonClassName}>
-                  <AddListingIcon color={addListingIconColor} />
-                  Tambah Iklan
-                </Link>
               </div>
 
               <div className="header-actions ml-20">
@@ -348,10 +337,6 @@ export default function HeaderStyle4({
               <SignInIcon />
               Masuk
             </button>
-            <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-              <AddListingIcon />
-              Tambah Iklan
-            </Link>
           </div>
         </div>
       </header>
@@ -376,10 +361,6 @@ export default function HeaderStyle4({
             <SignInIcon />
             Masuk
           </button>
-          <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-            <AddListingIcon />
-            Tambah Iklan
-          </Link>
         </div>
       </Offcanvas>
     </div>

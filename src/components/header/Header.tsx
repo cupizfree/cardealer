@@ -11,7 +11,7 @@ import BodyClass from "@/components/common/BodyClass";
 import { useModal } from "@/components/common/ModalProvider";
 import { useCompare } from "@/components/common/CompareProvider";
 import { useWishlist } from "@/components/common/WishlistProvider";
-import { SearchIcon, SignInIcon, AddListingIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
+import { SearchIcon, SignInIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
 
 export type HeaderVariant = "style-1" | "style-2" | "style-3" | "style-4";
 
@@ -42,17 +42,9 @@ export type HeaderProps = {
    *  (`#1C1C1C`) against a dark/transparent hero. Defaults to the dark default so index.html's own
    *  usage is unaffected. */
   actionIconStroke?: string;
-  /** The OPPOSITE bug: `AddListingIcon`'s own shared default is `"white"` (correct for index.html's own
-   *  `btn-primary` button), but home-04.html's/home-09.html's own Add Listing button is real `btn-white`
-   *  with a real `#1C1C1C` icon (confirmed via source diff) — a white icon on a white button rendered
-   *  invisibly. */
-  addListingIconColor?: string;
   /** index.html's own Sign In button is `btn-line`; home-04.html's/home-09.html's own is `btn-line-white`
    *  (confirmed via source diff, since it sits on a dark/transparent header). */
   signInButtonClassName?: string;
-  /** index.html's own Add Listing button is `btn-primary`; home-04.html's/home-09.html's own is
-   *  `btn-white` (confirmed via source diff, pairs with the dark `addListingIconColor` above). */
-  addListingButtonClassName?: string;
   /** Retroactive fix: this component always called `Nav` with no props, so it silently used `Nav.tsx`'s
    *  own defaults (`wrapperClassName="mr-18"`, no `listClassName`, `topLevelChevronColor="#9FA1A4"`) on
    *  every page — correct for index.html, but home-04.html's/home-09.html's own real source is
@@ -144,9 +136,7 @@ export default function Header({
   logoSrc = "/assets/images/logo.png",
   containerClassName = "max-w-1920 relative",
   actionIconStroke = "#1C1C1C",
-  addListingIconColor = "white",
   signInButtonClassName = "btn btn-line btn-large font-weight-600 bg-sign-in",
-  addListingButtonClassName = "btn btn-primary btn-large font-weight-600",
   navWrapperClassName,
   navListClassName,
   navChevronColor,
@@ -205,11 +195,6 @@ export default function Header({
                   <SignInIcon stroke={actionIconStroke} />
                   Masuk
                 </button>
-
-                <Link href="/add-listings-2" className={addListingButtonClassName}>
-                  <AddListingIcon color={addListingIconColor} />
-                  Tambah Iklan
-                </Link>
               </div>
 
               <div className="header-actions ml-20">
@@ -271,10 +256,6 @@ export default function Header({
               <SignInIcon />
               Masuk
             </button>
-            <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-              <AddListingIcon />
-              Tambah Iklan
-            </Link>
           </div>
         </div>
       </header>
@@ -310,10 +291,6 @@ export default function Header({
             <SignInIcon />
             Masuk
           </button>
-          <Link href="/add-listings-2" className="btn btn-primary btn-large font-weight-600">
-            <AddListingIcon />
-            Tambah Iklan
-          </Link>
         </div>
       </Offcanvas>
     </>

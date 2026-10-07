@@ -55,8 +55,6 @@ export default function Home06() {
         logoSrc="/assets/images/logo.png"
         topLevelChevronColor="#9FA1A4"
         actionIconStroke="#1C1C1C"
-        addListingButtonClassName="btn btn-primary btn-large font-weight-600"
-        addListingIconColor="white"
         navListClassName=""
         navWrapperClassName="mr-50"
       />
