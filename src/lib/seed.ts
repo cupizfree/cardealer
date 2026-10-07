@@ -52,7 +52,7 @@ export const AKUN_AWAL = [
   },
   {
     email: process.env.SEED_STAFF_EMAIL?.trim() || "staff@marf.id",
-    nama: "Staff MARF",
+    nama: process.env.SEED_STAFF_NAMA?.trim() || "Hendrik Marfundo",
     peran: "staff" as const,
     sandi: sandiAwal("SEED_STAFF_SANDI", "staff"),
   },
@@ -161,58 +161,13 @@ export function seedJikaKosong(): HasilSeed {
       nUnit++;
     }
 
-    // ── Prospek contoh ──────────────────────────────────────────────────────
-    const contoh = [
-      {
-        nama: "Budi Santoso",
-        telepon: "0812-3456-7890",
-        email: "budi@contoh.id",
-        pesan: "Tertarik dengan Avanza 1.5 G. Bisa minta info cicilan 3 tahun?",
-        sumber: "kontak",
-        status: "baru",
-      },
-      {
-        nama: "Siti Rahayu",
-        telepon: "0856-7890-1234",
-        email: "siti@contoh.id",
-        pesan: "Mau jual Honda Jazz 2019, kilometernya 45 ribu. Bisa dinilai?",
-        sumber: "jual-mobil",
-        status: "dihubungi",
-      },
-      {
-        nama: "Andi Pratama",
-        telepon: "0878-1234-5678",
-        email: "andi@contoh.id",
-        pesan: "Tukar tambah Xenia 2018 dengan Xpander. Selisihnya berapa?",
-        sumber: "tukar-tambah",
-        status: "terjadwal",
-      },
-      {
-        nama: "Dewi Lestari",
-        telepon: "0813-9876-5432",
-        email: "dewi@contoh.id",
-        pesan: "Unit Brio Satya masih ada? Sudah pernah uji coba.",
-        sumber: "detail-unit",
-        status: "selesai",
-      },
-    ];
-
-    const staffId = Number(satu("SELECT id FROM pengguna WHERE peran='staff' LIMIT 1")?.id ?? 0);
-    let nProspek = 0;
-    for (const p of contoh) {
-      jalankan(
-        `INSERT INTO prospek (nama, telepon, email, pesan, sumber, status, ditangani_oleh)
-         VALUES (?,?,?,?,?,?,?)`,
-        p.nama,
-        p.telepon,
-        p.email,
-        p.pesan,
-        p.sumber,
-        p.status,
-        p.status === "baru" ? null : staffId || null,
-      );
-      nProspek++;
-    }
+    // ── Prospek ─────────────────────────────────────────────────────────────
+    // Sengaja KOSONG. Dulu di sini ada empat prospek contoh (Budi Santoso, Siti
+    // Rahayu, Andi Pratama, Dewi Lestari) dengan nomor telepon dan surel
+    // karangan. Prospek adalah calon pembeli sungguhan — menanam yang palsu
+    // berarti panel menampilkan orang yang tidak pernah menghubungi MARF, dan
+    // staf bisa benar-benar meneleponnya. Basis data baru mulai dari nol.
+    const nProspek = 0;
 
     jalankan(
       `INSERT INTO log_aktivitas (pengguna_id, aksi, entitas, entitas_id, ringkasan)
@@ -221,7 +176,7 @@ export function seedJikaKosong(): HasilSeed {
       "seed",
       "sistem",
       null,
-      `Seed awal: ${AKUN_AWAL.length} pengguna, ${nDealer} dealer, ${nUnit} unit, ${nProspek} prospek`,
+      `Seed awal: ${AKUN_AWAL.length} pengguna, ${nDealer} dealer, ${nUnit} unit`,
     );
 
     return { dilewati: false, pengguna: AKUN_AWAL.length, dealer: nDealer, unit: nUnit, prospek: nProspek };
