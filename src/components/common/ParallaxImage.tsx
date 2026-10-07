@@ -8,7 +8,7 @@ const DELAY = 0.5;
 const EASING = "cubic-bezier(0.2, 0.8, 1, 1)";
 
 // Drop-in replacement for the source's `<div class="overlay image"><img class="lazyload parallax">`
-// pattern (index.html, home-02/04/07/11.html, sell-your-car.html, services-center.html,
+// pattern (index.html, home-02/04/07/11.html, sell-your-car.html,
 // coming-soon.html). `app.js`'s `parallax()` hands every `.parallax` image to the third-party
 // `simpleParallaxVanilla.umd.js` with `{ delay: 0.5, orientation: "up", scale: 1.3, transition:
 // "cubic-bezier(0.2, 0.8, 1, 1)" }` — a real scroll-driven effect (the image scales up 1.3x, clipped by

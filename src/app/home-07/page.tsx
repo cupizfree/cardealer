@@ -63,8 +63,9 @@ export const metadata: Metadata = {
 // banner at all here, confirmed via source diff) and `containerClassName="container pb-100"` (this
 // reuse has no `<section>` wrapper at all in source — just a standalone `.container.pb-100` div — via
 // `bare`). Each card's own href genuinely differs per-page here (`/listing-grid4-columns`, `/about-us`,
-// a literal dead `#`, `/services-center` — confirmed via source diff), unlike home-02's/home-04's own
-// all-same-href callers.
+// a literal dead `#` — confirmed via source diff), unlike home-02's/home-04's own all-same-href
+// callers. The 4th card ("Layanan Praktis") used to point at `/services-center`; that page was the
+// template's fabricated service garage and is gone, so the card now points at `/contact-us`.
 //
 // "Pencarian populer" (`home-07/PopularSearchesGridSection.tsx`) is a genuinely new, different DOM from
 // every other "Pencarian Populer" section: a REAL per-tab static grid of `.card-box-style-1` cards (not a
@@ -135,7 +136,7 @@ export default function Home07() {
         bare
         showPromoBanner={false}
         containerClassName="container pb-100"
-        hrefs={["/listing-grid4-columns", "/about-us", "#", "/services-center"]}
+        hrefs={["/listing-grid4-columns", "/about-us", "#", "/contact-us"]}
       />
 
       <PopularSearchesGridSection />

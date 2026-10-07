@@ -42,13 +42,22 @@ export const kolomHarga: ListingMenuColumn = {
   })),
 };
 
-/** Yang benar-benar dikerjakan showroom. */
+/**
+ * Yang benar-benar dikerjakan showroom.
+ *
+ * "Servis & Perawatan" sudah dibuang: halaman /services-center mengklaim MARF
+ * punya bengkel dengan "teknisi ahli" — sepuluh pekerjaan servis (servis
+ * transmisi, spooring & balancing, perawatan knalpot) plus formulir "Jadwalkan
+ * Servis". MARF itu showroom jual-beli mobil, bukan bengkel, jadi halaman itu
+ * karangan templat yang sama kelasnya dengan "Toko Aksesori". Halamannya,
+ * komponennya, dan entri menu + footer-nya dihapus sekalian — halaman yatim yang
+ * masih bisa dibuka lewat URL tetap mengklaim hal yang sama.
+ */
 export const layananMenuColumns: PagesMenuColumn[] = [
   {
     links: [
       { label: "Simulasi Kredit", href: "/calculator" },
       { label: "Pembiayaan", href: "/financing" },
-      { label: "Servis & Perawatan", href: "/services-center" },
       { label: "Jual / Tukar Tambah", href: "/sell-your-car" },
       { label: "Bandingkan Mobil", href: "/compare" },
     ],

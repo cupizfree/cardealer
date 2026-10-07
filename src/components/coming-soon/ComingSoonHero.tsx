@@ -6,8 +6,8 @@ import ParallaxImage from "@/components/common/ParallaxImage";
 
 // Migrated from ../aurexo/coming-soon.html lines 26-78. `.overlay-parallax`/`.overlay.image` is the
 // same full-bleed background pattern already reproduced for sell-your-car.html's `GetInTouchBanner`
-// and services-center.html's `ContactScheduleSection` — gets the same real
-// `simpleParallaxVanilla.umd.js` scroll effect, see `common/ParallaxImage.tsx`. Source's filename
+// — gets the same real `simpleParallaxVanilla.umd.js` scroll effect, see `common/ParallaxImage.tsx`.
+// Source's filename
 // itself is `comming-soon.jpg` (double "m", a real asset-naming typo) — kept as the literal path, not
 // renamed.
 //

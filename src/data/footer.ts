@@ -38,7 +38,6 @@ export const footerColumns: FooterColumn[] = [
       { label: "Daftar Unit + Peta", href: "/listing-liststyle-halfmap" },
       { label: "Unit Garansi", href: "/listing-grid4-columns" },
       { label: "Kalkulator Cicilan", href: "/calculator" },
-      { label: "Servis & Perawatan", href: "/services-center" },
     ],
   },
 ];

@@ -113,7 +113,7 @@ export default function Home04() {
             rightTitleHref: "/sell-your-car",
             rightCtaHref: "/sell-your-car",
           }}
-          hrefs={["/listing-grid4-columns", "/about-us", "/listing-grid4-columns", "/services-center"]}
+          hrefs={["/listing-grid4-columns", "/about-us", "/listing-grid4-columns", "/contact-us"]}
         />
         <div className="tf-spacing" />
         <RelatedArticles

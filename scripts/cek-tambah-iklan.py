@@ -26,8 +26,8 @@ DASAR = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:3100"
 HALAMAN_PUBLIK = [
     "/", "/home-02", "/home-03", "/home-04", "/home-05", "/home-06",
     "/home-07", "/home-08", "/home-09", "/home-10",
-    "/about-us", "/contact-us", "/services-center", "/sell-your-car",
-    "/sale-agents", "/shop", "/shopping-cart", "/calculator", "/financing",
+    "/about-us", "/contact-us", "/sell-your-car",
+    "/sale-agents", "/calculator", "/financing",
     "/dealers-listing", "/clients-reviews", "/faqs", "/terms", "/compare",
     "/blog-grid-style-1", "/blog-grid-style-2", "/blog-grid-style-3",
     "/blog-list", "/blog-standard",
