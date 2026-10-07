@@ -21,7 +21,6 @@ import { KatalogProvider } from "@/components/common/KatalogProvider";
 import { muatKatalog } from "@/lib/katalog";
 import { CompareProvider } from "@/components/common/CompareProvider";
 import { WishlistProvider } from "@/components/common/WishlistProvider";
-import { CartProvider } from "@/components/common/CartProvider";
 import Preloader from "@/components/common/Preloader";
 import BackToTop from "@/components/common/BackToTop";
 import WowInit from "@/components/common/WowInit";
@@ -31,9 +30,6 @@ import SignUpModal from "@/components/common/SignUpModal";
 import SearchModal from "@/components/common/SearchModal";
 import CompareTrayModal from "@/components/common/CompareTrayModal";
 import CardCompareModal from "@/components/common/CardCompareModal";
-import ShoppingCartModal from "@/components/common/ShoppingCartModal";
-import QuickViewModal from "@/components/common/QuickViewModal";
-import TeamModal from "@/components/common/TeamModal";
 import ThemeSwitcher from "@/components/common/ThemeSwitcher";
 
 // Self-hosted via next/font/google instead of the source's CDN `@import url(fonts.googleapis.com...)`
@@ -104,29 +100,19 @@ export default function RootLayout({
         <KatalogProvider listings={katalog}>
         <CompareProvider>
           <WishlistProvider>
-            <CartProvider>
-              <ModalProvider>
-                <WowInit />
-                <Preloader />
-                <div id="wrapper">{children}</div>
-                <LoginModal />
-                <ForgotPasswordModal />
-                <SignUpModal />
-                <SearchModal />
-                <CompareTrayModal />
-                <CardCompareModal />
-                <ShoppingCartModal />
-                <QuickViewModal />
-                {/* TeamModal is inert until an Executive Team card's `openModal("TeamModal")` trigger fires
-                    (currently only about-us's ExecutiveTeam), same "mount globally, trigger per-page" pattern
-                    as CardCompareModal above. NewsletterModal is NOT mounted here — unlike these, it opens
-                    ITSELF via its own timer effect, and source only includes it on 11 of 63 pages, so it's
-                    mounted per-page instead (see NewsletterModal.tsx's header comment). */}
-                <TeamModal />
-                <BackToTop />
-                <ThemeSwitcher />
-              </ModalProvider>
-            </CartProvider>
+            <ModalProvider>
+              <WowInit />
+              <Preloader />
+              <div id="wrapper">{children}</div>
+              <LoginModal />
+              <ForgotPasswordModal />
+              <SignUpModal />
+              <SearchModal />
+              <CompareTrayModal />
+              <CardCompareModal />
+              <BackToTop />
+              <ThemeSwitcher />
+            </ModalProvider>
           </WishlistProvider>
         </CompareProvider>
         </KatalogProvider>

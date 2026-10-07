@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { KONTAK } from "@/data/kontak";
 import Image from "next/image";
 import { XIcon, InstagramIcon } from "@/components/common/SocialIcons";
 import { socialIconPaths } from "@/data/socialIconPaths";
@@ -73,7 +74,7 @@ export default function ContactInfoFormSection() {
                 </div>
                 <div className="flex flex-col">
                   <p className="h5 mb-8">Alamat Usaha</p>
-                  <p className="text-secondary">6205 Peachtree Dunwoody Rd, Atlanta, GA 30328</p>
+                  <p className="text-secondary">{KONTAK.alamat}</p>
                 </div>
               </li>
               <li className="contact gap-16">
@@ -82,12 +83,9 @@ export default function ContactInfoFormSection() {
                 </div>
                 <div className="flex flex-col">
                   <p className="h5 mb-8">Hubungi Kami</p>
-                  <a href="tel:1-555-678-8888" className="text-secondary">
-                    1-555-678-8888
-                  </a>
-                  <a href="tel:1-333-123-6666" className="text-secondary">
-                    1-333-123-6666
-                  </a>
+                  <a href={KONTAK.teleponHref} className="text-secondary">
+                      {KONTAK.telepon}
+                    </a>
                 </div>
               </li>
               <li className="contact gap-16">

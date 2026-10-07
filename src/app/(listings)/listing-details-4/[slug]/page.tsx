@@ -55,7 +55,7 @@ export async function generateMetadata({
 //   below.
 // - Car Overview is a 4th presentation: a 5-column bordered-card grid (`overviewLayout="cards"`).
 // - Default feature tab is "Mechanical"; the "Ulasan Pelanggan" heading has no small "Tulis ulasan"
-//   button next to it this time (`reviewsHeaderButton={false}`) — only the rating-box's own button
+//   button next to it this time (``) — only the rating-box's own button
 //   remains; add-review section is login-gated only (same as v2/v3).
 export default async function ListingDetails4Page({
   params,
@@ -91,10 +91,8 @@ export default async function ListingDetails4Page({
               listing={detail}
               overviewLayout="cards"
               featureDefaultTab="Mechanical"
-              reviewFormVariant="loginOnly"
               sectionIds
               wrapperId="Overview"
-              reviewsHeaderButton={false}
             />
             <ListingDetailsSidebar price={listing.price} dealer={detail.dealer} sendInquiryId="Inquiry" />
           </div>

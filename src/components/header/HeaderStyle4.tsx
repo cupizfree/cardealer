@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { KONTAK } from "@/data/kontak";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import Nav from "./Nav";
@@ -10,7 +11,7 @@ import BodyClass from "@/components/common/BodyClass";
 import { useModal } from "@/components/common/ModalProvider";
 import { useCompare } from "@/components/common/CompareProvider";
 import { useWishlist } from "@/components/common/WishlistProvider";
-import { SearchIcon, SignInIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
+import { SearchIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
 import { useHeaderScrollFixed } from "./useHeaderScrollFixed";
 
 const LANGUAGES = ["English", "Viet Nam", "Chinese", "Japanese"];
@@ -109,17 +110,7 @@ export default function HeaderStyle4({
                       fill="white"
                     />
                   </svg>
-                  15505 Roscoe Blvd, North Hills, USA
-                </a>
-
-                <a href="mailto:themesflat@gmail.com" className="flex items-center text-white gap-8 text-sm effect-svg-hover md-text-0">
-                  <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M15.4688 0H0.46875C0.34443 0 0.225201 0.049386 0.137294 0.137294C0.049386 0.225201 0 0.34443 0 0.46875V11.0938C0 11.3838 0.115234 11.662 0.320352 11.8671C0.52547 12.0723 0.803669 12.1875 1.09375 12.1875H14.8438C15.1338 12.1875 15.412 12.0723 15.6171 11.8671C15.8223 11.662 15.9375 11.3838 15.9375 11.0938V0.46875C15.9375 0.34443 15.8881 0.225201 15.8002 0.137294C15.7123 0.049386 15.5931 0 15.4688 0ZM7.96875 6.70781L1.67344 0.9375H14.2641L7.96875 6.70781ZM5.91172 6.09375L0.9375 10.6531V1.53437L5.91172 6.09375ZM6.60547 6.72969L7.65625 7.68906C7.74266 7.76812 7.85554 7.81196 7.97266 7.81196C8.08978 7.81196 8.20265 7.76812 8.28906 7.68906L9.33594 6.72969L14.2641 11.25H1.67422L6.60547 6.72969ZM10.0258 6.09375L15 1.53437V10.6531L10.0258 6.09375Z"
-                      fill="white"
-                    />
-                  </svg>
-                  themesflat@gmail.com
+                  {KONTAK.alamat}
                 </a>
               </div>
 
@@ -165,14 +156,14 @@ export default function HeaderStyle4({
             </div>
 
             <div className="header-top-bar--socical-wrapper flex items-center gap-24">
-              <a href="tel:1-555-678-8888" className="flex items-center text-white gap-8 effect-svg-hover h7 md-text-0">
+              <a href={KONTAK.teleponHref} className="flex items-center text-white gap-8 effect-svg-hover h7 md-text-0">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M9.39063 0.972052C9.4065 0.912527 9.43395 0.856715 9.47141 0.807805C9.50886 0.758896 9.55559 0.717849 9.60892 0.687012C9.66225 0.656175 9.72113 0.636153 9.78221 0.62809C9.84328 0.620026 9.90535 0.624081 9.96485 0.640021C11.097 0.935349 12.13 1.52718 12.9574 2.35454C13.7847 3.1819 14.3766 4.21487 14.6719 5.34705C14.6878 5.40656 14.6919 5.46862 14.6838 5.5297C14.6758 5.59077 14.6557 5.64965 14.6249 5.70298C14.5941 5.75631 14.553 5.80304 14.5041 5.8405C14.4552 5.87795 14.3994 5.9054 14.3399 5.92127C14.3004 5.93179 14.2596 5.93704 14.2188 5.9369C14.1155 5.93696 14.0151 5.90291 13.9331 5.84004C13.8512 5.77718 13.7923 5.68901 13.7656 5.58924C13.5121 4.61673 13.0038 3.72942 12.2931 3.01877C11.5825 2.30811 10.6952 1.79982 9.72266 1.54627C9.66314 1.5304 9.60733 1.50295 9.55842 1.4655C9.50951 1.42804 9.46846 1.38131 9.43762 1.32798C9.40679 1.27465 9.38677 1.21577 9.3787 1.1547C9.37064 1.09362 9.37469 1.03156 9.39063 0.972052ZM9.09766 4.04627C10.2344 4.3494 10.9625 5.07752 11.2656 6.21424C11.2923 6.31401 11.3512 6.40218 11.4331 6.46504C11.5151 6.52791 11.6155 6.56196 11.7188 6.5619C11.7596 6.56204 11.8004 6.55679 11.8399 6.54627C11.8994 6.5304 11.9552 6.50295 12.0041 6.4655C12.053 6.42804 12.0941 6.38131 12.1249 6.32798C12.1557 6.27465 12.1758 6.21577 12.1838 6.1547C12.1919 6.09362 12.1878 6.03156 12.1719 5.97205C11.7813 4.51033 10.8016 3.53065 9.33985 3.14002C9.28035 3.12412 9.21829 3.12009 9.15723 3.12817C9.09617 3.13625 9.0373 3.15628 8.98398 3.18711C8.87629 3.24938 8.79775 3.35188 8.76563 3.47205C8.73352 3.59223 8.75046 3.72024 8.81272 3.82793C8.87499 3.93561 8.97749 4.01415 9.09766 4.04627ZM15.3039 11.6244C15.1701 12.6457 14.6689 13.5833 13.8941 14.2619C13.1192 14.9405 12.1238 15.3138 11.0938 15.3119C4.97657 15.3119 7.79078e-06 10.3353 7.79078e-06 4.21815C-0.00196546 3.18849 0.370961 2.19333 1.04913 1.41855C1.72729 0.643772 2.66431 0.142365 3.68516 0.00798942C3.92016 -0.0205687 4.15808 0.027887 4.36319 0.146079C4.56831 0.264271 4.72953 0.44582 4.82266 0.663458L6.4711 4.34315C6.54389 4.50973 6.574 4.69183 6.55872 4.87298C6.54345 5.05412 6.48326 5.2286 6.3836 5.38065C6.37355 5.39612 6.36259 5.41099 6.35079 5.42518L4.7047 7.38299C4.6947 7.40328 4.6895 7.4256 4.6895 7.44822C4.6895 7.47085 4.6947 7.49316 4.7047 7.51346C5.30313 8.73846 6.58751 10.0135 7.8297 10.6111C7.85044 10.6206 7.87309 10.6251 7.89587 10.6243C7.91865 10.6234 7.94093 10.6173 7.96094 10.6064L9.88985 8.9658C9.90362 8.95382 9.91824 8.94285 9.9336 8.93299C10.085 8.83207 10.2591 8.7705 10.4403 8.75386C10.6214 8.73722 10.8039 8.76603 10.9711 8.83768L14.6617 10.4916C14.8765 10.5868 15.0549 10.7485 15.1705 10.953C15.2862 11.1574 15.333 11.3937 15.3039 11.6267V11.6244ZM14.375 11.5088C14.3776 11.4761 14.3699 11.4434 14.3529 11.4154C14.336 11.3874 14.3106 11.3654 14.2805 11.3525L10.5891 9.69861C10.5689 9.69083 10.5473 9.6875 10.5257 9.68885C10.5041 9.6902 10.4831 9.69619 10.4641 9.70643L8.53594 11.3471C8.52188 11.3588 8.50704 11.3697 8.4922 11.3799C8.33492 11.4847 8.15315 11.5471 7.9646 11.5608C7.77606 11.5745 7.58719 11.539 7.41641 11.458C5.98204 10.765 4.55235 9.34861 3.85938 7.92752C3.77788 7.75773 3.7416 7.56978 3.75405 7.38186C3.76651 7.19393 3.82728 7.01241 3.93048 6.85486C3.94054 6.8392 3.95177 6.82431 3.96407 6.81033L5.60938 4.85252C5.61878 4.83206 5.62365 4.80981 5.62365 4.78729C5.62365 4.76477 5.61878 4.74251 5.60938 4.72205L3.96407 1.03924C3.95321 1.00968 3.93368 0.984095 3.90803 0.965832C3.88237 0.94757 3.8518 0.937483 3.82032 0.936896H3.80235C3.00778 1.04259 2.27883 1.43388 1.75164 2.0377C1.22445 2.64152 0.935063 3.41657 0.937508 4.21815C0.937508 9.81815 5.49376 14.3744 11.0938 14.3744C11.8954 14.3768 12.6706 14.0873 13.2744 13.56C13.8783 13.0326 14.2695 12.3035 14.375 11.5088Z"
                     fill="white"
                   />
                 </svg>
-                1-555-678-8888
+                  {KONTAK.telepon}
               </a>
               <ul className="header-top-bar--socical pl-24">
                 <li>
@@ -289,17 +280,6 @@ export default function HeaderStyle4({
                 wrapperClassName={navWrapperClassName}
               />
 
-              <div className="header-button mobile-hidden-header-button flex items-center gap-20">
-                <button
-                  className="btn btn-line-white btn-large font-weight-600 bg-sign-in"
-                  onClick={() => openModal("LoginModal")}
-                >
-                  <SignInIcon stroke={actionIconStroke} />
-                  Masuk
-                </button>
-
-              </div>
-
               <div className="header-actions ml-20">
                 <div className="header-search-wrapper">
                   <span className="relative header-action-btn" id="searchToggle" onClick={() => openModal("SearchModal")}>
@@ -331,14 +311,6 @@ export default function HeaderStyle4({
             </div>
           </div>
         </div>
-        <div className="hidden wrapper-header-button">
-          <div className="header-button header-button-mobile flex items-center gap-20">
-            <button className="btn btn-primary btn-large font-weight-600" onClick={() => openModal("LoginModal")}>
-              <SignInIcon />
-              Masuk
-            </button>
-          </div>
-        </div>
       </header>
 
       <BodyClass className={isMobileMenuOpen ? "main-nav-mobile" : ""} />
@@ -356,12 +328,6 @@ export default function HeaderStyle4({
           </Link>
         </div>
         <MobileMenu />
-        <div className="header-button header-button-mobile flex items-center gap-20">
-          <button className="btn btn-primary btn-large font-weight-600" onClick={() => openModal("LoginModal")}>
-            <SignInIcon />
-            Masuk
-          </button>
-        </div>
       </Offcanvas>
     </div>
   );

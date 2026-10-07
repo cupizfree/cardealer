@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HeaderStyle2 from "@/components/header/HeaderStyle2";
 import Footer from "@/components/footer/Footer";
-import NewsletterModal from "@/components/common/NewsletterModal";
 import VideoModal from "@/components/common/VideoModal";
 import HeroSearchSection from "@/components/home/HeroSearchSection";
 import TrendingSearchesSection from "@/components/home/TrendingSearchesSection";
@@ -53,8 +52,6 @@ export default function Home02Page() {
       <RelatedArticles heading="Berita & Ulasan" viewAllHref="/blog-list" />
 
       <Footer />
-
-      <NewsletterModal />
       <VideoModal />
     </>
   );

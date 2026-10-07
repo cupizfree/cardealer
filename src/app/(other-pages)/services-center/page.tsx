@@ -5,7 +5,6 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import ServicesHero from "@/components/services-center/ServicesHero";
 import FeaturesServicesSection from "@/components/services-center/FeaturesServicesSection";
-import DownloadAppSection from "@/components/services-center/DownloadAppSection";
 import ContactScheduleSection from "@/components/services-center/ContactScheduleSection";
 
 export const metadata: Metadata = {
@@ -45,8 +44,6 @@ export default function ServicesCenterPage() {
       <ServicesHero />
 
       <FeaturesServicesSection />
-
-      <DownloadAppSection />
 
       <ContactScheduleSection />
 

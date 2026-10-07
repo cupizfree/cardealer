@@ -1,11 +1,13 @@
 "use client";
 
 import PasswordInput from "@/components/common/PasswordInput";
+import { KONTAK } from "@/data/kontak";
 
-// Migrated from ../aurexo/change-password.html lines 577-608. All 3 password fields share the identical
-// literal value "themesflat@2026" (confirmed via source read, not a transcription shortcut), and the
-// email field's own value has a literal trailing "|" character ("themesflat@gmail.com|") — both real,
-// disclosed source content quirks, preserved verbatim. Confirmed no page-specific script beyond the
+// Migrated from ../aurexo/change-password.html lines 577-608.
+//
+// Nilai awal yang dulu ada di sini sudah dibuang: ketiga kolom kata sandi terisi sandi
+// literal milik pembuat templat, dan kolom email terisi surel mereka. Repositori ini
+// publik — sandi yang tertulis di HTML ikut terkirim ke setiap pengunjung. Confirmed no page-specific script beyond the
 // shared dashboard-sidebar toggle (already handled by `(dashboard)/layout.tsx`) — "Ubah Kata Sandi" is
 // UI_ONLY (no real validation anywhere, e.g. checking New/Retype match). Each password field's real
 // show/hide eye-icon toggle is `PasswordInput` — see that component's own comment for why this was a
@@ -17,22 +19,22 @@ export default function ChangePasswordForm() {
         <div className="change-password-wrapper flex flex-col gap-23">
           <label htmlFor="Email">
             <span className="mb-8 flex font-weight-600">Your Email:*</span>
-            <input className="input-large active" type="text" defaultValue="themesflat@gmail.com|" id="Email" name="Email" placeholder="Your Email*" required />
+            <input className="input-large active" type="text" id="Email" name="Email" placeholder="Your Email*" required />
           </label>
 
           <label htmlFor="OldPassword">
             <span className="mb-8 flex font-weight-600">Old Password:*</span>
-            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="OldPassword" name="OldPassword" placeholder="Kata Sandi" required />
+            <PasswordInput className="input-large" id="OldPassword" name="OldPassword" placeholder="Kata Sandi" required />
           </label>
 
           <label htmlFor="NewPassword">
             <span className="mb-8 flex font-weight-600">New password:*</span>
-            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="NewPassword" name="NewPassword" placeholder="Kata Sandi" required />
+            <PasswordInput className="input-large" id="NewPassword" name="NewPassword" placeholder="Kata Sandi" required />
           </label>
 
           <label htmlFor="RetypeNewPassword">
             <span className="mb-8 flex font-weight-600">Retype new password:*</span>
-            <PasswordInput className="input-large" defaultValue="themesflat@2026" id="RetypeNewPassword" name="RetypeNewPassword" placeholder="Kata Sandi" required />
+            <PasswordInput className="input-large" id="RetypeNewPassword" name="RetypeNewPassword" placeholder="Kata Sandi" required />
           </label>
 
           <div className="flex">

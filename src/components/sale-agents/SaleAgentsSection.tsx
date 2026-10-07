@@ -1,29 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { TEAM_SOCIAL_LINKS } from "@/components/common/SocialIcons";
+import FotoOrang from "@/components/common/FotoOrang";
 import Pagination from "@/components/common/Pagination";
 import { allSaleAgents } from "@/data/saleAgents";
 
 // Migrated from ../aurexo/sale-agents.html lines 483-1241. Same `sale-agent-box` card shape as
 // about-us.html's Executive Team, but: (1) the name + photo link to this agent's own
 // `/sale-agents-details/[slug]` page (see #37 follow-up) — not an `open-modal` trigger, no TeamModal
-// involved on this page; (2) each card additionally has a phone/email icon pair (`.contact`), both
-// literal `href="#"` in source with no per-agent contact data anywhere in the site — kept as inert
-// placeholder links, not invented mailto:/tel: values; (3) no `wow` classes anywhere on this page
-// (confirmed via direct source search) — nothing to animate here.
+// involved on this page; (2) each card additionally has a phone/email icon pair (`.contact`).
+// In source both were literal `href="#"`. They now point at `/contact-us` and carry aria-labels:
+// there is no per-agent phone or email anywhere in the data, and a `#` that does nothing is worse
+// than a link that lands on the page where the showroom's real contact details live. (3) no `wow`
+// classes anywhere on this page (confirmed via direct source search) — nothing to animate here.
 //
 // Consumes the shared `allSaleAgents` dataset (`src/data/saleAgents.ts`) instead of a locally
 // hand-rolled list, so this list page and `/sale-agents-details/[slug]` stay a single source of truth
 // — same "one shared dataset, not per-page copies" pattern as `allListings`.
 //
-// Pagination (explicitly requested to be made real, not decorative): source's own markup has no
-// backing JS at all (confirmed: no script binds `.pagination__link`) and hardcodes 3 page numbers +
-// "2" active regardless of how many agents actually exist — there's no real per-page split to recover
-// from source. 4 agents/page (one full grid row at 4 columns) was chosen so the 8 real agents genuinely
-// span 2 pages instead of inventing extra agents to justify the source's 3-page markup.
+// Pagination stays wired even though the roster is now one person: `totalPages > 1` is false, so the
+// control simply doesn't render. Keeping the code means adding a second agent needs no change here.
 const AGENTS_PER_PAGE = 8;
 
 function PhoneIcon() {
@@ -60,18 +57,8 @@ export default function SaleAgentsSection() {
             <div className={`sale-agent-box${agent.active ? " active" : ""}`} key={agent.id}>
               <div className="card-top mb-20">
                 <Link className="w-full flex" href={`/sale-agents-details/${agent.slug}`}>
-                  <Image className="w-full" src={agent.photo} alt="sale-agent-1" width={495} height={495} />
+                  <FotoOrang nama={agent.name} foto={agent.photo} width={495} height={495} className="w-full" />
                 </Link>
-
-                <ul className="sale-agent-social justify-center flex gap-12">
-                  {TEAM_SOCIAL_LINKS.map(({ href, Icon }) => (
-                    <li key={href}>
-                      <a href={href} target="_blank" rel="noreferrer">
-                        <Icon stroke="#fff" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               <div className="card-bottom flex items-center justify-between gap-16">
@@ -84,12 +71,12 @@ export default function SaleAgentsSection() {
 
                 <ul className="contact">
                   <li>
-                    <a href="#">
+                    <a href="/contact-us" aria-label={`Hubungi showroom tentang ${agent.name}`}>
                       <PhoneIcon />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/contact-us" aria-label={`Kirim pesan tentang ${agent.name}`}>
                       <EmailIcon />
                     </a>
                   </li>

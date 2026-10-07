@@ -88,7 +88,7 @@ export default async function ListingDetails2Page({
           <ListingDetailsTitleBar title={listing.title} />
 
           <div className="listing-details">
-            <ListingDetailsContent listing={detail} overviewLayout="flat" featureDefaultTab="Interior" reviewFormVariant="loginOnly" />
+            <ListingDetailsContent listing={detail} overviewLayout="flat" featureDefaultTab="Interior" />
             <ListingDetailsSidebar price={listing.price} dealer={detail.dealer} />
           </div>
         </div>

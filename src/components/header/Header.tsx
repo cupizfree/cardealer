@@ -11,7 +11,7 @@ import BodyClass from "@/components/common/BodyClass";
 import { useModal } from "@/components/common/ModalProvider";
 import { useCompare } from "@/components/common/CompareProvider";
 import { useWishlist } from "@/components/common/WishlistProvider";
-import { SearchIcon, SignInIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
+import { SearchIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
 
 export type HeaderVariant = "style-1" | "style-2" | "style-3" | "style-4";
 
@@ -42,9 +42,6 @@ export type HeaderProps = {
    *  (`#1C1C1C`) against a dark/transparent hero. Defaults to the dark default so index.html's own
    *  usage is unaffected. */
   actionIconStroke?: string;
-  /** index.html's own Sign In button is `btn-line`; home-04.html's/home-09.html's own is `btn-line-white`
-   *  (confirmed via source diff, since it sits on a dark/transparent header). */
-  signInButtonClassName?: string;
   /** Retroactive fix: this component always called `Nav` with no props, so it silently used `Nav.tsx`'s
    *  own defaults (`wrapperClassName="mr-18"`, no `listClassName`, `topLevelChevronColor="#9FA1A4"`) on
    *  every page — correct for index.html, but home-04.html's/home-09.html's own real source is
@@ -86,10 +83,6 @@ export type HeaderProps = {
    *  real `px-15` container padding with the wrong `0 40px` regardless. `true` omits the variant class
    *  entirely. */
   omitVariantClass?: boolean;
-  /** RETROACTIVE FIX: the Sign In/Add Listing button row (`.header-button`) always hardcoded `gap-20` —
-   *  correct for index/home-04/09.html's own real source, but home-10.html's own real gap is `gap-10`
-   *  (confirmed via source diff — the only page with this distinct value). */
-  headerButtonGapClassName?: string;
   /** RETROACTIVE FIX: the search-toggle `<span>` always hardcoded plain `header-action-btn` — correct
    *  only for index.html's own real source; home-04/09/10.html's own real class is `relative
    *  header-action-btn` (confirmed via source diff on all 3). Defaults to index.html's own value so it
@@ -136,7 +129,6 @@ export default function Header({
   logoSrc = "/assets/images/logo.png",
   containerClassName = "max-w-1920 relative",
   actionIconStroke = "#1C1C1C",
-  signInButtonClassName = "btn btn-line btn-large font-weight-600 bg-sign-in",
   navWrapperClassName,
   navListClassName,
   navChevronColor,
@@ -144,7 +136,6 @@ export default function Header({
   wrapperExtraClassName,
   headerRightClassName,
   omitVariantClass = false,
-  headerButtonGapClassName = "gap-20",
   searchToggleClassName = "header-action-btn",
 }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -187,16 +178,10 @@ export default function Header({
                 topLevelChevronColor={navChevronColor}
               />
 
-              <div className={`header-button mobile-hidden-header-button flex items-center ${headerButtonGapClassName}`}>
-                <button
-                  className={signInButtonClassName}
-                  onClick={() => openModal("LoginModal")}
-                >
-                  <SignInIcon stroke={actionIconStroke} />
-                  Masuk
-                </button>
-              </div>
-
+              {/* Tombol "Masuk" dibuang dari sini. Pintu panel ada di /masuk, dan
+                  panel itu untuk staf MARF — bukan pengunjung. Memasangnya di
+                  setiap halaman hanya memberi tahu orang luar bahwa ada pintu
+                  masuk; staf yang tahu alamatnya tetap bisa membukanya langsung. */}
               <div className="header-actions ml-20">
                 <div className="header-search-wrapper">
                   <span
@@ -247,17 +232,6 @@ export default function Header({
             </div>
           </div>
         </div>
-        <div className="hidden wrapper-header-button">
-          <div className="header-button header-button-mobile flex items-center gap-20">
-            <button
-              className="btn btn-primary btn-large font-weight-600"
-              onClick={() => openModal("LoginModal")}
-            >
-              <SignInIcon />
-              Masuk
-            </button>
-          </div>
-        </div>
       </header>
 
       <BodyClass className={isMobileMenuOpen ? "main-nav-mobile" : ""} />
@@ -270,28 +244,14 @@ export default function Header({
         {/* Real source: app.js's mobileNav() also appends `.logo-mobile` into this drawer (in normal
             flow, since `.menu` is `position: absolute` and no longer occupies flow space) — it's what
             actually fills `menu.scss`'s own `top: 150px` gap reserved above the (absolutely-positioned)
-            nav list, alongside the Sign In/Add Listing row below it. Rendered a 2nd time here (not
-            literally moved) for the same reason as the buttons below. */}
+            nav list. Rendered a 2nd time here (not literally moved) for the same reason as the logo
+            above. The Sign In row that used to sit below it has been removed. */}
         <div className="logo-mobile">
           <Link href="/">
             <Image src="/assets/images/logo-white.png" alt="logo-white.png" width={44} height={36} />
           </Link>
         </div>
         <MobileMenu />
-        {/* Real source: app.js's mobileNav() moves `.header-button-mobile` (the same Sign In/Add
-            Listing pair rendered above in the desktop-hidden `.wrapper-header-button` template) INTO
-            this drawer — `menu.scss`'s `#main-nav-mobile .header-button`/`.btn` rules only make sense
-            with this content actually present here. Rendered a 2nd time (not literally moved, matching
-            this project's "convert legacy JS idiomatically" rule over literal DOM reparenting). */}
-        <div className="header-button header-button-mobile flex items-center gap-20">
-          <button
-            className="btn btn-primary btn-large font-weight-600"
-            onClick={() => openModal("LoginModal")}
-          >
-            <SignInIcon />
-            Masuk
-          </button>
-        </div>
       </Offcanvas>
     </>
   );

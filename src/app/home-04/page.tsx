@@ -61,7 +61,6 @@ export default function Home04() {
         modifierClassName="header-fixed-primary border-bottom border-color-blur"
         logoSrc="/assets/images/logo-white.png"
         actionIconStroke="white"
-        signInButtonClassName="btn btn-line-white btn-large font-weight-600 bg-sign-in"
         navWrapperClassName="margin-right-auto"
         navListClassName="style-2"
         navChevronColor="white"

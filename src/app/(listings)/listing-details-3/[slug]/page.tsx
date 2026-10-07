@@ -86,7 +86,6 @@ export default async function ListingDetails3Page({
                 listing={detail}
                 overviewLayout="none"
                 featureDefaultTab="Safety"
-                reviewFormVariant="loginOnly"
                 bare
               />
             </div>

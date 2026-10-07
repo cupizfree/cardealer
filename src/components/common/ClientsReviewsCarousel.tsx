@@ -60,6 +60,12 @@ export default function ClientsReviewsCarousel({
   breakpoints?: Record<number, { slidesPerView: number; slidesPerGroup?: number }>;
 }) {
   const CardTag = cardHref ? Link : "div";
+
+  // Tidak ada ulasan asli -> tidak ada seksi. Menampilkan carousel kosong dengan
+  // judul "Ulasan Pelanggan" di atasnya hanya memberi kesan ada ulasan yang gagal
+  // dimuat. Sembunyikan seluruhnya sampai ada isinya.
+  if (testimonials.length === 0) return null;
+
   return (
     <section className={sectionClassName}>
       <div className="container wow fadeIn" data-wow-delay="0.3s">

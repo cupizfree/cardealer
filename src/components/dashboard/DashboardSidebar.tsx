@@ -9,7 +9,7 @@ const MENU_ITEMS = [
   { label: "Iklan Saya", href: "/my-listings", icon: "/assets/images/dashboard/MyListing.svg" },
   { label: "Favorit Saya", href: "/my-favorites", icon: "/assets/images/dashboard/MyFavorites.svg" },
   { label: "Ulasan Saya", href: "/reviews", icon: "/assets/images/dashboard/MyReviews.svg" },
-  { label: "Pesan", href: "/message", icon: "/assets/images/dashboard/Messages.svg", badge: "2" },
+  { label: "Pesan", href: "/message", icon: "/assets/images/dashboard/Messages.svg" },
   { label: "Profil Saya", href: "/my-profile", icon: "/assets/images/dashboard/MyProfile.svg" },
   { label: "Ubah Kata Sandi", href: "/change-password", icon: "/assets/images/dashboard/ChangePassword.svg" },
   { label: "Keluar", href: "/", icon: "/assets/images/dashboard/Logout.svg" },
@@ -37,18 +37,13 @@ export default function DashboardSidebar({ isOpen }: { isOpen: boolean }) {
             <Link href={item.href} className={`dashboard-menu-item${pathname === item.href ? " active" : ""}`}>
               <Image src={item.icon} alt="dashboard" width={24} height={24} />
               {item.label}
-              {item.badge && <span className="number">{item.badge}</span>}
             </Link>
           </li>
         ))}
       </ul>
 
       <p className="dashboard-bottom text-sm text-muted text-center" style={{ marginTop: "auto" }}>
-        ©2026{" "}
-        <a className="text-sm text-white" href="https://themeforest.net/user/themesflat" target="_blank" rel="noreferrer">
-          MARF
-        </a>
-        . Seluruh Hak Dilindungi.
+        ©2026 MARF. Seluruh Hak Dilindungi.
       </p>
     </div>
   );

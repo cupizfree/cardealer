@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { KONTAK } from "@/data/kontak";
 import type { BlogComment } from "@/data/blogPosts";
 
 // Migrated from ../aurexo/blog-details-1.html lines 625-716. "Balas" links and the comment form are
@@ -42,11 +43,11 @@ export default function BlogComments({ comments }: { comments: BlogComment[] }) 
         <div className="grid grid-cols-2 gap-22 mb-16 md-grid-cols-1">
           <div className="md-col-span-2">
             <p className="mb-8">Nama Anda (publik)</p>
-            <input className="active input-large" id="name-comment" name="name-review" type="text" defaultValue="Tony Nguyen" required />
+            <input className="active input-large" id="name-comment" name="name-review" type="text" required />
           </div>
           <div className="md-col-span-2">
             <p className="mb-8">Email Anda (privat)</p>
-            <input className="input-large" name="email-comment" id="email-review" type="text" defaultValue="themesflat@gmail.com" required />
+            <input className="input-large" name="email-comment" id="email-review" type="text" required />
           </div>
 
           <div className="col-span-2 padding-0">

@@ -59,8 +59,12 @@ export const layananMenuColumns: PagesMenuColumn[] = [
  * Halaman pendukung.
  *
  * Menggantikan menu "Halaman" templat, yang isinya tautan demo: "Halaman 404",
- * "Segera Hadir", "Dasbor", plus halaman internal toko (Detail Produk,
- * Keranjang, Pembayaran — ketiganya sudah bisa dicapai dari `/shop`).
+ * "Segera Hadir", "Dasbor", plus halaman internal toko aksesori (Detail Produk,
+ * Keranjang, Pembayaran).
+ *
+ * "Toko Aksesori" sudah dibuang: situs ini showroom mobil, bukan toko suku
+ * cadangan. Templat asalnya menjual "Stanley Roof Top Universal" dan
+ * sejenisnya — barang yang tidak pernah MARF jual.
  *
  * Footer situs ini tidak punya daftar tautan sama sekali, jadi halaman yang
  * tidak ada di sini benar-benar tidak bisa dicapai. Itu sebabnya "Tanya Jawab"
@@ -72,7 +76,6 @@ export const informasiMenuColumns: PagesMenuColumn[] = [
       { label: "Ulasan Pelanggan", href: "/clients-reviews" },
       { label: "Daftar Showroom", href: "/dealers-listing" },
       { label: "Tanya Jawab", href: "/faqs" },
-      { label: "Toko Aksesori", href: "/shop" },
       { label: "Syarat & Ketentuan", href: "/terms" },
     ],
   },

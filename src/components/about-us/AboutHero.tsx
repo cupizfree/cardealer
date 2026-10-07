@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { KONTAK } from "@/data/kontak";
 import Link from "next/link";
 
 // Migrated from about-us.html lines 483-534 (the container only — source nests this inside the SAME
@@ -61,7 +62,7 @@ export default function AboutHero() {
                   <Image src="/assets/icons/PhoneCall-3.svg" alt="PhoneCall" width={24} height={24} />
                   <div className="mt2">
                     <span className="text-sm text-secondary">Ada Pertanyaan?</span>
-                    <p className="h4">1-555-678-8888</p>
+                    <p className="h4">{KONTAK.telepon}</p>
                   </div>
                 </a>
               </div>

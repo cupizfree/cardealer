@@ -45,21 +45,6 @@ export default function DealersListSection() {
                     {dealer.name}
                   </Link>
                 </p>
-
-                <div className="flex items-center gap-8 md-justify-center">
-                  <div className="flex items-center">
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <Image
-                        key={i}
-                        src={i < dealer.filledStars ? "/assets/icons/star-2.svg" : "/assets/icons/star-5.svg"}
-                        alt="star"
-                        width={16}
-                        height={16}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-secondary text-sm">(1.968 Ulasan)</p>
-                </div>
               </div>
 
               <div className="flex gap-12 items-center">

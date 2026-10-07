@@ -11,7 +11,6 @@ import CompareTopRatedSection from "@/components/home-02/CompareTopRatedSection"
 import TrendingSearchesSection from "@/components/home/TrendingSearchesSection";
 import FinancingCalculatorSection from "@/components/home/FinancingCalculatorSection";
 import ClientsReviewsCarousel from "@/components/common/ClientsReviewsCarousel";
-import DownloadAppCtaSection from "@/components/home-07/DownloadAppCtaSection";
 import { home09ClientTestimonials } from "@/data/clientTestimonials";
 import { muatKatalog } from "@/lib/katalog";
 
@@ -59,7 +58,7 @@ const populer = muatKatalog().slice(0, 4);
 // home-05.html reuse. (3) `Header.tsx` always called `Nav` with no props, silently using `Nav.tsx`'s own
 // defaults (`mr-18`/no `listClassName`/`#9FA1A4` chevrons) even though home-04.html's own real source is
 // `margin-right-auto`/`menu menu style-2`/white chevrons (confirmed via source diff). All 3 fixed via 6
-// new props (`logoSrc`, `actionIconStroke`, `signInButtonClassName`,
+// new props (`logoSrc`, `actionIconStroke`,
 // `navWrapperClassName`/`navListClassName`/`navChevronColor`), each
 // defaulting to the pre-existing value so index.html's own usage is unaffected; home-04.html's own
 // `page.tsx` now passes every one of these explicitly.
@@ -161,7 +160,6 @@ export default function Home09() {
         logoSrc="/assets/images/logo-white.png"
         containerClassName="max-w-1840 relative"
         actionIconStroke="white"
-        signInButtonClassName="btn btn-line-white btn-large font-weight-600 bg-sign-in"
         navWrapperClassName="margin-right-auto"
         navListClassName="style-2"
         navChevronColor="white"
@@ -296,8 +294,6 @@ export default function Home09() {
         loop
         breakpoints={{ 0: { slidesPerView: 1, slidesPerGroup: 1 }, 767: { slidesPerView: 2, slidesPerGroup: 2 } }}
       />
-
-      <DownloadAppCtaSection variant="style-2" standalone />
 
       <Footer extraClassName="radius-40" />
     </>

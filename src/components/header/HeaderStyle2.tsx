@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { KONTAK } from "@/data/kontak";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Nav from "./Nav";
@@ -10,7 +11,7 @@ import BodyClass from "@/components/common/BodyClass";
 import { useModal } from "@/components/common/ModalProvider";
 import { useCompare } from "@/components/common/CompareProvider";
 import { useWishlist } from "@/components/common/WishlistProvider";
-import { SearchIcon, SignInIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
+import { SearchIcon, CompareIcon, WishlistIcon } from "@/components/common/icons";
 import { useHeaderScrollFixed } from "./useHeaderScrollFixed";
 
 const LANGUAGES = ["English", "Viet Nam", "Chinese", "Japanese"];
@@ -284,7 +285,7 @@ export default function HeaderStyle2({
                           className="text"
                           href="https://www.google.com/maps?q=123Yarranst,Punchbowl,NSW2196,Australia"
                         >
-                          15505 Roscoe Blvd, North Hills, USA
+                  {KONTAK.alamat}
                         </a>
                         <a target="_blank" rel="noreferrer" className="text-xs font-weight-500 uppercase" href={viewOnMapHref}>
                           Lihat di peta
@@ -292,16 +293,6 @@ export default function HeaderStyle2({
                       </div>
                     </li>
                   </ul>
-              <div className="header-button mobile-hidden-header-button flex items-center gap-20">
-                <button
-                  className="btn btn-line btn-large font-weight-600 bg-sign-in"
-                  onClick={() => openModal("LoginModal")}
-                >
-                  <SignInIcon />
-                  Masuk
-                </button>
-
-              </div>
             </div>
           </div>
             );
@@ -358,18 +349,6 @@ export default function HeaderStyle2({
             </div>
           </div>
         </div>
-
-        <div className="hidden wrapper-header-button">
-          <div className="header-button header-button-mobile flex items-center gap-20">
-            <button
-              className="btn btn-primary btn-large font-weight-600"
-              onClick={() => openModal("LoginModal")}
-            >
-              <SignInIcon />
-              Masuk
-            </button>
-          </div>
-        </div>
       </header>
 
       <BodyClass className={isMobileMenuOpen ? "main-nav-mobile" : ""} />
@@ -387,15 +366,6 @@ export default function HeaderStyle2({
           </Link>
         </div>
         <MobileMenu />
-        <div className="header-button header-button-mobile flex items-center gap-20">
-          <button
-            className="btn btn-primary btn-large font-weight-600"
-            onClick={() => openModal("LoginModal")}
-          >
-            <SignInIcon />
-            Masuk
-          </button>
-        </div>
       </Offcanvas>
     </div>
   );

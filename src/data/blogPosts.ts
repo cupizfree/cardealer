@@ -73,7 +73,7 @@ export const allBlogPosts: BlogPost[] = [
       "Saat memilih antara SUV kompak dan SUV besar, ada beberapa faktor utama yang perlu dipertimbangkan. Memahami perbedaan kedua jenis kendaraan ini bisa sangat memengaruhi keputusan Anda — membantu menemukan yang paling sesuai dengan gaya hidup, kebiasaan berkendara, dan kebutuhan Anda.",
     quote: {
       text: "“Memilih SUV yang tepat bukan sekadar soal ukuran—tapi soal menemukan yang paling sesuai dengan gaya hidup, kebutuhan, dan petualangan Anda.”",
-      author: "Nelson Mandela",
+      author: "Tim MARF",
     },
     introContinued:
       "Dari ukuran dan ruang yang ditawarkan sampai efisiensi bahan bakar, kemampuan performa, dan total biaya kepemilikan, setiap jenis SUV menjawab prioritas dan preferensi yang berbeda. Dengan menimbang semua aspek ini secara cermat, Anda bisa membuat pilihan yang lebih matang — yang tidak hanya memenuhi kebutuhan saat ini, tetapi juga mendukung tujuan jangka panjang dan gaya hidup Anda.",
@@ -101,29 +101,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Memilih antara SUV kompak dan SUV besar bergantung pada kebutuhan spesifik Anda — apakah mengutamakan efisiensi bahan bakar, ruang kabin, atau performa. Memahami perbedaan ini membantu Anda mengambil keputusan yang lebih matang sesuai gaya hidup dan anggaran.",
     },
     tags: ["Performa", "Mewah"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Artikel bagus! Penjelasan perbedaan SUV kompak dan SUV besar sangat membantu keputusan saya.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Menarik! Saya sedang mencari saran memilih SUV yang tepat. Ada rekomendasi?",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Senang artikelnya membantu! Memilih antara SUV kompak dan SUV besar berpengaruh pada kenyamanan.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 2,
@@ -167,29 +145,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Pilih SUV mewah kalau kenyamanan, ketenangan kabin, dan tenaga adalah hal yang Anda nikmati setiap hari, dan Anda siap menanggung biaya perawatannya. Pilih crossover kalau Anda mencari kendaraan praktis dengan biaya wajar dan pemakaian dalam kota yang lebih sering. Kalau ragu, coba keduanya untuk rute harian Anda — bukan hanya putaran singkat di sekitar showroom.",
     },
     tags: ["Mewah", "Ulasan"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Bagian biaya servisnya paling membuka mata. Saya hampir beli SUV mewah bekas tanpa menghitung itu.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Untuk pemakaian dalam kota, crossover jelas lebih masuk akal. Terima kasih penjelasannya.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Setuju soal nilai jual. Crossover saya laku dalam dua minggu, SUV besar teman saya hampir tiga bulan.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 3,
@@ -233,29 +189,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Untuk keluarga dengan anak yang masih kecil, minibus hampir selalu pilihan yang lebih baik — penumpang duduk di dalam, aman, dan nyaman. Pikap masuk akal kalau Anda punya usaha yang butuh mengangkut barang, atau memang sering membawa peralatan besar. Kalau kebutuhan Anda campuran, pertimbangkan minibus dengan kursi belakang yang bisa dilipat.",
     },
     tags: ["Berita", "Tips"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Poin soal barang di bak kena hujan itu benar sekali. Saya akhirnya beli penutup bak setelah karpet rusak.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Pikap double cabin memang tidak nyaman untuk jarak jauh. Kursi belakangnya terlalu tegak.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Kami pilih minibus dan tidak menyesal. Anak-anak lebih tenang karena ada AC di belakang.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 4,
@@ -299,29 +233,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Kalau Anda berkendara harian di jalan campuran, ban segala musim sudah lebih dari cukup. Ban musim panas masuk akal kalau Anda memang sering melaju di jalan tol kering dan mengutamakan cengkeraman. Ban musim dingin tidak relevan untuk iklim kita. Yang paling penting bukan mereknya, melainkan tekanan angin yang tepat dan alur yang masih cukup untuk membuang air.",
     },
     tags: ["Tips", "Perawatan"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Baru tahu kalau ban punya tanggal produksi. Kucek punya saya ternyata sudah enam tahun.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Ban musim dingin memang tidak masuk akal di sini. Sayangnya masih banyak yang jual dengan embel-embel impor.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Tekanan angin yang benar ternyata sebesar itu pengaruhnya. Setelah rutin cek, bensin lebih hemat.",
-      },
-    ],
+    comments: [],
   },
   // ids 5-8: real card titles/images/dates captured from blog-standard.html's own featured card + grid
   // (the page being migrated when these were added) — not invented. That page repeats 2 of its own
@@ -371,29 +283,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Kalau mobil ini jadi kendaraan utama Anda, mobil mewah adalah pilihan yang jauh lebih masuk akal — Anda akan memakainya setiap hari dan menikmatinya. Mobil sport masuk akal kalau ia kendaraan kedua, dan Anda memang punya jalan serta waktu untuk menikmatinya. Jangan beli mobil sport untuk dipakai macet setiap pagi; kecewa itu mahal.",
     },
     tags: ["Mewah", "Performa"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Kalimat terakhir itu tepat. Teman saya beli mobil sport dan hanya tahan tiga bulan sebelum jual lagi.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Soal ban cepat aus memang nyata. Belum setahun sudah harus ganti semua.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Untuk dipakai harian, mobil mewah jelas lebih masuk akal di jalan kita.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 6,
@@ -437,29 +327,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Kalau Anda punya akses listrik di rumah dan pemakaian Anda sebagian besar dalam kota, mobil listrik adalah pilihan yang sangat menyenangkan dan murah untuk dijalankan. Kalau Anda sering perjalanan jauh, tinggal di daerah dengan layanan terbatas, atau tidak punya tempat mengisi, hibrida memberi sebagian besar penghematan tanpa menuntut perubahan kebiasaan. Keduanya lebih baik daripada mobil bensin biasa — pertanyaannya cuma mana yang cocok dengan hidup Anda.",
     },
     tags: ["Ulasan", "Tren"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Poin soal garasi itu yang paling menentukan. Tanpa colokan di rumah, listrik jadi repot.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Saya pilih hibrida karena sering keluar kota. Sampai sekarang tidak menyesal.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Bengkel khusus listrik memang masih jarang. Itu yang bikin saya masih ragu.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 7,
@@ -503,29 +371,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Pilih diesel kalau Anda mengangkut beban, sering menanjak, atau menempuh jarak jauh setiap hari — di sana torsonya benar-benar berguna dan penghematannya terasa. Pilih bensin kalau pemakaian Anda dalam kota, jarak dekat, dan Anda mengutamakan kehalusan serta biaya perawatan yang ringan. Jangan pilih diesel hanya karena katanya lebih hemat; kalau jarak tempuh Anda pendek, keuntungannya tidak akan pernah menutup biaya perawatannya.",
     },
     tags: ["Performa", "Ulasan"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Poin soal jarak pendek itu penting. Saya pakai diesel untuk jarak dekat dan malah lebih repot.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Torsi diesel memang tidak ada lawan saat menanjak penuh muatan.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Biaya injektor itu yang bikin saya akhirnya pilih bensin untuk pemakaian harian.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 8,
@@ -569,29 +415,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Kalau Anda berkendara di kota setiap hari, matic adalah pilihan yang akan Anda syukuri setiap pagi. Kalau Anda tinggal di daerah berbukit, sering mengangkut beban, atau memang menikmati mengemudi, manual masih punya keunggulan nyata. Untuk mobil bekas berusia di atas delapan tahun, pertimbangkan biaya perbaikan matic sebelum memutuskan.",
     },
     tags: ["Ulasan", "Tips"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Setelah lima tahun macet tiap hari dengan manual, pindah ke matic itu seperti liburan.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Poin biaya perbaikan matic penting. Teman saya kena hampir dua puluh juta untuk perbaikannya.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Untuk daerah berbukit, manual memang masih lebih enak dikendalikan.",
-      },
-    ],
+    comments: [],
   },
   // ids 9-12: real card titles/images/dates for the "Artikel terbaru" sidebar widget (post-25..28), shared
   // verbatim by `blog-details/BlogSidebar.tsx` and `blog-standard/BlogStandardSidebar.tsx`. Originally
@@ -646,29 +470,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Nilai jual bukan ditentukan saat Anda menjual, melainkan sepanjang tahun-tahun sebelumnya. Kalau Anda melakukan kelima hal ini sejak awal, menjual mobil nanti akan jadi percakapan singkat, bukan perdebatan panjang soal harga.",
     },
     tags: ["Tips", "Perawatan"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Buku servis memang penentu. Waktu saya jual dengan nota lengkap, tidak ada tawaran menurunkan harga.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Setuju soal modifikasi. Pelek besar malah bikin pembeli ragu.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Servis dulu sebelum jual ternyata berpengaruh besar. Saya buktikan sendiri bulan lalu.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 10,
@@ -712,29 +514,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Kendaraan yang sepenuhnya otonom masih jauh untuk jalanan Indonesia, dan itu tidak masalah. Yang layak Anda nantikan bukan mobil yang mengemudi sendiri, melainkan fitur keselamatan yang makin murah dan makin umum — dan itu sudah terjadi sekarang. Untuk beberapa tahun ke depan, pengemudi tetap yang paling canggih di dalam mobil.",
     },
     tags: ["Ulasan", "Tren"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Banyak yang mengira sudah bisa lepas tangan. Padahal itu masih Tingkat 2.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Marka jalan kita memang jadi masalah utama. Sistemnya bingung sendiri di jalan kota.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Setuju, yang penting fitur keselamatan yang benar-benar dipakai. Sisanya cuma brosur.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 11,
@@ -782,29 +562,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Mulailah dari ukuran yang benar, pilih jenis sesuai jalan yang Anda lalui, dan periksa tanggal produksinya. Setelah itu barulah merek jadi pertimbangan. Ban yang tepat dengan tekanan angin yang benar akan selalu mengalahkan ban mahal yang tekanan anginnya salah.",
     },
     tags: ["Tips", "Perawatan"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Kode tanggal produksi itu yang paling berguna. Ternyata ban yang saya beli sudah setahun di gudang.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Rotasi tiap sepuluh ribu kilometer memang bikin ban jauh lebih awet.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Setuju soal tekanan angin. Setelah rutin cek, setir jadi lebih ringan dan bensin lebih hemat.",
-      },
-    ],
+    comments: [],
   },
   {
     id: 12,
@@ -852,29 +610,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Mobil mewah bukan pilihan yang salah — selama Anda menghitung seluruh biayanya, bukan hanya harga belinya. Sebelum memutuskan, jumlahkan servis tahunan, pajak, asuransi, dan perkiraan penggantian komponen selama tiga tahun. Kalau angka itu masih nyaman, mobil mewah akan menyenangkan. Kalau pas-pasan di harga beli, biaya berikutnya yang akan menentukan.",
     },
     tags: ["Mewah", "Tips"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Pajak tahunannya yang paling sering dilupakan. Banyak yang kaget di tahun pertama.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Saya pernah menunggu satu sensor hampir sebulan. Mobil diam di garasi, pajak tetap jalan.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Saran terakhirnya paling bijak. Hitung tiga tahun ke depan, bukan hanya harga beli.",
-      },
-    ],
+    comments: [],
   },
   // id 13: `RelatedArticles`' (blog-details-1.html) 3 swiper slides all share this exact literal title in
   // source (confirmed via direct read) — a single repeated placeholder, not 3 distinct articles — so
@@ -922,29 +658,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Kalau Anda punya garasi dengan pengisian listrik dan pemakaian harian Anda tinggi, i5 adalah pilihan yang lebih tenang dan lebih murah dijalankan dalam jangka panjang. Kalau Anda sering perjalanan jauh antar kota atau tidak punya tempat mengisi, versi bensin tetap pilihan yang lebih praktis — dan selisih Rp 150 juta itu bisa Anda gunakan untuk hal lain. Keduanya mobil yang sangat baik; yang menentukan adalah kebiasaan Anda, bukan spesifikasinya.",
     },
     tags: ["Ulasan", "Tren"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Poin soal akses pengisian itu paling penting. Tanpa colokan di rumah, i5 jadi repot.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Selisih Rp 150 juta memang bisa tertutup, tapi baru terasa kalau pemakaiannya tinggi.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Untuk perjalanan luar kota, versi bensin masih jauh lebih praktis di Indonesia.",
-      },
-    ],
+    comments: [],
   },
   // id 14: blog-grid-style-1.html's own 9-card grid — 8 of its 9 titles already exactly match existing
   // entries (ids 1/2/3/4/5/6/7/8, confirmed via source read), further validating those as this site's
@@ -991,29 +705,7 @@ export const allBlogPosts: BlogPost[] = [
       body: "Kalau Anda punya tempat mengisi di rumah dan sebagian besar pemakaian Anda dalam kota, mobil listrik akan menghemat uang Anda setiap bulan dan terasa lebih nyaman. Kalau Anda sering menempuh perjalanan jauh, tinggal di daerah dengan jaringan pengisian terbatas, atau hanya punya satu mobil untuk segala keperluan, mesin bensin masih pilihan yang lebih tenang. Keduanya bukan pilihan yang salah — yang salah adalah memilih berdasarkan tren, bukan berdasarkan kebiasaan Anda sendiri.",
     },
     tags: ["Tren", "Ulasan"],
-    comments: [
-      {
-        id: 1,
-        authorName: "Guy Hawkins",
-        avatar: "/assets/images/blog/comments-post-1.jpg",
-        timeAgo: "1 hari lalu",
-        text: "Kalimat soal waktu versus uang itu tepat sekali. Tidak ada mobil yang menang di keduanya.",
-      },
-      {
-        id: 2,
-        authorName: "Tony Nguyen",
-        avatar: "/assets/images/blog/comments-post-2.jpg",
-        timeAgo: "2 hari lalu",
-        text: "Perjalanan jauh masih jadi alasan utama saya belum pindah ke listrik.",
-      },
-      {
-        id: 3,
-        authorName: "Andi Wijaya",
-        avatar: "/assets/images/blog/comments-post-3.jpg",
-        timeAgo: "3 hari lalu",
-        text: "Untuk pemakaian dalam kota, penghematannya benar-benar terasa. Saya hitung sendiri setiap bulan.",
-      },
-    ],
+    comments: [],
   },
 ];
 

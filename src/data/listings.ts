@@ -267,43 +267,15 @@ export const allListings: Listing[] = [
       mapEmbedUrl:
         "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d97101.88872869895!2d109.2396016!3d-7.4245941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1689125037376!5m2!1svi!2s",
     },
-    ratingSummary: {
-      average: 4.8,
-      count: 1968,
-      distribution: [
-        { stars: 5, percent: 60 },
-        { stars: 4, percent: 20 },
-        { stars: 3, percent: 10 },
-        { stars: 2, percent: 7 },
-        { stars: 1, percent: 3 },
-      ],
-    },
-    reviews: [
-      {
-        id: 1,
-        authorName: "Bagas Prasetyo",
-        authorAvatar: "/assets/images/avatar/coment-avatar-1.png",
-        date: "13 Agustus 2025",
-        rating: 5,
-        text: "Beli di sini karena rekomendasi teman. Unitnya sesuai deskripsi, tidak ada yang disembunyikan. Proses balik nama dibantu sampai selesai, plat baru keluar seminggu.",
-      },
-      {
-        id: 2,
-        authorName: "Rina Kusumawati",
-        authorInitials: "RK",
-        date: "22 Agustus 2025",
-        rating: 5,
-        text: "Awalnya ragu beli mobil bekas online. Ternyata bisa datang langsung ke showroom dan cek unit sepuasnya. Harga masih bisa nego tipis dan cicilan dihitung jelas di depan.",
-      },
-      {
-        id: 3,
-        authorName: "Dimas Nugroho",
-        authorAvatar: "/assets/images/avatar/coment-avatar-2.png",
-        date: "18 Agustus 2025",
-        rating: 5,
-        text: "Sudah dua kali ambil unit di MARF. Yang pertama untuk usaha, yang kedua untuk keluarga. Tidak pernah ada masalah dokumen. Pelayanannya sabar dan tidak dipaksa-paksa.",
-      },
-    ],
+    // `ratingSummary` dan `reviews` di sini dulu berisi 4,8 dari 1.968 penilaian
+    // dan tiga ulasan yang sama untuk SETIAP unit — dan ketiga "pengulas" itu
+    // (Bagas Prasetyo, Rina Kusumawati, Dimas Nugroho) justru nama yang dulu
+    // dipajang sebagai tim sales MARF di halaman lain. Showroom mengutip stafnya
+    // sendiri sebagai pelanggan, di setiap mobil, dengan angka yang tidak pernah
+    // dihitung dari mana pun. Tidak ada tabel ulasan di basis data.
+    //
+    // Dibiarkan kosong. `ReviewsSection` menampilkan "Belum ada ulasan" sampai
+    // ada ulasan sungguhan — dan begitu ada, cukup isi dua bidang ini lagi.
     dealer: {
       name: "MARF Showroom Mobil Purwokerto",
       avatar: "/assets/images/avatar/contact-avatar.png",
@@ -1339,7 +1311,7 @@ export const FITUR_UNIT: Record<string, ListingFeatures> = {
  * template is only a last resort for a listing that has neither.
  */
 export type ListingWithDetail = Listing &
-  Required<Pick<Listing, "overview" | "description" | "features" | "location" | "ratingSummary" | "reviews" | "dealer">>;
+  Required<Pick<Listing, "overview" | "description" | "features" | "location" | "dealer">>;
 
 export function withDetailFallback(listing: Listing): ListingWithDetail {
   const template = allListings[0];
@@ -1369,8 +1341,6 @@ export function withDetailFallback(listing: Listing): ListingWithDetail {
     description: listing.description ?? template.description!,
     features: fiturTerisi ?? FITUR_UNIT[listing.slug] ?? template.features!,
     location: listing.location ?? template.location!,
-    ratingSummary: listing.ratingSummary ?? template.ratingSummary!,
-    reviews: listing.reviews ?? template.reviews!,
     dealer: listing.dealer ?? template.dealer!,
   };
 }

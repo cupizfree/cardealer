@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { KONTAK } from "@/data/kontak";
 import ParallaxImage from "@/components/common/ParallaxImage";
 
 // Migrated from ../aurexo/services-center.html lines 685-791. Same `.overlay-parallax`/`.overlay.image`
@@ -53,8 +54,7 @@ export default function ContactScheduleSection() {
                 </div>
                 <div className="flex flex-col gap-4">
                   <p className="text-sm text-muted">Hubungi Kami</p>
-                  <a href="tel:1-555-678-8888" className="text-sm text-white">1-555-678-8888</a>
-                  <a href="tel:1-333-123-6666" className="text-sm text-white">1-333-123-6666</a>
+                  <a href={KONTAK.teleponHref} className="text-sm text-white">{KONTAK.telepon}</a>
                 </div>
               </li>
 
@@ -76,11 +76,11 @@ export default function ContactScheduleSection() {
               <div className="grid grid-cols-2 lg-grid-cols-1 gap-x-12 gap-y-24 mb-22">
                 <div>
                   <p className="mb-8">Nama</p>
-                  <input className="active input-large" id="SendInquiryname" name="SendInquiryname" type="text" defaultValue="Tony Nguyen" required />
+                  <input className="active input-large" id="SendInquiryname" name="SendInquiryname" type="text" required />
                 </div>
                 <div>
                   <p className="mb-8">Email</p>
-                  <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" defaultValue="themesflat@gmail.com" required />
+                  <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" required />
                 </div>
                 <div>
                   <p className="mb-8">Telepon</p>
@@ -88,7 +88,7 @@ export default function ContactScheduleSection() {
                 </div>
                 <div>
                   <p className="mb-8">Tanggal</p>
-                  <input className="input-large" id="SendInquirydate" name="SendInquirydate" type="date" defaultValue="2024-01-23" required />
+                  <input className="input-large" id="SendInquirydate" name="SendInquirydate" type="date" required />
                 </div>
 
                 <div>

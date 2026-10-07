@@ -8,7 +8,6 @@ import BrowseByTypePillsSection from "@/components/home-07/BrowseByTypePillsSect
 import LatestForSaleSection from "@/components/home-07/LatestForSaleSection";
 import WhyChooseUsSection from "@/components/common/WhyChooseUsSection";
 import ClientsReviewsCarousel from "@/components/common/ClientsReviewsCarousel";
-import DownloadAppCtaSection from "@/components/home-07/DownloadAppCtaSection";
 import { emilyBenjaminOliviaTestimonials } from "@/data/clientTestimonials";
 
 export const metadata: Metadata = {
@@ -151,7 +150,6 @@ export default function Home07() {
         cardHref="/clients-reviews"
         sectionClassName="bg-white py-100"
       >
-        <DownloadAppCtaSection />
       </ClientsReviewsCarousel>
 
       <Footer />

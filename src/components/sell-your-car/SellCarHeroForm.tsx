@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { KONTAK } from "@/data/kontak";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -47,7 +48,7 @@ export default function SellCarHeroForm() {
             <Image src="/assets/icons/PhoneCall-3.svg" alt="PhoneCall" width={24} height={24} />
             <div className="mt2">
               <span className="text-sm text-secondary">Ada Pertanyaan?</span>
-              <p className="h4">1-555-678-8888</p>
+              <p className="h4">{KONTAK.telepon}</p>
             </div>
           </a>
         </div>

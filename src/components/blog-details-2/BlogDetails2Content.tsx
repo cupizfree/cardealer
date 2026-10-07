@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { KONTAK } from "@/data/kontak";
 import Link from "next/link";
 import type { BlogPostWithDetail } from "@/data/blogPosts";
 import { FacebookIcon, XIcon, InstagramIcon, SkypeIcon, TelegramIcon } from "@/components/common/SocialIcons";
@@ -138,9 +139,8 @@ export default function BlogDetails2Content({ post }: { post: BlogPostWithDetail
 
             <div className="content">
               <a href="#" className="h4 mb-4 font-weight-600" onClick={(event) => event.preventDefault()}>
-                Bagas Prasetyo
+                {KONTAK.namaShowroom}
               </a>
-              <p className="text-secondary mb-18">200 Follower</p>
               <ul className="blog-detail-social flex gap-12">
                 <li>
                   <a href="https://www.facebook.com/">
@@ -172,7 +172,7 @@ export default function BlogDetails2Content({ post }: { post: BlogPostWithDetail
           </div>
 
           <p className="h7 line-height-28">
-            Bagas Prasetyo adalah penulis dan ilustrator. Ia penulis buku terlaris “Number of The Year”.
+            Seluruh artikel di blog ini ditulis dan diterbitkan oleh tim {KONTAK.namaShowroom}.
           </p>
         </div>
 

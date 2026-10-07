@@ -1,4 +1,4 @@
-import ClientsReviewsCarousel from "@/components/common/ClientsReviewsCarousel";
+import ClientsReviewsCarousel, { type ClientTestimonial } from "@/components/common/ClientsReviewsCarousel";
 import SellBuyPromoBanner from "@/components/common/SellBuyPromoBanner";
 
 // Migrated from ../aurexo/home-03.html lines 2306-2519 ("Ulasan Pelanggan"). Own distinct testimonial
@@ -9,44 +9,7 @@ import SellBuyPromoBanner from "@/components/common/SellBuyPromoBanner";
 // `<section>`, by the same 2-column promo banner already used after home-02.html's own "Why Choose Us"
 // section (byte-identical images/copy, confirmed via source diff) — reused via `SellBuyPromoBanner`
 // passed as `ClientsReviewsCarousel`'s `children`, with this page's own real href differences.
-const testimonials = [
-  {
-    name: "Benjamin Parker",
-    title: "CEO Tesla",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
-  },
-  {
-    name: "Olivia Williams",
-    title: "CEO BMW",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
-  },
-  {
-    name: "Olivia Williams",
-    title: "CEO BMW",
-    avatar: "/assets/images/avatar/avatar-3.png",
-    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
-  },
-  {
-    name: "Benjamin Parker",
-    title: "CEO Tesla",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
-  },
-  {
-    name: "Olivia Williams",
-    title: "CEO BMW",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
-  },
-  {
-    name: "Olivia Williams",
-    title: "CEO BMW",
-    avatar: "/assets/images/avatar/avatar-3.png",
-    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
-  },
-];
+const testimonials: ClientTestimonial[] = [];
 
 export default function ClientsReviewsSection() {
   return (

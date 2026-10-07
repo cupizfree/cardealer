@@ -86,10 +86,8 @@ export default async function ListingDetails5Page({
               listing={detail}
               overviewLayout="cardsRow"
               featureDefaultTab="Technology"
-              reviewFormVariant="loginOnly"
               sectionIds
               wrapperId="Overview"
-              reviewsHeaderButton={false}
             />
             <ListingDetailsSidebar price={listing.price} dealer={detail.dealer} sendInquiryId="Inquiry" />
           </div>

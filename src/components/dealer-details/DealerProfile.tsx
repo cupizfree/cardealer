@@ -62,12 +62,6 @@ export default function DealerProfile({ dealer }: { dealer: Dealer }) {
             </div>
 
             <div className="divider-vertical-style3 h-16 md-hidden" />
-
-            <div className="flex gap-4">
-              <Image src="/assets/icons/star-2.svg" alt="star" width={16} height={16} />
-              <p className="font-weight-600">4.8</p>
-              <p className="text-secondary">(751 ulasan)</p>
-            </div>
           </div>
         </div>
       </div>
@@ -100,7 +94,7 @@ export default function DealerProfile({ dealer }: { dealer: Dealer }) {
 
       <div className="divider mb-40 w-full" />
 
-      <ReviewsSection ratingSummary={canonicalDetail.ratingSummary} reviews={canonicalDetail.reviews} />
+      <ReviewsSection />
     </div>
   );
 }

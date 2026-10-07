@@ -5,44 +5,7 @@ import type { ClientTestimonial } from "@/components/common/ClientsReviewsCarous
 // "Benjamin Parker"/"Olivia Williams" reuse the exact same quote text already catalogued in
 // `home/HomeClientsReviews.tsx`'s own dataset; "Emily Johnson" is new content introduced by these two
 // pages, not present anywhere else.
-export const emilyBenjaminOliviaTestimonials: ClientTestimonial[] = [
-  {
-    name: "Emily Johnson",
-    title: "CEO Avitex",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu.",
-  },
-  {
-    name: "Benjamin Parker",
-    title: "CEO Tesla",
-    avatar: "/assets/images/avatar/avatar-4.png",
-    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
-  },
-  {
-    name: "Olivia Williams",
-    title: "CEO BMW",
-    avatar: "/assets/images/avatar/avatar-3.png",
-    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
-  },
-  {
-    name: "Emily Johnson",
-    title: "CEO Avitex",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu.",
-  },
-  {
-    name: "Benjamin Parker",
-    title: "CEO Tesla",
-    avatar: "/assets/images/avatar/avatar-4.png",
-    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
-  },
-  {
-    name: "Olivia Williams",
-    title: "CEO BMW",
-    avatar: "/assets/images/avatar/avatar-3.png",
-    text: "Sudah beberapa kali saya beli mobil, tapi ini pengalaman terbaik. Pelayanannya jujur dan transparan, dan mobil yang saya beli persis seperti deskripsinya. Saya pasti kembali untuk mobil berikutnya!",
-  },
-];
+export const emilyBenjaminOliviaTestimonials: ClientTestimonial[] = [];
 
 // home-09.html's own "Ulasan Pelanggan" reuses the same 3 people/quote texts as
 // `emilyBenjaminOliviaTestimonials`, but as a genuinely different 5-slide sequence (Emily/Benjamin/
@@ -55,35 +18,4 @@ export const emilyBenjaminOliviaTestimonials: ClientTestimonial[] = [
 // is also the only one rendered as a plain, non-linked div in source rather than a real link — a
 // separate, already-established decorative-demo-noise decision, not reproduced at the link level, same
 // as home-07.html's own analogous slide.)
-export const home09ClientTestimonials: ClientTestimonial[] = [
-  {
-    name: "Emily Johnson",
-    title: "CEO Avitex",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu.",
-  },
-  {
-    name: "Benjamin Parker",
-    title: "CEO Tesla",
-    avatar: "/assets/images/avatar/avatar-4.png",
-    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
-  },
-  {
-    name: "Olivia Williams",
-    title: "CEO BMW",
-    avatar: "/assets/images/avatar/avatar-3.png",
-    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu.",
-  },
-  {
-    name: "Emily Johnson",
-    title: "CEO Avitex",
-    avatar: "/assets/images/avatar/avatar-1.png",
-    text: "Pengalaman beli mobil di sini luar biasa. Pilihannya banyak, dan saya cepat menemukan mobil yang tepat. Prosesnya lancar, dan tim dukungan pelanggannya sangat membantu.",
-  },
-  {
-    name: "Benjamin Parker",
-    title: "CEO Tesla",
-    avatar: "/assets/images/avatar/avatar-4.png",
-    text: "Beli mobil secara online lebih mudah dari yang saya bayangkan. Situsnya mudah dipakai, jadi saya bisa cepat membandingkan banyak mobil. Opsi kreditnya fleksibel sehingga lebih mudah menemukan penawaran sesuai anggaran saya.",
-  },
-];
+export const home09ClientTestimonials: ClientTestimonial[] = [];

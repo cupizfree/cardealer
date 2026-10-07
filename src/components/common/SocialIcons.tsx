@@ -53,10 +53,3 @@ export function TelegramIcon({ stroke = "#fff" }: IconProps) {
 }
 
 // Source's own literal (dead/placeholder) hrefs — same 5 links on every card and in TeamModal.
-export const TEAM_SOCIAL_LINKS = [
-  { href: "https://www.facebook.com/", Icon: FacebookIcon },
-  { href: "https://x.com/", Icon: XIcon },
-  { href: "https://www.instagram.com/", Icon: InstagramIcon },
-  { href: "https://secure.skype.com", Icon: SkypeIcon },
-  { href: "https://desktop.telegram.org", Icon: TelegramIcon },
-];

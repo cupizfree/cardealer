@@ -1,25 +1,29 @@
-// Data tim sales MARF Showroom Mobil Purwokerto.
-// `slug` sintetis (kebab-case dari `name`) — di template asal tidak ada rute per-sales.
+// Tim sales MARF Showroom Mobil Purwokerto.
+//
+// Isinya satu orang. Sebelumnya dua belas entri — padahal cuma delapan nama
+// unik (Bagas Prasetyo dan Rina Kusumawati masing-masing dua kali), dan
+// keempat entri terakhir memakai `slug` yang sama dengan empat yang pertama.
+// Semuanya karangan dari templat asal: tidak satu pun bekerja di MARF.
+//
+// `photo` sengaja dibiarkan kosong, bukan diisi foto stok orang lain. Kartu
+// tanpa foto menampilkan inisial nama (lihat `common/FotoOrang.tsx`). Begitu
+// foto asli Hendrik ada, isi `photo` di sini saja — tidak ada kode lain yang
+// perlu diubah.
 export type SaleAgent = {
   id: number;
   slug: string;
   name: string;
   role: string;
-  photo: string;
+  photo?: string;
   active?: boolean;
 };
 
 export const allSaleAgents: SaleAgent[] = [
-  { id: 1, slug: "bagas-prasetyo", name: "Bagas Prasetyo", role: "Sales Senior", photo: "/assets/images/pages/sale-agent-1.jpg" },
-  { id: 2, slug: "rina-kusumawati", name: "Rina Kusumawati", role: "Kepala Tim Sales", photo: "/assets/images/pages/sale-agent-2.jpg", active: true },
-  { id: 3, slug: "dimas-nugroho", name: "Dimas Nugroho", role: "Manajer Akun", photo: "/assets/images/pages/sale-agent-3.jpg" },
-  { id: 4, slug: "ayu-lestari", name: "Ayu Lestari", role: "Manajer Relasi Pelanggan", photo: "/assets/images/pages/sale-agent-4.jpg" },
-  { id: 5, slug: "fajar-ramadhan", name: "Fajar Ramadhan", role: "Koordinator Sales", photo: "/assets/images/pages/sale-agent-5.jpg" },
-  { id: 6, slug: "dewi-anggraini", name: "Dewi Anggraini", role: "Manajer Penjualan", photo: "/assets/images/pages/sale-agent-6.jpg" },
-  { id: 7, slug: "yoga-pratama", name: "Yoga Pratama", role: "Pemimpin Sales", photo: "/assets/images/pages/sale-agent-7.jpg" },
-  { id: 8, slug: "nurul-hidayah", name: "Nurul Hidayah", role: "Kepala Tim Sales", photo: "/assets/images/pages/sale-agent-8.jpg" },
-  { id: 9, slug: "bagas-prasetyo", name: "Bagas Prasetyo", role: "Sales Senior", photo: "/assets/images/pages/sale-agent-1.jpg" },
-  { id: 10, slug: "rina-kusumawati", name: "Rina Kusumawati", role: "Kepala Tim Sales", photo: "/assets/images/pages/sale-agent-2.jpg", active: true },
-  { id: 11, slug: "dimas-nugroho", name: "Dimas Nugroho", role: "Manajer Akun", photo: "/assets/images/pages/sale-agent-3.jpg" },
-  { id: 12, slug: "ayu-lestari", name: "Ayu Lestari", role: "Manajer Relasi Pelanggan", photo: "/assets/images/pages/sale-agent-4.jpg" },
+  {
+    id: 1,
+    slug: "hendrik-marfundo",
+    name: "Hendrik Marfundo",
+    role: "Staff Showroom",
+    active: true,
+  },
 ];

@@ -44,22 +44,18 @@ export default function ListingDetailsContent({
   listing,
   overviewLayout = "columns",
   featureDefaultTab = "Exterior",
-  reviewFormVariant = "full",
   bare = false,
   sectionIds = false,
   wrapperId,
-  reviewsHeaderButton = true,
 }: {
   listing: ListingWithDetail;
   overviewLayout?: "columns" | "flat" | "none" | "cards" | "cardsRow";
   featureDefaultTab?: FeatureCategory;
-  reviewFormVariant?: "full" | "loginOnly";
   bare?: boolean;
   sectionIds?: boolean;
   wrapperId?: string;
-  reviewsHeaderButton?: boolean;
 }) {
-  const { overview, location, ratingSummary, reviews } = listing;
+  const { overview, location } = listing;
 
   const body = (
     <>
@@ -176,13 +172,7 @@ export default function ListingDetailsContent({
       </div>
 
       <div className="divider w-full mb-40" />
-      <ReviewsSection
-        ratingSummary={ratingSummary}
-        reviews={reviews}
-        reviewsHeaderButton={reviewsHeaderButton}
-        reviewFormVariant={reviewFormVariant}
-        sectionId={sectionIds ? "Ulasan" : undefined}
-      />
+      <ReviewsSection sectionId={sectionIds ? "Ulasan" : undefined} />
     </>
   );
 

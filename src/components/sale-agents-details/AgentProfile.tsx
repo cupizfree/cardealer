@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FotoOrang from "@/components/common/FotoOrang";
 import { withDetailFallback } from "@/data/listings";
 import { muatKatalog } from "@/lib/katalog";
 import type { SaleAgent } from "@/data/saleAgents";
@@ -43,7 +44,7 @@ export default function AgentProfile({ agent }: { agent: SaleAgent }) {
 
   return (
     <div className="innerpage__content md-mb-30">
-      <Image className="w-full mb-35 radius-16" src={agent.photo} alt={agent.name} width={495} height={495} />
+      <FotoOrang nama={agent.name} foto={agent.photo} className="w-full mb-35 radius-16" width={495} height={495} />
 
       <h2 className="mb-12">{agent.name}</h2>
       <div className="flex">
@@ -79,7 +80,7 @@ export default function AgentProfile({ agent }: { agent: SaleAgent }) {
 
       <div className="divider mb-40 w-full" />
 
-      <ReviewsSection ratingSummary={canonicalDetail.ratingSummary} reviews={canonicalDetail.reviews} />
+      <ReviewsSection />
     </div>
   );
 }

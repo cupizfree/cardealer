@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { KONTAK } from "@/data/kontak";
 import AvatarPosterUpload from "./AvatarPosterUpload";
 import ClearableInput from "./ClearableInput";
 import DealerLocationSection from "@/components/common/DealerLocationSection";
 
-// Migrated from ../aurexo/my-profile.html lines 578-807 (the `<form>`). Real, disclosed source content
-// bugs preserved verbatim: "Sales Phone*" and "Company*" both carry the literal value
-// "themesflat@gmail.com" (an email, not a phone number or company name — confirmed via source read, a
-// copy-paste from "Alamat Email*" right next to them), and "Phone*"'s own value has literal extra
-// internal spaces ("123  456  7890 "). "Jadi Showroom Rekanan" is source's own literal dead `href="#"`
-// (confirmed via grep — no script touches it).
+// Migrated from ../aurexo/my-profile.html lines 578-807 (the `<form>`).
+//
+// Nilai awal contoh dari templat sudah dibuang — nama, telepon, surel, deskripsi, dan
+// tanggal lahir karangan yang dulu terisi di kolom-kolom ini. Kolom kosong lebih jujur
+// daripada kolom yang terisi data orang lain. "Jadi Showroom Rekanan" masih `href="#"`.
 export default function ProfileForm() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -50,12 +50,12 @@ export default function ProfileForm() {
         <div className="grid grid-cols-2 gap-20 mb-14">
           <div className="md-col-span-2 padding-0">
             <p className="mb-8 font-weight-600">Fist Name*</p>
-            <ClearableInput name="first_name" defaultValue="John" placeholder="Fist Name*" />
+            <ClearableInput name="first_name" placeholder="Fist Name*" />
           </div>
 
           <div className="md-col-span-2 padding-0">
             <p className="mb-8 font-weight-600">Nama Belakang*</p>
-            <ClearableInput name="last_name" defaultValue="Smith" placeholder="Nama Belakang*" />
+            <ClearableInput name="last_name" placeholder="Nama Belakang*" />
           </div>
 
           <div className="col-span-2 padding-0">
@@ -68,7 +68,6 @@ export default function ProfileForm() {
               className="message textarea-primary text-secondary"
               id="message"
               required
-              defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum arcu sit amet dolor aliquet, non fermentum quam ullamcorper. Nunc iaculis arcu sed interdum suscipit. Donec quis diam a sem sagittis consequat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur a ligula magna. Maecenas nec est dignissim, molestie sem vel, tristique lacus. "
             />
           </div>
         </div>
@@ -77,26 +76,26 @@ export default function ProfileForm() {
           <div>
             <p className="mb-8 font-weight-600">Phone*</p>
             <div className="input-clear-wrapper">
-              <input className="input-large" type="text" name="Telepon" id="Telepon" defaultValue="123  456  7890 " placeholder="Telepon" />
+              <input className="input-large" type="text" name="Telepon" id="Telepon" placeholder="Telepon" />
             </div>
           </div>
 
           <div>
             <p className="mb-8 font-weight-600">Sales Phone*</p>
             <div className="input-clear-wrapper">
-              <input className="input-large" type="text" name="SalesPhone" id="SalesPhone" defaultValue="themesflat@gmail.com" placeholder="Sales Phone*" />
+              <input className="input-large" type="text" name="SalesPhone" id="SalesPhone" placeholder="Sales Phone*" />
             </div>
           </div>
           <div>
             <p className="mb-8 font-weight-600">Alamat Email*</p>
             <div className="input-clear-wrapper">
-              <input className="input-large" type="text" name="EmailAddress" id="EmailAddress" defaultValue="themesflat@gmail.com" placeholder="Alamat Email*" />
+              <input className="input-large" type="text" name="EmailAddress" id="EmailAddress" placeholder="Alamat Email*" />
             </div>
           </div>
           <div>
             <p className="mb-8 font-weight-600">Company*</p>
             <div className="input-clear-wrapper">
-              <input className="input-large" type="text" name="Company" id="Company" defaultValue="themesflat@gmail.com" placeholder="Company*" />
+              <input className="input-large" type="text" name="Company" id="Company" placeholder="Company*" />
             </div>
           </div>
         </div>
@@ -112,7 +111,7 @@ export default function ProfileForm() {
 
           <div>
             <p className="mb-8 font-weight-600">Day of Birth*</p>
-            <input type="date" name="DayofBirth" id="DayofBirth" defaultValue="1994-03-22" />
+            <input type="date" name="DayofBirth" id="DayofBirth" />
           </div>
         </div>
       </div>
@@ -123,7 +122,7 @@ export default function ProfileForm() {
         <div className="grid grid-cols-3 gap-32 mb-20 md-grid-cols-1">
           <ClearableInput
             name="Facebook"
-            defaultValue="http://www.facebook.com/avitex"
+           
             placeholder="URL"
             prefixIconSrc="/assets/icons/input-facebook.svg"
             wrapperClassName="input-clear-wrapper input-social-wrapper"

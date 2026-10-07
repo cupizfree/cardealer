@@ -14,19 +14,13 @@ export type ModalId =
   | "SearchModal"
   | "CompareModal"
   | "CardModal"
-  | "TeamModal"
-  | "NewsletterModal"
-  | "ShoppingCartModal"
-  | "QuickViewModal"
   | "VideoModal";
 
 type ModalContextValue = {
   activeModal: ModalId | null;
-  // `payload` carries whichever product/item triggered the open — needed by `QuickViewModal`, whose
-  // own displayed content is static in source (always "Fog Light Lamp...") but whose real "Add to
-  // Cart" action must still resolve the actually-clicked product's real name/image/price (traced in
-  // full via `shop.js`'s `getProductDataFromCard`/modal `.data()` stash — see that component's own
-  // header comment). `unknown` rather than a specific type since Modal/ModalProvider stay generic.
+  // `payload` carries whichever item triggered the open, for a modal whose chrome is static
+  // but whose action must still resolve the actually-clicked record. `unknown` rather than a
+  // specific type since Modal/ModalProvider stay generic.
   modalPayload: unknown;
   openModal: (id: ModalId, payload?: unknown) => void;
   closeModal: () => void;

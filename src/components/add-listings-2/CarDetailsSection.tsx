@@ -27,7 +27,7 @@ export default function CarDetailsSection({
       <div className="grid grid-cols-4 gap-20 sm-grid-cols-1">
         <div className="padding-0 col-span-4">
           <p className="mb-8 font-weight-600">Judul Iklan*</p>
-          <input className="input-large" type="text" id="title" name="title" placeholder="Judul Iklan*" defaultValue="Toyota Avanza 1.5 G" required />
+          <input className="input-large" type="text" id="title" name="title" placeholder="Judul Iklan*" required />
         </div>
 
         <div className="lg-col-span-2 padding-0 sm-col-span-4">

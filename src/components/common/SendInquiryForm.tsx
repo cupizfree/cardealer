@@ -14,11 +14,11 @@ export default function SendInquiryForm({ id }: { id?: string }) {
         <div className="grid grid-cols-1 gap-18 mb-8">
           <div>
             <p className="mb-8">Nama</p>
-            <input className="active input-large" id="SendInquiryname" name="SendInquiryname" type="text" defaultValue="Tony Nguyen" required />
+            <input className="active input-large" id="SendInquiryname" name="SendInquiryname" type="text" required />
           </div>
           <div>
             <p className="mb-8">Email</p>
-            <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" defaultValue="themesflat@gmail.com" required />
+            <input className="input-large" name="SendInquiryemail" id="SendInquiryemail" type="text" required />
           </div>
           <div>
             <p className="mb-8">Telepon</p>

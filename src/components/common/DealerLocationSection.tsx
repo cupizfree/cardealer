@@ -1,6 +1,7 @@
 import FilterSelectDropdown from "./FilterSelectDropdown";
+import { KONTAK } from "@/data/kontak";
 
-const ADDRESS = "6205 Peachtree Dunwoody Rd, Atlanta, GA 30328";
+const ADDRESS = KONTAK.alamat;
 
 const MAP_OPTIONS = [
   { value: ADDRESS, label: ADDRESS },
@@ -47,7 +48,7 @@ export default function DealerLocationSection({
 
       <div className="widget-gg-map flex radius-8 overflow-hidden">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d97101.88872869895!2d-74.22688511715344!3d40.487336736141906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1689125037376!5m2!1svi!2s"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d97101.88872869895!2d109.2396016!3d-7.4245941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1689125037376!5m2!1svi!2s"
           height={281}
           style={{ border: 0, width: "100%" }}
           loading="lazy"

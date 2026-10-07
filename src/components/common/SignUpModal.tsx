@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { KONTAK } from "@/data/kontak";
 import Modal from "./Modal";
 import { useModal } from "./ModalProvider";
 import PasswordInput from "./PasswordInput";
@@ -20,7 +21,6 @@ export default function SignUpModal() {
           <span className="mb-8 flex">Email*</span>
           <input
             className="input-large active"
-            defaultValue="themesflat@gmail.com"
             type="email"
             id="SignUp-login"
             name="SignUp-login"

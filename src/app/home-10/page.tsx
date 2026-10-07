@@ -73,7 +73,7 @@ export const metadata: Metadata = {
 //   diff, the only page with this value). The search-toggle `<span>` always hardcoded plain
 //   `header-action-btn` — home-04/09/10.html's own real class is `relative header-action-btn` (all 3
 //   confirmed via source diff; home-04/09's own `page.tsx` now also pass this explicitly). Fixed via the
-//   new `headerButtonGapClassName`/`searchToggleClassName` props.
+//   new `searchToggleClassName` prop.
 //
 // Hero (`home-10/HeroTextSlider.tsx`) is a genuinely new shape — a single swiper bundling background +
 // text/CTA overlay per slide (see that file's own comment).
@@ -127,7 +127,6 @@ export default function Home10() {
         navListClassName=""
         headerRightClassName="header-right-style-3"
         omitVariantClass
-        headerButtonGapClassName="gap-10"
         searchToggleClassName="relative header-action-btn"
         noWrapper
       />

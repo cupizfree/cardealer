@@ -8,7 +8,6 @@ import Testimonials from "@/components/about-us/Testimonials";
 import WhyChooseUs from "@/components/about-us/WhyChooseUs";
 import ExecutiveTeam from "@/components/about-us/ExecutiveTeam";
 import Brands from "@/components/about-us/Brands";
-import NewsletterModal from "@/components/common/NewsletterModal";
 
 export const metadata: Metadata = {
   title: "Tentang Kami",
@@ -61,8 +60,6 @@ export default function AboutUsPage() {
       <div className="tf-spacing" />
 
       <Footer />
-
-      <NewsletterModal />
     </>
   );
 }
